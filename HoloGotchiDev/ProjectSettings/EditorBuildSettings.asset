@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Hologotchi Dual Screen.unity
+    guid: 326da89ccb584d641acdc73fe19d26b0
+  - enabled: 1
+    path: Assets/Scenes/Hologotchi Dual Screen_extendedUI.unity
+    guid: 94e54c952867ceb4491bb14d952bde07
   m_configObjects: {}

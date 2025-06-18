@@ -18,7 +18,7 @@ namespace LookingGlass
         {
             Screen.fullScreen = false;
             SetPosition(0, 0);
-            Screen.SetResolution(940, 860, false);
+            Screen.SetResolution(260, 360, false);
         }
 #endif
 
