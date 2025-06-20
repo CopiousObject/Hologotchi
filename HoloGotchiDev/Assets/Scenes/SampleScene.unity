@@ -557,6 +557,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Particle System
       objectReference: {fileID: 0}
+    - target: {fileID: 5811388755290903381, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 240824333094594727, guid: 526f3961f72aafb49b63b3245713a511, type: 3}
+    - target: {fileID: 5811388755290903381, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 00f46431841099546a1d40f8be38fe11, type: 2}
     - target: {fileID: 7739620731020463807, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.6760928
@@ -571,19 +579,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7739620731020463807, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99988514
+      value: 0.34314305
       objectReference: {fileID: 0}
     - target: {fileID: 7739620731020463807, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.015159417
+      value: -0.0052024457
       objectReference: {fileID: 0}
     - target: {fileID: 7739620731020463807, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.014238771
       objectReference: {fileID: 0}
     - target: {fileID: 7739620731020463807, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.9391608
       objectReference: {fileID: 0}
     - target: {fileID: 7739620731020463807, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -595,7 +603,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7739620731020463807, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -139.858
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657222442288208968, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
+      propertyPath: ShapeModule.type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657222442288208968, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
+      propertyPath: RotationModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657222442288208968, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
+      propertyPath: RotationBySpeedModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657222442288208968, guid: 4ec40f6c3485ae447953cb997ad4fc0c, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 2.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
