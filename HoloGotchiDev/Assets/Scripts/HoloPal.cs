@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 // public enum GrowthState
@@ -13,6 +14,9 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private SkinnedMeshRenderer mesh_renderer;
 
+    public int hunger;
+    public int hunger_decay;
+
     public int total_growth;
     public int stage_growth;
     public int growth_state;
@@ -22,6 +26,12 @@ public class HoloPal : MonoBehaviour
 
     void Update()
     {
+        int growth_amount = Math.Min(hunger, hunger_decay);
+        
+        stage_growth += growth_amount;
+        total_growth += growth_amount;
+        hunger -= growth_amount;
+
         if (stage_growth >= growth_stage_thresholds[growth_state] && growth_state < growth_stage_thresholds.Length - 1)
         {
             growth_state++;

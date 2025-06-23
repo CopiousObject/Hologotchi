@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mesh_renderer: {fileID: 7141304326570292147}
+  hunger: 10
+  hunger_decay: 1
   total_growth: 0
   stage_growth: 0
   growth_state: 0
