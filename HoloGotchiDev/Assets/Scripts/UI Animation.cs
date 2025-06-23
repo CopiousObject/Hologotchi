@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIAnimation : MonoBehaviour
 {
-    float time = 0.0f;
+    private float time = 0.0f;
+    private RectTransform rectTransform;
+    private bool isAnimating = false;
+    private Vector3 start;
+    private Vector3 end;
+    //private Coroutine currentAnimation;
 
     // Placements
     private Vector3 playScreen = new Vector3(73, -17, 0);
@@ -13,68 +19,44 @@ public class UIAnimation : MonoBehaviour
     private Vector3 notifScreen = new Vector3(1975, -2635, 0);
     private Vector3 audioScreen = new Vector3(-1920, -2635, 0);
 
-    /// <summary>
-    /// Navigates the UI to the Main Play Screen
-    /// </summary>
-    public void NavigateToPlay()
+    private void Awake()
     {
-        while(time <= 1.0f)
-        {
-            time += Time.deltaTime;
-            this.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(this.GetComponent<RectTransform>().anchoredPosition, playScreen, time);
-        }
-        time = 0.0f;
+        rectTransform = GetComponent<RectTransform>();
     }
 
-    /// <summary>
-    /// Navigates the UI to the Statistics Screen
-    /// </summary>
-    public void NavigateToStats()
+    private void Update()
     {
-        while (time <= 1.0f)
+        if (isAnimating)
         {
             time += Time.deltaTime;
-            this.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(this.GetComponent<RectTransform>().anchoredPosition, statsScreen, time);
+            float eased = EaseOut(time);
+
+            rectTransform.anchoredPosition = Vector3.Lerp(start, end, eased);
+
+            if (time >= 1f)
+            {
+                isAnimating = false;
+            }
         }
-        time = 0.0f;
     }
 
-    /// <summary>
-    /// Navigates the UI to the Main Settings Screen
-    /// </summary>
-    public void NavigateToSettings()
+   
+    private void Animate(Vector3 destination)
     {
-        while (time <= 1.0f)
-        {
-            time += Time.deltaTime;
-            this.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(this.GetComponent<RectTransform>().anchoredPosition, settingsScreen, time);
-        }
+        start = rectTransform.anchoredPosition;
+        end = destination;
         time = 0.0f;
+        isAnimating = true;
     }
 
-    /// <summary>
-    /// Navigates the UI to the Notification Settings Screen
-    /// </summary>
-    public void NavigateToNotifs()
-    {
-        while (time <= 1.0f)
-        {
-            time += Time.deltaTime;
-            this.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(this.GetComponent<RectTransform>().anchoredPosition, notifScreen, time);
-        }
-        time = 0.0f;
-    }
+    public void NavigateToPlay() => Animate(playScreen);
+    public void NavigateToStats() => Animate(statsScreen);
+    public void NavigateToSettings() => Animate(settingsScreen);
+    public void NavigateToNotifs() => Animate(notifScreen);
+    public void NavigateToAudio() => Animate(audioScreen);
 
-    /// <summary>
-    /// Navigates the UI to the Audio Settings Screen
-    /// </summary>
-    void NavigateToAudio()
+    private float EaseOut(float x)
     {
-        while (time <= 1.0f)
-        {
-            time += Time.deltaTime;
-            this.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(this.GetComponent<RectTransform>().anchoredPosition, audioScreen, time);
-        }
-        time = 0.0f;
+        return 1f - Mathf.Pow(1f - x, 4f);
     }
 }
