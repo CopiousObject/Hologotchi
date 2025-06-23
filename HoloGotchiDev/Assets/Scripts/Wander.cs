@@ -20,6 +20,7 @@ public class Wander : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         timer += Time.deltaTime;
 
         if (timer >= wanderTimer)
@@ -28,6 +29,7 @@ public class Wander : MonoBehaviour
             agent.SetDestination(newPos);
             timer = 0;
         }
+        transform.LookAt(-Camera.main.transform.position);
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
