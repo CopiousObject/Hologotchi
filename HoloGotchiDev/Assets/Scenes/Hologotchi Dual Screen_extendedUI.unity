@@ -1906,7 +1906,6 @@ GameObject:
   - component: {fileID: 495281072}
   - component: {fileID: 495281073}
   - component: {fileID: 495281074}
-  - component: {fileID: 495281075}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1963,20 +1962,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c142b79cbf5c2341b5b7ff14df7c160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &495281075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495281071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10eb77f51fc369b4e8bbdf27891ca5d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  check: {fileID: 21300000, guid: 47f29d66e5234c74ea5bf48ed06d80c9, type: 3}
-  x: {fileID: 21300000, guid: beaa17e66ebf7fe44bf5116b32e6fdf8, type: 3}
 --- !u!1 &497657090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,6 +1974,7 @@ GameObject:
   - component: {fileID: 497657094}
   - component: {fileID: 497657093}
   - component: {fileID: 497657092}
+  - component: {fileID: 497657095}
   m_Layer: 5
   m_Name: Checkbox
   m_TagString: Untagged
@@ -2005,14 +1991,14 @@ RectTransform:
   m_GameObject: {fileID: 497657090}
   m_LocalRotation: {x: -0, y: -0, z: 0.6628899, w: 0.7487169}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.88685006, y: 0.88685006, z: 0.88685006}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1725189966}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 83.041}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3, y: 28.2}
+  m_AnchoredPosition: {x: -0.4, y: 30.6}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &497657092
@@ -2058,7 +2044,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 497657093}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 497657095}
+        m_TargetAssemblyTypeName: CheckboxToggle, Assembly-CSharp
+        m_MethodName: Toggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &497657093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2097,6 +2095,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497657090}
   m_CullTransparentMesh: 1
+--- !u!114 &497657095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497657090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10eb77f51fc369b4e8bbdf27891ca5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  check: {fileID: 21300000, guid: 47f29d66e5234c74ea5bf48ed06d80c9, type: 3}
+  x: {fileID: 21300000, guid: beaa17e66ebf7fe44bf5116b32e6fdf8, type: 3}
 --- !u!1 &510525644
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,6 +2720,7 @@ GameObject:
   - component: {fileID: 657619097}
   - component: {fileID: 657619096}
   - component: {fileID: 657619095}
+  - component: {fileID: 657619098}
   m_Layer: 5
   m_Name: Checkbox
   m_TagString: Untagged
@@ -2724,14 +2737,14 @@ RectTransform:
   m_GameObject: {fileID: 657619093}
   m_LocalRotation: {x: -0, y: -0, z: 0.80357856, w: 0.59519875}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.88685, y: 0.88685, z: 0.88685}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1205014757}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 106.946}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.7, y: 29.2}
+  m_AnchoredPosition: {x: 0.9, y: 30.8}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &657619095
@@ -2777,7 +2790,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 657619096}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 657619098}
+        m_TargetAssemblyTypeName: CheckboxToggle, Assembly-CSharp
+        m_MethodName: Toggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &657619096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2816,6 +2841,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657619093}
   m_CullTransparentMesh: 1
+--- !u!114 &657619098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657619093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10eb77f51fc369b4e8bbdf27891ca5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  check: {fileID: 21300000, guid: 47f29d66e5234c74ea5bf48ed06d80c9, type: 3}
+  x: {fileID: 21300000, guid: beaa17e66ebf7fe44bf5116b32e6fdf8, type: 3}
 --- !u!1 &688017318
 GameObject:
   m_ObjectHideFlags: 0
@@ -3901,7 +3940,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 46, y: -993}
+  m_AnchoredPosition: {x: 46, y: -923}
   m_SizeDelta: {x: 33, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1205014758
@@ -6455,6 +6494,7 @@ GameObject:
   - component: {fileID: 1953253288}
   - component: {fileID: 1953253287}
   - component: {fileID: 1953253286}
+  - component: {fileID: 1953253289}
   m_Layer: 5
   m_Name: Checkbox
   m_TagString: Untagged
@@ -6471,14 +6511,14 @@ RectTransform:
   m_GameObject: {fileID: 1953253284}
   m_LocalRotation: {x: -0, y: -0, z: 0.80249786, w: 0.59665495}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8868503, y: 0.8868503, z: 0.8868506}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 183112955}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 106.739}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.2, y: 29.5}
+  m_AnchoredPosition: {x: -1, y: 32}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1953253286
@@ -6525,7 +6565,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495281075}
+      - m_Target: {fileID: 1953253289}
         m_TargetAssemblyTypeName: CheckboxToggle, Assembly-CSharp
         m_MethodName: Toggle
         m_Mode: 1
@@ -6575,6 +6615,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953253284}
   m_CullTransparentMesh: 1
+--- !u!114 &1953253289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953253284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10eb77f51fc369b4e8bbdf27891ca5d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  check: {fileID: 21300000, guid: 47f29d66e5234c74ea5bf48ed06d80c9, type: 3}
+  x: {fileID: 21300000, guid: beaa17e66ebf7fe44bf5116b32e6fdf8, type: 3}
 --- !u!1 &1955826970
 GameObject:
   m_ObjectHideFlags: 0
