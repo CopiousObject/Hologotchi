@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] public GameObject Holopal;
-    public GameObject FoodPrefab;
-    public GameObject WaterPrefab;
+    public GameObject foodPrefab;
+    public GameObject waterPrefab;
     public List<GameObject> spawnedObjects;
 
 
@@ -27,11 +27,22 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.S))
         {
-            spawnedObjects.Add(Instantiate(FoodPrefab));
+            SpawnFood();
         }
         if (Input.GetKeyUp(KeyCode.D))
         {
-            spawnedObjects.Add(Instantiate(WaterPrefab));
+            SpawnWater();
         }
     }
+
+    public void SpawnFood()
+    {
+        spawnedObjects.Add(Instantiate(foodPrefab));
+    }
+
+    public void SpawnWater()
+    {
+        spawnedObjects.Add(Instantiate(waterPrefab));
+    }
+
 }
