@@ -150,14 +150,14 @@ RectTransform:
   m_GameObject: {fileID: 3895349}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.613184, y: 8.613184, z: 8.613184}
+  m_LocalScale: {x: 8.126773, y: 8.126773, z: 8.126773}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1059195676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -677, y: 993}
+  m_AnchoredPosition: {x: -694, y: 993}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3895351
@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 69764985}
   - component: {fileID: 69764984}
   - component: {fileID: 69764986}
+  - component: {fileID: 69764987}
   m_Layer: 5
   m_Name: Chat Icon
   m_TagString: Untagged
@@ -447,14 +448,14 @@ RectTransform:
   m_GameObject: {fileID: 69764982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.891082, y: 5.891082, z: 5.891082}
+  m_LocalScale: {x: 5.8910823, y: 5.8910823, z: 5.8910823}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1059195676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -14}
+  m_AnchoredPosition: {x: 0.000036239624, y: -13.999989}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &69764984
@@ -538,7 +539,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 69764984}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 69764987}
+        m_TargetAssemblyTypeName: DropItem, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &69764987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69764982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDuplicate: {fileID: 69764982}
 --- !u!1 &73653861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,6 +1418,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270590477}
   m_CullTransparentMesh: 1
+--- !u!1 &297064627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 297064628}
+  m_Layer: 5
+  m_Name: Drop Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &297064628
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297064627}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -18.065634}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 495281072}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -41.000122, y: -34.999756}
+  m_SizeDelta: {x: 8188.2207, y: 8188.22}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &328661033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,6 +1986,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 297064628}
   - {fileID: 1955826971}
   - {fileID: 1059195676}
   - {fileID: 375460872}
@@ -1935,7 +1997,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1975, y: -2635}
+  m_AnchoredPosition: {x: 73, y: -17}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &495281073
@@ -2413,7 +2475,7 @@ RectTransform:
   m_GameObject: {fileID: 533967351}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -18.065634}
-  m_LocalScale: {x: 81.8822, y: 80.27668, z: 80.27668}
+  m_LocalScale: {x: 81.8822, y: 81.8822, z: 80.27668}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1955826971}
@@ -2473,6 +2535,7 @@ GameObject:
   - component: {fileID: 572343465}
   - component: {fileID: 572343464}
   - component: {fileID: 572343466}
+  - component: {fileID: 572343467}
   m_Layer: 5
   m_Name: Food Icon
   m_TagString: Untagged
@@ -2489,14 +2552,14 @@ RectTransform:
   m_GameObject: {fileID: 572343462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.254876, y: 5.254876, z: 5.254876}
+  m_LocalScale: {x: 5.254877, y: 5.254877, z: 5.254877}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1059195676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 472, y: -7}
+  m_AnchoredPosition: {x: 471.99994, y: -6.999996}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &572343464
@@ -2580,7 +2643,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 572343464}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 572343467}
+        m_TargetAssemblyTypeName: DropItem, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &572343467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572343462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDuplicate: {fileID: 572343462}
 --- !u!1 &583164543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2867,6 +2955,7 @@ GameObject:
   - component: {fileID: 688017321}
   - component: {fileID: 688017320}
   - component: {fileID: 688017322}
+  - component: {fileID: 688017323}
   m_Layer: 5
   m_Name: Water Icon
   m_TagString: Untagged
@@ -2883,14 +2972,14 @@ RectTransform:
   m_GameObject: {fileID: 688017318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.134247, y: 7.134247, z: 7.134247}
+  m_LocalScale: {x: 7.134248, y: 7.134248, z: 7.134248}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1059195676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18, y: 697}
+  m_AnchoredPosition: {x: 18.000082, y: 697.00024}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &688017320
@@ -2974,7 +3063,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 688017320}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 688017323}
+        m_TargetAssemblyTypeName: DropItem, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &688017323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688017318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDuplicate: {fileID: 688017318}
 --- !u!1 &715939892
 GameObject:
   m_ObjectHideFlags: 0
@@ -3555,13 +3669,13 @@ RectTransform:
   m_LocalScale: {x: 1.0919, y: 1.0919, z: 1.0919}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 688017319}
+  - {fileID: 1566150909}
+  - {fileID: 69764983}
+  - {fileID: 572343463}
+  - {fileID: 1927488280}
   - {fileID: 3895350}
   - {fileID: 1762080064}
-  - {fileID: 688017319}
-  - {fileID: 1927488280}
-  - {fileID: 572343463}
-  - {fileID: 69764983}
-  - {fileID: 1566150909}
   m_Father: {fileID: 495281072}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5053,6 +5167,7 @@ GameObject:
   - component: {fileID: 1566150911}
   - component: {fileID: 1566150910}
   - component: {fileID: 1566150912}
+  - component: {fileID: 1566150913}
   m_Layer: 5
   m_Name: Ball Icon
   m_TagString: Untagged
@@ -5067,7 +5182,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566150908}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.1328, y: 4.1328, z: 4.1328}
   m_ConstrainProportionsScale: 0
@@ -5076,7 +5191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -529, y: -10}
+  m_AnchoredPosition: {x: -529, y: -10.000004}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1566150910
@@ -5160,7 +5275,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1566150910}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1566150913}
+        m_TargetAssemblyTypeName: DropItem, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1566150913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566150908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDuplicate: {fileID: 1566150908}
 --- !u!1 &1575540691
 GameObject:
   m_ObjectHideFlags: 0
@@ -6131,7 +6271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -685, y: -837}
+  m_AnchoredPosition: {x: -711, y: -837}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1762080065
@@ -6374,6 +6514,7 @@ GameObject:
   - component: {fileID: 1927488282}
   - component: {fileID: 1927488281}
   - component: {fileID: 1927488283}
+  - component: {fileID: 1927488284}
   m_Layer: 5
   m_Name: Kempt Icon
   m_TagString: Untagged
@@ -6397,7 +6538,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -665}
+  m_AnchoredPosition: {x: 0.000036239624, y: -664.9999}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1927488281
@@ -6481,7 +6622,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1927488281}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1927488284}
+        m_TargetAssemblyTypeName: DropItem, Assembly-CSharp
+        m_MethodName: Drop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1927488284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927488279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDuplicate: {fileID: 1927488279}
 --- !u!1 &1953253284
 GameObject:
   m_ObjectHideFlags: 0
@@ -6639,7 +6805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1955826971}
   m_Layer: 5
-  m_Name: Enviornment
+  m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6657,8 +6823,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1012118709}
   - {fileID: 533967352}
+  - {fileID: 1012118709}
   - {fileID: 485885632}
   - {fileID: 181337025}
   m_Father: {fileID: 495281072}
