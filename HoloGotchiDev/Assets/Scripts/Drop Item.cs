@@ -1,3 +1,4 @@
+using LookingGlass;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -7,6 +8,7 @@ public class DropItem : MonoBehaviour
 {
     [SerializeField] GameObject objectToDuplicate;
     GameObject duplicate;
+    [SerializeField] InterProcessCommunicator communicator;
 
     /// <summary>
     /// Will run to delete the duplicated object after falling below a certain point
@@ -16,6 +18,7 @@ public class DropItem : MonoBehaviour
         if (duplicate != null && duplicate.GetComponent<RectTransform>().anchoredPosition.y <= -4000)
         {
             Destroy(duplicate);
+            communicator.SendData("Drop Item");
         }
     }
 

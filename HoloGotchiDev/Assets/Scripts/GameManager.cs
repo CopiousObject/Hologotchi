@@ -1,3 +1,4 @@
+using LookingGlass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] public GameObject Holopal;
     [SerializeField] public int objCount = 10;
+    [SerializeField] InterProcessCommunicator reciever;
     public GameObject foodPrefab;
     public GameObject waterPrefab;
     public List<GameObject> spawnedObjects;
@@ -39,5 +41,14 @@ public class GameManager : MonoBehaviour
     public void SpawnItem(GameObject current)
     {
         spawnedObjects.Add(Instantiate(current, this.gameObject.transform.position, Quaternion.identity));
-    }                                              
+    }
+
+    /// <summary>
+    /// Processing for IPC
+    /// </summary>
+    /// <param name="message"></param>
+    public void RecieveMessage(string message)
+    {
+        SpawnItem(foodPrefab);
+    }
 }

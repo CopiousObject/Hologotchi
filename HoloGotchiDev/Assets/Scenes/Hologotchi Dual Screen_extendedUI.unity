@@ -565,6 +565,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 69764982}
+  communicator: {fileID: 1523370008}
 --- !u!1 &73653861
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,6 +2670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 572343462}
+  communicator: {fileID: 1523370008}
 --- !u!1 &583164543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3089,6 +3091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 688017318}
+  communicator: {fileID: 1523370008}
 --- !u!1 &715939892
 GameObject:
   m_ObjectHideFlags: 0
@@ -5301,6 +5304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 1566150908}
+  communicator: {fileID: 1523370008}
 --- !u!1 &1575540691
 GameObject:
   m_ObjectHideFlags: 0
@@ -6648,6 +6652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 1927488279}
+  communicator: {fileID: 1523370008}
 --- !u!1 &1953253284
 GameObject:
   m_ObjectHideFlags: 0
