@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2010930309931629495}
   - component: {fileID: 2328692127935294231}
+  - component: {fileID: 3595781013440597862}
   m_Layer: 0
   m_Name: HoloPal
   m_TagString: Untagged
@@ -52,6 +53,21 @@ MonoBehaviour:
   stage_growth: 0
   growth_state: 0
   growth_stage_thresholds: 0a00000032000000640000002c010000
+--- !u!114 &3595781013440597862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3237382414628010953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133d7527727eec142a5d69742e669f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pal: {fileID: 2328692127935294231}
+  wander_cd: 3
+  wander_speed: 1
 --- !u!1001 &2960821768435411873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115,6 +131,34 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0c7a6306855b35740928ec97eb3dc369, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: 0c7a6306855b35740928ec97eb3dc369, type: 3}
+      propertyPath: m_DirtyAABB
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: 0c7a6306855b35740928ec97eb3dc369, type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: -0.13595152
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: 0c7a6306855b35740928ec97eb3dc369, type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 2.6868782
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: 0c7a6306855b35740928ec97eb3dc369, type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: -1.255805
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: 0c7a6306855b35740928ec97eb3dc369, type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 10.282669
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: 0c7a6306855b35740928ec97eb3dc369, type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 11.059012
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: 0c7a6306855b35740928ec97eb3dc369, type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 11.477864
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0c7a6306855b35740928ec97eb3dc369, type: 3}
       propertyPath: m_Name
