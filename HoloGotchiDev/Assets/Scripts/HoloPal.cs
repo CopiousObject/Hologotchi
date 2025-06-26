@@ -24,10 +24,24 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private int[] growth_stage_thresholds;
 
-    void Update()
+    IState current_state;
+
+    public void ChangeState(IState newState)
+    {
+        current_state.OnExit();
+        current_state = newState;
+        current_state.OnEnter();
+    }
+
+    void Start()
+    {
+        current_state = new WanderState(1, 3);
+    }
+
+    private void Update()
     {
         int growth_amount = Math.Min(hunger, hunger_decay);
-        
+
         stage_growth += growth_amount;
         total_growth += growth_amount;
         hunger -= growth_amount;
@@ -72,5 +86,7 @@ public class HoloPal : MonoBehaviour
         //         }
         //         break;
         // }
+
+        current_state.UpdateState(this);
     }
 }

@@ -6,19 +6,19 @@ using UnityEngine;
 public class HoloStateFSM : MonoBehaviour
 {
     [SerializeField] public HoloPal holopal;
-    public PlayState playState = new PlayState();
-    public WanderState wanderState = new WanderState();
-    public SeekState seekState = new SeekState();
-    public DrinkState drinkState = new DrinkState();
-    public EatState eatState = new EatState();
-    public TalkState talkState = new TalkState();
-    public SickState sickState = new SickState();
-    public EvolveState evolveState = new EvolveState();
-    public LeaveState leaveState = new LeaveState();
-    public CleanState cleanState = new CleanState();
-    public ForageState forageState = new ForageState();
-    public HideSeekState hideSeekState = new HideSeekState();
-    public CreateState createState = new CreateState();
+    // public PlayState playState = new PlayState();
+    // public WanderState wanderState = new WanderState();
+    // public SeekState seekState = new SeekState();
+    // public DrinkState drinkState = new DrinkState();
+    // public EatState eatState = new EatState();
+    // public TalkState talkState = new TalkState();
+    // public SickState sickState = new SickState();
+    // public EvolveState evolveState = new EvolveState();
+    // public LeaveState leaveState = new LeaveState();
+    // public CleanState cleanState = new CleanState();
+    // public ForageState forageState = new ForageState();
+    // public HideSeekState hideSeekState = new HideSeekState();
+    // public CreateState createState = new CreateState();
     IState current;
 
     // Update is called once per frame
@@ -27,12 +27,7 @@ public class HoloStateFSM : MonoBehaviour
         current.UpdateState(holopal);
     }
 
-    public void ChangeState(IState newState)
-    {
-        current.OnExit();
-        current = newState;
-        current.OnEnter();
-    }
+    
 }
 
 public interface IState
@@ -43,4 +38,3 @@ public interface IState
 
     public void OnExit();
 }
-
