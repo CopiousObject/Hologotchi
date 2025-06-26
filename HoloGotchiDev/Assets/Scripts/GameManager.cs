@@ -1,25 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] public GameObject Holopal;
+    [SerializeField] public int objCount = 10;
     public GameObject foodPrefab;
     public GameObject waterPrefab;
     public List<GameObject> spawnedObjects;
-
+    private GameObject currentObject;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        currentObject = foodPrefab;
     }
 
     void Update()
     {
-        if (spawnedObjects.Count > 25)
+        if (spawnedObjects.Count > objCount)
         {
             Destroy(spawnedObjects[0]);
             spawnedObjects.Remove(spawnedObjects[0]);
@@ -27,22 +29,16 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.S))
         {
-            SpawnFood();
+            SpawnItem(foodPrefab);
         }
         if (Input.GetKeyUp(KeyCode.D))
         {
-            SpawnWater();
+            SpawnItem(waterPrefab);
         }
     }
 
-    public void SpawnFood()
+    public void SpawnItem(GameObject current)
     {
-        spawnedObjects.Add(Instantiate(foodPrefab));
-    }
-
-    public void SpawnWater()
-    {
-        spawnedObjects.Add(Instantiate(waterPrefab));
-    }
-
+        spawnedObjects.Add(Instantiate(current, this.gameObject.transform.position, Quaternion.identity));
+    }                                              
 }
