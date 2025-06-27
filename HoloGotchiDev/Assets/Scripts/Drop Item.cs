@@ -19,6 +19,9 @@ public class DropItem : MonoBehaviour
         {
             communicator.SendData("Drop Item");
             Destroy(duplicate);
+            duplicate = null;
+
+            objectToDuplicate.SetActive(true);
         }
     }
 
@@ -27,6 +30,9 @@ public class DropItem : MonoBehaviour
     /// </summary>
     public void Drop()
     {
+        if (duplicate != null)
+            return;
+
         RectTransform environment = GameObject.Find("Environment").GetComponent<RectTransform>();
 
         duplicate = Instantiate(objectToDuplicate, environment);
@@ -37,6 +43,8 @@ public class DropItem : MonoBehaviour
         {
             Rigidbody2D rb = duplicate.AddComponent<Rigidbody2D>();
             rb.gravityScale = 20f;
-        }     
+        }
+
+        objectToDuplicate.SetActive(false);
     }
 }

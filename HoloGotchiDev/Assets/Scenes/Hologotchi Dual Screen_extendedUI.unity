@@ -431,7 +431,6 @@ GameObject:
   - component: {fileID: 69764985}
   - component: {fileID: 69764984}
   - component: {fileID: 69764986}
-  - component: {fileID: 69764987}
   m_Layer: 5
   m_Name: Chat Icon
   m_TagString: Untagged
@@ -540,7 +539,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 69764987}
+      - m_Target: {fileID: 495281079}
         m_TargetAssemblyTypeName: DropItem, Assembly-CSharp
         m_MethodName: Drop
         m_Mode: 1
@@ -552,20 +551,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &69764987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69764982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToDuplicate: {fileID: 69764982}
-  communicator: {fileID: 1523370008}
 --- !u!1 &73653861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,6 +1953,11 @@ GameObject:
   - component: {fileID: 495281072}
   - component: {fileID: 495281073}
   - component: {fileID: 495281074}
+  - component: {fileID: 495281075}
+  - component: {fileID: 495281076}
+  - component: {fileID: 495281079}
+  - component: {fileID: 495281078}
+  - component: {fileID: 495281077}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -2025,6 +2015,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c142b79cbf5c2341b5b7ff14df7c160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &495281075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495281071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDuplicate: {fileID: 688017318}
+  communicator: {fileID: 1523370008}
+--- !u!114 &495281076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495281071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDuplicate: {fileID: 1566150908}
+  communicator: {fileID: 1523370008}
+--- !u!114 &495281077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495281071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDuplicate: {fileID: 1927488279}
+  communicator: {fileID: 1523370008}
+--- !u!114 &495281078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495281071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDuplicate: {fileID: 572343462}
+  communicator: {fileID: 1523370008}
+--- !u!114 &495281079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495281071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDuplicate: {fileID: 69764982}
+  communicator: {fileID: 1523370008}
 --- !u!1 &497657090
 GameObject:
   m_ObjectHideFlags: 0
@@ -2536,7 +2596,6 @@ GameObject:
   - component: {fileID: 572343465}
   - component: {fileID: 572343464}
   - component: {fileID: 572343466}
-  - component: {fileID: 572343467}
   m_Layer: 5
   m_Name: Food Icon
   m_TagString: Untagged
@@ -2645,7 +2704,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 572343467}
+      - m_Target: {fileID: 495281078}
         m_TargetAssemblyTypeName: DropItem, Assembly-CSharp
         m_MethodName: Drop
         m_Mode: 1
@@ -2657,20 +2716,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &572343467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572343462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToDuplicate: {fileID: 572343462}
-  communicator: {fileID: 1523370008}
 --- !u!1 &583164543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2957,7 +3002,6 @@ GameObject:
   - component: {fileID: 688017321}
   - component: {fileID: 688017320}
   - component: {fileID: 688017322}
-  - component: {fileID: 688017323}
   m_Layer: 5
   m_Name: Water Icon
   m_TagString: Untagged
@@ -3066,7 +3110,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 688017323}
+      - m_Target: {fileID: 495281075}
         m_TargetAssemblyTypeName: DropItem, Assembly-CSharp
         m_MethodName: Drop
         m_Mode: 1
@@ -3078,20 +3122,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &688017323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 688017318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToDuplicate: {fileID: 688017318}
-  communicator: {fileID: 1523370008}
 --- !u!1 &715939892
 GameObject:
   m_ObjectHideFlags: 0
@@ -5174,7 +5204,6 @@ GameObject:
   - component: {fileID: 1566150911}
   - component: {fileID: 1566150910}
   - component: {fileID: 1566150912}
-  - component: {fileID: 1566150913}
   m_Layer: 5
   m_Name: Ball Icon
   m_TagString: Untagged
@@ -5283,7 +5312,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1566150913}
+      - m_Target: {fileID: 495281076}
         m_TargetAssemblyTypeName: DropItem, Assembly-CSharp
         m_MethodName: Drop
         m_Mode: 1
@@ -5295,20 +5324,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1566150913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566150908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToDuplicate: {fileID: 1566150908}
-  communicator: {fileID: 1523370008}
 --- !u!1 &1575540691
 GameObject:
   m_ObjectHideFlags: 0
@@ -6522,7 +6537,6 @@ GameObject:
   - component: {fileID: 1927488282}
   - component: {fileID: 1927488281}
   - component: {fileID: 1927488283}
-  - component: {fileID: 1927488284}
   m_Layer: 5
   m_Name: Kempt Icon
   m_TagString: Untagged
@@ -6631,7 +6645,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1927488284}
+      - m_Target: {fileID: 495281077}
         m_TargetAssemblyTypeName: DropItem, Assembly-CSharp
         m_MethodName: Drop
         m_Mode: 1
@@ -6643,20 +6657,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1927488284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927488279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8be42ac8fea83604e882e16f588c1f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToDuplicate: {fileID: 1927488279}
-  communicator: {fileID: 1523370008}
 --- !u!1 &1953253284
 GameObject:
   m_ObjectHideFlags: 0
