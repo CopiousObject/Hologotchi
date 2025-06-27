@@ -4825,6 +4825,10 @@ PrefabInstance:
       propertyPath: role
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
+      propertyPath: signingChar
+      value: 9603
+      objectReference: {fileID: 0}
     - target: {fileID: 682030289282755052, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: m_Name
       value: DMA IPC

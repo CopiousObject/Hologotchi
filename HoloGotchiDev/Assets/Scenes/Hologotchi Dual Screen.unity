@@ -431,11 +431,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: senderPort
-      value: 8080
+      value: 8081
+      objectReference: {fileID: 0}
+    - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
+      propertyPath: signingChar
+      value: 9603
       objectReference: {fileID: 0}
     - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: receiverPort
-      value: 8081
+      value: 8080
+      objectReference: {fileID: 0}
+    - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
+      propertyPath: signMessages
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 682030289282755052, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: m_Name
@@ -622,6 +630,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1358712378 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
+  m_PrefabInstance: {fileID: 1169287006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f6ec482ad55d64497ccac617e7a3d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1478977899
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +743,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: receiver
+      value: 
+      objectReference: {fileID: 1358712378}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: reciever
+      value: 
+      objectReference: {fileID: 1358712378}
     - target: {fileID: 8445074141314698605, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: m_Name
       value: Deliverytreetest
