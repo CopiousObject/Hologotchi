@@ -18,7 +18,7 @@ public class DropItem : MonoBehaviour
         if (duplicate != null && duplicate.GetComponent<RectTransform>().anchoredPosition.y <= -4000)
         {
             Debug.Log("Sending IPC message: Drop Item");
-            communicator.SendData("Drop Item");
+            communicator.SendData("Drop " + objectToDuplicate.name);
             Destroy(duplicate);
             duplicate = null;
 
