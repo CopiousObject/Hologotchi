@@ -779,6 +779,22 @@ PrefabInstance:
       propertyPath: reciever
       value: 
       objectReference: {fileID: 1358712378}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: foodPrefab
+      value: 
+      objectReference: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: waterPrefab
+      value: 
+      objectReference: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: max_food_objects
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: max_water_objects
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8445074141314698605, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: m_Name
       value: Deliverytreetest
