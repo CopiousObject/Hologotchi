@@ -2,6 +2,7 @@ using LookingGlass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     public List<GameObject> spawnedObjects;
     private GameObject currentObject;
 
+    public float dirtyness;
+    private float dirtTime;
+    private float dirtSpeed = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +24,8 @@ public class GameManager : MonoBehaviour
         currentObject = foodPrefab;
         Debug.Log("Subscribing to IPC message receiver");
         if (receiver != null) receiver.OnMessageReceived += ReceiveMessage;
+        dirtyness = 0;
+        dirtTime = 0;
     }
 
     void Update()
@@ -38,6 +44,19 @@ public class GameManager : MonoBehaviour
         {
             SpawnItem(waterPrefab);
         }
+
+        dirtTime += Time.deltaTime;
+        if (dirtTime >= dirtSpeed)
+        {
+            if (dirtyness < 100)
+            {
+                dirtyness++;
+            }
+            dirtTime = 0;
+        }
+
+        float normalizedDirtyness = Mathf.Clamp01(dirtyness / 100f); // Assuming 100 is max dirtyness
+        GetComponent<DecalProjector>().fadeFactor = normalizedDirtyness;
     }
 
     public void SpawnItem(GameObject current)
