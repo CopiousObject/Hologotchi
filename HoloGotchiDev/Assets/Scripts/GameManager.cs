@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] public GameObject Holopal;
     [SerializeField] public int objCount = 10;
-    [SerializeField] InterProcessCommunicator receiver;
+    [SerializeField] private InterProcessCommunicator receiver;
     public GameObject foodPrefab;
     public GameObject waterPrefab;
     public List<GameObject> spawnedObjects;
@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentObject = foodPrefab;
+        Debug.Log("Subscribing to IPC message receiver");
         if (receiver != null) receiver.OnMessageReceived += ReceiveMessage;
     }
 
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
     /// <param name="message"></param>
     public void ReceiveMessage(string message)
     {
-        if(message == "Drop Item") SpawnItem(foodPrefab);
+        Debug.Log("Received IPC message: " + message);
+        if (message == "Drop Item") SpawnItem(foodPrefab);
     }
 }
