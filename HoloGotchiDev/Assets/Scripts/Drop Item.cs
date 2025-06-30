@@ -8,7 +8,7 @@ public class DropItem : MonoBehaviour
 {
     [SerializeField] GameObject objectToDuplicate;
     GameObject duplicate;
-    [SerializeField] InterProcessCommunicator communicator;
+    [SerializeField] private InterProcessCommunicator communicator;
 
     /// <summary>
     /// Will run to delete the duplicated object after falling below a certain point
@@ -17,7 +17,8 @@ public class DropItem : MonoBehaviour
     {
         if (duplicate != null && duplicate.GetComponent<RectTransform>().anchoredPosition.y <= -4000)
         {
-            communicator.SendData("Drop Item");
+            Debug.Log("Sending IPC message: Drop Item");
+            communicator.SendData("Drop " + objectToDuplicate.name);
             Destroy(duplicate);
             duplicate = null;
 
