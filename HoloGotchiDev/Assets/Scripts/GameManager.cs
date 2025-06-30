@@ -52,6 +52,10 @@ public class GameManager : MonoBehaviour
     public void ReceiveMessage(string message)
     {
         Debug.Log("Received IPC message: " + message);
-        if (message == "Drop Item") SpawnItem(foodPrefab);
+        if (message == "Drop Food Icon") SpawnItem(foodPrefab);
+        if (message == "Drop Water Icon") SpawnItem(waterPrefab);
+        if (message == "Drop Chat Icon") SpawnItem(foodPrefab);
+        if (message == "Drop Ball Icon") SpawnItem(foodPrefab);
+        if (message == "Drop Kempt Icon") SpawnItem(foodPrefab);
     }
 }
