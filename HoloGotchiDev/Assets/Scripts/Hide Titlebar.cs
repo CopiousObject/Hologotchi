@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
+/// <summary>
+/// Found here: https://discussions.unity.com/t/solved-how-to-remove-the-title-bar-of-a-game/754827
+/// </summary>
 public class HideTitlebar : MonoBehaviour
 {
     const int SWP_HIDEWINDOW = 0x80; //hide window flag.

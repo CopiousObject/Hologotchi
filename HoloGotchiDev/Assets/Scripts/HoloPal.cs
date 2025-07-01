@@ -13,7 +13,7 @@ using UnityEngine.AI;
 
 public class HoloPal : MonoBehaviour
 {
-    public GameManager game_manager;
+    public Spawner spawner;
     public NavMeshAgent nav_agent;
     public NavMeshSurface nav_surface;
 
@@ -127,7 +127,7 @@ public class HoloPal : MonoBehaviour
             if (hunger < 0.8f)
             {
                 food_points += 10;
-                game_manager.food_objects.Remove(other.gameObject);
+                spawner.FoodObjects.Remove(other.gameObject);
                 Destroy(other.gameObject);
             }
         }

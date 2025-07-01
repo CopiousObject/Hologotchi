@@ -18,9 +18,9 @@ public class WanderState : IState
         // move left-right for now
         if (!holopal.nav_agent.hasPath)
         {
-            if (holopal.hunger < 0.8f && holopal.game_manager.food_objects.Count > 0)
+            if (holopal.hunger < 0.8f && holopal.spawner.FoodObjects.Count > 0)
             {
-                holopal.nav_agent.SetDestination(holopal.game_manager.food_objects[0].transform.position);
+                holopal.nav_agent.SetDestination(holopal.spawner.FoodObjects[0].transform.position);
                 return;
             }
 
