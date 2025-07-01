@@ -8,6 +8,8 @@ public class UIAnimation : MonoBehaviour
     private float time = 0.0f;
     private RectTransform rectTransform;
     private bool isAnimating = false;
+    private bool animatePos = false;
+    private bool animateScale = false;
     private Vector3 start;
     private Vector3 end;
     //private Coroutine currentAnimation;
@@ -18,15 +20,24 @@ public class UIAnimation : MonoBehaviour
     private Vector3 settingsScreen = new Vector3(73, -2635, 0);
     private Vector3 notifScreen = new Vector3(1975, -2635, 0);
     private Vector3 audioScreen = new Vector3(-1920, -2635, 0);
+    private Vector3 endScale = new Vector3(0, 0, 0);
 
-    // Title Screen Assets
-    [SerializeField] private GameObject titleScreen;
-    [SerializeField] private GameObject titleSettings;
-    [SerializeField] private GameObject titleBackground;
+    // Title Screen Rect Transforms
+    [SerializeField] private RectTransform titleScreen;
+    [SerializeField] private RectTransform titleSettings;
+    [SerializeField] private RectTransform titleBackground;
+
+    private Vector3 titleScale;
+    private Vector3 titleSetScale;
+    private Vector3 titleBackScale;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+
+        titleScale = titleScreen.localScale;
+        titleSetScale = titleSettings.localScale;
+        titleBackScale = titleBackground.localScale;
     }
 
     private void Update()
@@ -36,11 +47,23 @@ public class UIAnimation : MonoBehaviour
             time += Time.deltaTime;
             float eased = EaseOut(time);
 
+            if (animatePos)
+            {
                 rectTransform.anchoredPosition = Vector3.Lerp(start, end, eased);
+            }
+
+            if (animateScale)
+            {
+                titleScreen.localScale = Vector3.Lerp(titleScale, endScale, eased);
+                titleSettings.localScale = Vector3.Lerp(titleSetScale, endScale, eased);
+                titleBackground.localScale = Vector3.Lerp(titleBackScale, endScale, eased);
+            }
 
             if (time >= 1f)
             {
                 isAnimating = false;
+                animatePos = false;
+                animateScale = false;
             }
         }
     }
@@ -52,6 +75,7 @@ public class UIAnimation : MonoBehaviour
         end = destination;
         time = 0.0f;
         isAnimating = true;
+        animatePos = true;
     }
 
     public void NavigateToPlay() => Animate(playScreen);
@@ -62,9 +86,9 @@ public class UIAnimation : MonoBehaviour
 
     public void TitleToPlay()
     {
-        titleScreen.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
-        titleSettings.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
-        titleBackground.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+        time = 0.0f;
+        isAnimating = true;
+        animateScale = true;
     }
 
     private float EaseOut(float x)

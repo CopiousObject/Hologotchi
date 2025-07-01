@@ -2272,9 +2272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ec8932c3c92e7429b59caaf3f7ab04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleScreen: {fileID: 2027632318}
-  titleSettings: {fileID: 498430252}
-  titleBackground: {fileID: 919403788}
+  titleScreen: {fileID: 2027632319}
+  titleSettings: {fileID: 498430253}
+  titleBackground: {fileID: 919403789}
 --- !u!114 &495281074
 MonoBehaviour:
   m_ObjectHideFlags: 0
