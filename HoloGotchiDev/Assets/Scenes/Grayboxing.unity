@@ -1487,33 +1487,9 @@ PrefabInstance:
       propertyPath: nav_surface
       value: 
       objectReference: {fileID: 233387754}
-    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-      propertyPath: game_manager
-      value: 
-      objectReference: {fileID: 1594513427}
     - target: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Name
       value: HoloPal
-      objectReference: {fileID: 0}
-    - target: {fileID: 7141304326570292147, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 887469431112898890, guid: 04973b1d1dcec8946a0624093b0e8475, type: 3}
-    - target: {fileID: 7141304326570292147, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-      propertyPath: m_BlendShapeWeights.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7141304326570292147, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-      propertyPath: m_BlendShapeWeights.Array.data[0]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7141304326570292147, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-      propertyPath: m_BlendShapeWeights.Array.data[3]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7141304326570292147, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-      propertyPath: m_BlendShapeWeights.Array.data[4]
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1603,17 +1579,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 6.321, z: 0}
---- !u!114 &1594513427 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-  m_PrefabInstance: {fileID: 858123578}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2139039059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f6eab4fd6f62a74e87fe165604240d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1852516151
 PrefabInstance:
   m_ObjectHideFlags: 0

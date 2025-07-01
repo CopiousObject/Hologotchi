@@ -34,6 +34,7 @@ public class Spawner : MonoBehaviour
 
     //Properties
     public List<GameObject> FoodObjects => foodObjects;
+    public List<GameObject> WaterObjects => waterObjects;
 
     // Start is called before the first frame update
     void Start()

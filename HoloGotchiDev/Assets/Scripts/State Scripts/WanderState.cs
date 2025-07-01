@@ -23,6 +23,12 @@ public class WanderState : IState
                 return;
             }
 
+            if (holopal.thirst < 0.8f && holopal.spawner.WaterObjects.Count > 0)
+            {
+                holopal.ChangeState(new DrinkState(holopal.spawner.WaterObjects[0]));
+                return;
+            }
+
             if (timer <= 0f)
             {
                 holopal.nav_agent.SetDestination(wander_points[Random.Range(0, wander_points.Length)]);

@@ -23,6 +23,12 @@ public class HoloPal : MonoBehaviour
     public int food_points;
     public int max_food_points;
     public int food_decay;
+    public float hunger => (float)food_points / max_food_points;
+
+    public int water_points;
+    public int max_water_points;
+    public int water_decay;
+    public float thirst => (float)water_points / max_water_points;
 
     public int total_growth;
     public int stage_growth;
@@ -40,7 +46,6 @@ public class HoloPal : MonoBehaviour
     //     new WanderState(3, wander_points)
     // };
 
-    public float hunger => food_points / max_food_points;
 
     IState current_state;
 
