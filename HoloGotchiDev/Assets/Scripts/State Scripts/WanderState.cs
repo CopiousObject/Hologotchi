@@ -15,12 +15,11 @@ public class WanderState : IState
 
     public void UpdateState(HoloPal holopal)
     {
-        // move left-right for now
         if (!holopal.nav_agent.hasPath)
         {
             if (holopal.hunger < 0.8f && holopal.game_manager.food_objects.Count > 0)
             {
-                holopal.nav_agent.SetDestination(holopal.game_manager.food_objects[0].transform.position);
+                holopal.ChangeState(new EatState(holopal.game_manager.food_objects[0]));
                 return;
             }
 
@@ -35,13 +34,18 @@ public class WanderState : IState
         }
     }
 
-    public void OnEnter()
+    public void OnEnter(HoloPal holopal)
     {
         timer = duration;
     }
 
-    public void OnExit()
+    public void OnExit(HoloPal holopal)
     {
 
+    }
+
+    public void OnTriggerEnter(HoloPal holopal, Collider other)
+    {
+        
     }
 }

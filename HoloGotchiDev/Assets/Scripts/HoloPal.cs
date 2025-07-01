@@ -46,14 +46,9 @@ public class HoloPal : MonoBehaviour
 
     public void ChangeState(IState newState)
     {
-        current_state?.OnExit();
+        current_state?.OnExit(this);
         current_state = newState;
-        current_state?.OnEnter();
-    }
-
-    void Start()
-    {
-        ChangeState(new WanderState(wander_wait_time, wander_points));
+        current_state?.OnEnter(this);
     }
 
     private void Update()
@@ -111,25 +106,16 @@ public class HoloPal : MonoBehaviour
         //         break;
         // }
 
-        // if (current_state == null)
-        // {
-        //     ChangeState(baby_behaviors[UnityEngine.Random.Range(0, baby_behaviors.Length)]);
-        // }
+        if (current_state == null)
+        {
+            ChangeState(new WanderState(wander_wait_time, wander_points));
+        }
 
         current_state.UpdateState(this);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Food"))
-        {
-            //change state to eating?
-            if (hunger < 0.8f)
-            {
-                food_points += 10;
-                game_manager.food_objects.Remove(other.gameObject);
-                Destroy(other.gameObject);
-            }
-        }
+        current_state.OnTriggerEnter(this, other);
     }
 }
