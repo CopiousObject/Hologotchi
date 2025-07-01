@@ -2,6 +2,7 @@ using LookingGlass;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private int max;
 
-    // Lists for each 
+    // Lists for each
     private List<GameObject> playObjects = new List<GameObject>();
     private List<GameObject> chatObjects = new List<GameObject>();
     private List<GameObject> cleanObjects = new List<GameObject>();
@@ -32,7 +33,7 @@ public class Spawner : MonoBehaviour
     private List<GameObject> foodObjects = new List<GameObject>();
 
     //Properties
-    public List<GameObject> FoodObjects { get; }
+    public List<GameObject> FoodObjects => foodObjects;
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +65,14 @@ public class Spawner : MonoBehaviour
     {
         if (spawnList.Count == max)
         {
+            var oldest_object = spawnList[0];
+
+            oldest_object.transform.SetPositionAndRotation(gameObject.transform.position, Quaternion.identity);
+
             spawnList.RemoveAt(0);
+            spawnList.Add(oldest_object);
+
+            return;
         }
         spawnList.Add(Instantiate(spawn, gameObject.transform.position, Quaternion.identity));
     }

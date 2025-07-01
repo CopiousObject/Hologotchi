@@ -34,7 +34,9 @@ public interface IState
 {
     public void UpdateState(HoloPal holopal);
 
-    public void OnEnter();
+    public void OnEnter(HoloPal holopal);
 
-    public void OnExit();
+    public void OnExit(HoloPal holopal);
+
+    public void OnTriggerEnter(HoloPal holopal, Collider other);
 }
