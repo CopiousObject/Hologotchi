@@ -9,6 +9,10 @@ public class CheckboxToggle : MonoBehaviour
     [SerializeField] Sprite check;
     [SerializeField] Sprite x;
 
+    /// <summary>
+    /// Swaps which checkbox asset is displayed for later
+    /// use in what notifications the player gets
+    /// </summary>
     public void Toggle()
     {
         if (this.GetComponent<Image>().sprite == check)
