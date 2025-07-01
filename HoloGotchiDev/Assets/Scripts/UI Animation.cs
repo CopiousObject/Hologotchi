@@ -36,7 +36,7 @@ public class UIAnimation : MonoBehaviour
             time += Time.deltaTime;
             float eased = EaseOut(time);
 
-            rectTransform.anchoredPosition = Vector3.Lerp(start, end, eased);
+                rectTransform.anchoredPosition = Vector3.Lerp(start, end, eased);
 
             if (time >= 1f)
             {
@@ -62,9 +62,9 @@ public class UIAnimation : MonoBehaviour
 
     public void TitleToPlay()
     {
-        titleScreen.SetActive(false);
-        titleSettings.SetActive(false);
-        titleBackground.SetActive(false);
+        titleScreen.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+        titleSettings.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+        titleBackground.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
     }
 
     private float EaseOut(float x)
