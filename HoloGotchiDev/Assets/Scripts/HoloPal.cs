@@ -54,6 +54,12 @@ public class HoloPal : MonoBehaviour
 
         mesh_renderer.SetBlendShapeWeight(growth_state, (float)stage_growth / growth_stage_thresholds[growth_state] * 100f);
 
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            ChangeState(new CleanState());
+            ChangeState(new WanderState(1,3));
+        }
+
         // switch (growth_state)
         // {
         //     case GrowthState.Egg:

@@ -2272,6 +2272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ec8932c3c92e7429b59caaf3f7ab04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  titleScreen: {fileID: 2027632318}
+  titleSettings: {fileID: 498430252}
+  titleBackground: {fileID: 919403788}
 --- !u!114 &495281074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2511,7 +2514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 498430253}
   m_Layer: 5
-  m_Name: Title Settings Screen'
+  m_Name: Title Settings Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5813,6 +5816,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3083695449896497852, guid: ea054310d837ae94b832a4dfe80a8815, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083695449896497852, guid: ea054310d837ae94b832a4dfe80a8815, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
@@ -6971,7 +6978,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 495281073}
         m_TargetAssemblyTypeName: UIAnimation, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: TitleToPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
