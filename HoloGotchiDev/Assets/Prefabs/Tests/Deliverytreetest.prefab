@@ -46,11 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Holopal: {fileID: 0}
-  objCount: 10
   receiver: {fileID: 0}
-  foodPrefab: {fileID: 2435102888202069484, guid: 03f1509b162d2084e9ce6a9a65d364d3, type: 3}
-  waterPrefab: {fileID: 2435102888202069484, guid: 80853c1c34e3fb045b3413fd136f3974, type: 3}
-  spawnedObjects: []
+  foodPrefab: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
+  waterPrefab: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
+  max_food_objects: 5
+  food_objects: []
+  max_water_objects: 5
+  water_objects: []
   dirtyness: 0
 --- !u!114 &3684052455622949827
 MonoBehaviour:
@@ -86,43 +88,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a0ba830db2463c742b8970fa5134d38c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.027235998
+      value: 0.3026049
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0ba830db2463c742b8970fa5134d38c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.027235998
+      value: 0.3026049
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0ba830db2463c742b8970fa5134d38c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.027235998
+      value: 0.3026049
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0ba830db2463c742b8970fa5134d38c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.479
+      value: -3.1950958
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0ba830db2463c742b8970fa5134d38c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.837
+      value: 4.36
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0ba830db2463c742b8970fa5134d38c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.825
+      value: 0.47791538
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0ba830db2463c742b8970fa5134d38c, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6025813
+      value: 0.34405124
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0ba830db2463c742b8970fa5134d38c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0ba830db2463c742b8970fa5134d38c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7980575
+      value: 0.9389509
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0ba830db2463c742b8970fa5134d38c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0ba830db2463c742b8970fa5134d38c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
