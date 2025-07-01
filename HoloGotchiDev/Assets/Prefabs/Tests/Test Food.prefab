@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 5308957108643664561}
   - component: {fileID: 3388526824835001192}
   - component: {fileID: 1485023090787184454}
-  - component: {fileID: 1379250185936587015}
+  - component: {fileID: 798185110386035180}
   - component: {fileID: 2502285816105416937}
   m_Layer: 0
   m_Name: Test Food
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370164855853778089}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1485023090787184454
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1379250185936587015
-SphereCollider:
+--- !u!65 &798185110386035180
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,8 +104,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.50000006
-  m_Center: {x: -2.1316282e-14, y: 0, z: 0.00000011920932}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2502285816105416937
 Rigidbody:
   m_ObjectHideFlags: 0

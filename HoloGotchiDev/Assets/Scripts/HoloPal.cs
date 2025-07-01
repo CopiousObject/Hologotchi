@@ -1,5 +1,7 @@
 using System;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 
 // public enum GrowthState
 // {
@@ -11,11 +13,16 @@ using UnityEngine;
 
 public class HoloPal : MonoBehaviour
 {
+    public GameManager game_manager;
+    public NavMeshAgent nav_agent;
+    public NavMeshSurface nav_surface;
+
     [SerializeField]
     private SkinnedMeshRenderer mesh_renderer;
 
-    public int hunger;
-    public int hunger_decay;
+    public int food_points;
+    public int max_food_points;
+    public int food_decay;
 
     public int total_growth;
     public int stage_growth;
@@ -24,27 +31,38 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private int[] growth_stage_thresholds;
 
+    [SerializeField]
+    private Vector3[] wander_points;
+    [SerializeField]
+    private float wander_wait_time;
+
+    // private IState[] baby_behaviors = {
+    //     new WanderState(3, wander_points)
+    // };
+
+    public float hunger => food_points / max_food_points;
+
     IState current_state;
 
     public void ChangeState(IState newState)
     {
-        current_state.OnExit();
+        current_state?.OnExit();
         current_state = newState;
-        current_state.OnEnter();
+        current_state?.OnEnter();
     }
 
     void Start()
     {
-        current_state = new WanderState(1, 3);
+        ChangeState(new WanderState(wander_wait_time, wander_points));
     }
 
     private void Update()
     {
-        int growth_amount = Math.Min(hunger, hunger_decay);
+        int growth_amount = Math.Min(food_points, food_decay);
 
         stage_growth += growth_amount;
         total_growth += growth_amount;
-        hunger -= growth_amount;
+        food_points -= growth_amount;
 
         if (stage_growth >= growth_stage_thresholds[growth_state] && growth_state < growth_stage_thresholds.Length - 1)
         {
@@ -57,7 +75,7 @@ public class HoloPal : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.C))
         {
             ChangeState(new CleanState());
-            ChangeState(new WanderState(1,3));
+            //ChangeState(new WanderState(1,3));
         }
 
         // switch (growth_state)
@@ -93,6 +111,25 @@ public class HoloPal : MonoBehaviour
         //         break;
         // }
 
+        // if (current_state == null)
+        // {
+        //     ChangeState(baby_behaviors[UnityEngine.Random.Range(0, baby_behaviors.Length)]);
+        // }
+
         current_state.UpdateState(this);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Food"))
+        {
+            //change state to eating?
+            if (hunger < 0.8f)
+            {
+                food_points += 10;
+                game_manager.food_objects.Remove(other.gameObject);
+                Destroy(other.gameObject);
+            }
+        }
     }
 }

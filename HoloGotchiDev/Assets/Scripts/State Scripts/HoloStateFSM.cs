@@ -27,7 +27,7 @@ public class HoloStateFSM : MonoBehaviour
         current.UpdateState(holopal);
     }
 
-    
+
 }
 
 public interface IState

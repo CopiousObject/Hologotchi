@@ -7,7 +7,6 @@ using UnityEngine.Rendering.Universal;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] public GameObject Holopal;
-    [SerializeField] public int objCount = 10;
     [SerializeField] private InterProcessCommunicator receiver;
 
     public GameObject foodPrefab;
