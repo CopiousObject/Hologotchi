@@ -17,7 +17,7 @@ public class CleanState : IState
 
     public void OnExit(HoloPal holopal)
     {
-        GameObject.FindAnyObjectByType<GameManager>().dirtyness = 0;
+        GameObject.FindAnyObjectByType<GameManager>().dirtiness = 0;
     }
 
     public void OnTriggerEnter(HoloPal holopal, Collider other)
