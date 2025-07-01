@@ -19,6 +19,11 @@ public class UIAnimation : MonoBehaviour
     private Vector3 notifScreen = new Vector3(1975, -2635, 0);
     private Vector3 audioScreen = new Vector3(-1920, -2635, 0);
 
+    // Title Screen Assets
+    [SerializeField] private GameObject titleScreen;
+    [SerializeField] private GameObject titleSettings;
+    [SerializeField] private GameObject titleBackground;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -40,7 +45,7 @@ public class UIAnimation : MonoBehaviour
         }
     }
 
-   
+
     private void Animate(Vector3 destination)
     {
         start = rectTransform.anchoredPosition;
@@ -54,6 +59,13 @@ public class UIAnimation : MonoBehaviour
     public void NavigateToSettings() => Animate(settingsScreen);
     public void NavigateToNotifs() => Animate(notifScreen);
     public void NavigateToAudio() => Animate(audioScreen);
+
+    public void TitleToPlay()
+    {
+        titleScreen.SetActive(false);
+        titleSettings.SetActive(false);
+        titleBackground.SetActive(false);
+    }
 
     private float EaseOut(float x)
     {
