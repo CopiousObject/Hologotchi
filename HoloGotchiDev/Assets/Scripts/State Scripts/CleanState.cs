@@ -6,7 +6,8 @@ public class CleanState : IState
 {
     public void UpdateState(HoloPal holopal)
     {
-
+        //Play cleaning anim
+        OnExit();
     }
 
     public void OnEnter()
@@ -16,6 +17,6 @@ public class CleanState : IState
 
     public void OnExit()
     {
-
+        GameObject.FindAnyObjectByType<GameManager>().dirtyness = 0;
     }
 }
