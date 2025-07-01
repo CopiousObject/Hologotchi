@@ -6,15 +6,20 @@ using UnityEngine;
 public class UIAnimation : MonoBehaviour
 {
     private float time = 0.0f;
-    private RectTransform rectTransform;
+
+    // Animation booleans for turning on and off specific parts of the animation 
     private bool isAnimating = false;
     private bool animatePos = false;
     private bool animateScale = false;
+
+    // Position placeholder variables
+    private RectTransform rectTransform;
     private Vector3 start;
     private Vector3 end;
+
     //private Coroutine currentAnimation;
 
-    // Placements
+    // Placements for movement animation
     private Vector3 playScreen = new Vector3(73, -17, 0);
     private Vector3 statsScreen = new Vector3(73, 2670, 0);
     private Vector3 settingsScreen = new Vector3(73, -2635, 0);
@@ -22,7 +27,7 @@ public class UIAnimation : MonoBehaviour
     private Vector3 audioScreen = new Vector3(-1920, -2635, 0);
     private Vector3 endScale = new Vector3(0, 0, 0);
 
-    // TScale Animation fields
+    // Title screen scale Animation fields
     [SerializeField] private RectTransform titleScreen;
     private Vector3 titleScale;
 
@@ -35,21 +40,25 @@ public class UIAnimation : MonoBehaviour
 
     private void Update()
     {
+        // Check for animation
         if (isAnimating)
         {
             time += Time.deltaTime;
             float eased = EaseOut(time);
 
+            // do only position animation
             if (animatePos)
             {
                 rectTransform.anchoredPosition = Vector3.Lerp(start, end, eased);
             }
 
+            // Do only scaling animation
             if (animateScale)
             {
                 titleScreen.localScale = Vector3.Lerp(titleScale, endScale, eased);
             }
 
+            // end the animation
             if (time >= 1f)
             {
                 isAnimating = false;
@@ -72,12 +81,14 @@ public class UIAnimation : MonoBehaviour
         animatePos = true;
     }
 
+    // Functions to call in order to properly animate Position
     public void NavigateToPlay() => Animate(playScreen);
     public void NavigateToStats() => Animate(statsScreen);
     public void NavigateToSettings() => Animate(settingsScreen);
     public void NavigateToNotifs() => Animate(notifScreen);
     public void NavigateToAudio() => Animate(audioScreen);
 
+    // Called to affect scaling animation
     public void TitleToPlay()
     {
         time = 0.0f;
@@ -85,6 +96,7 @@ public class UIAnimation : MonoBehaviour
         animateScale = true;
     }
 
+    // Makes the animation smoother
     private float EaseOut(float x)
     {
         return 1f - Mathf.Pow(1f - x, 4f);

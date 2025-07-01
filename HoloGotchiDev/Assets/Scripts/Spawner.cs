@@ -79,7 +79,8 @@ public class Spawner : MonoBehaviour
     }
 
     /// <summary>
-    /// Processing for IPC
+    /// Reads the messsage that is provided to the IPC Receiver adn determines
+    /// Which item you shsould drop
     /// </summary>
     /// <param name="message"></param>
     public void ReceiveMessage(string message)

@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] public GameObject Holopal;
 
-    public float dirtyness;
+    // Dirty variables
+    public float dirtiness;
     private float dirtTime;
     private float dirtSpeed = 0.5f;
 
@@ -21,23 +22,29 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dirtyness = 0;
+        dirtiness = 0;
         dirtTime = 0;
     }
 
     void FixedUpdate()
     {
         dirtTime += Time.deltaTime;
+        Dirtiness(dirtTime);
+    }
+
+    // Used for calculating how dirty the holoPal is for 
+    private void Dirtiness(float dirtTime)
+    {
         if (dirtTime >= dirtSpeed)
         {
-            if (dirtyness < 100)
+            if (dirtiness < 100)
             {
-                dirtyness++;
-            }
+                dirtiness++;
+}
             dirtTime = 0;
-        }
+            }
 
-        float normalizedDirtyness = Mathf.Clamp01(dirtyness / 100f);
-        GetComponent<DecalProjector>().fadeFactor = normalizedDirtyness;
+        GetComponent<DecalProjector>().fadeFactor = Mathf.Clamp01(dirtiness / 100f);
     }
+
 }
