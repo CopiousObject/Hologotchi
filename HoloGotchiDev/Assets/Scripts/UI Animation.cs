@@ -24,20 +24,14 @@ public class UIAnimation : MonoBehaviour
 
     // Title Screen Rect Transforms
     [SerializeField] private RectTransform titleScreen;
-    [SerializeField] private RectTransform titleSettings;
-    [SerializeField] private RectTransform titleBackground;
 
     private Vector3 titleScale;
-    private Vector3 titleSetScale;
-    private Vector3 titleBackScale;
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
 
         titleScale = titleScreen.localScale;
-        titleSetScale = titleSettings.localScale;
-        titleBackScale = titleBackground.localScale;
     }
 
     private void Update()
@@ -55,8 +49,6 @@ public class UIAnimation : MonoBehaviour
             if (animateScale)
             {
                 titleScreen.localScale = Vector3.Lerp(titleScale, endScale, eased);
-                titleSettings.localScale = Vector3.Lerp(titleSetScale, endScale, eased);
-                titleBackground.localScale = Vector3.Lerp(titleBackScale, endScale, eased);
             }
 
             if (time >= 1f)
