@@ -75,7 +75,7 @@ public class HoloPal : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.C))
         {
             ChangeState(new CleanState());
-            ChangeState(new WanderState(1,3));
+            //ChangeState(new WanderState(1,3));
         }
 
         // switch (growth_state)

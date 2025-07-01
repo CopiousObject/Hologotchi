@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2010930309931629495}
   - component: {fileID: 2328692127935294231}
-  - component: {fileID: 5354722740891497300}
   - component: {fileID: 2088498546136224466}
+  - component: {fileID: 8303878425255992989}
+  - component: {fileID: 7429618213852413305}
   m_Layer: 0
   m_Name: HoloPal
   m_TagString: Untagged
@@ -48,12 +49,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game_manager: {fileID: 0}
-  nav_agent: {fileID: 5354722740891497300}
+  nav_agent: {fileID: 8303878425255992989}
   nav_surface: {fileID: 0}
   mesh_renderer: {fileID: 7141304326570292147}
   food_points: 0
   max_food_points: 10
-  food_decay: 0
+  food_decay: 1
   total_growth: 0
   stage_growth: 0
   growth_state: 0
@@ -62,7 +63,28 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 4, y: 0, z: 0}
   wander_wait_time: 1
---- !u!195 &5354722740891497300
+--- !u!65 &2088498546136224466
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3237382414628010953}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 3, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &8303878425255992989
 NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,7 +106,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &2088498546136224466
+--- !u!65 &7429618213852413305
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
