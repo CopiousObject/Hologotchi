@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     public float dirtyness;
     private float dirtTime;
-    private float dirtSpeed = 2;
+    private float dirtSpeed = 0.5f;
 
     void Awake()
     {
@@ -57,9 +57,10 @@ public class GameManager : MonoBehaviour
             dirtTime = 0;
         }
 
-        float normalizedDirtyness = Mathf.Clamp01(dirtyness / 100f); // Assuming 100 is max dirtyness
+        float normalizedDirtyness = Mathf.Clamp01(dirtyness / 100f);
         GetComponent<DecalProjector>().fadeFactor = normalizedDirtyness;
     }
+
 
     public void SpawnItem(GameObject current, List<GameObject> object_list)
     {
