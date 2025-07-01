@@ -17,9 +17,9 @@ public class WanderState : IState
     {
         if (!holopal.nav_agent.hasPath)
         {
-            if (holopal.hunger < 0.8f && holopal.game_manager.food_objects.Count > 0)
+            if (holopal.hunger < 0.8f && holopal.spawner.FoodObjects.Count > 0)
             {
-                holopal.ChangeState(new EatState(holopal.game_manager.food_objects[0]));
+                holopal.ChangeState(new EatState(holopal.spawner.FoodObjects[0]));
                 return;
             }
 
@@ -46,6 +46,6 @@ public class WanderState : IState
 
     public void OnTriggerEnter(HoloPal holopal, Collider other)
     {
-        
+
     }
 }

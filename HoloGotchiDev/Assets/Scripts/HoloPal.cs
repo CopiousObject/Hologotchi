@@ -13,7 +13,7 @@ using UnityEngine.AI;
 
 public class HoloPal : MonoBehaviour
 {
-    public GameManager game_manager;
+    public Spawner spawner;
     public NavMeshAgent nav_agent;
     public NavMeshSurface nav_surface;
 

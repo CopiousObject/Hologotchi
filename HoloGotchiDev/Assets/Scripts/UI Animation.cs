@@ -22,15 +22,14 @@ public class UIAnimation : MonoBehaviour
     private Vector3 audioScreen = new Vector3(-1920, -2635, 0);
     private Vector3 endScale = new Vector3(0, 0, 0);
 
-    // Title Screen Rect Transforms
+    // TScale Animation fields
     [SerializeField] private RectTransform titleScreen;
-
     private Vector3 titleScale;
 
     private void Awake()
     {
+        // Get the RectTransform and initial scale for animation later
         rectTransform = GetComponent<RectTransform>();
-
         titleScale = titleScreen.localScale;
     }
 
@@ -60,7 +59,10 @@ public class UIAnimation : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Animate the position of the UI
+    /// </summary>
+    /// <param name="destination"></param>
     private void Animate(Vector3 destination)
     {
         start = rectTransform.anchoredPosition;

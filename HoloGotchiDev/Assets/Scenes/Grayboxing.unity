@@ -206,6 +206,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &59338737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+  m_PrefabInstance: {fileID: 1368201521}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &127772796
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -622,6 +627,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: Holopal
+      value: 
+      objectReference: {fileID: 59338737}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: foodPrefab
       value: 
       objectReference: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
@@ -696,7 +705,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 280857066753656443, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2139039062}
   m_SourcePrefab: {fileID: 100100000, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
 --- !u!1 &900922696
 GameObject:
@@ -1468,6 +1480,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 2139039062}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: nav_surface
       value: 
       objectReference: {fileID: 233387754}
@@ -1592,7 +1608,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
   m_PrefabInstance: {fileID: 858123578}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2139039059}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f6eab4fd6f62a74e87fe165604240d8, type: 3}
@@ -1929,6 +1945,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 58769cd28394f75488b258b28f86761f, type: 3}
   m_PrefabInstance: {fileID: 1992734222}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2139039059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 280857066753656443, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+  m_PrefabInstance: {fileID: 858123578}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2139039062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139039059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5078c0364d2a915429dc7244b9ed0941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  receiver: {fileID: 0}
+  food: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
+  water: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
+  clean: {fileID: 0}
+  chat: {fileID: 0}
+  play: {fileID: 0}
+  max: 5
 --- !u!1001 &6358061905587452117
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -425,6 +425,30 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
+--- !u!1 &924804466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 280857066753656443, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+  m_PrefabInstance: {fileID: 1622351650}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &924804470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924804466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5078c0364d2a915429dc7244b9ed0941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  receiver: {fileID: 1358712378}
+  food: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
+  water: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
+  clean: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
+  chat: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
+  play: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
+  max: 5
 --- !u!1001 &1169287006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -776,6 +800,30 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: max
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: chat
+      value: 
+      objectReference: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: food
+      value: 
+      objectReference: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: play
+      value: 
+      objectReference: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: clean
+      value: 
+      objectReference: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: water
+      value: 
+      objectReference: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: receiver
       value: 
       objectReference: {fileID: 1358712378}
@@ -792,7 +840,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
     - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: max_chat_objects
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: max_food_objects
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: max_play_objects
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: max_clean_objects
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
@@ -858,7 +918,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 280857066753656443, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 924804470}
   m_SourcePrefab: {fileID: 100100000, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
