@@ -17,11 +17,13 @@ public class DropItem : MonoBehaviour
     {
         if (duplicate != null && duplicate.GetComponent<RectTransform>().anchoredPosition.y <= -4000)
         {
+            // Sends a message to the Receiver and should be able to be viewed in the debug log
             Debug.Log("Sending IPC message: Drop Item");
             communicator.SendData("Drop " + objectToDuplicate.name);
             Destroy(duplicate);
             duplicate = null;
 
+            // Reinstate the button to continue function
             objectToDuplicate.SetActive(true);
         }
     }
@@ -34,6 +36,7 @@ public class DropItem : MonoBehaviour
         if (duplicate != null)
             return;
 
+        // Ensures that the item is within the canvas positioning plane
         RectTransform environment = GameObject.Find("Environment").GetComponent<RectTransform>();
 
         duplicate = Instantiate(objectToDuplicate, environment);
@@ -46,6 +49,7 @@ public class DropItem : MonoBehaviour
             rb.gravityScale = 20f;
         }
 
+        // Allow the dropping without spamming
         objectToDuplicate.SetActive(false);
     }
 }

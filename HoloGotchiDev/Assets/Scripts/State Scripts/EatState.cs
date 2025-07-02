@@ -13,13 +13,13 @@ public class EatState : IState
 
     public void UpdateState(HoloPal holopal)
     {
-        if (!food_target || holopal.hunger >= 0.8f)
+        if (!food_target || holopal.Hunger >= 0.8f)
         {
             holopal.ChangeState(null);
             return;
         }
 
-        holopal.nav_agent.SetDestination(food_target.transform.position);
+        holopal.Nav_Agent.SetDestination(food_target.transform.position);
     }
 
     public void OnEnter(HoloPal holopal)
@@ -36,10 +36,10 @@ public class EatState : IState
     {
         if (other.gameObject == food_target)
         {
-            if (holopal.hunger < 0.8f)
+            if (holopal.Hunger < 0.8f)
             {
-                holopal.food_points += 10;
-                holopal.spawner.FoodObjects.Remove(food_target);
+                holopal.Food_Points += 10;
+                holopal.Spawner.FoodObjects.Remove(food_target);
                 Object.Destroy(food_target);
             }
         }
