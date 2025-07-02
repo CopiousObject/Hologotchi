@@ -13,6 +13,7 @@ using UnityEngine.AI;
 
 public class HoloPal : MonoBehaviour
 {
+    [SerializeField]
     private Spawner spawner;
     [SerializeField]
     private NavMeshAgent nav_agent;
@@ -64,12 +65,12 @@ public class HoloPal : MonoBehaviour
     IState current_state;
 
     // Properties
-    public Spawner Spawner { get; }
-    public NavMeshAgent Nav_Agent { get; }
-    public int Food_Points { get; set; }
-    public float Hunger { get; }
-    public int Water_Points { get; set; }
-    public float Thirst { get; }
+    public Spawner Spawner => spawner;
+    public NavMeshAgent Nav_Agent => nav_agent;
+    public int Food_Points { get => food_points; set { food_points = value; } }
+    public float Hunger => hunger;
+    public int Water_Points { get => water_points; set { water_points = value; } }
+    public float Thirst => thirst;
 
     /// <summary>
     /// Navigate between the different need states
