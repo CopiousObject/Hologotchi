@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float dirtiness;
     private float dirtTime;
-    private float dirtSpeed = 0.5f;
+    private float dirtSpeed = 2f;
 
     // Properties
     public float Dirtiness { get; set; }
@@ -30,8 +30,7 @@ public class GameManager : MonoBehaviour
         dirtTime = 0;
     }
 
-    // Fixed because of using deltatime
-    void FixedUpdate()
+    void Update()
     {
         dirtTime += Time.deltaTime;
         CalcDirtiness(dirtTime);
@@ -46,8 +45,9 @@ public class GameManager : MonoBehaviour
             {
                 dirtiness++;
 }
-            dirtTime = 0;
+            
             }
+        dirtTime = 0;
 
         GetComponent<DecalProjector>().fadeFactor = Mathf.Clamp01(dirtiness / 100f);
     }
