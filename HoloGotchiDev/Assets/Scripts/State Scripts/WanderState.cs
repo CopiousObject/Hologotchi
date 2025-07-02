@@ -29,6 +29,12 @@ public class WanderState : IState
                 return;
             }
 
+            if (holopal.GameManager.Dirtiness > 80 && holopal.Spawner.CleanObjects.Count > 0)
+            {
+                holopal.ChangeState(new CleanState(holopal.Spawner.CleanObjects[0]));
+                return;
+            }
+
             if (timer <= 0f)
             {
                 holopal.Nav_Agent.SetDestination(wander_points[Random.Range(0, wander_points.Length)]);

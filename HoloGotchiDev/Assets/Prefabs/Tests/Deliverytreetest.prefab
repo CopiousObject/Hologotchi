@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1613682791931031441}
   - component: {fileID: 6168940325915177440}
-  - component: {fileID: 3684052455622949827}
+  - component: {fileID: 8172205067950536377}
   m_Layer: 0
   m_Name: Spawning
   m_TagString: Untagged
@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280857066753656443}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7980575, z: 0, w: 0.6025813}
+  m_LocalRotation: {x: 0.4260894, y: -0.56431186, z: 0.56431186, w: 0.4260894}
   m_LocalPosition: {x: 0.02, y: -2.23, z: 0.36}
-  m_LocalScale: {x: 36.71611, y: 36.716114, z: 36.71611}
+  m_LocalScale: {x: -3.1950958, y: 4.36, z: 0.47791538}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9113384163319617495}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -105.89, z: 0}
 --- !u!114 &6168940325915177440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,15 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Holopal: {fileID: 0}
-  receiver: {fileID: 0}
-  foodPrefab: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
-  waterPrefab: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
-  max_food_objects: 5
-  food_objects: []
-  max_water_objects: 5
-  water_objects: []
-  dirtyness: 0
---- !u!114 &3684052455622949827
+  dirtiness: 0
+--- !u!114 &8172205067950536377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,17 +59,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: a7a10a25dad314043a47c7e72ea55e9c, type: 2}
+  m_Material: {fileID: 2100000, guid: c9d831ccf5bb88840a6964e98661072a, type: 2}
   m_DrawDistance: 1000
   m_FadeScale: 0.9
   m_StartAngleFade: 180
   m_EndAngleFade: 180
   m_UVScale: {x: 1, y: 1}
   m_UVBias: {x: 0, y: 0}
-  m_DecalLayerMask: 4294967295
+  m_DecalLayerMask: 1
   m_ScaleMode: 0
-  m_Offset: {x: -0.000036501984, y: 0, z: 3.016028}
-  m_Size: {x: 6.75, y: 4.33, z: 10.42}
+  m_Offset: {x: 2.1285107, y: 4.00935, z: 8.251963}
+  m_Size: {x: 6.2506814, y: 5.69779, z: 0.3685341}
   m_FadeFactor: 1
 --- !u!1001 &8787516702174441532
 PrefabInstance:

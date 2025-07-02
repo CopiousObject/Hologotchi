@@ -35,6 +35,7 @@ public class Spawner : MonoBehaviour
     //Properties
     public List<GameObject> FoodObjects => foodObjects;
     public List<GameObject> WaterObjects => waterObjects;
+    public List<GameObject> CleanObjects => cleanObjects;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,10 @@ public class Spawner : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.D))
         {
             Spawn(water, waterObjects);
+        }
+        if (Input.GetKeyUp((KeyCode.C)))
+        {
+            Spawn(clean, cleanObjects);
         }
     }
 
