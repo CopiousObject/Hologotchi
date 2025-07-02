@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class Wander : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float wanderRadius;
+    [SerializeField]
+    private float wanderRadius;
     private float timer = 0;
     private float wanderTimer = 3;
     private NavMeshAgent agent;
@@ -18,7 +19,11 @@ public class Wander : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    // Fixed update because of deltatime
+    /// <summary>
+    /// Calculates the 
+    /// </summary>
+    void FixedUpdate()
     {
         
         timer += Time.deltaTime;
@@ -32,6 +37,13 @@ public class Wander : MonoBehaviour
         transform.LookAt(-Camera.main.transform.position);
     }
 
+    /// <summary>
+    /// Generates a vector sphere that contains where the holopal can wander
+    /// </summary>
+    /// <param name="origin"></param>
+    /// <param name="dist"></param>
+    /// <param name="layermask"></param>
+    /// <returns></returns>
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
     {
         Vector3 randDirection = Random.insideUnitSphere * dist;

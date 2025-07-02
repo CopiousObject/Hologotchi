@@ -15,23 +15,23 @@ public class WanderState : IState
 
     public void UpdateState(HoloPal holopal)
     {
-        if (!holopal.nav_agent.hasPath)
+        if (!holopal.Nav_Agent.hasPath)
         {
-            if (holopal.hunger < 0.8f && holopal.spawner.FoodObjects.Count > 0)
+            if (holopal.Hunger < 0.8f && holopal.Spawner.FoodObjects.Count > 0)
             {
-                holopal.ChangeState(new EatState(holopal.spawner.FoodObjects[0]));
+                holopal.ChangeState(new EatState(holopal.Spawner.FoodObjects[0]));
                 return;
             }
 
-            if (holopal.thirst < 0.8f && holopal.spawner.WaterObjects.Count > 0)
+            if (holopal.Thirst < 0.8f && holopal.Spawner.WaterObjects.Count > 0)
             {
-                holopal.ChangeState(new DrinkState(holopal.spawner.WaterObjects[0]));
+                holopal.ChangeState(new DrinkState(holopal.Spawner.WaterObjects[0]));
                 return;
             }
 
             if (timer <= 0f)
             {
-                holopal.nav_agent.SetDestination(wander_points[Random.Range(0, wander_points.Length)]);
+                holopal.Nav_Agent.SetDestination(wander_points[Random.Range(0, wander_points.Length)]);
 
                 timer = duration;
             }

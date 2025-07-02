@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class CheckboxToggle : MonoBehaviour
 {
-    [SerializeField] Sprite check;
-    [SerializeField] Sprite x;
+    // Sprites for both variations of the checkbox
+    [SerializeField] private Sprite check;
+    [SerializeField] private Sprite x;
 
     /// <summary>
     /// Swaps which checkbox asset is displayed for later

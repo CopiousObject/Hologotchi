@@ -10,9 +10,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject Holopal;
 
     // Dirty variables
-    public float dirtiness;
+    [SerializeField]
+    private float dirtiness;
     private float dirtTime;
     private float dirtSpeed = 2f;
+
+    // Properties
+    public float Dirtiness { get; set; }
 
     void Awake()
     {
@@ -29,11 +33,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         dirtTime += Time.deltaTime;
-        Dirtiness(dirtTime);
+        CalcDirtiness(dirtTime);
     }
 
     // Used for calculating how dirty the holoPal is for 
-    private void Dirtiness(float dirtTime)
+    private void CalcDirtiness(float dirtTime)
     {
         if (dirtTime >= dirtSpeed)
         {

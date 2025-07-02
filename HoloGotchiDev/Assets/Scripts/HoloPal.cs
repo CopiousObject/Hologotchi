@@ -13,30 +13,44 @@ using UnityEngine.AI;
 
 public class HoloPal : MonoBehaviour
 {
-    public Spawner spawner;
-    public NavMeshAgent nav_agent;
-    public NavMeshSurface nav_surface;
+    private Spawner spawner;
+    [SerializeField]
+    private NavMeshAgent nav_agent;
+    [SerializeField]
+    private NavMeshSurface nav_surface;
 
     [SerializeField]
     private SkinnedMeshRenderer mesh_renderer;
 
-    public int food_points;
-    public int max_food_points;
-    public int food_decay;
-    public float hunger => (float)food_points / max_food_points;
+    // Hunger tracking fields
+    private int food_points;
+    [SerializeField]
+    private int max_food_points;
+    [SerializeField]
+    private int food_decay;
+    private float hunger => (float)food_points / max_food_points;
 
-    public int water_points;
-    public int max_water_points;
-    public int water_decay;
-    public float thirst => (float)water_points / max_water_points;
+    // Thirst tracking fields
+    private int water_points;
+    [SerializeField]
+    private int max_water_points;
+    [SerializeField]
+    private int water_decay;
+    private float thirst => (float)water_points / max_water_points;
 
-    public int total_growth;
-    public int stage_growth;
-    public int growth_state;
+    // Evolution/Growth tracking fields
+    [SerializeField]
+    private int total_growth;
+    [SerializeField]
+    private int stage_growth;
+    [SerializeField]
+    private int growth_state;
 
+    // The thresholds for when the HoloPal will evolve
     [SerializeField]
     private int[] growth_stage_thresholds;
 
+    // Wander related tracking
     [SerializeField]
     private Vector3[] wander_points;
     [SerializeField]
@@ -49,6 +63,18 @@ public class HoloPal : MonoBehaviour
 
     IState current_state;
 
+    // Properties
+    public Spawner Spawner { get; }
+    public NavMeshAgent Nav_Agent { get; }
+    public int Food_Points { get; set; }
+    public float Hunger { get; }
+    public int Water_Points { get; set; }
+    public float Thirst { get; }
+
+    /// <summary>
+    /// Navigate between the different need states
+    /// </summary>
+    /// <param name="newState"></param>
     public void ChangeState(IState newState)
     {
         current_state?.OnExit(this);
@@ -56,6 +82,9 @@ public class HoloPal : MonoBehaviour
         current_state?.OnEnter(this);
     }
 
+    /// <summary>
+    /// Determines the state changes and the evolution states as the HoloPal grows up
+    /// </summary>
     private void Update()
     {
         int growth_amount = Math.Min(food_points, food_decay);

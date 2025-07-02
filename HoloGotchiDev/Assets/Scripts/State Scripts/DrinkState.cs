@@ -13,13 +13,13 @@ public class DrinkState : IState
 
     public void UpdateState(HoloPal holopal)
     {
-        if (!water_target || holopal.thirst >= 0.8f)
+        if (!water_target || holopal.Thirst >= 0.8f)
         {
             holopal.ChangeState(null);
             return;
         }
 
-        holopal.nav_agent.SetDestination(water_target.transform.position);
+        holopal.Nav_Agent.SetDestination(water_target.transform.position);
     }
 
     public void OnEnter(HoloPal holopal)
@@ -36,10 +36,10 @@ public class DrinkState : IState
     {
         if (other.gameObject == water_target)
         {
-            if (holopal.thirst < 0.8f)
+            if (holopal.Thirst < 0.8f)
             {
-                holopal.water_points += 10;
-                holopal.spawner.WaterObjects.Remove(water_target);
+                holopal.Water_Points += 10;
+                holopal.Spawner.WaterObjects.Remove(water_target);
                 Object.Destroy(water_target);
             }
         }
