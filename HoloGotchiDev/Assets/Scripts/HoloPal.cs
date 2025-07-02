@@ -73,7 +73,7 @@ public class HoloPal : MonoBehaviour
     public float Hunger => hunger;
     public int Water_Points { get => water_points; set { water_points = value; } }
     public float Thirst => thirst;
-    public float Dirtiness => gameManger.Dirtiness;
+    public GameManager GameManager => gameManger;
 
     /// <summary>
     /// Navigate between the different need states
