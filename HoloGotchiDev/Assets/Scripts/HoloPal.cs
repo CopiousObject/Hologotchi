@@ -18,6 +18,8 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private Spawner spawner;
     [SerializeField]
+    private ParticleSystem flies;
+    [SerializeField]
     private NavMeshAgent nav_agent;
     [SerializeField]
     private NavMeshSurface nav_surface;
@@ -74,6 +76,7 @@ public class HoloPal : MonoBehaviour
     public int Water_Points { get => water_points; set { water_points = value; } }
     public float Thirst => thirst;
     public GameManager GameManager => gameManger;
+    public ParticleSystem Flies => flies;
 
     /// <summary>
     /// Navigate between the different need states
@@ -137,6 +140,9 @@ public class HoloPal : MonoBehaviour
         //         }
         //         break;
         // }
+
+        if (gameManger.Dirtiness > 80) flies.gameObject.SetActive(true);
+        else flies.gameObject.SetActive(false);
 
         if (current_state == null)
         {
