@@ -141,6 +141,7 @@ public class HoloPal : MonoBehaviour
         //         break;
         // }
 
+        // Figure out how to ease at some point
         if (gameManger.Dirtiness > 80) flies.gameObject.SetActive(true);
         else flies.gameObject.SetActive(false);
 
