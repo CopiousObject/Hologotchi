@@ -44,11 +44,9 @@ public class GameManager : MonoBehaviour
             if (dirtiness < 100)
             {
                 dirtiness++;
-}
-            
             }
-        dirtTime = 0;
-
+            this.dirtTime = 0;
+        }
         GetComponent<DecalProjector>().fadeFactor = Mathf.Clamp01(dirtiness / 100f);
     }
 
