@@ -15,11 +15,10 @@ public class CleanState : IState
     {
         if (!clean_target)
         {
-            OnExit(holopal);
+            holopal.ChangeState(null);
             return;
         }
         holopal.Nav_Agent.SetDestination(clean_target.transform.position);
-        
     }
 
     public void OnEnter(HoloPal holopal)
@@ -29,7 +28,6 @@ public class CleanState : IState
 
     public void OnExit(HoloPal holopal)
     {
-        holopal.ChangeState(null);
     }
 
     public void OnTriggerEnter(HoloPal holopal, Collider other)
@@ -37,7 +35,7 @@ public class CleanState : IState
         if (other.gameObject == clean_target)
         {
             //Play cleaning anim
-            holopal.GameManager.Dirtiness = 0;
+            holopal.GameManager.Dirtiness = 0f;
             holopal.Spawner.CleanObjects.Remove(clean_target);
             Object.Destroy(other.gameObject);
         }

@@ -29,7 +29,7 @@ public class WanderState : IState
                 return;
             }
 
-            if (holopal.GameManager.Dirtiness > 80 && holopal.Spawner.CleanObjects.Count > 0)
+            if (holopal.GameManager.Dirtiness > 80f && holopal.Spawner.CleanObjects.Count > 0)
             {
                 holopal.ChangeState(new CleanState(holopal.Spawner.CleanObjects[0]));
                 return;
