@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     // Dirty variables
     public float dirtiness;
     private float dirtTime;
-    private float dirtSpeed = 0.5f;
+    private float dirtSpeed = 2f;
 
     void Awake()
     {
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         dirtTime = 0;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         dirtTime += Time.deltaTime;
         Dirtiness(dirtTime);
@@ -41,8 +41,9 @@ public class GameManager : MonoBehaviour
             {
                 dirtiness++;
 }
-            dirtTime = 0;
+            
             }
+        dirtTime = 0;
 
         GetComponent<DecalProjector>().fadeFactor = Mathf.Clamp01(dirtiness / 100f);
     }
