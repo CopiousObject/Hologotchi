@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Food
   - Water
+  - Clean
   layers:
   - Default
   - TransparentFX

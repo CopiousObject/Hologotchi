@@ -14,6 +14,8 @@ using UnityEngine.AI;
 public class HoloPal : MonoBehaviour
 {
     [SerializeField]
+    private GameManager gameManger;
+    [SerializeField]
     private Spawner spawner;
     [SerializeField]
     private NavMeshAgent nav_agent;
@@ -71,6 +73,7 @@ public class HoloPal : MonoBehaviour
     public float Hunger => hunger;
     public int Water_Points { get => water_points; set { water_points = value; } }
     public float Thirst => thirst;
+    public float Dirtiness => gameManger.Dirtiness;
 
     /// <summary>
     /// Navigate between the different need states
@@ -101,12 +104,6 @@ public class HoloPal : MonoBehaviour
         }
 
         mesh_renderer.SetBlendShapeWeight(growth_state, (float)stage_growth / growth_stage_thresholds[growth_state] * 100f);
-
-        if (Input.GetKeyUp(KeyCode.C))
-        {
-            ChangeState(new CleanState());
-            //ChangeState(new WanderState(1,3));
-        }
 
         // switch (growth_state)
         // {
