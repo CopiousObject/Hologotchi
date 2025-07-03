@@ -20,9 +20,6 @@ public class TrackStats : MonoBehaviour
     [SerializeField]
     private GameObject cleanSlider;
 
-    // Max value for each slider
-    private int maxValue = 1;
-
     // List of all sliders and corressponding parts for ease of looping and manipulating
     private List<Slider> sliders = new List<Slider>();
     private List<Image> fillImages = new List<Image>();
@@ -85,7 +82,7 @@ public class TrackStats : MonoBehaviour
     public void ReceiveMessage(string message)
     {
         Debug.Log("Received IPC message: " + message);
-        if (message.IsNullOrEmpty() == false) UpdateStat(message);
+        if (message.Contains("Hunger")) UpdateStat(message);
     }
 
     /// <summary>

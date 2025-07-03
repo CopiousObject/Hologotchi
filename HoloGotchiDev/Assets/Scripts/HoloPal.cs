@@ -81,7 +81,7 @@ public class HoloPal : MonoBehaviour
     {
         get 
         {
-            //communicator.SendMessage("Hunger," + hunger);
+            communicator.SendMessage("Hunger," + hunger);
             return hunger; 
         }
     }
