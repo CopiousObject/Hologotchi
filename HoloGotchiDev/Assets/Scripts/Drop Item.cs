@@ -8,7 +8,8 @@ public class DropItem : MonoBehaviour
 {
     [SerializeField] GameObject objectToDuplicate;
     GameObject duplicate;
-    [SerializeField] private InterProcessCommunicator communicator;
+    [SerializeField] 
+    private InterProcessCommunicator communicator;
 
     /// <summary>
     /// Will run to delete the duplicated object after falling below a certain point

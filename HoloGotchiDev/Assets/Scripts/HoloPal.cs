@@ -1,3 +1,4 @@
+using LookingGlass;
 using System;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -13,6 +14,10 @@ using UnityEngine.AI;
 
 public class HoloPal : MonoBehaviour
 {
+    // Sends the messages for IPC
+    [SerializeField]
+    private InterProcessCommunicator communicator;
+
     [SerializeField]
     private GameManager gameManger;
     [SerializeField]
@@ -72,7 +77,14 @@ public class HoloPal : MonoBehaviour
     public Spawner Spawner => spawner;
     public NavMeshAgent Nav_Agent => nav_agent;
     public int Food_Points { get => food_points; set { food_points = value; } }
-    public float Hunger => hunger;
+    public float Hunger 
+    {
+        get 
+        {
+            //communicator.SendMessage("Hunger," + hunger);
+            return hunger; 
+        }
+    }
     public int Water_Points { get => water_points; set { water_points = value; } }
     public float Thirst => thirst;
     public GameManager GameManager => gameManger;

@@ -459,7 +459,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: role
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: senderPort
@@ -547,6 +547,7 @@ GameObject:
   - component: {fileID: 1219586387}
   - component: {fileID: 1219586386}
   - component: {fileID: 1219586385}
+  - component: {fileID: 1219586390}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -655,13 +656,44 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219586384}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.064445235, y: 0, z: 0, w: 0.9979212}
-  m_LocalPosition: {x: 2.1453, y: -6.39, z: 8.8578}
-  m_LocalScale: {x: 1.8491, y: 1, z: 3.3121555}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.0634, y: -6.39, z: 28.692}
+  m_LocalScale: {x: 5.887892, y: 1, z: 9.955765}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 7.39, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1219586390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219586384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.5
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 106d8054299cdd043bb1bce2159cdf58, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!114 &1358712378 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
@@ -824,6 +856,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
     - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: Holopal
+      value: 
+      objectReference: {fileID: 2040216346}
+    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: receiver
       value: 
       objectReference: {fileID: 1358712378}
@@ -923,6 +959,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 924804470}
   m_SourcePrefab: {fileID: 100100000, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+--- !u!114 &1622351651 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+  m_PrefabInstance: {fileID: 1622351650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924804466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6eab4fd6f62a74e87fe165604240d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2040216345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -971,6 +1018,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 924804470}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: gameManger
+      value: 
+      objectReference: {fileID: 1622351651}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: nav_surface
+      value: 
+      objectReference: {fileID: 1219586390}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: communicator
+      value: 
+      objectReference: {fileID: 1358712378}
     - target: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Name
       value: HoloPal
@@ -980,6 +1043,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+--- !u!1 &2040216346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+  m_PrefabInstance: {fileID: 2040216345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -4024,6 +4024,7 @@ MonoBehaviour:
   playSlider: {fileID: 263902622}
   socialSlider: {fileID: 1524308655}
   cleanSlider: {fileID: 1663469434}
+  receiver: {fileID: 1523370008}
 --- !u!1 &716750063
 GameObject:
   m_ObjectHideFlags: 0
@@ -6792,7 +6793,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: role
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: signingChar

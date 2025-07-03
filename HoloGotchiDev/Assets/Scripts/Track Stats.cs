@@ -1,7 +1,11 @@
+using LookingGlass;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using WebSocketSharp;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class TrackStats : MonoBehaviour
 {
@@ -25,12 +29,16 @@ public class TrackStats : MonoBehaviour
     private List<Image> fillImages = new List<Image>();
     private List<Image> backgroundImages = new List<Image>();
 
-    // Get access to the Holopal for values of stats
-    [SerializeField] private HoloPal holopal;
+    // Reciever for IPC Messages
+    [SerializeField] private InterProcessCommunicator receiver;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Subscribe to the recieving end
+        Debug.Log("Subscribing to IPC message receiver");
+        if (receiver != null) receiver.OnMessageReceived += ReceiveMessage;
+
         // Add each slider component to the list
         sliders.Add(thirstSlider.GetComponent<Slider>());
         sliders.Add(hungerSlider.GetComponent<Slider>());
@@ -46,11 +54,11 @@ public class TrackStats : MonoBehaviour
         }
 
         // Test Values
-        sliders[0].value = .35f;
-        sliders[1].value = .12f;
-        sliders[2].value = .56f;
-        sliders[3].value = .80f;
-        sliders[4].value = .75f;
+        //sliders[0].value = .35f;
+        //sliders[1].value = .12f;
+        //sliders[2].value = .56f;
+        //sliders[3].value = .80f;
+        //sliders[4].value = .75f;
 
         // Used to get the starting values based upon some type of file maybe for 
         // keeping continuity between loading the experience
@@ -60,13 +68,6 @@ public class TrackStats : MonoBehaviour
     void Update()
     {
         // TEMP CODE: Just my thought process on how it would theoretically work
-        // 
-        // Alter each of the sliders to equate what it is compared to the other state scripts
-        //sliders[0].value -= 0f;
-        //sliders[1].value -= 0f;
-        // sliders[2].value -= 0f;
-        // sliders[3].value -= 0f;
-        //sliders[4].value -= 0f;
 
         // Things to figure out
         // - where to get the values for each of the stats
@@ -76,6 +77,25 @@ public class TrackStats : MonoBehaviour
 
         // - Color change as values get lower
         // ColorChange();
+    }
+
+    /// <summary>
+    /// Reads the messsage that is provided to the IPC Receiver and calls the stat updater
+    /// </summary>
+    /// <param name="message"></param>
+    public void ReceiveMessage(string message)
+    {
+        Debug.Log("Received IPC message: " + message);
+        if (message.IsNullOrEmpty() == false) UpdateStat(message);
+    }
+
+    /// <summary>
+    /// Updates the stat of the provided need to the provided value
+    /// </summary>
+    /// <param name="Message"></param>
+    private void UpdateStat(string Message)
+    {
+        Debug.Log("Stat Updated");
     }
 
     private void ColorChange()
