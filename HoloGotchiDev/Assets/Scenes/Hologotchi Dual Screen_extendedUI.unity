@@ -1713,7 +1713,7 @@ GameObject:
   - component: {fileID: 263902623}
   - component: {fileID: 263902624}
   m_Layer: 5
-  m_Name: Stat Bar (2)
+  m_Name: Play Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3973,6 +3973,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 715939893}
+  - component: {fileID: 715939894}
   m_Layer: 5
   m_Name: Stats Screen
   m_TagString: Untagged
@@ -4006,6 +4007,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &715939894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715939892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51d46515e0e2bf46afccf20a8ee2434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thirstSlider: {fileID: 2087798339}
+  hungerSlider: {fileID: 1262418344}
+  playSlider: {fileID: 263902622}
+  socialSlider: {fileID: 1524308655}
+  cleanSlider: {fileID: 1663469434}
 --- !u!1 &716750063
 GameObject:
   m_ObjectHideFlags: 0
@@ -5609,7 +5627,7 @@ GameObject:
   - component: {fileID: 1262418345}
   - component: {fileID: 1262418346}
   m_Layer: 5
-  m_Name: Stat Bar (1)
+  m_Name: Hunger Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6859,7 +6877,7 @@ GameObject:
   - component: {fileID: 1524308656}
   - component: {fileID: 1524308657}
   m_Layer: 5
-  m_Name: Stat Bar (3)
+  m_Name: Social Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7939,7 +7957,7 @@ GameObject:
   - component: {fileID: 1663469435}
   - component: {fileID: 1663469436}
   m_Layer: 5
-  m_Name: Stat Bar (4)
+  m_Name: Clean Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10162,7 +10180,7 @@ GameObject:
   - component: {fileID: 2087798340}
   - component: {fileID: 2087798341}
   m_Layer: 5
-  m_Name: Stat Bar
+  m_Name: Thirst Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
