@@ -675,6 +675,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661648232881216191, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2661648232881216191, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: Holopal
       value: 
@@ -2014,7 +2034,7 @@ MonoBehaviour:
   receiver: {fileID: 0}
   food: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
   water: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
-  clean: {fileID: 5386626096752078169, guid: e6322a3c0910d1f47b60810acd17e3d6, type: 3}
+  clean: {fileID: 3807596223568931292, guid: 0acdf0f3a49f8774f8daf9ca92618e38, type: 3}
   chat: {fileID: 0}
   play: {fileID: 0}
   max: 5
