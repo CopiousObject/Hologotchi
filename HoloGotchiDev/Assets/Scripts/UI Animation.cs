@@ -21,6 +21,7 @@ public class UIAnimation : MonoBehaviour
 
     // Placements for movement animation
     private Vector3 playScreen = new Vector3(73, -17, 0);
+    private Vector3 ballScreen = new Vector3(2525, -17, 0);
     private Vector3 statsScreen = new Vector3(73, 2670, 0);
     private Vector3 settingsScreen = new Vector3(73, -2635, 0);
     private Vector3 notifScreen = new Vector3(1975, -2635, 0);
@@ -87,6 +88,7 @@ public class UIAnimation : MonoBehaviour
     public void NavigateToSettings() => Animate(settingsScreen);
     public void NavigateToNotifs() => Animate(notifScreen);
     public void NavigateToAudio() => Animate(audioScreen);
+    public void NavigateToBall() => Animate(ballScreen);
 
     // Called to affect scaling animation
     public void TitleToPlay()
