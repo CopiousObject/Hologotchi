@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: c9d831ccf5bb88840a6964e98661072a, type: 2}
+  m_Material: {fileID: 2100000, guid: b330c194d2bc9f740ad8fda9c68b4eff, type: 2}
   m_DrawDistance: 1000
   m_FadeScale: 0.9
   m_StartAngleFade: 180
@@ -68,8 +68,8 @@ MonoBehaviour:
   m_UVBias: {x: 0, y: 0}
   m_DecalLayerMask: 1
   m_ScaleMode: 0
-  m_Offset: {x: 2.1285107, y: 4.00935, z: 8.251963}
-  m_Size: {x: 6.2506814, y: 5.69779, z: 0.3685341}
+  m_Offset: {x: 1.29, y: 5.83, z: 8.251963}
+  m_Size: {x: 10.193526, y: 8.900139, z: 0.3685341}
   m_FadeFactor: 1
 --- !u!1001 &8787516702174441532
 PrefabInstance:
