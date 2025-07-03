@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float dirtiness;
     private float dirtTime;
-    private float dirtSpeed = 2f;
+    private float dirtSpeed = 0.2f;
 
     // Properties
     public float Dirtiness { get { return dirtiness; } set { dirtiness = value; } }

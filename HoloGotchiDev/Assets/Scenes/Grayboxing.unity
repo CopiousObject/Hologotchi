@@ -696,6 +696,18 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8172205067950536377, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_UVBias.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172205067950536377, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_UVScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172205067950536377, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_UVScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8172205067950536377, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: m_FadeFactor
       value: 1
       objectReference: {fileID: 0}
@@ -1509,7 +1521,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.49
+      value: 1.04
       objectReference: {fileID: 0}
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1517,7 +1529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.05
+      value: 2.91
       objectReference: {fileID: 0}
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_LocalRotation.w
