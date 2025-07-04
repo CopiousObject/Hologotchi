@@ -2032,7 +2032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receiver: {fileID: 0}
-  food: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
+  food: {fileID: 3428891234862654380, guid: 97f0f7b341bba4b4191207a620021685, type: 3}
   water: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
   clean: {fileID: 3807596223568931292, guid: 0acdf0f3a49f8774f8daf9ca92618e38, type: 3}
   chat: {fileID: 0}
