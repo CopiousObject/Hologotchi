@@ -932,7 +932,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.17
+      value: -0.21
       objectReference: {fileID: 0}
     - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: m_LocalPosition.y
@@ -940,7 +940,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.11
+      value: -0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.55244064
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.55244046
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.4413722
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.44137225
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -102.754
       objectReference: {fileID: 0}
     - target: {fileID: 2661648232881216191, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: m_Convex
