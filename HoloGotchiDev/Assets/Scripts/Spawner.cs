@@ -36,6 +36,7 @@ public class Spawner : MonoBehaviour
     public List<GameObject> FoodObjects => foodObjects;
     public List<GameObject> WaterObjects => waterObjects;
     public List<GameObject> CleanObjects => cleanObjects;
+    public List<GameObject> PlayObjects => playObjects;
 
     // Start is called before the first frame update
     void Start()
@@ -48,15 +49,19 @@ public class Spawner : MonoBehaviour
     // TEMP: Used to have just basic key press functions
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.F))
         {
             Spawn(food, foodObjects);
         }
-        if (Input.GetKeyUp(KeyCode.D))
+        if (Input.GetKeyUp(KeyCode.W))
         {
             Spawn(water, waterObjects);
         }
-        if (Input.GetKeyUp((KeyCode.C)))
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            Spawn(play, playObjects);
+        }
+        if (Input.GetKeyUp(KeyCode.C))
         {
             Spawn(clean, cleanObjects);
         }

@@ -15,35 +15,43 @@ public class WanderState : IState
 
     public void UpdateState(HoloPal holopal)
     {
-        if (!holopal.Nav_Agent.hasPath)
+        if (holopal.Nav_Agent.hasPath)
         {
-            if (holopal.Hunger < 0.8f && holopal.Spawner.FoodObjects.Count > 0)
-            {
-                holopal.ChangeState(new EatState(holopal.Spawner.FoodObjects[0]));
-                return;
-            }
-
-            if (holopal.Thirst < 0.8f && holopal.Spawner.WaterObjects.Count > 0)
-            {
-                holopal.ChangeState(new DrinkState(holopal.Spawner.WaterObjects[0]));
-                return;
-            }
-
-            if (holopal.GameManager.Dirtiness > 80f && holopal.Spawner.CleanObjects.Count > 0)
-            {
-                holopal.ChangeState(new CleanState(holopal.Spawner.CleanObjects[0]));
-                return;
-            }
-
-            if (timer <= 0f)
-            {
-                holopal.Nav_Agent.SetDestination(wander_points[Random.Range(0, wander_points.Length)]);
-
-                timer = duration;
-            }
-
-            timer -= Time.deltaTime;
+            return;
         }
+
+        if (holopal.Hunger < 0.8f && holopal.Spawner.FoodObjects.Count > 0)
+        {
+            holopal.ChangeState(new EatState(holopal.Spawner.FoodObjects[0]));
+            return;
+        }
+
+        if (holopal.Thirst < 0.8f && holopal.Spawner.WaterObjects.Count > 0)
+        {
+            holopal.ChangeState(new DrinkState(holopal.Spawner.WaterObjects[0]));
+            return;
+        }
+
+        if (holopal.Playfulness < 0.8f && holopal.Spawner.PlayObjects.Count > 0)
+        {
+            holopal.ChangeState(new PlayState(holopal.Spawner.PlayObjects[0]));
+            return;
+        }
+
+        if (holopal.GameManager.Dirtiness > 80f && holopal.Spawner.CleanObjects.Count > 0)
+        {
+            holopal.ChangeState(new CleanState(holopal.Spawner.CleanObjects[0]));
+            return;
+        }
+
+        if (timer <= 0f)
+        {
+            holopal.Nav_Agent.SetDestination(wander_points[Random.Range(0, wander_points.Length)]);
+
+            timer = duration;
+        }
+
+        timer -= Time.deltaTime;
     }
 
     public void OnEnter(HoloPal holopal)
