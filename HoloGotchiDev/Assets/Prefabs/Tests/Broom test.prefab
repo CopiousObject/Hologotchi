@@ -320,6 +320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Broom test
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 38629eae66ca72541ab5d4cb7cf20d6e, type: 3}
+      propertyPath: m_TagString
+      value: Clean
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
