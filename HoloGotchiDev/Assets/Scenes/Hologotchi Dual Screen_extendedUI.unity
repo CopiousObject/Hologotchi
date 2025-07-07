@@ -7136,7 +7136,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: role
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: signingChar
