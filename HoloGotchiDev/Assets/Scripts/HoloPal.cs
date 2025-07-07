@@ -86,14 +86,7 @@ public class HoloPal : MonoBehaviour
     public Spawner Spawner => spawner;
     public NavMeshAgent Nav_Agent => nav_agent;
     public int Food_Points { get => food_points; set { food_points = value; } }
-    public float Hunger
-    {
-        get
-        {
-            communicator.SendMessage("Hunger," + hunger);
-            return hunger;
-        }
-    }
+    public float Hunger { get => hunger; }
     public int Water_Points { get => water_points; set { water_points = value; } }
     public float Thirst => thirst;
     public float Playfulness => playfulness;

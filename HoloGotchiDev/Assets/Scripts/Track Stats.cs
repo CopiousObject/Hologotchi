@@ -29,6 +29,8 @@ public class TrackStats : MonoBehaviour
 
     // Reciever for IPC Messages
     [SerializeField] private InterProcessCommunicator receiver;
+    private string message;
+    private bool updateDirt;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +75,18 @@ public class TrackStats : MonoBehaviour
         // - Calculate the change between them (Should be easy as it is just taking the current and subtracting the read in value)
         // - how to do this for each stat at once within the update method.
 
+        if (updateDirt)
+        {
+            string[] splitMessage = message.Split(',');
+            int value;
+            bool success = int.TryParse(splitMessage[1], out value);
+            value /= 100;
+            Debug.Log("Dirtiness Value: " + value);
+            sliders[4].value = 1 - value;
+            Debug.Log("Kempt Slider Value: " + sliders[4].value);
+            updateDirt = false;
+        }
+
         // - Color change as values get lower
         // ColorChange();
     }
@@ -85,7 +99,11 @@ public class TrackStats : MonoBehaviour
     {
         Debug.Log("Received IPC message: " + message);
         if (message.Contains("Hunger")) UpdateStat(message);
-        else if (message.Contains("Dirtiness")) UpdateDirt(message);
+        else if (message.Contains("Dirtiness"))
+        {
+            this.message = message;
+            updateDirt = true;
+        }
     }
 
     /// <summary>
@@ -100,7 +118,9 @@ public class TrackStats : MonoBehaviour
         if (success)
         {
             value /= 100;
-            sliders[4].value -= value;
+            Debug.Log("Dirtiness Value: " + value);
+            sliders[4].value = 1 - value;
+            Debug.Log("Kempt Slider Value: " + sliders[4].value);
         }
     }
 
