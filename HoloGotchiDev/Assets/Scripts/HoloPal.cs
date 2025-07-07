@@ -28,6 +28,7 @@ public class HoloPal : MonoBehaviour
     private NavMeshAgent nav_agent;
     [SerializeField]
     private NavMeshSurface nav_surface;
+    public Vector3 Play_position;
 
     [SerializeField]
     private SkinnedMeshRenderer mesh_renderer;
@@ -47,6 +48,14 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private int water_decay;
     private float thirst => (float)water_points / max_water_points;
+
+    // Thirst tracking fields
+    private int play_points;
+    [SerializeField]
+    private int max_play_points;
+    [SerializeField]
+    private int play_decay;
+    private float playfulness => (float)play_points / max_play_points;
 
     // Evolution/Growth tracking fields
     [SerializeField]
@@ -77,16 +86,17 @@ public class HoloPal : MonoBehaviour
     public Spawner Spawner => spawner;
     public NavMeshAgent Nav_Agent => nav_agent;
     public int Food_Points { get => food_points; set { food_points = value; } }
-    public float Hunger 
+    public float Hunger
     {
-        get 
+        get
         {
             communicator.SendMessage("Hunger," + hunger);
-            return hunger; 
+            return hunger;
         }
     }
     public int Water_Points { get => water_points; set { water_points = value; } }
     public float Thirst => thirst;
+    public float Playfulness => playfulness;
     public GameManager GameManager => gameManger;
     public ParticleSystem Flies => flies;
 

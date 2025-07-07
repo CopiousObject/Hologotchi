@@ -292,9 +292,9 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.5
+  m_VoxelSize: 0.25
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 9bc166f9269d2ab489833bbbc4f1a446, type: 2}
   m_BuildHeightMesh: 0
 --- !u!64 &233123363
 MeshCollider:
@@ -1194,109 +1194,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.55244064
-      objectReference: {fileID: 0}
-    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.55244046
-      objectReference: {fileID: 0}
-    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.4413722
-      objectReference: {fileID: 0}
-    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.44137225
-      objectReference: {fileID: 0}
-    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
-      objectReference: {fileID: 0}
-    - target: {fileID: 1613682791931031441, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -102.754
-      objectReference: {fileID: 0}
-    - target: {fileID: 2661648232881216191, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2661648232881216191, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_ProvidesContacts
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 4860814309869001749, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: receiver
+      value: 
+      objectReference: {fileID: 1169287007}
     - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: Holopal
       value: 
       objectReference: {fileID: 1503651295}
-    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: dirtiness
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: foodPrefab
-      value: 
-      objectReference: {fileID: 1370164855853778089, guid: 4c114983b8c39bb45b8d2abe12a5abc9, type: 3}
-    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: waterPrefab
-      value: 
-      objectReference: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
-    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: max_food_objects
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: max_water_objects
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172205067950536377, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_UVBias.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172205067950536377, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_UVScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172205067950536377, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_UVScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8172205067950536377, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_FadeFactor
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8445074141314698605, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: m_Name
       value: Deliverytreetest (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9113384163319617495, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9113384163319617495, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9113384163319617495, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 9113384163319617495, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1341,46 +1249,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 280857066753656443, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 545486435}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
---- !u!1 &545486433 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 280857066753656443, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
-  m_PrefabInstance: {fileID: 545486432}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &545486434 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6168940325915177440, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
   m_PrefabInstance: {fileID: 545486432}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545486433}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f6eab4fd6f62a74e87fe165604240d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &545486435
+--- !u!114 &545486435 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4860814309869001749, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+  m_PrefabInstance: {fileID: 545486432}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545486433}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5078c0364d2a915429dc7244b9ed0941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  receiver: {fileID: 1169287007}
-  food: {fileID: 3428891234862654380, guid: 97f0f7b341bba4b4191207a620021685, type: 3}
-  water: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
-  clean: {fileID: 3807596223568931292, guid: 0acdf0f3a49f8774f8daf9ca92618e38, type: 3}
-  chat: {fileID: 0}
-  play: {fileID: 0}
-  max: 5
 --- !u!1001 &585531697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2429,6 +2321,22 @@ PrefabInstance:
       propertyPath: communicator
       value: 
       objectReference: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: Play_position.x
+      value: -3.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: Play_position.y
+      value: -3.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: Play_position.z
+      value: 4.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: max_play_points
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Name
       value: HoloPal (1)
