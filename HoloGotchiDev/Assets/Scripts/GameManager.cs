@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] public GameObject Holopal;
 
+    // Sends the messages for IPC
+    [SerializeField]
+    private InterProcessCommunicator communicator;
+
     // Dirty variables
     [SerializeField]
     private float dirtiness;
@@ -44,6 +48,7 @@ public class GameManager : MonoBehaviour
             if (dirtiness < 100)
             {
                 dirtiness++;
+                communicator.SendData("Dirtiness," + dirtiness);
             }
             this.dirtTime = 0;
         }

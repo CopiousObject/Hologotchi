@@ -2,6 +2,8 @@ using LookingGlass;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using WebSocketSharp;
@@ -83,6 +85,23 @@ public class TrackStats : MonoBehaviour
     {
         Debug.Log("Received IPC message: " + message);
         if (message.Contains("Hunger")) UpdateStat(message);
+        else if (message.Contains("Dirtiness")) UpdateDirt(message);
+    }
+
+    /// <summary>
+    /// Updates the dirtiness stat
+    /// </summary>
+    /// <param name="message"></param>
+    private void UpdateDirt(string message)
+    {
+        string[] splitMessage = message.Split(',');
+        int value;
+        bool success = int.TryParse(splitMessage[1], out value);
+        if (success)
+        {
+            value /= 100;
+            sliders[4].value -= value;
+        }
     }
 
     /// <summary>
