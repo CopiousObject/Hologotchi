@@ -30,7 +30,11 @@ public class TrackStats : MonoBehaviour
     // Reciever for IPC Messages
     [SerializeField] private InterProcessCommunicator receiver;
     private string message;
-    private bool updateDirt;
+    private bool updateThirst = false;
+    private bool updateHunger = false;
+    private bool updatePlay = false;
+    private bool updateSocial = false;
+    private bool updateDirt = false;
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +78,39 @@ public class TrackStats : MonoBehaviour
         // - How to get them into this script for use
         // - Calculate the change between them (Should be easy as it is just taking the current and subtracting the read in value)
         // - how to do this for each stat at once within the update method.
+        
+        if (updateThirst)
+        {
+            string[] splitMessage = message.Split(',');
+            float value;
+            bool success = float.TryParse(splitMessage[1], out value);
+            value /= 10;
+            sliders[0].value = 1 - value;
+            updateThirst = false;
+        }
 
+        // Update Hunger Statbar
+        if (updateHunger)
+        {
+            string[] splitMessage = message.Split(',');
+            float value;
+            bool success = float.TryParse(splitMessage[1], out value);
+            value /= 10;
+            sliders[1].value = 1 - value;
+            updateHunger = false;
+        }
+
+        // Use for later updating play and social
+        if (updatePlay)
+        {
+            updatePlay = false;
+        }
+        if (updateSocial)
+        {
+            updateSocial = false;
+        }
+
+        // Update Dirtiness Statbar
         if (updateDirt)
         {
             string[] splitMessage = message.Split(',');
@@ -96,39 +132,31 @@ public class TrackStats : MonoBehaviour
     public void ReceiveMessage(string message)
     {
         Debug.Log("Received IPC message: " + message);
-        if (message.Contains("Hunger")) UpdateStat(message);
-        else if (message.Contains("Dirtiness"))
+        if (message.Contains("Thirst"))
+        {
+            this.message = message;
+            updateThirst = true;
+        }
+        if (message.Contains("Hunger"))
+        {
+            this.message = message;
+            updateHunger = true;
+        }
+        if (message.Contains("Play"))
+        {
+            this.message = message;
+            updatePlay = true;
+        }
+        if (message.Contains("Social"))
+        {
+            this.message = message;
+            updateSocial = true;
+        }
+        if (message.Contains("Dirtiness"))
         {
             this.message = message;
             updateDirt = true;
         }
-    }
-
-    /// <summary>
-    /// Updates the dirtiness stat
-    /// </summary>
-    /// <param name="message"></param>
-    private void UpdateDirt(string message)
-    {
-        string[] splitMessage = message.Split(',');
-        int value;
-        bool success = int.TryParse(splitMessage[1], out value);
-        if (success)
-        {
-            value /= 100;
-            Debug.Log("Dirtiness Value: " + value);
-            sliders[4].value = 1 - value;
-            Debug.Log("Kempt Slider Value: " + sliders[4].value);
-        }
-    }
-
-    /// <summary>
-    /// Updates the stat of the provided need to the provided value
-    /// </summary>
-    /// <param name="Message"></param>
-    private void UpdateStat(string Message)
-    {
-        Debug.Log("Stat Updated");
     }
 
     private void ColorChange()
