@@ -78,12 +78,10 @@ public class TrackStats : MonoBehaviour
         if (updateDirt)
         {
             string[] splitMessage = message.Split(',');
-            int value;
-            bool success = int.TryParse(splitMessage[1], out value);
+            float value;
+            bool success = float.TryParse(splitMessage[1], out value);
             value /= 100;
-            Debug.Log("Dirtiness Value: " + value);
             sliders[4].value = 1 - value;
-            Debug.Log("Kempt Slider Value: " + sliders[4].value);
             updateDirt = false;
         }
 

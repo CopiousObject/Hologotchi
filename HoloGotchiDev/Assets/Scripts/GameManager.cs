@@ -40,6 +40,12 @@ public class GameManager : MonoBehaviour
     {
         dirtTime += Time.deltaTime;
         CalcDirtiness(dirtTime);
+
+        if (Mathf.Abs(lastSentDirtiness - dirtiness) >= 1f)
+        {
+            communicator.SendData("Dirtiness," + dirtiness);
+            lastSentDirtiness = dirtiness;
+        }
     }
 
     // Used for calculating how dirty the holoPal is for 
@@ -54,12 +60,6 @@ public class GameManager : MonoBehaviour
             this.dirtTime = 0;
         }
         GetComponent<DecalProjector>().fadeFactor = Mathf.Clamp01(dirtiness / 100f);
-
-        if (Mathf.Abs(lastSentDirtiness - dirtiness) >= 1f)
-        {
-            communicator.SendData("Dirtiness," + dirtiness);
-            lastSentDirtiness = dirtiness;
-        }
     }
 
 }
