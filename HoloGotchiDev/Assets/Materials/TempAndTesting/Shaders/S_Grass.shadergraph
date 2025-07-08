@@ -146,6 +146,9 @@
         },
         {
             "m_Id": "2530bca7c9bc4883bcf380483af47b71"
+        },
+        {
+            "m_Id": "862d0b23145b4b848cee29615be4f4fc"
         }
     ],
     "m_Edges": [
@@ -2438,6 +2441,26 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.Smoothness"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.StickyNoteData",
+    "m_ObjectId": "862d0b23145b4b848cee29615be4f4fc",
+    "m_Title": "Interactivity",
+    "m_Content": "TODO:: Add interactivity when models are finalized, as it would require position data from specific objects",
+    "m_TextSize": 0,
+    "m_Theme": 0,
+    "m_Position": {
+        "serializedVersion": "2",
+        "x": -1032.0,
+        "y": 213.60000610351563,
+        "width": 212.7999267578125,
+        "height": 161.60000610351563
+    },
+    "m_Group": {
+        "m_Id": ""
+    }
 }
 
 {
