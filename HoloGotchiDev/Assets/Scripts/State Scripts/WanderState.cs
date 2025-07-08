@@ -38,6 +38,11 @@ public class WanderState : IState
             return;
         }
 
+        if (holopal.Chat < 0.8f && holopal.Spawner.ChatObjects.Count > 0)
+        {
+            holopal.ChangeState(new ChatState(holopal.Spawner.ChatObjects[0]));
+        }
+
         if (holopal.GameManager.Dirtiness > 80f && holopal.Spawner.CleanObjects.Count > 0)
         {
             holopal.ChangeState(new CleanState(holopal.Spawner.CleanObjects[0]));

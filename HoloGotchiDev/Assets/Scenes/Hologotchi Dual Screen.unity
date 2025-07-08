@@ -1195,6 +1195,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4860814309869001749, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
+      propertyPath: chat
+      value: 
+      objectReference: {fileID: 225073001050403517, guid: 7d1cb9b5ddccd2340a254826057beca7, type: 3}
+    - target: {fileID: 4860814309869001749, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: receiver
       value: 
       objectReference: {fileID: 1169287007}
@@ -2307,11 +2311,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2334,6 +2338,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -2350,9 +2358,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 545486435}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: chatBubble
+      value: 
+      objectReference: {fileID: 1503651296}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: chat_decay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: gameManger
       value: 
       objectReference: {fileID: 545486434}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: play_decay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: nav_surface
       value: 
@@ -2374,6 +2394,10 @@ PrefabInstance:
       value: 4.82
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: max_chat_points
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: max_play_points
       value: 10
       objectReference: {fileID: 0}
@@ -2381,16 +2405,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: HoloPal (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6560419001295450915, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
 --- !u!1 &1503651295 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
   m_PrefabInstance: {fileID: 1503651294}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1503651296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4585403584456588029, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+  m_PrefabInstance: {fileID: 1503651294}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503651295}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1802584125
 GameObject:
   m_ObjectHideFlags: 0

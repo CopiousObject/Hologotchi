@@ -1,5 +1,6 @@
 using LookingGlass;
 using System;
+using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,8 +18,6 @@ public class HoloPal : MonoBehaviour
     // Sends the messages for IPC
     [SerializeField]
     private InterProcessCommunicator communicator;
-    private float lastHungerSent = 0f;
-    private float lastThirstSent = 0f;
 
     [SerializeField]
     private GameManager gameManger;
@@ -31,6 +30,9 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private NavMeshSurface nav_surface;
     public Vector3 Play_position;
+
+    [SerializeField]
+    private TextMeshPro chatBubble;
 
     [SerializeField]
     private SkinnedMeshRenderer mesh_renderer;
@@ -51,13 +53,20 @@ public class HoloPal : MonoBehaviour
     private int water_decay;
     private float thirst => (float)water_points / max_water_points;
 
-    // Thirst tracking fields
+    // Play tracking fields
     private int play_points;
     [SerializeField]
     private int max_play_points;
     [SerializeField]
     private int play_decay;
     private float playfulness => (float)play_points / max_play_points;
+
+    private int chat_points;
+    [SerializeField]
+    private int max_chat_points;
+    [SerializeField]
+    private int chat_decay;
+    private float chat => (float)chat_points / max_chat_points;
 
     // Evolution/Growth tracking fields
     [SerializeField]
@@ -92,6 +101,9 @@ public class HoloPal : MonoBehaviour
     public int Water_Points { get => water_points; set { water_points = value; } }
     public float Thirst => thirst;
     public float Playfulness => playfulness;
+    public int Chat_Points { get => chat_points; set { chat_points = value; } }
+    public float Chat => chat;
+    public TextMeshPro ChatBubble => chatBubble;
     public GameManager GameManager => gameManger;
     public ParticleSystem Flies => flies;
     public InterProcessCommunicator Communicator => communicator;
