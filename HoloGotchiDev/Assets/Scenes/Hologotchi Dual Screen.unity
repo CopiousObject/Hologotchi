@@ -2401,6 +2401,14 @@ PrefabInstance:
       propertyPath: max_play_points
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: startPosition.y
+      value: -3.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: startPosition.z
+      value: 2.91
+      objectReference: {fileID: 0}
     - target: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Name
       value: HoloPal (1)

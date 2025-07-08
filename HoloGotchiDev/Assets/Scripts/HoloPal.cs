@@ -30,6 +30,7 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private NavMeshSurface nav_surface;
     public Vector3 Play_position;
+    [SerializeField] private Vector3 startPosition;
 
     [SerializeField]
     private TextMeshPro chatBubble;
@@ -107,6 +108,11 @@ public class HoloPal : MonoBehaviour
     public GameManager GameManager => gameManger;
     public ParticleSystem Flies => flies;
     public InterProcessCommunicator Communicator => communicator;
+
+    private void Start()
+    {
+        communicator.OnMessageReceived += ReceiveMessage;
+    }
 
     /// <summary>
     /// Navigate between the different need states
@@ -195,5 +201,13 @@ public class HoloPal : MonoBehaviour
     {
         communicator.SendData("Hunger," + hunger);
         communicator.SendData("Thirst," + thirst);
+    }
+
+    private void ReceiveMessage(string message)
+    {
+        if(message == "Return HoloPal")
+        {
+            nav_agent.SetDestination(startPosition);
+        }
     }
 }

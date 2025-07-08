@@ -43,10 +43,10 @@ public class UIAnimation : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         titleScale = titleScreen.localScale;
 
-        communicator.OnMessageReceived += OnMessageReceived;
+        communicator.OnMessageReceived += ReceiveMessage;
     }
 
-    private void OnMessageReceived(string message)
+    private void ReceiveMessage(string message)
     {
         Debug.Log(message);
         if (message == "Picked up ball") NavigateToBall();
@@ -109,6 +109,11 @@ public class UIAnimation : MonoBehaviour
         time = 0.0f;
         isAnimating = true;
         animateScale = true;
+    }
+
+    public void SendMessage()
+    {
+        communicator.SendData("Return HoloPal");
     }
 
     // Makes the animation smoother
