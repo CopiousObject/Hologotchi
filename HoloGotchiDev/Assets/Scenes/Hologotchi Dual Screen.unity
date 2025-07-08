@@ -2360,7 +2360,7 @@ PrefabInstance:
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: communicator
       value: 
-      objectReference: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
+      objectReference: {fileID: 1169287007}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: Play_position.x
       value: -3.52
