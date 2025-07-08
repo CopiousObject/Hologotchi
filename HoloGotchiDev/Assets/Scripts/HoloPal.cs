@@ -182,16 +182,6 @@ public class HoloPal : MonoBehaviour
     private void SendMessages()
     {
         communicator.SendData("Hunger," + hunger);
-
-        // if (Mathf.Abs(lastHungerSent - hunger) >= 1f)
-        // {
-        //     lastHungerSent = hunger;
-        // }
-
-        //if (Mathf.Abs(lastThirstSent - thirst) >= 0.1f)
-        //{
-        //    communicator.SendData("Thirst," + thirst);
-        //    lastThirstSent = thirst;
-        //}
+        communicator.SendData("Thirst," + thirst);
     }
 }

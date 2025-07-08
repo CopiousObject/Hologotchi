@@ -85,7 +85,7 @@ public class TrackStats : MonoBehaviour
             switch (stat)
             {
                 case "Thirst":
-                    sliders[0].value = 1 - value;
+                    sliders[0].value = value;
                     break;
 
                 case "Hunger":
