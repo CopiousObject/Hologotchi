@@ -60,7 +60,7 @@ public class TrackStats : MonoBehaviour
         //sliders[3].value = .80f;
         //sliders[4].value = .75f;
 
-        // Used to get the starting values based upon some type of file maybe for 
+        // Used to get the starting values based upon some type of file maybe for
         // keeping continuity between loading the experience
     }
 
@@ -89,7 +89,7 @@ public class TrackStats : MonoBehaviour
                     break;
 
                 case "Hunger":
-                    sliders[1].value = 1 - value;
+                    sliders[1].value = value;
                     break;
 
                 case "Dirtiness":

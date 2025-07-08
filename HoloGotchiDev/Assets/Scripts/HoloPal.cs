@@ -94,6 +94,7 @@ public class HoloPal : MonoBehaviour
     public float Playfulness => playfulness;
     public GameManager GameManager => gameManger;
     public ParticleSystem Flies => flies;
+    public InterProcessCommunicator Communicator => communicator;
 
     /// <summary>
     /// Navigate between the different need states
@@ -180,11 +181,12 @@ public class HoloPal : MonoBehaviour
 
     private void SendMessages()
     {
-        if (Mathf.Abs(lastHungerSent - hunger) >= 1f)
-        {
-            communicator.SendData("Hunger," + hunger);
-            lastHungerSent = hunger;
-        }
+        communicator.SendData("Hunger," + hunger);
+
+        // if (Mathf.Abs(lastHungerSent - hunger) >= 1f)
+        // {
+        //     lastHungerSent = hunger;
+        // }
 
         //if (Mathf.Abs(lastThirstSent - thirst) >= 0.1f)
         //{
