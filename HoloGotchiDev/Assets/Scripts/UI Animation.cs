@@ -1,13 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using LookingGlass;
 using TMPro;
 using UnityEngine;
 
 public class UIAnimation : MonoBehaviour
 {
+    [SerializeField]
+    private InterProcessCommunicator communicator;
+
     private float time = 0.0f;
 
-    // Animation booleans for turning on and off specific parts of the animation 
+    // Animation booleans for turning on and off specific parts of the animation
     private bool isAnimating = false;
     private bool animatePos = false;
     private bool animateScale = false;
@@ -37,6 +42,14 @@ public class UIAnimation : MonoBehaviour
         // Get the RectTransform and initial scale for animation later
         rectTransform = GetComponent<RectTransform>();
         titleScale = titleScreen.localScale;
+
+        communicator.OnMessageReceived += OnMessageReceived;
+    }
+
+    private void OnMessageReceived(string message)
+    {
+        Debug.Log(message);
+        if (message == "Picked up ball") NavigateToBall();
     }
 
     private void Update()
