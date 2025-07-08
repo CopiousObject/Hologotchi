@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     private float dirtTime;
     private float dirtSpeed = 0.2f;
 
+    private float lastSentDirtiness = 0;
+
     // Properties
     public float Dirtiness { get { return dirtiness; } set { dirtiness = value; } }
 
@@ -38,6 +40,12 @@ public class GameManager : MonoBehaviour
     {
         dirtTime += Time.deltaTime;
         CalcDirtiness(dirtTime);
+
+        if (Mathf.Abs(lastSentDirtiness - dirtiness) >= 1f)
+        {
+            communicator.SendData("Dirtiness," + dirtiness);
+            lastSentDirtiness = dirtiness;
+        }
     }
 
     // Used for calculating how dirty the holoPal is for 
@@ -48,7 +56,6 @@ public class GameManager : MonoBehaviour
             if (dirtiness < 100)
             {
                 dirtiness++;
-                communicator.SendData("Dirtiness," + dirtiness);
             }
             this.dirtTime = 0;
         }

@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using WebSocketSharp;
+using System.Collections.Concurrent;
 
 public class TrackStats : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class TrackStats : MonoBehaviour
 
     // Reciever for IPC Messages
     [SerializeField] private InterProcessCommunicator receiver;
+    private ConcurrentQueue<(string type, float value)> statUpdateQueue = new ConcurrentQueue<(string, float)>();
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +75,56 @@ public class TrackStats : MonoBehaviour
         // - Calculate the change between them (Should be easy as it is just taking the current and subtracting the read in value)
         // - how to do this for each stat at once within the update method.
 
+        while (statUpdateQueue.TryDequeue(out var update))
+        {
+            string stat = update.type;
+            float value = update.value;
+
+            Debug.Log($"[MAIN] UI update for {update.type} = {update.value}");
+
+            switch (stat)
+            {
+                case "Thirst":
+                    sliders[0].value = 1 - value;
+                    break;
+
+                case "Hunger":
+                    sliders[1].value = 1 - value;
+                    break;
+
+                case "Dirtiness":
+                    sliders[4].value = 1 - (value / 100);
+                    break;
+            }
+        }
+
+        //if (updateThirst)
+        //{
+        //    float value;
+        //    bool success = float.TryParse(splitMessage[1], out value);
+        //    sliders[0].value = 1 - value;
+        //    updateThirst = false;
+        //}
+
+        //// Update Hunger Statbar
+        //if (updateHunger)
+        //{
+        //    float value;
+        //    bool success = float.TryParse(splitMessage[1], out value);
+        //    sliders[1].value = 1 - value;
+        //    updateHunger = false;
+        //}
+
+        //// Use for later updating play and social
+        //if (updatePlay)
+        //{
+        //    updatePlay = false;
+        //}
+        //if (updateSocial)
+        //{
+        //    updateSocial = false;
+        //}
+
         // - Color change as values get lower
         // ColorChange();
     }
@@ -84,33 +136,29 @@ public class TrackStats : MonoBehaviour
     public void ReceiveMessage(string message)
     {
         Debug.Log("Received IPC message: " + message);
-        if (message.Contains("Hunger")) UpdateStat(message);
-        else if (message.Contains("Dirtiness")) UpdateDirt(message);
-    }
-
-    /// <summary>
-    /// Updates the dirtiness stat
-    /// </summary>
-    /// <param name="message"></param>
-    private void UpdateDirt(string message)
-    {
         string[] splitMessage = message.Split(',');
-        int value;
-        bool success = int.TryParse(splitMessage[1], out value);
-        if (success)
+        if(float.TryParse(splitMessage[1], out float value))
         {
-            value /= 100;
-            sliders[4].value -= value;
+            if (message.Contains("Thirst")) statUpdateQueue.Enqueue(("Thirst", value));
+            if (message.Contains("Hunger")) statUpdateQueue.Enqueue(("Hunger", value));
+            if (message.Contains("Dirtiness")) statUpdateQueue.Enqueue(("Dirtiness", value));
         }
-    }
-
-    /// <summary>
-    /// Updates the stat of the provided need to the provided value
-    /// </summary>
-    /// <param name="Message"></param>
-    private void UpdateStat(string Message)
-    {
-        Debug.Log("Stat Updated");
+        //if (message.Contains("Thirst"))
+        //{
+        //    updateThirst = true;
+        //}
+        //if (message.Contains("Hunger"))
+        //{
+        //    updateHunger = true;
+        //}
+        //if (message.Contains("Play"))
+        //{
+        //    updatePlay = true;
+        //}
+        //if (message.Contains("Social"))
+        //{
+        //    updateSocial = true;
+        //}
     }
 
     private void ColorChange()
