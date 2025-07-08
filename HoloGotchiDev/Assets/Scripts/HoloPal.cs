@@ -18,7 +18,7 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private InterProcessCommunicator communicator;
     private float lastHungerSent = 0f;
-    //private float lastThirstSent = 0f;
+    private float lastThirstSent = 0f;
 
     [SerializeField]
     private GameManager gameManger;
@@ -159,17 +159,7 @@ public class HoloPal : MonoBehaviour
         // }
 
         // Used for giving values to the IPC receiver
-        if (Mathf.Abs(lastHungerSent - hunger) >= 1f)
-        {
-            communicator.SendData("Hunger," + hunger);
-            lastHungerSent = hunger;
-        }
-
-        //if (Mathf.Abs(lastThirstSent - thirst) >= 1f)
-        //{
-        //    communicator.SendData("Thirst," + thirst);
-        //    lastThirstSent = thirst;
-        //}
+        SendMessages();
 
         // Figure out how to ease at some point
         if (gameManger.Dirtiness > 80) flies.gameObject.SetActive(true);
@@ -186,5 +176,20 @@ public class HoloPal : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         current_state.OnTriggerEnter(this, other);
+    }
+
+    private void SendMessages()
+    {
+        if (Mathf.Abs(lastHungerSent - hunger) >= 1f)
+        {
+            communicator.SendData("Hunger," + hunger);
+            lastHungerSent = hunger;
+        }
+
+        //if (Mathf.Abs(lastThirstSent - thirst) >= 0.1f)
+        //{
+        //    communicator.SendData("Thirst," + thirst);
+        //    lastThirstSent = thirst;
+        //}
     }
 }
