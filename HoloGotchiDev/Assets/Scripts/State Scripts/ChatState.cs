@@ -43,8 +43,8 @@ public class ChatState : IState
 
     IEnumerator Talk(HoloPal holopal)
     {
-        holopal.ChatBubble.enabled = true;
+        holopal.ChatBubble.alpha = 1f;
         yield return new WaitForSeconds(3);
-        holopal.ChatBubble.enabled = false;
+        holopal.ChatBubble.alpha = 0;
     }
 }
