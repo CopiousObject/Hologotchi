@@ -5,13 +5,13 @@ using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
-// public enum GrowthState
-// {
-//     Egg,
-//     Baby,
-//     Child,
-//     Adult,
-// }
+public enum GrowthState
+{
+    Egg,
+    Baby,
+    Child,
+    Adult,
+}
 
 public class HoloPal : MonoBehaviour
 {
@@ -20,7 +20,7 @@ public class HoloPal : MonoBehaviour
     private InterProcessCommunicator communicator;
 
     [SerializeField]
-    private GameManager gameManger;
+    private GameManager gameManager;
     [SerializeField]
     private Spawner spawner;
     [SerializeField]
@@ -75,7 +75,7 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private int stage_growth;
     [SerializeField]
-    private int growth_state;
+    private GrowthState growth_state;
 
     // The thresholds for when the HoloPal will evolve
     [SerializeField]
@@ -91,7 +91,7 @@ public class HoloPal : MonoBehaviour
     private float thirstTime;
     private float playTime;
     private float chatTime;
-    private float totalTime;
+    private float growthTime;
 
     // private IState[] baby_behaviors = {
     //     new WanderState(3, wander_points)
@@ -111,7 +111,7 @@ public class HoloPal : MonoBehaviour
     public int Chat_Points { get => chat_points; set { chat_points = value; } }
     public float Chat => chat;
     public TextMeshPro ChatBubble { get => chatBubble; set { chatBubble = value; } }
-    public GameManager GameManager => gameManger;
+    public GameManager GameManager => gameManager;
     public ParticleSystem Flies => flies;
     public InterProcessCommunicator Communicator => communicator;
 
@@ -124,6 +124,9 @@ public class HoloPal : MonoBehaviour
         play_points = max_play_points;
         chat_points = max_chat_points;
         chatBubble.alpha = 0f;
+
+        growth_state = GrowthState.Egg;
+        growthTime = 60f;
     }
 
     /// <summary>
@@ -146,7 +149,24 @@ public class HoloPal : MonoBehaviour
         thirstTime += Time.deltaTime;
         playTime += Time.deltaTime;
         chatTime += Time.deltaTime;
-        totalTime += Time.deltaTime;
+
+        // Growth Rework
+        switch (growth_state)
+        {
+            case GrowthState.Egg:
+                if (hunger >= 0.75f && thirst >= 0.80f && gameManager.Dirtiness >= 0.60f)
+                {
+                    growthTime -= Time.deltaTime;
+                }
+                if (growthTime <= 0f)
+                {
+                    growth_state = GrowthState.Baby;
+                    growthTime = 120f;
+
+                    mesh_renderer.SetBlendShapeWeight(0, 100);
+                }
+                break;
+        }
 
         //int growth_amount = Math.Min(food_points, food_decay);
 
@@ -220,7 +240,7 @@ public class HoloPal : MonoBehaviour
         SendMessages();
 
         // Figure out how to ease at some point
-        if (gameManger.Dirtiness > 80) flies.gameObject.SetActive(true);
+        if (gameManager.Dirtiness > 80) flies.gameObject.SetActive(true);
         else flies.gameObject.SetActive(false);
 
         if (current_state == null)
