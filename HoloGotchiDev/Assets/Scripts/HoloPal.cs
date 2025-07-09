@@ -87,6 +87,12 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private float wander_wait_time;
 
+    private float hungerTime;
+    private float thirstTime;
+    private float playTime;
+    private float chatTime;
+    private float totalTime;
+
     // private IState[] baby_behaviors = {
     //     new WanderState(3, wander_points)
     // };
@@ -114,7 +120,7 @@ public class HoloPal : MonoBehaviour
         communicator.OnMessageReceived += ReceiveMessage;
 
         water_points = max_water_points;
-        //water_points = max_water_points;
+        food_points = max_food_points;
         play_points = max_play_points;
         chat_points = max_chat_points;
         chatBubble.alpha = 0f;
@@ -134,27 +140,48 @@ public class HoloPal : MonoBehaviour
     /// <summary>
     /// Determines the state changes and the evolution states as the HoloPal grows up
     /// </summary>
-    private void Update()
+    private void FixedUpdate()
     {
-        int growth_amount = Math.Min(food_points, food_decay);
+        hungerTime += Time.deltaTime;
+        thirstTime += Time.deltaTime;
+        playTime += Time.deltaTime;
+        chatTime += Time.deltaTime;
+        totalTime += Time.deltaTime;
 
-        stage_growth += growth_amount;
-        total_growth += growth_amount;
-        food_points -= growth_amount;
+        //int growth_amount = Math.Min(food_points, food_decay);
 
-        if (stage_growth >= growth_stage_thresholds[growth_state] && growth_state < growth_stage_thresholds.Length - 1)
+        //stage_growth += growth_amount;
+        //total_growth += growth_amount;
+        //food_points -= growth_amount;
+
+        //if (stage_growth >= growth_stage_thresholds[growth_state] && growth_state < growth_stage_thresholds.Length - 1)
+        //{
+        //    growth_state++;
+        //    stage_growth = 0;
+        //}
+
+        //mesh_renderer.SetBlendShapeWeight(growth_state, (float)stage_growth / growth_stage_thresholds[growth_state] * 100f);
+
+        if (water_points > 0 && thirstTime >= 1f)
         {
-            growth_state++;
-            stage_growth = 0;
+            water_points -= water_decay;
+            thirstTime -= thirstTime;
         }
-
-        mesh_renderer.SetBlendShapeWeight(growth_state, (float)stage_growth / growth_stage_thresholds[growth_state] * 100f);
-
-        // Stat Decay
-        if (water_points > 0) water_points -= water_decay;
-        //if (water_points > 0) water_points -= water_decay;
-        if (play_points > 0) play_points -= play_decay;
-        if (chat_points > 0) chat_points -= chat_decay;
+        if (food_points > 0 && hungerTime >= 1.25f) 
+        {
+            food_points -= food_decay;
+            hungerTime -= hungerTime;
+        } 
+        if (play_points > 0 && playTime >= 1f) 
+        {
+            play_points -= play_decay;
+            playTime -= playTime;
+        } 
+        if (chat_points > 0 && chatTime >= 1.75f) 
+        {
+            chat_points -= chat_decay;
+            chatTime -= chatTime;
+        } 
 
         // switch (growth_state)
         // {
