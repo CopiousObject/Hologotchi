@@ -7329,7 +7329,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3083695449896497852, guid: ea054310d837ae94b832a4dfe80a8815, type: 3}
       propertyPath: m_TargetDisplay
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3083695449896497852, guid: ea054310d837ae94b832a4dfe80a8815, type: 3}
       propertyPath: m_VertexColorAlwaysGammaSpace

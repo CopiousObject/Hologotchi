@@ -30,7 +30,7 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private NavMeshSurface nav_surface;
     public Vector3 Play_position;
-    [SerializeField] private Vector3 startPosition;
+    public Vector3 startPosition;
 
     [SerializeField]
     private TextMeshPro chatBubble;
@@ -112,6 +112,11 @@ public class HoloPal : MonoBehaviour
     private void Start()
     {
         communicator.OnMessageReceived += ReceiveMessage;
+
+        water_points = max_water_points;
+        //water_points = max_water_points;
+        play_points = max_play_points;
+        chat_points = max_chat_points;
     }
 
     /// <summary>
@@ -143,6 +148,12 @@ public class HoloPal : MonoBehaviour
         }
 
         mesh_renderer.SetBlendShapeWeight(growth_state, (float)stage_growth / growth_stage_thresholds[growth_state] * 100f);
+
+        // Stat Decay
+        if (water_points > 0) water_points -= water_decay;
+        //if (water_points > 0) water_points -= water_decay;
+        if (play_points > 0) play_points -= play_decay;
+        if (chat_points > 0) chat_points -= chat_decay;
 
         // switch (growth_state)
         // {
@@ -201,6 +212,8 @@ public class HoloPal : MonoBehaviour
     {
         communicator.SendData("Hunger," + hunger);
         communicator.SendData("Thirst," + thirst);
+        communicator.SendData("Play," + playfulness);
+        communicator.SendData("Chat," + chat);
     }
 
     private void ReceiveMessage(string message)

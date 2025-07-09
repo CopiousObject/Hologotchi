@@ -48,7 +48,6 @@ public class UIAnimation : MonoBehaviour
 
     private void ReceiveMessage(string message)
     {
-        Debug.Log(message);
         if (message == "Picked up ball") NavigateToBall();
     }
 
