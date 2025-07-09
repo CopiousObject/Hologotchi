@@ -104,7 +104,7 @@ public class HoloPal : MonoBehaviour
     public float Playfulness => playfulness;
     public int Chat_Points { get => chat_points; set { chat_points = value; } }
     public float Chat => chat;
-    public TextMeshPro ChatBubble => chatBubble;
+    public TextMeshPro ChatBubble { get => chatBubble; set { chatBubble = value; } }
     public GameManager GameManager => gameManger;
     public ParticleSystem Flies => flies;
     public InterProcessCommunicator Communicator => communicator;
@@ -117,6 +117,7 @@ public class HoloPal : MonoBehaviour
         //water_points = max_water_points;
         play_points = max_play_points;
         chat_points = max_chat_points;
+        chatBubble.alpha = 0f;
     }
 
     /// <summary>
