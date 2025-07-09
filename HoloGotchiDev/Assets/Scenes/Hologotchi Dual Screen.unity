@@ -2309,6 +2309,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1859894442701002198, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: m_Name
+      value: Flies
+      objectReference: {fileID: 0}
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2409,9 +2413,21 @@ PrefabInstance:
       propertyPath: startPosition.z
       value: 2.91
       objectReference: {fileID: 0}
+    - target: {fileID: 2726817870642878192, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: m_Name
+      value: Mesh
+      objectReference: {fileID: 0}
     - target: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Name
       value: HoloPal (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005951456453951849, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516127626120696241, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4585403584456588029, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Enabled
@@ -2433,6 +2449,10 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4617474598064373516, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: m_Name
+      value: ChatBubble
+      objectReference: {fileID: 0}
     - target: {fileID: 6560419001295450915, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -2444,6 +2464,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 4617474598064373516, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
 --- !u!1 &1503651295 stripped
 GameObject:
@@ -2452,10 +2475,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1503651296 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4585403584456588029, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4516127626120696241, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
   m_PrefabInstance: {fileID: 1503651294}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503651295}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}

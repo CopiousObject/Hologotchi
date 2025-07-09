@@ -44,7 +44,14 @@ public class ChatState : IState
     IEnumerator Talk(HoloPal holopal)
     {
         holopal.ChatBubble.alpha = 1f;
-        yield return new WaitForSeconds(3);
+        float elapsed = 0f;
+        float Total = 3f;
+        while (elapsed < Total)
+        {
+            holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0,0,0),Vector3.up);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
         holopal.ChatBubble.alpha = 0;
     }
 }
