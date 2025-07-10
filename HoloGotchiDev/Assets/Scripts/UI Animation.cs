@@ -110,11 +110,6 @@ public class UIAnimation : MonoBehaviour
         animateScale = true;
     }
 
-    public void SendMessage()
-    {
-        communicator.SendData("Return HoloPal");
-    }
-
     // Makes the animation smoother
     private float EaseOut(float x)
     {

@@ -34,7 +34,7 @@ public class PlayState : IState
 
     public void OnExit(HoloPal holopal)
     {
-        holopal.Spawner.FoodObjects.Remove(ball_target);
+        holopal.Spawner.PlayObjects.Remove(ball_target);
         Object.Destroy(ball_target);
     }
 

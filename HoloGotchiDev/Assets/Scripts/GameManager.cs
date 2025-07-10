@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     // Properties
     public float Dirtiness { get { return dirtiness; } set { dirtiness = value; } }
+    public float DirtSpeed { get { return dirtSpeed; } set { dirtSpeed = value; } }
 
     void Awake()
     {
