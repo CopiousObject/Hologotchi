@@ -17,12 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float dirtiness;
     private float dirtTime;
-    private float dirtSpeed = 0.2f;
+    private float dirtSpeed = 1.5f;
 
     private float lastSentDirtiness = 0;
 
     // Properties
     public float Dirtiness { get { return dirtiness; } set { dirtiness = value; } }
+    public float DirtSpeed { get { return dirtSpeed; } set { dirtSpeed = value; } }
 
     void Awake()
     {
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
         dirtTime = 0;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         dirtTime += Time.deltaTime;
         CalcDirtiness(dirtTime);

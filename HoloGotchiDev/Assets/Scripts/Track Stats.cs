@@ -67,20 +67,12 @@ public class TrackStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TEMP CODE: Just my thought process on how it would theoretically work
-
-        // Things to figure out
-        // - where to get the values for each of the stats
-        // - How to get them into this script for use
-        // - Calculate the change between them (Should be easy as it is just taking the current and subtracting the read in value)
-        // - how to do this for each stat at once within the update method.
-
         while (statUpdateQueue.TryDequeue(out var update))
         {
             string stat = update.type;
             float value = update.value;
 
-            Debug.Log($"[MAIN] UI update for {update.type} = {update.value}");
+            //Debug.Log($"[MAIN] UI update for {update.type} = {update.value}");
 
             switch (stat)
             {
@@ -92,38 +84,19 @@ public class TrackStats : MonoBehaviour
                     sliders[1].value = value;
                     break;
 
+                case "Play":
+                    sliders[2].value = value;
+                    break;
+
+                case "Chat":
+                    sliders[3].value = value;
+                    break;
+
                 case "Dirtiness":
                     sliders[4].value = 1 - (value / 100);
                     break;
             }
         }
-
-        //if (updateThirst)
-        //{
-        //    float value;
-        //    bool success = float.TryParse(splitMessage[1], out value);
-        //    sliders[0].value = 1 - value;
-        //    updateThirst = false;
-        //}
-
-        //// Update Hunger Statbar
-        //if (updateHunger)
-        //{
-        //    float value;
-        //    bool success = float.TryParse(splitMessage[1], out value);
-        //    sliders[1].value = 1 - value;
-        //    updateHunger = false;
-        //}
-
-        //// Use for later updating play and social
-        //if (updatePlay)
-        //{
-        //    updatePlay = false;
-        //}
-        //if (updateSocial)
-        //{
-        //    updateSocial = false;
-        //}
 
         // - Color change as values get lower
         // ColorChange();
@@ -135,26 +108,23 @@ public class TrackStats : MonoBehaviour
     /// <param name="message"></param>
     public void ReceiveMessage(string message)
     {
-        string[] splitMessage = message.Split(',');
-        if (message.Contains("Thirst")) statUpdateQueue.Enqueue(("Thirst", float.Parse(splitMessage[1])));
-        if (message.Contains("Hunger")) statUpdateQueue.Enqueue(("Hunger", float.Parse(splitMessage[1])));
-        if (message.Contains("Dirtiness")) statUpdateQueue.Enqueue(("Dirtiness", float.Parse(splitMessage[1])));
-        //if (message.Contains("Thirst"))
-        //{
-        //    updateThirst = true;
-        //}
-        //if (message.Contains("Hunger"))
-        //{
-        //    updateHunger = true;
-        //}
-        //if (message.Contains("Play"))
-        //{
-        //    updatePlay = true;
-        //}
-        //if (message.Contains("Social"))
-        //{
-        //    updateSocial = true;
-        //}
+        Debug.Log("Received IPC message: " + message);
+        try
+        {
+            string[] splitMessage = message.Split(',');
+            if (float.TryParse(splitMessage[1], out float value))
+            {
+                if (message.Contains("Thirst")) statUpdateQueue.Enqueue(("Thirst", value));
+                if (message.Contains("Hunger")) statUpdateQueue.Enqueue(("Hunger", value));
+                if (message.Contains("Play")) statUpdateQueue.Enqueue(("Play", value));
+                if (message.Contains("Chat")) statUpdateQueue.Enqueue(("Chat", value));
+                if (message.Contains("Dirtiness")) statUpdateQueue.Enqueue(("Dirtiness", value));
+            }
+        }
+        catch (IndexOutOfRangeException ioor)
+        {
+            Debug.Log("Not readable message: " + ioor);
+        }
     }
 
     private void ColorChange()

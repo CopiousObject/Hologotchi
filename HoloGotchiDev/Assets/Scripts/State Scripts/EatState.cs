@@ -38,7 +38,7 @@ public class EatState : IState
         {
             if (holopal.Hunger < 0.8f)
             {
-                holopal.Food_Points += 10;
+                holopal.Food_Points += 20;
                 holopal.Spawner.FoodObjects.Remove(food_target);
                 Object.Destroy(food_target);
             }
