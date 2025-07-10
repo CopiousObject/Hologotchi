@@ -7,9 +7,6 @@ using UnityEngine;
 
 public class UIAnimation : MonoBehaviour
 {
-    [SerializeField]
-    private InterProcessCommunicator communicator;
-
     private float time = 0.0f;
 
     // Animation booleans for turning on and off specific parts of the animation
@@ -42,14 +39,6 @@ public class UIAnimation : MonoBehaviour
         // Get the RectTransform and initial scale for animation later
         rectTransform = GetComponent<RectTransform>();
         titleScale = titleScreen.localScale;
-
-        communicator.OnMessageReceived += ReceiveMessage;
-    }
-
-    private void ReceiveMessage(string message)
-    {
-        Debug.Log(message);
-        if (message == "Picked up ball") NavigateToBall();
     }
 
     private void Update()
@@ -109,11 +98,6 @@ public class UIAnimation : MonoBehaviour
         time = 0.0f;
         isAnimating = true;
         animateScale = true;
-    }
-
-    public void SendMessage()
-    {
-        communicator.SendData("Return HoloPal");
     }
 
     // Makes the animation smoother

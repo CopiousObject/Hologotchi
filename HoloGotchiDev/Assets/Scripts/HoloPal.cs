@@ -206,9 +206,9 @@ public class HoloPal : MonoBehaviour
 
     private void ReceiveMessage(string message)
     {
-        if(message == "Return HoloPal")
+        if (message == "Stopped Playing")
         {
-            nav_agent.SetDestination(startPosition);
+            ChangeState(null);
         }
     }
 }

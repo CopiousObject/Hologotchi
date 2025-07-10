@@ -1916,6 +1916,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4156090569115005515, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
+      propertyPath: ipc
+      value: 
+      objectReference: {fileID: 1169287007}
+    - target: {fileID: 4156090569115005515, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: debugGUI
       value: 0
       objectReference: {fileID: 0}

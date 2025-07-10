@@ -135,14 +135,10 @@ public class TrackStats : MonoBehaviour
     /// <param name="message"></param>
     public void ReceiveMessage(string message)
     {
-        Debug.Log("Received IPC message: " + message);
         string[] splitMessage = message.Split(',');
-        if(float.TryParse(splitMessage[1], out float value))
-        {
-            if (message.Contains("Thirst")) statUpdateQueue.Enqueue(("Thirst", value));
-            if (message.Contains("Hunger")) statUpdateQueue.Enqueue(("Hunger", value));
-            if (message.Contains("Dirtiness")) statUpdateQueue.Enqueue(("Dirtiness", value));
-        }
+        if (message.Contains("Thirst")) statUpdateQueue.Enqueue(("Thirst", float.Parse(splitMessage[1])));
+        if (message.Contains("Hunger")) statUpdateQueue.Enqueue(("Hunger", float.Parse(splitMessage[1])));
+        if (message.Contains("Dirtiness")) statUpdateQueue.Enqueue(("Dirtiness", float.Parse(splitMessage[1])));
         //if (message.Contains("Thirst"))
         //{
         //    updateThirst = true;

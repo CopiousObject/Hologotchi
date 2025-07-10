@@ -15,7 +15,7 @@ public class WanderState : IState
 
     public void UpdateState(HoloPal holopal)
     {
-        if (holopal.Nav_Agent.hasPath)
+        if (holopal.Nav_Agent.hasPath && holopal.Nav_Agent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
         {
             return;
         }
@@ -41,6 +41,7 @@ public class WanderState : IState
         if (holopal.Chat < 0.8f && holopal.Spawner.ChatObjects.Count > 0)
         {
             holopal.ChangeState(new ChatState(holopal.Spawner.ChatObjects[0]));
+            return;
         }
 
         if (holopal.GameManager.Dirtiness > 80f && holopal.Spawner.CleanObjects.Count > 0)
