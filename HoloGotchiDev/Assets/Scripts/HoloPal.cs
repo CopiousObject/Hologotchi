@@ -333,6 +333,7 @@ public class HoloPal : MonoBehaviour
     {
         if (message == "Stopped Playing")
         {
+            play_points += 20;
             ChangeState(null);
         }
     }
