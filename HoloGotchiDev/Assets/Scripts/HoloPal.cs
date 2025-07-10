@@ -154,7 +154,30 @@ public class HoloPal : MonoBehaviour
         switch (growth_state)
         {
             case GrowthState.Egg:
-                if (hunger >= 0.75f && thirst >= 0.80f && gameManager.Dirtiness >= 0.60f)
+                // Decays
+                gameManager.DirtSpeed = 1.25f;
+                if (water_points > 0 && thirstTime >= 2.5f)
+                {
+                    water_points -= water_decay;
+                    thirstTime -= thirstTime;
+                }
+                if (food_points > 0 && hungerTime >= 2.5f)
+                {
+                    food_points -= food_decay;
+                    hungerTime -= hungerTime;
+                }
+                if (play_points > 0 && playTime >= 2.5f)
+                {
+                    play_points -= play_decay;
+                    playTime -= playTime;
+                }
+                if (chat_points > 0 && chatTime >= 1f)
+                {
+                    chat_points -= chat_decay;
+                    chatTime -= chatTime;
+                }
+                // Progress stage
+                if (gameManager.Dirtiness >= 0.90f && chat >= 0.85f)
                 {
                     growthTime -= Time.deltaTime;
                 }
@@ -163,78 +186,120 @@ public class HoloPal : MonoBehaviour
                     growth_state = GrowthState.Baby;
                     growthTime = 120f;
 
-                    mesh_renderer.SetBlendShapeWeight(0, 100);
+                    mesh_renderer.SetBlendShapeWeight(4, 33);
+                }
+                break;
+            case GrowthState.Baby:
+                // Decays
+                gameManager.DirtSpeed = 1f;
+                if (water_points > 0 && thirstTime >= 1.25f)
+                {
+                    water_points -= water_decay;
+                    thirstTime -= thirstTime;
+                }
+                if (food_points > 0 && hungerTime >= 1.5f)
+                {
+                    food_points -= food_decay;
+                    hungerTime -= hungerTime;
+                }
+                if (play_points > 0 && playTime >= 1.5f)
+                {
+                    play_points -= play_decay;
+                    playTime -= playTime;
+                }
+                if (chat_points > 0 && chatTime >= 1.75f)
+                {
+                    chat_points -= chat_decay;
+                    chatTime -= chatTime;
+                }
+                // Progress stage
+                if (hunger >= 0.75f && thirst >= 0.80f && gameManager.Dirtiness >= 0.60f)
+                {
+                    growthTime -= Time.deltaTime;
+                }
+                if (growthTime <= 0f)
+                {
+                    growth_state = GrowthState.Child;
+                    growthTime = 240f;
+
+                    mesh_renderer.SetBlendShapeWeight(4, 66);
+                }
+                break;
+            case GrowthState.Child:
+                // Decays
+                gameManager.DirtSpeed = 1f;
+                if (water_points > 0 && thirstTime >= 1f)
+                {
+                    water_points -= water_decay;
+                    thirstTime -= thirstTime;
+                }
+                if (food_points > 0 && hungerTime >= 1.25f)
+                {
+                    food_points -= food_decay;
+                    hungerTime -= hungerTime;
+                }
+                if (play_points > 0 && playTime >= 1.25f)
+                {
+                    play_points -= play_decay;
+                    playTime -= playTime;
+                }
+                if (chat_points > 0 && chatTime >= 1.5f)
+                {
+                    chat_points -= chat_decay;
+                    chatTime -= chatTime;
+                }
+                // Progress stage
+                if (hunger >= 0.70f && thirst >= 0.70f && gameManager.Dirtiness >= 0.70f
+                    && chat >= 0.75f && playfulness >= 0.90f)
+                {
+                    growthTime -= Time.deltaTime;
+                }
+                if (growthTime <= 0f)
+                {
+                    growth_state = GrowthState.Adult;
+                    growthTime = 480f;
+
+                    mesh_renderer.SetBlendShapeWeight(4, 100);
+                }
+                break;
+            case GrowthState.Adult:
+                // Decays
+                gameManager.DirtSpeed = 1.5f;
+                if (water_points > 0 && thirstTime >= 1.25f)
+                {
+                    water_points -= water_decay;
+                    thirstTime -= thirstTime;
+                }
+                if (food_points > 0 && hungerTime >= 1.5f)
+                {
+                    food_points -= food_decay;
+                    hungerTime -= hungerTime;
+                }
+                if (play_points > 0 && playTime >= 1.75f)
+                {
+                    play_points -= play_decay;
+                    playTime -= playTime;
+                }
+                if (chat_points > 0 && chatTime >= 1.5f)
+                {
+                    chat_points -= chat_decay;
+                    chatTime -= chatTime;
+                }
+                // Progress stage
+                if (hunger >= 0.60f && thirst >= 0.70f && gameManager.Dirtiness >= 0.60f
+                    && chat >= 0.60f)
+                {
+                    growthTime -= Time.deltaTime;
+                }
+                if (growthTime <= 0f)
+                {
+                    growth_state = GrowthState.Egg;
+                    growthTime = 60f;
+
+                    mesh_renderer.SetBlendShapeWeight(4, 0);
                 }
                 break;
         }
-
-        //int growth_amount = Math.Min(food_points, food_decay);
-
-        //stage_growth += growth_amount;
-        //total_growth += growth_amount;
-        //food_points -= growth_amount;
-
-        //if (stage_growth >= growth_stage_thresholds[growth_state] && growth_state < growth_stage_thresholds.Length - 1)
-        //{
-        //    growth_state++;
-        //    stage_growth = 0;
-        //}
-
-        //mesh_renderer.SetBlendShapeWeight(growth_state, (float)stage_growth / growth_stage_thresholds[growth_state] * 100f);
-
-        if (water_points > 0 && thirstTime >= 1f)
-        {
-            water_points -= water_decay;
-            thirstTime -= thirstTime;
-        }
-        if (food_points > 0 && hungerTime >= 1.25f) 
-        {
-            food_points -= food_decay;
-            hungerTime -= hungerTime;
-        } 
-        if (play_points > 0 && playTime >= 1f) 
-        {
-            play_points -= play_decay;
-            playTime -= playTime;
-        } 
-        if (chat_points > 0 && chatTime >= 1.75f) 
-        {
-            chat_points -= chat_decay;
-            chatTime -= chatTime;
-        } 
-
-        // switch (growth_state)
-        // {
-        //     case GrowthState.Egg:
-        //         {
-        //             mesh_renderer.SetBlendShapeWeight(0, (float)stage_growth / growth_stage_thresholds[0] * 100f);
-        //         }
-        //         break;
-
-        //     case GrowthState.Baby:
-        //         {
-        //             mesh_renderer.SetBlendShapeWeight(1, (float)stage_growth / growth_stage_thresholds[1] * 100f);
-        //         }
-        //         break;
-
-        //     case GrowthState.Child:
-        //         {
-        //             mesh_renderer.SetBlendShapeWeight(2, (float)stage_growth / growth_stage_thresholds[2] * 100f);
-        //         }
-        //         break;
-
-        //     case GrowthState.Adult:
-        //         {
-        //             mesh_renderer.SetBlendShapeWeight(3, (float)stage_growth / growth_stage_thresholds[3] * 100f);
-        //         }
-        //         break;
-
-        //     default:
-        //         {
-
-        //         }
-        //         break;
-        // }
 
         // Used for giving values to the IPC receiver
         SendMessages();
