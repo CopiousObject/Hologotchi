@@ -166,7 +166,7 @@ public class HoloPal : MonoBehaviour
                     food_points -= food_decay;
                     hungerTime -= hungerTime;
                 }
-                if (play_points > 0 && playTime >= 2.5f)
+                if (play_points > 0 && playTime >= 0.75f)
                 {
                     play_points -= play_decay;
                     playTime -= playTime;
