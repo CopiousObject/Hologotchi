@@ -126,7 +126,7 @@ public class HoloPal : MonoBehaviour
         chatBubble.alpha = 0f;
 
         growth_state = GrowthState.Egg;
-        growthTime = 60f;
+        growthTime = 15f;
     }
 
     /// <summary>
@@ -166,7 +166,7 @@ public class HoloPal : MonoBehaviour
                     food_points -= food_decay;
                     hungerTime -= hungerTime;
                 }
-                if (play_points > 0 && playTime >= 0.75f)
+                if (play_points > 0 && playTime >= 2.5f)
                 {
                     play_points -= play_decay;
                     playTime -= playTime;
@@ -177,14 +177,15 @@ public class HoloPal : MonoBehaviour
                     chatTime -= chatTime;
                 }
                 // Progress stage
-                if (gameManager.Dirtiness >= 0.90f && chat >= 0.85f)
+                //gameManager.Dirtiness >= 0.90f &&
+                if (chat >= 0.85f)
                 {
                     growthTime -= Time.deltaTime;
                 }
                 if (growthTime <= 0f)
                 {
                     growth_state = GrowthState.Baby;
-                    growthTime = 120f;
+                    growthTime = 30f;
 
                     mesh_renderer.SetBlendShapeWeight(4, 33);
                 }
@@ -213,14 +214,15 @@ public class HoloPal : MonoBehaviour
                     chatTime -= chatTime;
                 }
                 // Progress stage
-                if (hunger >= 0.75f && thirst >= 0.80f && gameManager.Dirtiness >= 0.60f)
+                if (hunger >= 0.75f && thirst >= 0.80f && gameManager.Dirtiness >= 0.60f
+                    && chat >= 0.75f && playfulness >= 0.80f)
                 {
                     growthTime -= Time.deltaTime;
                 }
                 if (growthTime <= 0f)
                 {
                     growth_state = GrowthState.Child;
-                    growthTime = 240f;
+                    growthTime = 60f;
 
                     mesh_renderer.SetBlendShapeWeight(4, 66);
                 }
@@ -257,7 +259,7 @@ public class HoloPal : MonoBehaviour
                 if (growthTime <= 0f)
                 {
                     growth_state = GrowthState.Adult;
-                    growthTime = 480f;
+                    growthTime = 60f;
 
                     mesh_renderer.SetBlendShapeWeight(4, 100);
                 }
@@ -287,14 +289,14 @@ public class HoloPal : MonoBehaviour
                 }
                 // Progress stage
                 if (hunger >= 0.60f && thirst >= 0.70f && gameManager.Dirtiness >= 0.60f
-                    && chat >= 0.60f)
+                    && chat >= 0.60f && playfulness >= 0.70f)
                 {
                     growthTime -= Time.deltaTime;
                 }
                 if (growthTime <= 0f)
                 {
                     growth_state = GrowthState.Egg;
-                    growthTime = 60f;
+                    growthTime = 15f;
 
                     mesh_renderer.SetBlendShapeWeight(4, 0);
                 }
