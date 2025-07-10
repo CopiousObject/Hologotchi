@@ -2988,6 +2988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ec8932c3c92e7429b59caaf3f7ab04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  communicator: {fileID: 1523370008}
   titleScreen: {fileID: 206151908}
 --- !u!114 &495281074
 MonoBehaviour:
