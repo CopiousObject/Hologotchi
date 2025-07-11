@@ -7702,7 +7702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3083695449896497852, guid: ea054310d837ae94b832a4dfe80a8815, type: 3}
       propertyPath: m_TargetDisplay
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3083695449896497852, guid: ea054310d837ae94b832a4dfe80a8815, type: 3}
       propertyPath: m_VertexColorAlwaysGammaSpace
@@ -7711,6 +7711,10 @@ PrefabInstance:
     - target: {fileID: 3083695449896497852, guid: ea054310d837ae94b832a4dfe80a8815, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3083695449896497852, guid: ea054310d837ae94b832a4dfe80a8815, type: 3}
+      propertyPath: m_UpdateRectTransformForStandalone
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3104388707138024860, guid: ea054310d837ae94b832a4dfe80a8815, type: 3}
       propertyPath: m_Name
