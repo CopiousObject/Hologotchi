@@ -26,7 +26,7 @@ public class UIAnimation : MonoBehaviour
 
     // Placements for movement animation
     private Vector3 playScreen = new Vector3(73, -17, 0);
-    private Vector3 ballScreen = new Vector3(2525, -17, 0);
+    private Vector3 ballScreen = new Vector3(2371, -17, 0);
     private Vector3 statsScreen = new Vector3(73, 2670, 0);
     private Vector3 settingsScreen = new Vector3(73, -2635, 0);
     private Vector3 notifScreen = new Vector3(1975, -2635, 0);
