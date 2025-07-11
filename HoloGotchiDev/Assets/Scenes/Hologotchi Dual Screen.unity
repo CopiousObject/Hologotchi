@@ -5572,7 +5572,7 @@ PrefabInstance:
     - target: {fileID: 4860814309869001749, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: chat
       value: 
-      objectReference: {fileID: 2907878274358477381, guid: b16a13aa08f45744f93f65ecfbf3fc2f, type: 3}
+      objectReference: {fileID: 2911264822976420429, guid: 46d729bac01334548ae433c7f3294bb2, type: 3}
     - target: {fileID: 4860814309869001749, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: receiver
       value: 
