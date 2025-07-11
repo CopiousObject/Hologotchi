@@ -135,19 +135,19 @@ public class TrackStats : MonoBehaviour
             if (sliders[i].value <= .33f)
             {
                 fillImages[i].color = new Color(170f / 255f, 127f / 255f, 104f / 255f);
-                backgroundImages[i].color = new Color(113f / 255f, 81f / 255f, 64f / 255f, 0.5f);
+                backgroundImages[i].color = new Color(113f / 255f, 81f / 255f, 64f / 255f, 0f);
             }
             // switch to yellow
             else if (sliders[i].value <= .66f)
             {
                 fillImages[i].color = new Color(170f / 255f, 170f / 255f, 104f / 255f);
-                backgroundImages[i].color = new Color(113f / 255f, 113f / 255f, 64f / 255f, 0.5f);
+                backgroundImages[i].color = new Color(113f / 255f, 113f / 255f, 64f / 255f, 0f);
             }
             // stay/return to green
             else
             {
                 fillImages[i].color = new Color(127f/255f, 170f/255f, 104f/255f);
-                backgroundImages[i].color = new Color(81f/255f, 113f/255f, 64f/255f, 0.5f);
+                backgroundImages[i].color = new Color(81f/255f, 113f/255f, 64f/255f, 0f);
             }
         }
     }
