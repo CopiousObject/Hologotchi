@@ -4529,11 +4529,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: preview2D
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: targetLKG
-      value: LKG-PORT-
+      value: LKG-PORT-23125
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: clearFlags
@@ -4557,7 +4557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.id
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: nearClipPlane
@@ -4581,7 +4581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: isEmulatingDevice
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: manualCalibration.dpi
@@ -4621,7 +4621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.calibration.dpi
-      value: 0
+      value: 324
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: manualCalibration.viewCone
@@ -4629,59 +4629,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.calibration.pitch
-      value: 0
+      value: 52.6086
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.calibration.slope
-      value: 0
+      value: -7.180919
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.defaultQuilt.rows
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.hardwareInfo.hwid
-      value: 
+      value: LKG-P23125
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.calibration.center
-      value: 0
+      value: 0.89833057
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.calibration.serial
-      value: 
+      value: LKG-PORT-23125
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.hardwareInfo.index
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.hardwareInfo.state
-      value: 
+      value: ok
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.calibration.invView
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.calibration.rawJson
-      value: 
+      value: "{\r\n  \"DPI\": {\r\n    \"value\": 324.0\r\n  },\r\n  \"center\":
+        {\r\n    \"value\": 0.89833058179610481\r\n  },\r\n  \"configVersion\": \"1.0\",\r\n 
+        \"flipImageX\": {\r\n    \"value\": 0\r\n  },\r\n  \"flipImageY\": {\r\n   
+        \"value\": 0\r\n  },\r\n  \"flipSubp\": {\r\n    \"value\": 0.0\r\n  },\r\n 
+        \"fringe\": {\r\n    \"value\": 0.0\r\n  },\r\n  \"invView\": {\r\n    \"value\":
+        1\r\n  },\r\n  \"pitch\": {\r\n    \"value\": 52.608600599835533\r\n  },\r\n 
+        \"screenH\": {\r\n    \"value\": 2048.0\r\n  },\r\n  \"screenW\": {\r\n   
+        \"value\": 1536.0\r\n  },\r\n  \"serial\": \"LKG-PORT-23125\",\r\n  \"slope\":
+        {\r\n    \"value\": -7.1809193894410415\r\n  },\r\n  \"verticalAngle\": {\r\n   
+        \"value\": 0\r\n  },\r\n  \"viewCone\": {\r\n    \"value\": 40.0\r\n  }\r\n}"
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.calibration.screenH
-      value: 0
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.calibration.screenW
-      value: 0
+      value: 1536
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.calibration.viewCone
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.defaultQuilt.columns
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: manualCalibration.configVersion
@@ -4693,11 +4702,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.defaultQuilt.tileCount
-      value: 0
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.defaultQuilt.quiltWidth
-      value: 0
+      value: 3360
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: quiltPreset.customSettings.columns
@@ -4705,19 +4714,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.defaultQuilt.quiltHeight
-      value: 0
+      value: 3360
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.calibration.configVersion
-      value: 
+      value: 1.0
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.defaultQuilt.renderAspect
-      value: 0
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.hardwareInfo.windowCoordX
-      value: 0
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: quiltPreset.customSettings.tileCount
@@ -4733,7 +4742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: lkgDisplay.hardwareInfo.hardwareVersion
-      value: 
+      value: portrait
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: quiltPreset.customSettings.renderAspect
@@ -5572,7 +5581,7 @@ PrefabInstance:
     - target: {fileID: 4860814309869001749, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: chat
       value: 
-      objectReference: {fileID: 2907878274358477381, guid: b16a13aa08f45744f93f65ecfbf3fc2f, type: 3}
+      objectReference: {fileID: 2911264822976420429, guid: 46d729bac01334548ae433c7f3294bb2, type: 3}
     - target: {fileID: 4860814309869001749, guid: f6565400bf6c585479a5a4cd30df70ca, type: 3}
       propertyPath: receiver
       value: 
