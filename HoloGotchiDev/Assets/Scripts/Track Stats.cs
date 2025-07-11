@@ -99,7 +99,7 @@ public class TrackStats : MonoBehaviour
         }
 
         // - Color change as values get lower
-        // ColorChange();
+        ColorChange();
     }
 
     /// <summary>
@@ -131,23 +131,23 @@ public class TrackStats : MonoBehaviour
     {
         for (int i = 0; i < sliders.Count; i++)
         {
-            // switch to yellow
-            if (sliders[i].value <= .66f)
-            {
-                fillImages[i].color = new Color(170, 170, 104, 255);
-                backgroundImages[i].color = new Color(113, 113, 64, 255);
-            }
             // switch to red
-            else if (sliders[i].value <= .45f)
+            if (sliders[i].value <= .33f)
             {
-                fillImages[i].color = new Color(170, 127, 104, 255);
-                backgroundImages[i].color = new Color(113, 81, 64, 255);
+                fillImages[i].color = new Color(170f / 255f, 127f / 255f, 104f / 255f);
+                backgroundImages[i].color = new Color(113f / 255f, 81f / 255f, 64f / 255f, 0.5f);
+            }
+            // switch to yellow
+            else if (sliders[i].value <= .66f)
+            {
+                fillImages[i].color = new Color(170f / 255f, 170f / 255f, 104f / 255f);
+                backgroundImages[i].color = new Color(113f / 255f, 113f / 255f, 64f / 255f, 0.5f);
             }
             // stay/return to green
             else
             {
-                fillImages[i].color = new Color(127, 170, 104, 255);
-                backgroundImages[i].color = new Color(81, 113, 64, 255);
+                fillImages[i].color = new Color(127f/255f, 170f/255f, 104f/255f);
+                backgroundImages[i].color = new Color(81f/255f, 113f/255f, 64f/255f, 0.5f);
             }
         }
     }
