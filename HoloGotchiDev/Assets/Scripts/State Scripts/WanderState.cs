@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class WanderState : IState
@@ -26,6 +27,7 @@ public class WanderState : IState
             return;
         }
 
+
         if (holopal.Thirst < 0.8f && holopal.Spawner.WaterObjects.Count > 0)
         {
             holopal.ChangeState(new DrinkState(holopal.Spawner.WaterObjects[0]));
@@ -50,9 +52,20 @@ public class WanderState : IState
             return;
         }
 
+
+
         if (timer <= 0f)
         {
             holopal.Nav_Agent.SetDestination(wander_points[Random.Range(0, wander_points.Length)]);
+
+            if ((holopal.Hunger < 0.4f && holopal.Spawner.FoodObjects.Count == 0)
+                        || (holopal.Thirst < 0.4f && holopal.Spawner.WaterObjects.Count == 0)
+                        || (holopal.Playfulness < 0.4f && holopal.Spawner.PlayObjects.Count == 0)
+                        || (holopal.Chat < 0.4f && holopal.Spawner.ChatObjects.Count == 0)
+                        || (holopal.GameManager.Dirtiness > 40f && holopal.Spawner.CleanObjects.Count == 0))
+            {
+                holopal.StartCoroutine(Annoyed(holopal));
+            }
 
             timer = duration;
         }
@@ -73,5 +86,22 @@ public class WanderState : IState
     public void OnTriggerEnter(HoloPal holopal, Collider other)
     {
 
+    }
+
+    IEnumerator Annoyed(HoloPal holopal)
+    {
+        holopal.ChatBubble.alpha = 1f;
+        holopal.ChatBubble.text = "Waaaah!";
+        float elapsed = 0f;
+        float Total = 3f;
+        while (elapsed < Total)
+        {
+            // Trigger an animation for this ig
+            holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0), Vector3.up);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        holopal.ChatBubble.alpha = 0;
+        holopal.ChatBubble.text = "Sample";
     }
 }
