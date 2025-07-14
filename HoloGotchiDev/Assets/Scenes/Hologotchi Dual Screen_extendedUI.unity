@@ -7579,7 +7579,8 @@ PrefabInstance:
       propertyPath: automaticallyHandleIPC
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4156090569115005515, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
