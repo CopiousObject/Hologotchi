@@ -93,6 +93,9 @@ public class HoloPal : MonoBehaviour
     private float chatTime;
     private float growthTime;
 
+    [SerializeField]
+    private GameObject eggModel;
+
     // private IState[] baby_behaviors = {
     //     new WanderState(3, wander_points)
     // };
@@ -183,6 +186,8 @@ public class HoloPal : MonoBehaviour
                 }
                 if (growthTime <= 0f)
                 {
+                    eggModel.SetActive(false);
+
                     growth_state = GrowthState.Baby;
                     growthTime = 30f;
 
@@ -294,6 +299,8 @@ public class HoloPal : MonoBehaviour
                 }
                 if (growthTime <= 0f)
                 {
+                    eggModel.SetActive(true);
+
                     growth_state = GrowthState.Egg;
                     growthTime = 15f;
 

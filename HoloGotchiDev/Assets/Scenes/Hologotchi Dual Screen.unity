@@ -1263,6 +1263,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 26.772
       objectReference: {fileID: 0}
+    - target: {fileID: -4732287160028025131, guid: 19b93213bf3b0164bbe349bd2627f0f5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4677976433857769711, guid: 19b93213bf3b0164bbe349bd2627f0f5, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.0019
@@ -6342,6 +6346,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 545486435}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: eggModel
+      value: 
+      objectReference: {fileID: 1749971491}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: chatBubble
       value: 
       objectReference: {fileID: 1503651296}
@@ -7029,6 +7037,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0646fd627b9268b41a9114b14dfe86af, type: 3}
+--- !u!1 &1749971491 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4732287160028025131, guid: 19b93213bf3b0164bbe349bd2627f0f5, type: 3}
+  m_PrefabInstance: {fileID: 265764892}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1757152446
 PrefabInstance:
   m_ObjectHideFlags: 0

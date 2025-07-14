@@ -18,7 +18,20 @@ namespace LookingGlass
         {
             Screen.fullScreen = false;
             SetPosition(0, 0);
-            Screen.SetResolution(260, 360, false);
+            if (Screen.currentResolution.width == 1920 &&
+                Screen.currentResolution.height == 1080)
+            {
+                Screen.SetResolution(260, 360, false);
+            }
+            else if(Screen.currentResolution.width == 3840 &&
+                Screen.currentResolution.height == 2160)
+            {
+                Screen.SetResolution(360, 460, false);
+            }
+            else
+            {
+                Screen.SetResolution(260, 360, false);
+            }
         }
 #endif
 
