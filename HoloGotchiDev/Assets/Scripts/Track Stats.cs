@@ -26,7 +26,6 @@ public class TrackStats : MonoBehaviour
     // List of all sliders and corressponding parts for ease of looping and manipulating
     private List<Slider> sliders = new List<Slider>();
     private List<Image> fillImages = new List<Image>();
-    private List<Image> backgroundImages = new List<Image>();
 
     // Reciever for IPC Messages
     [SerializeField] private InterProcessCommunicator receiver;
@@ -50,18 +49,7 @@ public class TrackStats : MonoBehaviour
         foreach(Slider slider in sliders)
         {
             fillImages.Add(slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>());
-            backgroundImages.Add(slider.gameObject.transform.Find("Background").GetComponent<Image>());
         }
-
-        // Test Values
-        //sliders[0].value = .35f;
-        //sliders[1].value = .12f;
-        //sliders[2].value = .56f;
-        //sliders[3].value = .80f;
-        //sliders[4].value = .75f;
-
-        // Used to get the starting values based upon some type of file maybe for
-        // keeping continuity between loading the experience
     }
 
     // Update is called once per frame
@@ -71,8 +59,6 @@ public class TrackStats : MonoBehaviour
         {
             string stat = update.type;
             float value = update.value;
-
-            //Debug.Log($"[MAIN] UI update for {update.type} = {update.value}");
 
             switch (stat)
             {
@@ -134,20 +120,17 @@ public class TrackStats : MonoBehaviour
             // switch to red
             if (sliders[i].value <= .33f)
             {
-                fillImages[i].color = new Color(170f / 255f, 127f / 255f, 104f / 255f);
-                backgroundImages[i].color = new Color(113f / 255f, 81f / 255f, 64f / 255f, 0f);
+                fillImages[i].color = new Color(0.666f, 0.498f, 0.407f);
             }
             // switch to yellow
             else if (sliders[i].value <= .66f)
             {
-                fillImages[i].color = new Color(170f / 255f, 170f / 255f, 104f / 255f);
-                backgroundImages[i].color = new Color(113f / 255f, 113f / 255f, 64f / 255f, 0f);
+                fillImages[i].color = new Color(0.666f, 0.666f, 0.407f);
             }
             // stay/return to green
             else
             {
-                fillImages[i].color = new Color(127f/255f, 170f/255f, 104f/255f);
-                backgroundImages[i].color = new Color(81f/255f, 113f/255f, 64f/255f, 0f);
+                fillImages[i].color = new Color(0.498f, 0.666f, 0.407f);
             }
         }
     }

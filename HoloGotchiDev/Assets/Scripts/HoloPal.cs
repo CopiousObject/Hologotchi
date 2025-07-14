@@ -155,7 +155,7 @@ public class HoloPal : MonoBehaviour
         {
             case GrowthState.Egg:
                 // Decays
-                gameManager.DirtSpeed = 1.25f;
+                gameManager.DirtSpeed = 2.5f;
                 if (water_points > 0 && thirstTime >= 2.5f)
                 {
                     water_points -= water_decay;
@@ -171,14 +171,13 @@ public class HoloPal : MonoBehaviour
                     play_points -= play_decay;
                     playTime -= playTime;
                 }
-                if (chat_points > 0 && chatTime >= 1f)
+                if (chat_points > 0 && chatTime >= 0.75f)
                 {
                     chat_points -= chat_decay;
                     chatTime -= chatTime;
                 }
                 // Progress stage
-                //gameManager.Dirtiness >= 0.90f &&
-                if (chat >= 0.85f)
+                if (chat >= 0.90f)
                 {
                     growthTime -= Time.deltaTime;
                 }
@@ -208,13 +207,13 @@ public class HoloPal : MonoBehaviour
                     play_points -= play_decay;
                     playTime -= playTime;
                 }
-                if (chat_points > 0 && chatTime >= 1.75f)
+                if (chat_points > 0 && chatTime >= 1f)
                 {
                     chat_points -= chat_decay;
                     chatTime -= chatTime;
                 }
                 // Progress stage
-                if (hunger >= 0.75f && thirst >= 0.80f && gameManager.Dirtiness >= 0.60f
+                if (hunger >= 0.85f && thirst >= 0.90f && gameManager.Dirtiness >= 0.60f
                     && chat >= 0.75f && playfulness >= 0.80f)
                 {
                     growthTime -= Time.deltaTime;
@@ -251,7 +250,7 @@ public class HoloPal : MonoBehaviour
                     chatTime -= chatTime;
                 }
                 // Progress stage
-                if (hunger >= 0.70f && thirst >= 0.70f && gameManager.Dirtiness >= 0.70f
+                if (hunger >= 0.80f && thirst >= 0.85f && gameManager.Dirtiness >= 0.75f
                     && chat >= 0.75f && playfulness >= 0.90f)
                 {
                     growthTime -= Time.deltaTime;
@@ -301,6 +300,24 @@ public class HoloPal : MonoBehaviour
                     mesh_renderer.SetBlendShapeWeight(4, 0);
                 }
                 break;
+        }
+
+        // Clamps to make sure we stay in range
+        if (chat_points > 100)
+        {
+            chat_points = 100;
+        }
+        if(food_points > 100)
+        {
+            food_points = 100;
+        }
+        if(water_points > 100)
+        {
+            water_points = 100;
+        }
+        if(play_points > 100)
+        {
+            play_points = 100;
         }
 
         // Used for giving values to the IPC receiver

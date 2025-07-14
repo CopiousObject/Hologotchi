@@ -35,7 +35,7 @@ public class ChatState : IState
     {
         if (other.gameObject == chat_target)
         {
-            holopal.Chat_Points = 100;
+            holopal.Chat_Points += 20;
             holopal.Spawner.ChatObjects.Remove(chat_target);
             Object.Destroy(other.gameObject);
         }
