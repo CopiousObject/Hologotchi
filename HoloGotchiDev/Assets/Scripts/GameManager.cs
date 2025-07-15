@@ -44,8 +44,8 @@ public class GameManager : MonoBehaviour
 
         if (Mathf.Abs(lastSentDirtiness - dirtiness) >= 1f)
         {
-            communicator.SendData("Dirtiness," + dirtiness);
-            lastSentDirtiness = dirtiness;
+           communicator.SendData("Dirtiness," + dirtiness);
+           lastSentDirtiness = dirtiness;
         }
     }
 
