@@ -171,6 +171,7 @@ public class HoloPal : MonoBehaviour
 
                     growth_state = GrowthState.Baby;
                     growthTime = 5f;
+                    communicator.SendData("Egg State Exited");
                 }
                 break;
             case GrowthState.Baby:
@@ -286,6 +287,13 @@ public class HoloPal : MonoBehaviour
                     holopalMesh.SetActive(false);
                     eggModel.SetActive(true);
                     mesh_renderer.SetBlendShapeWeight(4, 0);
+
+                    communicator.SendData("Egg State Entered");
+                    //GameManager.Dirtiness = 0;
+                    //chat_points = 0;
+                    //play_points = 0;
+                    //food_points = 0;
+                    //water_points = 0;
                 }
                 break;
         }

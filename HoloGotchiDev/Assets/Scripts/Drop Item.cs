@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DropItem : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class DropItem : MonoBehaviour
     [SerializeField] 
     private InterProcessCommunicator communicator;
 
+    private float time;
+
     /// <summary>
     /// Will run to delete the duplicated object after falling below a certain point
     /// </summary>
-    private void Update()
+    private void FixedUpdate()
     {
         if (duplicate != null && duplicate.GetComponent<RectTransform>().anchoredPosition.y <= -4000)
         {
@@ -24,8 +27,14 @@ public class DropItem : MonoBehaviour
             Destroy(duplicate);
             duplicate = null;
 
+            // Interactable buffer
+            while(time >= 10.0f)
+            {
+                time += Time.deltaTime;
+            }
+
             // Reinstate the button to continue function
-            objectToDuplicate.SetActive(true);
+            objectToDuplicate.GetComponent<Button>().interactable = true;
         }
     }
 
@@ -51,6 +60,6 @@ public class DropItem : MonoBehaviour
         }
 
         // Allow the dropping without spamming
-        objectToDuplicate.SetActive(false);
+        objectToDuplicate.GetComponent<Button>().interactable = false;
     }
 }
