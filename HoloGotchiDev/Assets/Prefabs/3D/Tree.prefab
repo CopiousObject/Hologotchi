@@ -51,14 +51,14 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: bc7abe1be61a1234489ad2f306f189ac, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b9cdc5e52382273469aaf59d17092d5e, type: 2}
+      objectReference: {fileID: 2100000, guid: 66e9a7c4126f5a74d8f2ca4aff1e72f3, type: 2}
     - target: {fileID: -7511558181221131132, guid: bc7abe1be61a1234489ad2f306f189ac, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: ce4a6960d964dff48aad379421a2aae5, type: 2}
     - target: {fileID: 919132149155446097, guid: bc7abe1be61a1234489ad2f306f189ac, type: 3}
       propertyPath: m_Name
-      value: Tree_Low_AltUV
+      value: Tree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
