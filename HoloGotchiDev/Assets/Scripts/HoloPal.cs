@@ -1,5 +1,5 @@
 using LookingGlass;
-using System;
+//using System;
 using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -95,6 +95,8 @@ public class HoloPal : MonoBehaviour
 
     [SerializeField]
     private GameObject eggModel;
+    [SerializeField]
+    private GameObject holopalMesh;
 
     // private IState[] baby_behaviors = {
     //     new WanderState(3, wander_points)
@@ -117,6 +119,7 @@ public class HoloPal : MonoBehaviour
     public GameManager GameManager => gameManager;
     public ParticleSystem Flies => flies;
     public InterProcessCommunicator Communicator => communicator;
+    public GrowthState Growth_State => growth_state;
 
     private void Start()
     {
@@ -129,7 +132,7 @@ public class HoloPal : MonoBehaviour
         chatBubble.alpha = 0f;
 
         growth_state = GrowthState.Egg;
-        growthTime = 15f;
+        growthTime = Random.Range(1.0f, 6.0f) * 60;
     }
 
     /// <summary>
@@ -158,40 +161,16 @@ public class HoloPal : MonoBehaviour
         {
             case GrowthState.Egg:
                 // Decays
-                gameManager.DirtSpeed = 2.5f;
-                if (water_points > 0 && thirstTime >= 2.5f)
-                {
-                    water_points -= water_decay;
-                    thirstTime -= thirstTime;
-                }
-                if (food_points > 0 && hungerTime >= 2.5f)
-                {
-                    food_points -= food_decay;
-                    hungerTime -= hungerTime;
-                }
-                if (play_points > 0 && playTime >= 2.5f)
-                {
-                    play_points -= play_decay;
-                    playTime -= playTime;
-                }
-                if (chat_points > 0 && chatTime >= 0.75f)
-                {
-                    chat_points -= chat_decay;
-                    chatTime -= chatTime;
-                }
+                gameManager.DirtSpeed = 10f;
                 // Progress stage
-                if (chat >= 0.90f)
-                {
-                    growthTime -= Time.deltaTime;
-                }
+                growthTime -= Time.deltaTime;
                 if (growthTime <= 0f)
                 {
                     eggModel.SetActive(false);
+                    holopalMesh.SetActive(true);
 
                     growth_state = GrowthState.Baby;
-                    growthTime = 30f;
-
-                    mesh_renderer.SetBlendShapeWeight(4, 33);
+                    growthTime = 5f;
                 }
                 break;
             case GrowthState.Baby:
@@ -226,9 +205,9 @@ public class HoloPal : MonoBehaviour
                 if (growthTime <= 0f)
                 {
                     growth_state = GrowthState.Child;
-                    growthTime = 60f;
+                    growthTime = 5f;
 
-                    mesh_renderer.SetBlendShapeWeight(4, 66);
+                    mesh_renderer.SetBlendShapeWeight(4, 50);
                 }
                 break;
             case GrowthState.Child:
@@ -263,7 +242,7 @@ public class HoloPal : MonoBehaviour
                 if (growthTime <= 0f)
                 {
                     growth_state = GrowthState.Adult;
-                    growthTime = 60f;
+                    growthTime = 5f;
 
                     mesh_renderer.SetBlendShapeWeight(4, 100);
                 }
@@ -302,8 +281,10 @@ public class HoloPal : MonoBehaviour
                     eggModel.SetActive(true);
 
                     growth_state = GrowthState.Egg;
-                    growthTime = 15f;
+                    growthTime = Random.Range(1.0f, 6.0f) * 60; ;
 
+                    holopalMesh.SetActive(false);
+                    eggModel.SetActive(true);
                     mesh_renderer.SetBlendShapeWeight(4, 0);
                 }
                 break;
