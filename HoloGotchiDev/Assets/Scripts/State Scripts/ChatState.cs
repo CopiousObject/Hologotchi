@@ -5,6 +5,9 @@ using UnityEngine;
 public class ChatState : IState
 {
     GameObject chat_target;
+    private List<string> babyChats = new List<string> {"Haha!","Aaaaa!","Waaaaa!","wAhHh!"};
+    private List<string> childChats = new List<string> { "bababaa...", "da- da- da-", "ma- ma- ma-", "buh buh buh..." };
+    private List<string> adultChats = new List<string> { "Papa!", "Mama!", "Hello!", "Love you!"};
 
     public ChatState(GameObject chat_target)
     {
@@ -46,6 +49,20 @@ public class ChatState : IState
         holopal.ChatBubble.alpha = 1f;
         float elapsed = 0f;
         float Total = 3f;
+        switch(holopal.Growth_State)
+        {
+            case GrowthState.Baby:
+                holopal.ChatBubble.text = babyChats[Random.Range(0, 3)];
+                break;
+            case GrowthState.Child:
+                holopal.ChatBubble.text = childChats[Random.Range(0, 3)];
+                break;
+            case GrowthState.Adult:
+                holopal.ChatBubble.text = adultChats[Random.Range(0, 3)];
+                break;
+            default:
+            break;
+        }
         while (elapsed < Total)
         {
             holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0,0,0),Vector3.up);
