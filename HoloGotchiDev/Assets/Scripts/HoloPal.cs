@@ -1,5 +1,4 @@
 using LookingGlass;
-//using System;
 using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -16,6 +15,8 @@ public enum GrowthState
 public class HoloPal : MonoBehaviour
 {
     public bool debugMode = false;
+    [Range(1, 100)] public float timeMultiplier;
+    private float prevTimeMultiplier = 0;
 
     // Sends the messages for IPC
     [SerializeField]
@@ -136,7 +137,7 @@ public class HoloPal : MonoBehaviour
         growth_state = GrowthState.Egg;
         if (debugMode)
         {
-            growthTime = 10f;
+            growthTime = (Random.Range(1.0f, 6.0f) * 60) / timeMultiplier;
         }
         else
         {
@@ -160,6 +161,18 @@ public class HoloPal : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        if (Input.GetKeyUp(KeyCode.Backspace))
+        {
+            if (!debugMode)
+            {
+                debugMode = true;
+            }
+            else
+            {
+                debugMode = false;
+            }
+        }
+
         hungerTime += Time.deltaTime;
         thirstTime += Time.deltaTime;
         playTime += Time.deltaTime;
@@ -181,7 +194,7 @@ public class HoloPal : MonoBehaviour
                     growth_state = GrowthState.Baby;
                     if (debugMode)
                     {
-                        growthTime = 10f;
+                        growthTime = (Random.Range(10f, 20f) * 60f) / timeMultiplier;
                     }
                     else
                     {
@@ -251,7 +264,7 @@ public class HoloPal : MonoBehaviour
                     growth_state = GrowthState.Child;
                     if (debugMode)
                     {
-                        growthTime = 10f;
+                        growthTime = (Random.Range(20f, 40f) * 60f) / timeMultiplier;
                     }
                     else
                     {
@@ -322,7 +335,7 @@ public class HoloPal : MonoBehaviour
                     growth_state = GrowthState.Adult;
                     if (debugMode)
                     {
-                        growthTime = 10f;
+                        growthTime = (Random.Range(30f, 60f) * 60f) / timeMultiplier;
                     }
                     else
                     {
@@ -395,7 +408,7 @@ public class HoloPal : MonoBehaviour
                     growth_state = GrowthState.Egg;
                     if (debugMode)
                     {
-                        growthTime = 10f;
+                        growthTime = (Random.Range(1.0f, 6.0f) * 60) / timeMultiplier;
                     }
                     else
                     {
@@ -439,6 +452,12 @@ public class HoloPal : MonoBehaviour
         if (current_state == null)
         {
             ChangeState(new WanderState(wander_wait_time, wander_points));
+        }
+
+        if(prevTimeMultiplier != timeMultiplier && debugMode)
+        {
+            prevTimeMultiplier = timeMultiplier;
+            growthTime /= timeMultiplier;
         }
 
         current_state.UpdateState(this);
