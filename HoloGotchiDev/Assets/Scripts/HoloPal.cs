@@ -149,7 +149,7 @@ public class HoloPal : MonoBehaviour
     /// <summary>
     /// Determines the state changes and the evolution states as the HoloPal grows up
     /// </summary>
-    private void FixedUpdate()
+    private void Update()
     {
         hungerTime += Time.deltaTime;
         thirstTime += Time.deltaTime;
