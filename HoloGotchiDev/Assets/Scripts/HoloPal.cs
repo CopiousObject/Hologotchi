@@ -15,6 +15,8 @@ public enum GrowthState
 
 public class HoloPal : MonoBehaviour
 {
+    public bool debugMode = false;
+
     // Sends the messages for IPC
     [SerializeField]
     private InterProcessCommunicator communicator;
@@ -132,7 +134,14 @@ public class HoloPal : MonoBehaviour
         chatBubble.alpha = 0f;
 
         growth_state = GrowthState.Egg;
-        growthTime = Random.Range(1.0f, 6.0f) * 60;
+        if (debugMode)
+        {
+            growthTime = 10f;
+        }
+        else
+        {
+            growthTime = Random.Range(1.0f, 6.0f) * 60;
+        }
     }
 
     /// <summary>
@@ -170,32 +179,66 @@ public class HoloPal : MonoBehaviour
                     holopalMesh.SetActive(true);
 
                     growth_state = GrowthState.Baby;
-                    growthTime = 5f;
+                    if (debugMode)
+                    {
+                        growthTime = 10f;
+                    }
+                    else
+                    {
+                        growthTime = Random.Range(10f, 20f) * 60f;
+                    }
                     communicator.SendData("Egg State Exited");
                 }
                 break;
             case GrowthState.Baby:
                 // Decays
-                gameManager.DirtSpeed = 1f;
-                if (water_points > 0 && thirstTime >= 1.25f)
+                if (debugMode)
                 {
-                    water_points -= water_decay;
-                    thirstTime -= thirstTime;
+                    gameManager.DirtSpeed = 1f;
+                    if (water_points > 0 && thirstTime >= 1.25f)
+                    {
+                        water_points -= water_decay;
+                        thirstTime -= thirstTime;
+                    }
+                    if (food_points > 0 && hungerTime >= 1.5f)
+                    {
+                        food_points -= food_decay;
+                        hungerTime -= hungerTime;
+                    }
+                    if (play_points > 0 && playTime >= 1.5f)
+                    {
+                        play_points -= play_decay;
+                        playTime -= playTime;
+                    }
+                    if (chat_points > 0 && chatTime >= 1f)
+                    {
+                        chat_points -= chat_decay;
+                        chatTime -= chatTime;
+                    }
                 }
-                if (food_points > 0 && hungerTime >= 1.5f)
+                else
                 {
-                    food_points -= food_decay;
-                    hungerTime -= hungerTime;
-                }
-                if (play_points > 0 && playTime >= 1.5f)
-                {
-                    play_points -= play_decay;
-                    playTime -= playTime;
-                }
-                if (chat_points > 0 && chatTime >= 1f)
-                {
-                    chat_points -= chat_decay;
-                    chatTime -= chatTime;
+                    gameManager.DirtSpeed = 10f;
+                    if (water_points > 0 && thirstTime >= 12.5f)
+                    {
+                        water_points -= water_decay;
+                        thirstTime -= thirstTime;
+                    }
+                    if (food_points > 0 && hungerTime >= 15f)
+                    {
+                        food_points -= food_decay;
+                        hungerTime -= hungerTime;
+                    }
+                    if (play_points > 0 && playTime >= 15f)
+                    {
+                        play_points -= play_decay;
+                        playTime -= playTime;
+                    }
+                    if (chat_points > 0 && chatTime >= 10f)
+                    {
+                        chat_points -= chat_decay;
+                        chatTime -= chatTime;
+                    }
                 }
                 // Progress stage
                 if (hunger >= 0.85f && thirst >= 0.90f && gameManager.Dirtiness >= 0.60f
@@ -206,33 +249,67 @@ public class HoloPal : MonoBehaviour
                 if (growthTime <= 0f)
                 {
                     growth_state = GrowthState.Child;
-                    growthTime = 5f;
+                    if (debugMode)
+                    {
+                        growthTime = 10f;
+                    }
+                    else
+                    {
+                        growthTime = Random.Range(20f, 40f) * 60f;
+                    }
 
-                    mesh_renderer.SetBlendShapeWeight(4, 50);
+                        mesh_renderer.SetBlendShapeWeight(4, 50);
                 }
                 break;
             case GrowthState.Child:
                 // Decays
-                gameManager.DirtSpeed = 1f;
-                if (water_points > 0 && thirstTime >= 1f)
+                if (debugMode)
                 {
-                    water_points -= water_decay;
-                    thirstTime -= thirstTime;
+                    gameManager.DirtSpeed = 1f;
+                    if (water_points > 0 && thirstTime >= 1f)
+                    {
+                        water_points -= water_decay;
+                        thirstTime -= thirstTime;
+                    }
+                    if (food_points > 0 && hungerTime >= 1.25f)
+                    {
+                        food_points -= food_decay;
+                        hungerTime -= hungerTime;
+                    }
+                    if (play_points > 0 && playTime >= 1.25f)
+                    {
+                        play_points -= play_decay;
+                        playTime -= playTime;
+                    }
+                    if (chat_points > 0 && chatTime >= 1.5f)
+                    {
+                        chat_points -= chat_decay;
+                        chatTime -= chatTime;
+                    }
                 }
-                if (food_points > 0 && hungerTime >= 1.25f)
+                else
                 {
-                    food_points -= food_decay;
-                    hungerTime -= hungerTime;
-                }
-                if (play_points > 0 && playTime >= 1.25f)
-                {
-                    play_points -= play_decay;
-                    playTime -= playTime;
-                }
-                if (chat_points > 0 && chatTime >= 1.5f)
-                {
-                    chat_points -= chat_decay;
-                    chatTime -= chatTime;
+                    gameManager.DirtSpeed = 10f;
+                    if (water_points > 0 && thirstTime >= 10f)
+                    {
+                        water_points -= water_decay;
+                        thirstTime -= thirstTime;
+                    }
+                    if (food_points > 0 && hungerTime >= 12.5f)
+                    {
+                        food_points -= food_decay;
+                        hungerTime -= hungerTime;
+                    }
+                    if (play_points > 0 && playTime >= 12.5f)
+                    {
+                        play_points -= play_decay;
+                        playTime -= playTime;
+                    }
+                    if (chat_points > 0 && chatTime >= 15f)
+                    {
+                        chat_points -= chat_decay;
+                        chatTime -= chatTime;
+                    }
                 }
                 // Progress stage
                 if (hunger >= 0.80f && thirst >= 0.85f && gameManager.Dirtiness >= 0.75f
@@ -243,33 +320,67 @@ public class HoloPal : MonoBehaviour
                 if (growthTime <= 0f)
                 {
                     growth_state = GrowthState.Adult;
-                    growthTime = 5f;
+                    if (debugMode)
+                    {
+                        growthTime = 10f;
+                    }
+                    else
+                    {
+                        growthTime = Random.Range(30f, 60f) * 60f;
+                    }
 
                     mesh_renderer.SetBlendShapeWeight(4, 100);
                 }
                 break;
             case GrowthState.Adult:
                 // Decays
-                gameManager.DirtSpeed = 1.5f;
-                if (water_points > 0 && thirstTime >= 1.25f)
+                if (debugMode)
                 {
-                    water_points -= water_decay;
-                    thirstTime -= thirstTime;
+                    gameManager.DirtSpeed = 1.5f;
+                    if (water_points > 0 && thirstTime >= 1.25f)
+                    {
+                        water_points -= water_decay;
+                        thirstTime -= thirstTime;
+                    }
+                    if (food_points > 0 && hungerTime >= 1.5f)
+                    {
+                        food_points -= food_decay;
+                        hungerTime -= hungerTime;
+                    }
+                    if (play_points > 0 && playTime >= 1.75f)
+                    {
+                        play_points -= play_decay;
+                        playTime -= playTime;
+                    }
+                    if (chat_points > 0 && chatTime >= 1.5f)
+                    {
+                        chat_points -= chat_decay;
+                        chatTime -= chatTime;
+                    }
                 }
-                if (food_points > 0 && hungerTime >= 1.5f)
+                else
                 {
-                    food_points -= food_decay;
-                    hungerTime -= hungerTime;
-                }
-                if (play_points > 0 && playTime >= 1.75f)
-                {
-                    play_points -= play_decay;
-                    playTime -= playTime;
-                }
-                if (chat_points > 0 && chatTime >= 1.5f)
-                {
-                    chat_points -= chat_decay;
-                    chatTime -= chatTime;
+                    gameManager.DirtSpeed = 15f;
+                    if (water_points > 0 && thirstTime >= 12.5f)
+                    {
+                        water_points -= water_decay;
+                        thirstTime -= thirstTime;
+                    }
+                    if (food_points > 0 && hungerTime >= 15f)
+                    {
+                        food_points -= food_decay;
+                        hungerTime -= hungerTime;
+                    }
+                    if (play_points > 0 && playTime >= 17.5f)
+                    {
+                        play_points -= play_decay;
+                        playTime -= playTime;
+                    }
+                    if (chat_points > 0 && chatTime >= 15f)
+                    {
+                        chat_points -= chat_decay;
+                        chatTime -= chatTime;
+                    }
                 }
                 // Progress stage
                 if (hunger >= 0.60f && thirst >= 0.70f && gameManager.Dirtiness >= 0.60f
@@ -282,18 +393,20 @@ public class HoloPal : MonoBehaviour
                     eggModel.SetActive(true);
 
                     growth_state = GrowthState.Egg;
-                    growthTime = Random.Range(1.0f, 6.0f) * 60; ;
+                    if (debugMode)
+                    {
+                        growthTime = 10f;
+                    }
+                    else
+                    {
+                        growthTime = Random.Range(1.0f, 6.0f) * 60;
+                    }
 
                     holopalMesh.SetActive(false);
                     eggModel.SetActive(true);
                     mesh_renderer.SetBlendShapeWeight(4, 0);
 
                     communicator.SendData("Egg State Entered");
-                    //GameManager.Dirtiness = 0;
-                    //chat_points = 0;
-                    //play_points = 0;
-                    //food_points = 0;
-                    //water_points = 0;
                 }
                 break;
         }

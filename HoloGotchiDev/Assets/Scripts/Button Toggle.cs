@@ -35,19 +35,11 @@ public class ButtonToggle : MonoBehaviour
     {
         if (buttonsEnabled)
         {
-            waterButton.GetComponent<Button>().interactable = true;
-            playButton.GetComponent<Button>().interactable = true;
-            chatButton.GetComponent<Button>().interactable = true;
-            foodButton.GetComponent<Button>().interactable = true;
-            cleanButton.GetComponent<Button>().interactable = true;
+            Activate();
         }
         else
         {
-            waterButton.GetComponent<Button>().interactable = false;
-            playButton.GetComponent<Button>().interactable = false;
-            chatButton.GetComponent<Button>().interactable = false;
-            foodButton.GetComponent<Button>().interactable = false;
-            cleanButton.GetComponent<Button>().interactable = false;
+            Deactivate();
         }
     }
 
@@ -55,5 +47,25 @@ public class ButtonToggle : MonoBehaviour
     {
         if (message == "Egg State Exited") buttonsEnabled = true;
         if (message == "Egg State Entered") buttonsEnabled = false;
+    }
+
+    public void Activate()
+    {
+        buttonsEnabled = true;
+        waterButton.GetComponent<Button>().interactable = true;
+        playButton.GetComponent<Button>().interactable = true;
+        chatButton.GetComponent<Button>().interactable = true;
+        foodButton.GetComponent<Button>().interactable = true;
+        cleanButton.GetComponent<Button>().interactable = true;
+    }
+
+    public void Deactivate()
+    {
+        buttonsEnabled = false;
+        waterButton.GetComponent<Button>().interactable = false;
+        playButton.GetComponent<Button>().interactable = false;
+        chatButton.GetComponent<Button>().interactable = false;
+        foodButton.GetComponent<Button>().interactable = false;
+        cleanButton.GetComponent<Button>().interactable = false;
     }
 }
