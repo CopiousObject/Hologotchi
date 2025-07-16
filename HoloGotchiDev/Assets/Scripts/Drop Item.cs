@@ -26,7 +26,7 @@ public class DropItem : MonoBehaviour
             duplicate = null;
 
             // Reinstate the button to continue function
-            objectToDuplicate.SetActive(true);
+            objectToDuplicate.GetComponent<ButtonToggle>().Activate();
         }
     }
 
@@ -52,6 +52,6 @@ public class DropItem : MonoBehaviour
         }
 
         // Allow the dropping without spamming
-        objectToDuplicate.SetActive(false);
+        objectToDuplicate.GetComponent<ButtonToggle>().Deactivate();
     }
 }

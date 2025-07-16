@@ -419,6 +419,13 @@ public class HoloPal : MonoBehaviour
                     eggModel.SetActive(true);
                     mesh_renderer.SetBlendShapeWeight(4, 0);
 
+                    // Stat reset
+                    GameManager.Dirtiness = 0;
+                    chat_points = 100;
+                    play_points = 100;
+                    food_points = 100;
+                    water_points = 100;
+
                     communicator.SendData("Egg State Entered");
                 }
                 break;

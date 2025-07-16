@@ -6396,7 +6396,7 @@ PrefabInstance:
       objectReference: {fileID: 1749971491}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: debugMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: chatBubble
