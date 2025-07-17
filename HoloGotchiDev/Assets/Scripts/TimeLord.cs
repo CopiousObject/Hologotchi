@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class TimeLord : MonoBehaviour
 {
+    [Range(0, 100)]
     public float TimeScale = 1;
+
+    [SerializeField]
+    private float TotalTime;
+    [SerializeField]
+    private float DeltaTime;
 
     private float OGFixedTimeStep;
 
@@ -33,5 +39,8 @@ public class TimeLord : MonoBehaviour
 
         Time.timeScale = TimeScale;
         Time.fixedDeltaTime = OGFixedTimeStep * TimeScale;
+
+        TotalTime = Time.time;
+        DeltaTime = Time.deltaTime;
     }
 }

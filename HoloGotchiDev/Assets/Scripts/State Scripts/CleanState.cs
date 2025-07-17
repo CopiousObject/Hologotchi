@@ -35,7 +35,7 @@ public class CleanState : IState
         if (other.gameObject == clean_target)
         {
             //Play cleaning anim and reverse dirtiness over duration
-            holopal.GameManager.Dirtiness = 0f;
+            holopal.clean = 1f;
             holopal.Spawner.CleanObjects.Remove(clean_target);
             Object.Destroy(other.gameObject);
         }

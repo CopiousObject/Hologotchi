@@ -4,25 +4,49 @@ using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
-public enum GrowthState
+public enum GrowthStage
 {
-    Egg,
+    Egg = 0,
     Baby,
     Child,
     Adult,
 }
 
+[Serializable]
+public struct StageData
+{
+    [Min(0)]
+    public float StageDurationInDays;
+    public float MinBlendShape;
+    public float MaxBlendShape;
+
+    [Min(0)]
+    public float FoodTimesPerDay;
+    [Min(0)]
+    public float WaterTimesPerDay;
+    [Min(0)]
+    public float PlayTimesPerDay;
+    [Min(0)]
+    public float ChatTimesPerDay;
+    [Min(0)]
+    public float CleanTimesPerDay;
+}
+
 public class HoloPal : MonoBehaviour
 {
+    private const int SECONDS_IN_DAY = 86400;
+    private const float DAYS_IN_SECOND = 1f / SECONDS_IN_DAY;
+
     // Sends the messages for IPC
     [SerializeField]
     private InterProcessCommunicator communicator;
 
-    [SerializeField]
-    private GameManager gameManager;
     [SerializeField]
     private Spawner spawner;
     [SerializeField]
@@ -40,48 +64,15 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private SkinnedMeshRenderer mesh_renderer;
 
-    // Hunger tracking fields
-    private int food_points;
-    [SerializeField]
-    private int max_food_points;
-    [SerializeField]
-    private int food_decay;
-    private float hunger => (float)food_points / max_food_points;
+    public StageData[] stage_data;
+    public GrowthStage current_stage;
 
-    // Thirst tracking fields
-    private int water_points;
-    [SerializeField]
-    private int max_water_points;
-    [SerializeField]
-    private int water_decay;
-    private float thirst => (float)water_points / max_water_points;
-
-    // Play tracking fields
-    private int play_points;
-    [SerializeField]
-    private int max_play_points;
-    [SerializeField]
-    private int play_decay;
-    private float playfulness => (float)play_points / max_play_points;
-
-    private int chat_points;
-    [SerializeField]
-    private int max_chat_points;
-    [SerializeField]
-    private int chat_decay;
-    private float chat => (float)chat_points / max_chat_points;
-
-    // Evolution/Growth tracking fields
-    [SerializeField]
-    private int total_growth;
-    [SerializeField]
-    private int stage_growth;
-    [SerializeField]
-    private GrowthState growth_state;
-
-    // The thresholds for when the HoloPal will evolve
-    [SerializeField]
-    private int[] growth_stage_thresholds;
+    public float growth;
+    public float food;
+    public float water;
+    public float play;
+    public float chat;
+    public float clean;
 
     // Wander related tracking
     [SerializeField]
@@ -102,48 +93,30 @@ public class HoloPal : MonoBehaviour
     private DateTime next_act_out_time;
     private int act_out_stage;
 
-    private float hungerTime;
-    private float thirstTime;
-    private float playTime;
-    private float chatTime;
-    private float growthTime;
-
     [SerializeField]
     private GameObject eggModel;
     [SerializeField]
     private GameObject holopalMesh;
-
 
     IState current_state;
 
     // Properties
     public Spawner Spawner => spawner;
     public NavMeshAgent Nav_Agent => nav_agent;
-    public int Food_Points { get => food_points; set { food_points = value; } }
-    public float Hunger { get => hunger; }
-    public int Water_Points { get => water_points; set { water_points = value; } }
-    public float Thirst => thirst;
-    public float Playfulness => playfulness;
-    public int Chat_Points { get => chat_points; set { chat_points = value; } }
-    public float Chat => chat;
     public TextMeshPro ChatBubble { get => chatBubble; set { chatBubble = value; } }
-    public GameManager GameManager => gameManager;
-    public ParticleSystem Flies => flies;
     public InterProcessCommunicator Communicator => communicator;
-    public GrowthState Growth_State => growth_state;
 
     private void Start()
     {
         communicator.OnMessageReceived += ReceiveMessage;
 
-        water_points = max_water_points;
-        food_points = max_food_points;
-        play_points = max_play_points;
-        chat_points = max_chat_points;
-        chatBubble.alpha = 0f;
+        food = 1f;
+        water = 1f;
+        play = 1f;
+        chat = 1f;
+        clean = 1f;
 
-        growth_state = GrowthState.Egg;
-        growthTime = Random.Range(1.0f, 6.0f) * 60;
+        chatBubble.alpha = 0f;
 
         next_act_out_time = DateTime.Now;
     }
@@ -164,190 +137,60 @@ public class HoloPal : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        hungerTime += Time.deltaTime;
-        thirstTime += Time.deltaTime;
-        playTime += Time.deltaTime;
-        chatTime += Time.deltaTime;
+        growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInDays * SECONDS_IN_DAY);
 
-        // Growth Rework
-        switch (growth_state)
+        if (growth >= 1)
         {
-            case GrowthState.Egg:
-                // Decays
-                gameManager.DirtSpeed = 10f;
-                // Progress stage
-                growthTime -= Time.deltaTime;
-                if (growthTime <= 0f)
-                {
-                    eggModel.SetActive(false);
-                    holopalMesh.SetActive(true);
+            // exceptions for egg state
+            if (current_stage == 0)
+            {
+                eggModel.SetActive(false);
+                holopalMesh.SetActive(true);
+                communicator.SendData("Egg State Exited");
+            }
+            if ((int)current_stage == stage_data.Length - 1)
+            {
+                eggModel.SetActive(true);
+                holopalMesh.SetActive(false);
+                communicator.SendData("Egg State Entered");
 
-                    growth_state = GrowthState.Baby;
-                    growthTime = 5f;
-                    communicator.SendData("Egg State Exited");
-                }
-                break;
-            case GrowthState.Baby:
-                // Decays
-                gameManager.DirtSpeed = 1f;
-                if (water_points > 0 && thirstTime >= 1.25f)
-                {
-                    water_points -= water_decay;
-                    thirstTime -= thirstTime;
-                }
-                if (food_points > 0 && hungerTime >= 1.5f)
-                {
-                    food_points -= food_decay;
-                    hungerTime -= hungerTime;
-                }
-                if (play_points > 0 && playTime >= 1.5f)
-                {
-                    play_points -= play_decay;
-                    playTime -= playTime;
-                }
-                if (chat_points > 0 && chatTime >= 1f)
-                {
-                    chat_points -= chat_decay;
-                    chatTime -= chatTime;
-                }
-                // Progress stage
-                if (hunger >= 0.85f && thirst >= 0.90f && gameManager.Dirtiness >= 0.60f
-                    && chat >= 0.75f && playfulness >= 0.80f)
-                {
-                    growthTime -= Time.deltaTime;
-                }
-                if (growthTime <= 0f)
-                {
-                    growth_state = GrowthState.Child;
-                    growthTime = 5f;
+                food = 1f;
+                water = 1f;
+                play = 1f;
+                chat = 1f;
+                clean = 1f;
+            }
 
-                    mesh_renderer.SetBlendShapeWeight(4, 50);
-                }
-                break;
-            case GrowthState.Child:
-                // Decays
-                gameManager.DirtSpeed = 1f;
-                if (water_points > 0 && thirstTime >= 1f)
-                {
-                    water_points -= water_decay;
-                    thirstTime -= thirstTime;
-                }
-                if (food_points > 0 && hungerTime >= 1.25f)
-                {
-                    food_points -= food_decay;
-                    hungerTime -= hungerTime;
-                }
-                if (play_points > 0 && playTime >= 1.25f)
-                {
-                    play_points -= play_decay;
-                    playTime -= playTime;
-                }
-                if (chat_points > 0 && chatTime >= 1.5f)
-                {
-                    chat_points -= chat_decay;
-                    chatTime -= chatTime;
-                }
-                // Progress stage
-                if (hunger >= 0.80f && thirst >= 0.85f && gameManager.Dirtiness >= 0.75f
-                    && chat >= 0.75f && playfulness >= 0.90f)
-                {
-                    growthTime -= Time.deltaTime;
-                }
-                if (growthTime <= 0f)
-                {
-                    growth_state = GrowthState.Adult;
-                    growthTime = 5f;
-
-                    mesh_renderer.SetBlendShapeWeight(4, 100);
-                }
-                break;
-            case GrowthState.Adult:
-                // Decays
-                gameManager.DirtSpeed = 1.5f;
-                if (water_points > 0 && thirstTime >= 1.25f)
-                {
-                    water_points -= water_decay;
-                    thirstTime -= thirstTime;
-                }
-                if (food_points > 0 && hungerTime >= 1.5f)
-                {
-                    food_points -= food_decay;
-                    hungerTime -= hungerTime;
-                }
-                if (play_points > 0 && playTime >= 1.75f)
-                {
-                    play_points -= play_decay;
-                    playTime -= playTime;
-                }
-                if (chat_points > 0 && chatTime >= 1.5f)
-                {
-                    chat_points -= chat_decay;
-                    chatTime -= chatTime;
-                }
-                // Progress stage
-                if (hunger >= 0.60f && thirst >= 0.70f && gameManager.Dirtiness >= 0.60f
-                    && chat >= 0.60f && playfulness >= 0.70f)
-                {
-                    growthTime -= Time.deltaTime;
-                }
-                if (growthTime <= 0f)
-                {
-                    eggModel.SetActive(true);
-
-                    growth_state = GrowthState.Egg;
-                    growthTime = Random.Range(1.0f, 6.0f) * 60; ;
-
-                    holopalMesh.SetActive(false);
-                    eggModel.SetActive(true);
-                    mesh_renderer.SetBlendShapeWeight(4, 0);
-
-                    // Stat reset
-                    GameManager.Dirtiness = 0;
-                    chat_points = 100;
-                    play_points = 100;
-                    food_points = 100;
-                    water_points = 100;
-
-                    communicator.SendData("Egg State Entered");
-                    //GameManager.Dirtiness = 0;
-                    //chat_points = 0;
-                    //play_points = 0;
-                    //food_points = 0;
-                    //water_points = 0;
-                }
-                break;
+            current_stage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
+            growth = 0;
         }
 
-        // Clamps to make sure we stay in range
-        if (chat_points > 100)
-        {
-            chat_points = 100;
-        }
-        if(food_points > 100)
-        {
-            food_points = 100;
-        }
-        if(water_points > 100)
-        {
-            water_points = 100;
-        }
-        if(play_points > 100)
-        {
-            play_points = 100;
-        }
+        food -= stage_data[(int)current_stage].FoodTimesPerDay * DAYS_IN_SECOND * Time.deltaTime;
+        water -= stage_data[(int)current_stage].WaterTimesPerDay * DAYS_IN_SECOND * Time.deltaTime;
+        play -= stage_data[(int)current_stage].PlayTimesPerDay * DAYS_IN_SECOND * Time.deltaTime;
+        chat -= stage_data[(int)current_stage].ChatTimesPerDay * DAYS_IN_SECOND * Time.deltaTime;
+        clean -= stage_data[(int)current_stage].CleanTimesPerDay * DAYS_IN_SECOND * Time.deltaTime;
 
-        if (chat < 0.15f || playfulness < 0.15f || hunger < 0.15f || thirst < 0.15f)
+        food = Mathf.Clamp01(food);
+        water = Mathf.Clamp01(water);
+        play = Mathf.Clamp01(play);
+        chat = Mathf.Clamp01(chat);
+        clean = Mathf.Clamp01(clean);
+
+        mesh_renderer.SetBlendShapeWeight(4, Mathf.Lerp(stage_data[(int)current_stage].MinBlendShape, stage_data[(int)current_stage].MaxBlendShape, growth));
+
+        if (chat < 0.15f || play < 0.15f || food < 0.15f || water < 0.15f)
         {
             if (DateTime.Now >= next_act_out_time)
             {
                 if (Random.Range(0f, 1f) <= act_out_chance)
                 {
-                    overlay_image.enabled = true; // UI image with no sprite is a giant white square
+                    overlay_image.enabled = true; // UI image with no sprite is a giant white square so disabled by default
                     overlay_image.sprite = broken_glass_images[Mathf.Min(act_out_stage, broken_glass_images.Length - 1)];
                     act_out_stage++;
                 }
 
-                next_act_out_time = DateTime.Now + TimeSpan.FromSeconds(act_out_interval_seconds);
+                next_act_out_time = DateTime.Now + TimeSpan.FromSeconds(act_out_interval_seconds / Time.timeScale);
             }
         }
 
@@ -355,7 +198,7 @@ public class HoloPal : MonoBehaviour
         SendMessages();
 
         // Figure out how to ease at some point
-        if (gameManager.Dirtiness > 80) flies.gameObject.SetActive(true);
+        if (clean < 0.2f) flies.gameObject.SetActive(true);
         else flies.gameObject.SetActive(false);
 
         if (current_state == null)
@@ -373,17 +216,18 @@ public class HoloPal : MonoBehaviour
 
     private void SendMessages()
     {
-        communicator.SendData("Hunger," + hunger);
-        communicator.SendData("Thirst," + thirst);
-        communicator.SendData("Play," + playfulness);
+        communicator.SendData("Hunger," + food);
+        communicator.SendData("Thirst," + water);
+        communicator.SendData("Play," + play);
         communicator.SendData("Chat," + chat);
+        communicator.SendData("Dirtiness," + clean);
     }
 
     private void ReceiveMessage(string message)
     {
         if (message == "Stopped Playing")
         {
-            play_points += 20;
+            play = 1f;
             ChangeState(null);
         }
     }

@@ -15,7 +15,7 @@ public class PlayState : IState
 
     public void UpdateState(HoloPal holopal)
     {
-        if (!ball_target || holopal.Playfulness >= 0.8f)
+        if (!ball_target || holopal.play >= 0.8f)
         {
             holopal.ChangeState(null);
             return;

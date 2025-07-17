@@ -38,7 +38,7 @@ public class ChatState : IState
     {
         if (other.gameObject == chat_target)
         {
-            holopal.Chat_Points += 20;
+            holopal.chat = 1f;
             holopal.Spawner.ChatObjects.Remove(chat_target);
             Object.Destroy(other.gameObject);
         }
@@ -49,15 +49,15 @@ public class ChatState : IState
         holopal.ChatBubble.alpha = 1f;
         float elapsed = 0f;
         float Total = 3f;
-        switch(holopal.Growth_State)
+        switch(holopal.current_stage)
         {
-            case GrowthState.Baby:
+            case GrowthStage.Baby:
                 holopal.ChatBubble.text = babyChats[Random.Range(0, 3)];
                 break;
-            case GrowthState.Child:
+            case GrowthStage.Child:
                 holopal.ChatBubble.text = childChats[Random.Range(0, 3)];
                 break;
-            case GrowthState.Adult:
+            case GrowthStage.Adult:
                 holopal.ChatBubble.text = adultChats[Random.Range(0, 3)];
                 break;
             default:

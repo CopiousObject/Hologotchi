@@ -79,7 +79,7 @@ public class TrackStats : MonoBehaviour
                     break;
 
                 case "Dirtiness":
-                    sliders[4].value = 1 - (value / 100);
+                    sliders[4].value = value;
                     break;
             }
         }

@@ -21,32 +21,32 @@ public class WanderState : IState
             return;
         }
 
-        if (holopal.Hunger < 0.8f && holopal.Spawner.FoodObjects.Count > 0)
+        if (holopal.food < 0.8f && holopal.Spawner.FoodObjects.Count > 0)
         {
             holopal.ChangeState(new EatState(holopal.Spawner.FoodObjects[0]));
             return;
         }
 
 
-        if (holopal.Thirst < 0.8f && holopal.Spawner.WaterObjects.Count > 0)
+        if (holopal.water < 0.8f && holopal.Spawner.WaterObjects.Count > 0)
         {
             holopal.ChangeState(new DrinkState(holopal.Spawner.WaterObjects[0]));
             return;
         }
 
-        if (holopal.Playfulness < 0.8f && holopal.Spawner.PlayObjects.Count > 0)
+        if (holopal.play < 0.8f && holopal.Spawner.PlayObjects.Count > 0)
         {
             holopal.ChangeState(new PlayState(holopal.Spawner.PlayObjects[0]));
             return;
         }
 
-        if (holopal.Chat < 0.8f && holopal.Spawner.ChatObjects.Count > 0)
+        if (holopal.chat < 0.8f && holopal.Spawner.ChatObjects.Count > 0)
         {
             holopal.ChangeState(new ChatState(holopal.Spawner.ChatObjects[0]));
             return;
         }
 
-        if (holopal.GameManager.Dirtiness < 80f && holopal.Spawner.CleanObjects.Count > 0)
+        if (holopal.clean < 0.8f && holopal.Spawner.CleanObjects.Count > 0)
         {
             holopal.ChangeState(new CleanState(holopal.Spawner.CleanObjects[0]));
             return;
@@ -58,11 +58,11 @@ public class WanderState : IState
         {
             holopal.Nav_Agent.SetDestination(wander_points[Random.Range(0, wander_points.Length)]);
 
-            if ((holopal.Hunger < 0.4f && holopal.Spawner.FoodObjects.Count == 0)
-                        || (holopal.Thirst < 0.4f && holopal.Spawner.WaterObjects.Count == 0)
-                        || (holopal.Playfulness < 0.4f && holopal.Spawner.PlayObjects.Count == 0)
-                        || (holopal.Chat < 0.4f && holopal.Spawner.ChatObjects.Count == 0)
-                        || (holopal.GameManager.Dirtiness > 40f && holopal.Spawner.CleanObjects.Count == 0))
+            if ((holopal.food < 0.4f && holopal.Spawner.FoodObjects.Count == 0)
+                        || (holopal.water < 0.4f && holopal.Spawner.WaterObjects.Count == 0)
+                        || (holopal.play < 0.4f && holopal.Spawner.PlayObjects.Count == 0)
+                        || (holopal.chat < 0.4f && holopal.Spawner.ChatObjects.Count == 0)
+                        || (holopal.clean < 0.4f && holopal.Spawner.CleanObjects.Count == 0))
             {
                 holopal.StartCoroutine(Annoyed(holopal));
             }
