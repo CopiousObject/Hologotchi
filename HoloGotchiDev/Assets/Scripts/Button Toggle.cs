@@ -10,8 +10,6 @@ public class ButtonToggle : MonoBehaviour
     [SerializeField]
     private InterProcessCommunicator receiver;
 
-    private bool buttonsEnabled;
-
     [SerializeField]
     private GameObject waterButton;
     [SerializeField]
@@ -27,31 +25,22 @@ public class ButtonToggle : MonoBehaviour
     void Start()
     {
         receiver.OnMessageReceived += ReceiveMessage;
-        buttonsEnabled = false;
+        Deactivate();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (buttonsEnabled)
-        {
-            Activate();
-        }
-        else
-        {
-            Deactivate();
-        }
     }
 
     private void ReceiveMessage(string message)
     {
-        if (message == "Egg State Exited") buttonsEnabled = true;
-        if (message == "Egg State Entered") buttonsEnabled = false;
+        if (message == "Egg State Exited") Activate();
+        if (message == "Egg State Entered") Deactivate();
     }
 
     public void Activate()
     {
-        buttonsEnabled = true;
         waterButton.GetComponent<Button>().interactable = true;
         playButton.GetComponent<Button>().interactable = true;
         chatButton.GetComponent<Button>().interactable = true;
@@ -61,7 +50,6 @@ public class ButtonToggle : MonoBehaviour
 
     public void Deactivate()
     {
-        buttonsEnabled = false;
         waterButton.GetComponent<Button>().interactable = false;
         playButton.GetComponent<Button>().interactable = false;
         chatButton.GetComponent<Button>().interactable = false;

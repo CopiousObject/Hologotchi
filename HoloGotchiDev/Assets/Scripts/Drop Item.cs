@@ -12,6 +12,11 @@ public class DropItem : MonoBehaviour
     [SerializeField] 
     private InterProcessCommunicator communicator;
 
+    [SerializeField]
+    private ButtonToggle buttonToggle;
+
+    private float buttonReactivateTime = -1f;
+
     /// <summary>
     /// Will run to delete the duplicated object after falling below a certain point
     /// </summary>
@@ -19,14 +24,17 @@ public class DropItem : MonoBehaviour
     {
         if (duplicate != null && duplicate.GetComponent<RectTransform>().anchoredPosition.y <= -4000)
         {
-            // Sends a message to the Receiver and should be able to be viewed in the debug log
             Debug.Log("Sending IPC message: Drop Item");
             communicator.SendData("Drop " + objectToDuplicate.name);
             Destroy(duplicate);
             duplicate = null;
+        }
 
-            // Reinstate the button to continue function
-            objectToDuplicate.GetComponent<ButtonToggle>().Activate();
+        // Reactivate the button after 10 seconds
+        if (buttonReactivateTime > 0 && Time.realtimeSinceStartup >= buttonReactivateTime)
+        {
+            buttonToggle.Activate();
+            buttonReactivateTime = -1f; // Reset the timer
         }
     }
 
@@ -35,10 +43,9 @@ public class DropItem : MonoBehaviour
     /// </summary>
     public void Drop()
     {
-        if (duplicate != null)
+        if (duplicate != null || buttonReactivateTime > 0)
             return;
 
-        // Ensures that the item is within the canvas positioning plane
         RectTransform environment = GameObject.Find("Environment").GetComponent<RectTransform>();
 
         duplicate = Instantiate(objectToDuplicate, environment);
@@ -51,7 +58,7 @@ public class DropItem : MonoBehaviour
             rb.gravityScale = 20f;
         }
 
-        // Allow the dropping without spamming
-        objectToDuplicate.GetComponent<ButtonToggle>().Deactivate();
+        buttonToggle.Deactivate();
+        buttonReactivateTime = Time.realtimeSinceStartup + 10f;
     }
 }

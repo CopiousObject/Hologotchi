@@ -111,6 +111,10 @@ public class TrackStats : MonoBehaviour
         {
             Debug.Log("Not readable message: " + ioor);
         }
+        catch(NullReferenceException nre)
+        {
+            Debug.Log("Not readable message: " + nre);
+        }
     }
 
     private void ColorChange()

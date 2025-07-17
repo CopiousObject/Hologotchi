@@ -3284,6 +3284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 688017318}
   communicator: {fileID: 1523370008}
+  buttonToggle: {fileID: 495281081}
 --- !u!114 &495281076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3298,6 +3299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 1566150908}
   communicator: {fileID: 1523370008}
+  buttonToggle: {fileID: 495281081}
 --- !u!114 &495281077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3312,6 +3314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 1927488279}
   communicator: {fileID: 1523370008}
+  buttonToggle: {fileID: 495281081}
 --- !u!114 &495281078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3326,6 +3329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 572343462}
   communicator: {fileID: 1523370008}
+  buttonToggle: {fileID: 495281081}
 --- !u!114 &495281079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3340,6 +3344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 69764982}
   communicator: {fileID: 1523370008}
+  buttonToggle: {fileID: 495281081}
 --- !u!114 &495281080
 MonoBehaviour:
   m_ObjectHideFlags: 0
