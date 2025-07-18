@@ -221,6 +221,8 @@ public class HoloPal : MonoBehaviour
         communicator.SendData("Play," + play);
         communicator.SendData("Chat," + chat);
         communicator.SendData("Dirtiness," + clean);
+        communicator.SendData("{0}", (int)current_stage);
+        communicator.SendData("Time:" + growth);
     }
 
     private void ReceiveMessage(string message)
@@ -229,6 +231,17 @@ public class HoloPal : MonoBehaviour
         {
             play = 1f;
             ChangeState(null);
+        }
+        if (message == "egg") current_stage = GrowthStage.Egg;
+        if (message == "baby") current_stage = GrowthStage.Baby;
+        if (message == "child") current_stage = GrowthStage.Child;
+        if (message == "adult") current_stage = GrowthStage.Adult;
+        if (message.Contains("GT"))
+        {
+            string[] splitMessage = message.Split(',');
+            float value;
+            float.TryParse(splitMessage[1], out value);
+            growth = value;
         }
     }
 }
