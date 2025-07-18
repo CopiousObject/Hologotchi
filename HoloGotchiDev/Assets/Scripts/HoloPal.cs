@@ -22,27 +22,28 @@ public enum GrowthStage
 public struct StageData
 {
     [Min(0)]
-    public float StageDurationInDays;
+    public int SecondsPerUnit;
+    [Min(0)]
+    public float StageDurationInUnits;
+    [Range(0, 100)]
     public float MinBlendShape;
+    [Range(0, 100)]
     public float MaxBlendShape;
 
     [Min(0)]
-    public float FoodTimesPerDay;
+    public float FoodTimesPerUnit;
     [Min(0)]
-    public float WaterTimesPerDay;
+    public float WaterTimesPerUnit;
     [Min(0)]
-    public float PlayTimesPerDay;
+    public float PlayTimesPerUnit;
     [Min(0)]
-    public float ChatTimesPerDay;
+    public float ChatTimesPerUnit;
     [Min(0)]
-    public float CleanTimesPerDay;
+    public float CleanTimesPerUnit;
 }
 
 public class HoloPal : MonoBehaviour
 {
-    private const int SECONDS_IN_DAY = 86400;
-    private const float DAYS_IN_SECOND = 1f / SECONDS_IN_DAY;
-
     // Sends the messages for IPC
     [SerializeField]
     private InterProcessCommunicator communicator;
@@ -137,7 +138,7 @@ public class HoloPal : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInDays * SECONDS_IN_DAY);
+        growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
 
         if (growth >= 1)
         {
@@ -165,11 +166,12 @@ public class HoloPal : MonoBehaviour
             growth = 0;
         }
 
-        food -= stage_data[(int)current_stage].FoodTimesPerDay * DAYS_IN_SECOND * Time.deltaTime;
-        water -= stage_data[(int)current_stage].WaterTimesPerDay * DAYS_IN_SECOND * Time.deltaTime;
-        play -= stage_data[(int)current_stage].PlayTimesPerDay * DAYS_IN_SECOND * Time.deltaTime;
-        chat -= stage_data[(int)current_stage].ChatTimesPerDay * DAYS_IN_SECOND * Time.deltaTime;
-        clean -= stage_data[(int)current_stage].CleanTimesPerDay * DAYS_IN_SECOND * Time.deltaTime;
+        var stage_units_per_second = 1f / stage_data[(int)current_stage].SecondsPerUnit;
+        food -= stage_data[(int)current_stage].FoodTimesPerUnit * stage_units_per_second * Time.deltaTime;
+        water -= stage_data[(int)current_stage].WaterTimesPerUnit * stage_units_per_second * Time.deltaTime;
+        play -= stage_data[(int)current_stage].PlayTimesPerUnit * stage_units_per_second * Time.deltaTime;
+        chat -= stage_data[(int)current_stage].ChatTimesPerUnit * stage_units_per_second * Time.deltaTime;
+        clean -= stage_data[(int)current_stage].CleanTimesPerUnit * stage_units_per_second * Time.deltaTime;
 
         food = Mathf.Clamp01(food);
         water = Mathf.Clamp01(water);
