@@ -8,7 +8,7 @@ public class ChatState : IState
     private List<string> babyChats = new List<string> {"Haha!","Aaaaa!","Waaaaa!","wAhHh!"};
     private List<string> childChats = new List<string> { "bababaa...", "da- da- da-", "ma- ma- ma-", "buh buh buh..." };
     private List<string> adultChats = new List<string> { "Papa!", "Mama!", "Hello!", "Love you!"};
-
+    private List<AudioClip> audio;
     public ChatState(GameObject chat_target)
     {
         this.chat_target = chat_target;
@@ -27,7 +27,7 @@ public class ChatState : IState
 
     public void OnEnter(HoloPal holopal)
     {
-
+        audio = new List<AudioClip> {holopal.Talk1, holopal.Talk2, holopal.Talk3, holopal.Talk4};
     }
 
     public void OnExit(HoloPal holopal)
@@ -63,6 +63,8 @@ public class ChatState : IState
             default:
             break;
         }
+        holopal.AudioSource.clip = audio[Random.Range(0, 3)];
+        holopal.AudioSource.Play();
         while (elapsed < Total)
         {
             holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0,0,0),Vector3.up);

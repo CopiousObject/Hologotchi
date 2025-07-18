@@ -59,11 +59,21 @@ public class HoloPal : MonoBehaviour
     public Vector3 Play_position;
     public Vector3 startPosition;
 
+    [Header("Audio Files")]
+    [SerializeField] private AudioClip annoyed;
+    [SerializeField] private AudioClip talk1;
+    [SerializeField] private AudioClip talk2;
+    [SerializeField] private AudioClip talk3;
+    [SerializeField] private AudioClip talk4;
+
     [SerializeField]
     private TextMeshPro chatBubble;
 
     [SerializeField]
     private SkinnedMeshRenderer mesh_renderer;
+
+    [SerializeField]
+    private AudioSource audiosource;
 
     public StageData[] stage_data;
     public GrowthStage current_stage;
@@ -105,6 +115,12 @@ public class HoloPal : MonoBehaviour
     public Spawner Spawner => spawner;
     public NavMeshAgent Nav_Agent => nav_agent;
     public TextMeshPro ChatBubble { get => chatBubble; set { chatBubble = value; } }
+    public AudioSource AudioSource => audiosource;
+    public AudioClip Talk1 => talk1;
+    public AudioClip Talk2 => talk2;
+    public AudioClip Talk3 => talk3;
+    public AudioClip Talk4 => talk4;
+    public AudioClip Annoyed => annoyed;
     public InterProcessCommunicator Communicator => communicator;
 
     private void Start()
@@ -120,6 +136,9 @@ public class HoloPal : MonoBehaviour
         chatBubble.alpha = 0f;
 
         next_act_out_time = DateTime.Now;
+
+        
+
     }
 
     /// <summary>

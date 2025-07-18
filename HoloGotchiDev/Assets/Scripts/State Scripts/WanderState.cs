@@ -92,12 +92,14 @@ public class WanderState : IState
     {
         holopal.ChatBubble.alpha = 1f;
         holopal.ChatBubble.text = "Waaaah!";
+        holopal.AudioSource.clip = holopal.Annoyed;
         float elapsed = 0f;
         float Total = 3f;
         while (elapsed < Total)
         {
             // Trigger an animation for this ig
             holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0), Vector3.up);
+            holopal.AudioSource.Play();
             elapsed += Time.deltaTime;
             yield return null;
         }
