@@ -5,6 +5,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private HoloPal Holopal;
+    [SerializeField]
+    private AudioSource audioSource; 
+
+    public AudioSource AudioSource => audioSource;
 
     void Update()
     {
