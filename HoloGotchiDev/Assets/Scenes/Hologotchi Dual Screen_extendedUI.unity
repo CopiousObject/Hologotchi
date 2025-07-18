@@ -3398,9 +3398,9 @@ MonoBehaviour:
   communicator: {fileID: 1523370008}
   statBars:
   - {fileID: 2087798341}
+  - {fileID: 1262418346}
   - {fileID: 263902624}
   - {fileID: 1524308657}
-  - {fileID: 1262418346}
   - {fileID: 1663469436}
 --- !u!1 &497657090
 GameObject:

@@ -10,37 +10,49 @@ using UnityEngine.UI;
 
 public class FileManager : MonoBehaviour
 {
-    private const string fileName = "Hologotchi Save Data";
     [SerializeField]
     private QuitApplication quitter;
     [SerializeField]
     private InterProcessCommunicator communicator;
-    private string growthStage;
-    private string growthTime;
 
     [SerializeField]
     private Slider[] statBars;
+    private GameData gameData = new GameData();
+    private string saveFilePath;
+    private int tempGrowthStage;
+    private float tempTime;
 
     private float time;
 
+    void Awake()
+    {
+        communicator.OnMessageReceived += ReceiveMessage;
+        saveFilePath = Application.persistentDataPath + "/hologotchisavegame.json";
+    }
 
     // Start is called before the first frame update
     // Used to load in any saved data
     void Start() 
     {
-        Load();
+        if (File.Exists(saveFilePath))
+        {
+            Load();
+        }
     }
 
     /// <summary>
-    /// Automatically ssave after some time
+    /// Automatically save after some time
     /// </summary>
-    void FixedUpdate()
+    void Update()
     {
         time += Time.deltaTime;
 
+        Debug.Log("THIS IS TIME FOR SAVING: " + time);
         if (time >= 30.0f)
         {
-            //Save();
+            Debug.Log("Saving");
+            Save();
+            time -= 30.0f;
         }
     }
 
@@ -49,43 +61,21 @@ public class FileManager : MonoBehaviour
     /// </summary>
     public void Load()
     {
-        communicator.OnMessageReceived += ReceiveMessage;
-        StreamReader input = null;
-
+        // Check if the save file exists
         try
         {
-            // open the file for reading
-            string path = "..\\..\\..\\" + fileName;
-            input = new StreamReader(path);
-            string line = null;
+            // Read the JSON data from the file
+            string jsonData = File.ReadAllText(saveFilePath);
 
-            // read the stats
-            Debug.Log(input.ReadLine());
-            line = input.ReadLine();
-            string[] statValues = line.Split(',');
+            // Deserialize the JSON data back into gameData
+            gameData = JsonUtility.FromJson<GameData>(jsonData);
 
-            AssignStats(statBars, statValues);
-
-            // read the growthstate
-            Debug.Log(input.ReadLine());
-            line = input.ReadLine();
-            communicator.SendData(line);
-
-            // read the growth time
-            Debug.Log(input.ReadLine());
-            line = input.ReadLine();
-            communicator.SendData("GT," + line);
+            // Update the game state with loaded data
+            AssignValues();
         }
-        catch (Exception e)
+        catch (Exception error)
         {
-            Debug.Log("An error occured: " + e);
-        }
-        finally
-        {
-            if (input != null)
-            {
-                input.Close();
-            }
+            Debug.Log("Cannot Load: " + error.Message);
         }
     }
 
@@ -94,39 +84,22 @@ public class FileManager : MonoBehaviour
     /// </summary>
     public void Save()
     {
-        StreamWriter output = null;
-
         try
         {
-            // Open the streamwriter
-            string path = "..\\..\\..\\" + fileName;
-            output = new StreamWriter(path);
+            // Update the values of gameData
+            UpdateValues();
 
-            // write out the stats
-            output.WriteLine("Stats:");
-            output.WriteLine("{0},{1},{2},{3},{4}",
-                statBars[0].value, statBars[1].value, statBars[2].value,
-                statBars[3].value, statBars[4].value);
+            // Serialize the gameData to JSON
+            string jsonData = JsonUtility.ToJson(gameData);
 
-            // write out the growthstate
-            output.WriteLine("GrowthState:");
-            output.WriteLine(growthStage);
+            // Write the JSON data to a file
+            File.WriteAllText(saveFilePath, jsonData);
 
-            // write out the remaining growth time
-            output.WriteLine("Growth Time:");
-            string[] splitGrowthTime = growthTime.Split(':');
-            output.WriteLine(splitGrowthTime[1]);
+            Debug.Log("Game Saved!");
         }
-        catch (Exception e)
+        catch (Exception error)
         {
-            Debug.Log("An error occured: " + e);
-        }
-        finally
-        {
-            if (output != null)
-            {
-                output.Close();
-            }
+            Debug.Log("Cannot Save: " + error.Message);
         }
     }
 
@@ -135,35 +108,76 @@ public class FileManager : MonoBehaviour
     /// </summary>
     public void SaveQuit()
     {
-        // Save();
+        Save();
         quitter.Quit();
     }
 
     /// <summary>
-    /// Applies the necessary output from received IPC messages.
+    /// Used to keep gameData up to date
     /// </summary>
-    /// <param name="message"></param>
-    private void ReceiveMessage(string message)
+    private void UpdateValues()
     {
-        if (message == "0") growthStage = "egg";
-        if (message == "1") growthStage = "baby";
-        if (message == "2") growthStage = "child";
-        if (message == "3") growthStage = "adult";
-        if (message.Contains("Time")) growthTime = message;
+        // Stat values
+        gameData.waterValue = statBars[0].value;
+        gameData.hungerValue = statBars[1].value;
+        gameData.playValue = statBars[2].value;
+        gameData.chatValue = statBars[3].value;
+        gameData.kemptValue = statBars[4].value;
+
+        // growth time and stage
+        gameData.growthStage = tempGrowthStage;
+        gameData.growthTime = tempTime;
     }
 
     /// <summary>
-    /// Assigns read stat value to their corressponding statbar
+    /// Used to load in and send out the starting values for the run
     /// </summary>
-    /// <param name="statbars"></param>
-    /// <param name="statValues"></param>
-    private void AssignStats(Slider[] statBars, string[] statValues)
+    private void AssignValues()
     {
-        for(int i = 0; i < statBars.Length; i++)
+        // Stat values
+        statBars[0].value = gameData.waterValue;
+        statBars[1].value = gameData.hungerValue;
+        statBars[2].value = gameData.playValue;
+        statBars[3].value = gameData.chatValue;
+        statBars[4].value = gameData.kemptValue;
+
+        // Send a message through ipc to Holopal
+        communicator.SendData("{0}", gameData.growthStage);
+        communicator.SendData("Time:" + gameData.growthTime);
+        tempGrowthStage = gameData.growthStage;
+        tempTime = gameData.growthTime;
+    }
+
+    /// <summary>
+    /// For receiving messages through ipc
+    /// </summary>
+    /// <param name="message"></param>
+    public void ReceiveMessage(string message)
+    {
+        Debug.Log("Received IPC Message: " + message);
+        if (message == "0" || message == "1" ||
+            message == "2" || message == "3") 
+            int.TryParse(message, out tempGrowthStage);
+        if (message.Contains("Time"))
         {
-            int value;
-            int.TryParse(statValues[i], out value);
-            statBars[i].value = value;
+            string[] splitMessage = message.Split(':');
+            float.TryParse(splitMessage[1], out tempTime);
         }
     }
+}
+
+/// <summary>
+/// The data that we want save
+/// </summary>
+[System.Serializable]
+public class GameData
+{
+    public float waterValue;
+    public float hungerValue;
+    public float playValue;
+    public float chatValue;
+    public float kemptValue;
+
+    public int growthStage;
+    public float growthTime;
 }

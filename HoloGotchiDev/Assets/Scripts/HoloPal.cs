@@ -253,16 +253,14 @@ public class HoloPal : MonoBehaviour
             play = 1f;
             ChangeState(null);
         }
-        if (message == "egg") current_stage = GrowthStage.Egg;
-        if (message == "baby") current_stage = GrowthStage.Baby;
-        if (message == "child") current_stage = GrowthStage.Child;
-        if (message == "adult") current_stage = GrowthStage.Adult;
-        if (message.Contains("GT"))
+        if (message == "0") current_stage = GrowthStage.Egg;
+        if (message == "1") current_stage = GrowthStage.Baby;
+        if (message == "2") current_stage = GrowthStage.Child;
+        if (message == "3") current_stage = GrowthStage.Adult;
+        if (message.Contains("Time"))
         {
-            string[] splitMessage = message.Split(',');
-            float value;
-            float.TryParse(splitMessage[1], out value);
-            growth = value;
+            string[] splitMessage = message.Split(':');
+            float.TryParse(splitMessage[1], out growth);
         }
     }
 }
