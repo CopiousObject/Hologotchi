@@ -1212,7 +1212,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.25
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 9bc166f9269d2ab489833bbbc4f1a446, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: fd9e09a211647f644838bb5414757599, type: 2}
   m_BuildHeightMesh: 0
 --- !u!64 &233123363
 MeshCollider:
@@ -6372,7 +6372,7 @@ PrefabInstance:
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: spawner
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 659775326}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: eggModel
       value: 
@@ -6683,7 +6683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[0].StageDurationInUnits
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[1].StageDurationInUnits

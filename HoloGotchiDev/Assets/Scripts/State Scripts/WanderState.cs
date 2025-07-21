@@ -98,7 +98,7 @@ public class WanderState : IState
         while (elapsed < Total)
         {
             // Trigger an animation for this ig
-            holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 0), Vector3.up);
+            holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1), Vector3.up);
             holopal.AudioSource.Play();
             elapsed += Time.deltaTime;
             yield return null;
