@@ -7747,6 +7747,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DMA Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3104388707138024860, guid: ea054310d837ae94b832a4dfe80a8815, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6200466405571544355, guid: ea054310d837ae94b832a4dfe80a8815, type: 3}
       propertyPath: m_Pivot.x
       value: 0
