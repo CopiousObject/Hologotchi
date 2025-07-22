@@ -38,14 +38,6 @@ public class FileManager : MonoBehaviour
         {
             Load();
         }
-        else
-        {
-            statBars[0].value = 1f;
-            statBars[1].value = 1f;
-            statBars[2].value = 1f;
-            statBars[3].value = 1f;
-            statBars[4].value = 1f;
-        }
     }
 
     /// <summary>
@@ -55,7 +47,7 @@ public class FileManager : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        //Debug.Log("THIS IS TIME FOR SAVING: " + time);
+        Debug.Log("THIS IS TIME FOR SAVING: " + time);
         if (time >= 30.0f)
         {
             Debug.Log("Saving");
@@ -142,18 +134,18 @@ public class FileManager : MonoBehaviour
     /// </summary>
     private void AssignValues()
     {
-        // Assign the current values
+        // Stat values
         statBars[0].value = gameData.waterValue;
         statBars[1].value = gameData.hungerValue;
         statBars[2].value = gameData.playValue;
         statBars[3].value = gameData.chatValue;
         statBars[4].value = gameData.kemptValue;
-        tempGrowthStage = gameData.growthStage;
-        tempTime = gameData.growthTime;
 
         // Send a message through ipc to Holopal
         communicator.SendData("{0}", gameData.growthStage);
         communicator.SendData("Time:" + gameData.growthTime);
+        tempGrowthStage = gameData.growthStage;
+        tempTime = gameData.growthTime;
     }
 
     /// <summary>
@@ -162,7 +154,7 @@ public class FileManager : MonoBehaviour
     /// <param name="message"></param>
     public void ReceiveMessage(string message)
     {
-        //Debug.Log("Received IPC Message: " + message);
+        Debug.Log("Received IPC Message: " + message);
         if (message == "0" || message == "1" ||
             message == "2" || message == "3") 
             int.TryParse(message, out tempGrowthStage);

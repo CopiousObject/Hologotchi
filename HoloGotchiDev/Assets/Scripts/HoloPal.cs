@@ -127,15 +127,18 @@ public class HoloPal : MonoBehaviour
     {
         communicator.OnMessageReceived += ReceiveMessage;
 
-        if (food == 0f) food = 1f;
-        if (water == 0f) water = 1f;
-        if (play == 0f) play = 1f;
-        if (chat == 0f) chat = 1f;
-        if (clean == 0f) clean = 1f;
+        food = 1f;
+        water = 1f;
+        play = 1f;
+        chat = 1f;
+        clean = 1f;
 
         chatBubble.alpha = 0f;
 
         next_act_out_time = DateTime.Now;
+
+        
+
     }
 
     /// <summary>
@@ -232,9 +235,6 @@ public class HoloPal : MonoBehaviour
         current_state.OnTriggerEnter(this, other);
     }
 
-    /// <summary>
-    /// Send a message to the UI
-    /// </summary>
     private void SendMessages()
     {
         communicator.SendData("Hunger," + food);
@@ -246,24 +246,17 @@ public class HoloPal : MonoBehaviour
         communicator.SendData("Time:" + growth);
     }
 
-    /// <summary>
-    /// Processess IPC messages
-    /// </summary>
-    /// <param name="message"></param>
     private void ReceiveMessage(string message)
     {
-        // Ending the play action
         if (message == "Stopped Playing")
         {
             play = 1f;
             ChangeState(null);
         }
-        // Loading growth state
         if (message == "0") current_stage = GrowthStage.Egg;
         if (message == "1") current_stage = GrowthStage.Baby;
         if (message == "2") current_stage = GrowthStage.Child;
         if (message == "3") current_stage = GrowthStage.Adult;
-        // Load the growthTime
         if (message.Contains("Time"))
         {
             string[] splitMessage = message.Split(':');
