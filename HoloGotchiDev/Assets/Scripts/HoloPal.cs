@@ -164,8 +164,18 @@ public class HoloPal : MonoBehaviour
 
         if (growth >= 1)
         {
-            // exceptions for egg state
-            if (current_stage == GrowthStage.Egg)
+            GrowthStage previousStage = current_stage;
+            GrowthStage nextStage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
+
+            // Setting up for leaving egg state
+            if (previousStage == GrowthStage.Egg && nextStage != GrowthStage.Egg)
+            {
+                eggModel.SetActive(false);
+                holopalMesh.SetActive(true);
+                communicator.SendData("Egg State Exited");
+            }
+            // When cycle ends and you enter the egg state again;
+            if (nextStage == GrowthStage.Egg && previousStage != GrowthStage.Egg)
             {
                 eggModel.SetActive(true);
                 holopalMesh.SetActive(false);
@@ -177,14 +187,8 @@ public class HoloPal : MonoBehaviour
                 chat = 1f;
                 clean = 1f;
             }
-            if ((int)current_stage == stage_data.Length - 1)
-            {
-                eggModel.SetActive(false);
-                holopalMesh.SetActive(true);
-                communicator.SendData("Egg State Exited");
-            }
 
-            current_stage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
+            current_stage = nextStage;
             growth = 0;
         }
 
