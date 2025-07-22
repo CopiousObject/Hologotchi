@@ -157,18 +157,15 @@ public class HoloPal : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        eggModel.isStatic = false;
+        holopalMesh.isStatic = false;
+
         growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
 
         if (growth >= 1)
         {
             // exceptions for egg state
-            if (current_stage == 0)
-            {
-                eggModel.SetActive(false);
-                holopalMesh.SetActive(true);
-                communicator.SendData("Egg State Exited");
-            }
-            if ((int)current_stage == stage_data.Length - 1)
+            if (current_stage == GrowthStage.Egg)
             {
                 eggModel.SetActive(true);
                 holopalMesh.SetActive(false);
@@ -179,6 +176,12 @@ public class HoloPal : MonoBehaviour
                 play = 1f;
                 chat = 1f;
                 clean = 1f;
+            }
+            if ((int)current_stage == stage_data.Length - 1)
+            {
+                eggModel.SetActive(false);
+                holopalMesh.SetActive(true);
+                communicator.SendData("Egg State Exited");
             }
 
             current_stage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
