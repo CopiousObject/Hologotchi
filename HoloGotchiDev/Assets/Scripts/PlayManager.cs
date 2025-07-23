@@ -77,8 +77,8 @@ public class PlayManager : MonoBehaviour
             Vector3 mouseWorldPos = currentCam.ScreenToWorldPoint(mouseScreenPos);
             PlayerPaddle.transform.localPosition = new Vector3(mouseWorldPos.x + 100, PlayerPaddle.transform.localPosition.y, PlayerPaddle.transform.localPosition.z);
 
-            // Holopal paddle "AI" 
-            float holoSpeed = 10f; 
+            // Holopal paddle "AI"
+            float holoSpeed = 10f;
 
             Vector3 holoPos = HoloPaddle.transform.localPosition;
             float targetX = BallObject.transform.localPosition.x;
@@ -108,6 +108,6 @@ public class PlayManager : MonoBehaviour
         Communicator.SendData("Stopped Playing");
         PlayAssets.SetActive(false);
         Playing = false;
-        uiAnimation.NavigateToPlay();
+        uiAnimation.NavigateToMain();
     }
 }
