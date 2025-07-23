@@ -18,8 +18,8 @@ public class PlayManager : MonoBehaviour
     public GameObject HoloPaddle;
     public GameObject StartButton;
 
-    private Vector3 Paddle1Pos; 
-    private Vector3 Paddle2Pos; 
+    private Vector3 Paddle1Pos;
+    private Vector3 Paddle2Pos;
     private Vector3 BallStartPos = new Vector3(-0.5f, 2.68000007f, 90f);
     private bool Playing;
 
@@ -36,7 +36,7 @@ public class PlayManager : MonoBehaviour
     {
         if (message == "Picked up ball")
         {
-            uiAnimation.NavigateToBall();
+            uiAnimation.NavigateToPlay();
 
             // make elements visible
             StartButton.SetActive(true);
@@ -48,7 +48,7 @@ public class PlayManager : MonoBehaviour
     {
         StartButton.SetActive(false);
         time = 0;
-        
+
         // Reset positions
         HoloPaddle.transform.localPosition = new Vector3(-0.5f, 42f, 90f);
         PlayerPaddle.transform.localPosition  = new Vector3(-0.5f, -44f, 90f);
@@ -71,11 +71,11 @@ public class PlayManager : MonoBehaviour
             Vector3 mouseWorldPos = currentCam.ScreenToWorldPoint(mouseScreenPos);
             PlayerPaddle.transform.localPosition = new Vector3(mouseWorldPos.x + 100, PlayerPaddle.transform.localPosition.y, PlayerPaddle.transform.localPosition.z);
 
-            // Holopal paddle "AI" 
-            
+            // Holopal paddle "AI"
+
 
             // Game logic
-            
+
 
             time += Time.deltaTime;
             if (time > 50.0f)

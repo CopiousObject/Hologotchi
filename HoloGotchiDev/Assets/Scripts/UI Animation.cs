@@ -25,8 +25,8 @@ public class UIAnimation : MonoBehaviour
     //private Coroutine currentAnimation;
 
     // Placements for movement animation
-    private Vector3 playScreen = new Vector3(73, -17, 0);
-    private Vector3 ballScreen = new Vector3(2371, -17, 0);
+    private Vector3 mainScreen = new Vector3(73, -17, 0);
+    private Vector3 playScreen = new Vector3(2371, -17, 0);
     private Vector3 statsScreen = new Vector3(73, 2670, 0);
     private Vector3 settingsScreen = new Vector3(73, -2635, 0);
     private Vector3 notifScreen = new Vector3(1975, -2635, 0);
@@ -37,6 +37,13 @@ public class UIAnimation : MonoBehaviour
     [SerializeField] private RectTransform titleScreen;
     private Vector3 titleScale;
 
+    // Credits
+    [SerializeField]
+    private GameObject mainScreenObject;
+    [SerializeField]
+    private GameObject creditsScreenObject;
+
+
     private void Awake()
     {
         // Get the RectTransform and initial scale for animation later
@@ -44,11 +51,14 @@ public class UIAnimation : MonoBehaviour
         titleScale = titleScreen.localScale;
 
         communicator.OnMessageReceived += ReceiveMessage;
+
+        creditsScreenObject.SetActive(false);
     }
 
     private void ReceiveMessage(string message)
     {
-        if (message == "Picked up ball") NavigateToBall();
+        if (message == "Picked up ball") NavigateToPlay();
+        if (message == "Egg State Entered") NavigateToCredits();
     }
 
     private void Update()
@@ -95,12 +105,24 @@ public class UIAnimation : MonoBehaviour
     }
 
     // Functions to call in order to properly animate Position
-    public void NavigateToPlay() => Animate(playScreen);
+    public void NavigateToMain() => Animate(mainScreen);
     public void NavigateToStats() => Animate(statsScreen);
     public void NavigateToSettings() => Animate(settingsScreen);
     public void NavigateToNotifs() => Animate(notifScreen);
     public void NavigateToAudio() => Animate(audioScreen);
-    public void NavigateToBall() => Animate(ballScreen);
+    public void NavigateToPlay() => Animate(playScreen);
+    public void NavigateToCredits() => StartCoroutine(BeginCredits());
+
+    private IEnumerator BeginCredits()
+    {
+        mainScreenObject.SetActive(false);
+        creditsScreenObject.SetActive(true);
+
+        yield return new WaitForSeconds(5);
+
+        creditsScreenObject.SetActive(false);
+        mainScreenObject.SetActive(true);
+    }
 
     // Called to affect scaling animation
     public void TitleToPlay()
