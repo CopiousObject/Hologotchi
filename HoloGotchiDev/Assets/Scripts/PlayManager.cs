@@ -54,7 +54,10 @@ public class PlayManager : MonoBehaviour
     {
         StartButton.SetActive(false);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         time = 0;
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 
@@ -82,6 +85,7 @@ public class PlayManager : MonoBehaviour
             PlayerPaddle.transform.localPosition = new Vector3(mouseWorldPos.x + 100, PlayerPaddle.transform.localPosition.y, PlayerPaddle.transform.localPosition.z);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             // Holopal paddle "AI"
 
 
@@ -97,6 +101,16 @@ public class PlayManager : MonoBehaviour
             HoloPaddle.transform.localPosition = new Vector3(newX, holoPos.y, holoPos.z);
 >>>>>>> Stashed changes
 
+=======
+            // Holopal paddle "AI" 
+            float holoSpeed = 10f; 
+
+            Vector3 holoPos = HoloPaddle.transform.localPosition;
+            float targetX = BallObject.transform.localPosition.x;
+            float newX = Mathf.Lerp(holoPos.x, targetX, Time.deltaTime * holoSpeed);
+            HoloPaddle.transform.localPosition = new Vector3(newX, holoPos.y, holoPos.z);
+
+>>>>>>> Stashed changes
             if (!Fin && (TopBound.GetComponent<BoxCollider2D>().IsTouching(BallObject.GetComponent<Collider2D>()))
                 || BottomBound.GetComponent<BoxCollider2D>().IsTouching(BallObject.GetComponent<Collider2D>()))
             {
