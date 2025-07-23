@@ -68,6 +68,8 @@ public class HoloPal : MonoBehaviour
 
     [SerializeField]
     private TextMeshPro chatBubble;
+    [SerializeField]
+    private Transform chatRotation;
 
     [SerializeField]
     private SkinnedMeshRenderer mesh_renderer;
@@ -160,7 +162,13 @@ public class HoloPal : MonoBehaviour
         eggModel.isStatic = false;
         holopalMesh.isStatic = false;
 
-        growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
+        if (current_stage == GrowthStage.Egg ||
+            (current_stage == GrowthStage.Baby && food >= 0.85 && water >= 0.85 && play >= 0.80 && chat >= 0.50 && clean >= 0.85) ||
+            (current_stage == GrowthStage.Child && food >= 0.80 && water >= 0.80 && play >= 0.85 && chat >= 0.68 && clean >= 0.75) ||
+            (current_stage == GrowthStage.Adult && food >= 0.75 && water >= 0.75 && play >= 0.75 && chat >= 0.85 && clean >= 0.65))
+        {
+            growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
+        }
 
         if (growth >= 1)
         {
@@ -233,6 +241,8 @@ public class HoloPal : MonoBehaviour
         {
             ChangeState(new WanderState(wander_wait_time, wander_points));
         }
+
+        chatRotation.rotation = Quaternion.identity;
 
         current_state.UpdateState(this);
     }
