@@ -1,5 +1,10 @@
 using LookingGlass;
+using System.Collections;
+using TMPro;
+using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PlayManager : MonoBehaviour
 {
@@ -18,16 +23,15 @@ public class PlayManager : MonoBehaviour
     public GameObject HoloPaddle;
     public GameObject StartButton;
 
-    private Vector3 Paddle1Pos; 
-    private Vector3 Paddle2Pos; 
+    private Vector3 Paddle1Pos;
+    private Vector3 Paddle2Pos;
     private Vector3 BallStartPos = new Vector3(-0.5f, 2.68000007f, 90f);
     private bool Playing;
+    private bool Fin;
 
-    private float time;
     // Start is called before the first frame update
     void Start()
     {
-        time = 0;
         Playing = false;
         Communicator.OnMessageReceived += ReceiveMessage;
     }
@@ -36,10 +40,12 @@ public class PlayManager : MonoBehaviour
     {
         if (message == "Picked up ball")
         {
-            uiAnimation.NavigateToBall();
+            uiAnimation.NavigateToPlay();
 
             // make elements visible
             StartButton.SetActive(true);
+            StartButton.GetComponentInChildren<TextMeshProUGUI>().text = "Start";
+            StartButton.GetComponent<Selectable>().interactable = true;
             PlayAssets.SetActive(true);
         }
     }
@@ -47,18 +53,18 @@ public class PlayManager : MonoBehaviour
     public void StartGame()
     {
         StartButton.SetActive(false);
-        time = 0;
-        
+
         // Reset positions
         HoloPaddle.transform.localPosition = new Vector3(-0.5f, 42f, 90f);
-        PlayerPaddle.transform.localPosition  = new Vector3(-0.5f, -44f, 90f);
+        PlayerPaddle.transform.localPosition = new Vector3(-0.5f, -44f, 90f);
         BallObject.transform.localPosition = BallStartPos;
 
         // Ball start
-        Vector2 randomDir = new Vector2(Random.value < 0.5f ? -1.0f : 1.0f, Random.value < 0.5f ? Random.Range(-1.0f, -0.5f) : Random.Range(0.5f,1.0f));
+        Vector2 randomDir = new Vector2(Random.value < 0.5f ? -1.0f : 1.0f, Random.value < 0.5f ? Random.Range(-1.0f, -0.5f) : Random.Range(0.5f, 1.0f));
         BallObject.GetComponent<Rigidbody2D>().AddForce(randomDir * 250);
 
         Playing = true;
+        Fin = false;
     }
 
     void Update()
@@ -71,20 +77,37 @@ public class PlayManager : MonoBehaviour
             Vector3 mouseWorldPos = currentCam.ScreenToWorldPoint(mouseScreenPos);
             PlayerPaddle.transform.localPosition = new Vector3(mouseWorldPos.x + 100, PlayerPaddle.transform.localPosition.y, PlayerPaddle.transform.localPosition.z);
 
-            // Holopal paddle "AI" 
-            
+            // Holopal paddle "AI"
+            float holoSpeed = 10f;
 
-            // Game logic
-            
+            Vector3 holoPos = HoloPaddle.transform.localPosition;
+            float targetX = BallObject.transform.localPosition.x;
+            float newX = Mathf.Lerp(holoPos.x, targetX, Time.deltaTime * holoSpeed);
+            HoloPaddle.transform.localPosition = new Vector3(newX, holoPos.y, holoPos.z);
 
-            time += Time.deltaTime;
-            if (time > 50.0f)
+            if (!Fin && (TopBound.GetComponent<BoxCollider2D>().IsTouching(BallObject.GetComponent<Collider2D>()))
+                || BottomBound.GetComponent<BoxCollider2D>().IsTouching(BallObject.GetComponent<Collider2D>()))
             {
-                Communicator.SendData("Stopped Playing");
-                PlayAssets.SetActive(false);
-                Playing = false;
-                uiAnimation.NavigateToPlay();
+                BallObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+                StartCoroutine(End());
             }
         }
+    }
+
+    IEnumerator End()
+    {
+        StartButton.SetActive(true);
+        StartButton.GetComponent<Selectable>().interactable = false;
+        StartButton.GetComponentInChildren<TextMeshProUGUI>().text = "Done!";
+        float time = 0;
+        while (time < 3f)
+        {
+            time += Time.deltaTime;
+            yield return null;
+        }
+        Communicator.SendData("Stopped Playing");
+        PlayAssets.SetActive(false);
+        Playing = false;
+        uiAnimation.NavigateToMain();
     }
 }

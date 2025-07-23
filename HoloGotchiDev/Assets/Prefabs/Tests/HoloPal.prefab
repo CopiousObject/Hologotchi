@@ -4864,6 +4864,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3358641659602226250}
+  - {fileID: 5004308316839806508}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4884,31 +4885,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   communicator: {fileID: 0}
-  gameManger: {fileID: 0}
   spawner: {fileID: 0}
   flies: {fileID: 254303369122049590}
   nav_agent: {fileID: 8303878425255992989}
   nav_surface: {fileID: 0}
   Play_position: {x: 0, y: 0, z: 0}
   startPosition: {x: 0, y: 0, z: 0}
+  annoyed: {fileID: 0}
+  talk1: {fileID: 0}
+  talk2: {fileID: 0}
+  talk3: {fileID: 0}
+  talk4: {fileID: 0}
   chatBubble: {fileID: 0}
   mesh_renderer: {fileID: 7141304326570292147}
-  max_food_points: 10
-  food_decay: 1
-  max_water_points: 10
-  water_decay: 1
-  max_play_points: 0
-  play_decay: 0
-  max_chat_points: 0
-  chat_decay: 0
-  total_growth: 0
-  stage_growth: 0
-  growth_state: 0
-  growth_stage_thresholds: 0a00000032000000640000002c010000
+  audiosource: {fileID: 0}
+  stage_data: []
+  current_stage: 0
+  growth: 0
+  food: 0
+  water: 0
+  play: 0
+  chat: 0
+  clean: 0
   wander_points:
   - {x: 0, y: 0, z: 0}
   - {x: 4, y: 0, z: 0}
   wander_wait_time: 1
+  act_out_interval_seconds: 0
+  act_out_chance: 0
+  overlay_image: {fileID: 0}
+  broken_glass_images: []
+  eggModel: {fileID: 0}
+  holopalMesh: {fileID: 0}
 --- !u!65 &2088498546136224466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5040,12 +5048,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4617474598064373516}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3358641659602226250}
+  m_Father: {fileID: 2010930309931629495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5184,7 +5192,7 @@ MonoBehaviour:
   _SortingLayerID: 0
   _SortingOrder: 0
   m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 5453131373398122359}
+  m_renderer: {fileID: 8144950644080965659}
   m_maskType: 0
 --- !u!1001 &2960821768435411873
 PrefabInstance:
@@ -5296,9 +5304,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0c7a6306855b35740928ec97eb3dc369, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9017440768767378433}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0c7a6306855b35740928ec97eb3dc369, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5004308316839806508}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c7a6306855b35740928ec97eb3dc369, type: 3}
 --- !u!4 &3358641659602226250 stripped
