@@ -6490,7 +6490,7 @@ PrefabInstance:
       objectReference: {fileID: 1749971491}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: debugMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: chatBubble
@@ -6960,7 +6960,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f664249c4dd2946b53ffb658f87efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  child: {fileID: 2115353460}
 --- !u!1001 &1506522461
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -94,7 +94,7 @@ public class TrackStats : MonoBehaviour
     /// <param name="message"></param>
     public void ReceiveMessage(string message)
     {
-        Debug.Log("Received IPC message: " + message);
+        //Debug.Log("Received IPC message: " + message);
         try
         {
             string[] splitMessage = message.Split(',');

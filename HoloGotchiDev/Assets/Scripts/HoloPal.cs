@@ -44,6 +44,9 @@ public struct StageData
 
 public class HoloPal : MonoBehaviour
 {
+    [SerializeField]
+    private bool debugMode = false;
+
     // Sends the messages for IPC
     [SerializeField]
     private InterProcessCommunicator communicator;
@@ -79,6 +82,8 @@ public class HoloPal : MonoBehaviour
 
     public StageData[] stage_data;
     public GrowthStage current_stage;
+
+    private bool startGrowth = false;
 
     public float growth;
     public float food;
@@ -138,9 +143,6 @@ public class HoloPal : MonoBehaviour
         chatBubble.alpha = 0f;
 
         next_act_out_time = DateTime.Now;
-
-        
-
     }
 
     /// <summary>
@@ -162,42 +164,58 @@ public class HoloPal : MonoBehaviour
         eggModel.isStatic = false;
         holopalMesh.isStatic = false;
 
-        if (current_stage == GrowthStage.Egg ||
-            (current_stage == GrowthStage.Baby && food >= 0.85 && water >= 0.85 && play >= 0.80 && chat >= 0.50 && clean >= 0.85) ||
-            (current_stage == GrowthStage.Child && food >= 0.80 && water >= 0.80 && play >= 0.85 && chat >= 0.68 && clean >= 0.75) ||
-            (current_stage == GrowthStage.Adult && food >= 0.75 && water >= 0.75 && play >= 0.75 && chat >= 0.85 && clean >= 0.65))
+        if (Input.GetKeyDown(KeyCode.Delete))
         {
-            growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
+            if (debugMode) debugMode = false;
+            else debugMode = true;
         }
 
-        if (growth >= 1)
+        if (startGrowth)
         {
-            GrowthStage previousStage = current_stage;
-            GrowthStage nextStage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
-
-            // Setting up for leaving egg state
-            if (previousStage == GrowthStage.Egg && nextStage != GrowthStage.Egg)
+            if (!debugMode)
             {
-                eggModel.SetActive(false);
-                holopalMesh.SetActive(true);
-                communicator.SendData("Egg State Exited");
+                if (current_stage == GrowthStage.Egg ||
+                    (current_stage == GrowthStage.Baby && food >= 0.85 && water >= 0.85 && play >= 0.80 && chat >= 0.50 && clean >= 0.85) ||
+                    (current_stage == GrowthStage.Child && food >= 0.80 && water >= 0.80 && play >= 0.85 && chat >= 0.68 && clean >= 0.75) ||
+                    (current_stage == GrowthStage.Adult && food >= 0.75 && water >= 0.75 && play >= 0.75 && chat >= 0.85 && clean >= 0.65))
+                {
+                    growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
+                }
             }
-            // When cycle ends and you enter the egg state again;
-            if (nextStage == GrowthStage.Egg && previousStage != GrowthStage.Egg)
+            else
             {
-                eggModel.SetActive(true);
-                holopalMesh.SetActive(false);
-                communicator.SendData("Egg State Entered");
-
-                food = 1f;
-                water = 1f;
-                play = 1f;
-                chat = 1f;
-                clean = 1f;
+                growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
             }
 
-            current_stage = nextStage;
-            growth = 0;
+            if (growth >= 1)
+            {
+                GrowthStage previousStage = current_stage;
+                GrowthStage nextStage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
+
+                // Setting up for leaving egg state
+                if (previousStage == GrowthStage.Egg && nextStage != GrowthStage.Egg)
+                {
+                    eggModel.SetActive(false);
+                    holopalMesh.SetActive(true);
+                    communicator.SendData("Egg State Exited");
+                }
+                // When cycle ends and you enter the egg state again;
+                if (nextStage == GrowthStage.Egg && previousStage != GrowthStage.Egg)
+                {
+                    eggModel.SetActive(true);
+                    holopalMesh.SetActive(false);
+                    communicator.SendData("Egg State Entered");
+
+                    food = 1f;
+                    water = 1f;
+                    play = 1f;
+                    chat = 1f;
+                    clean = 1f;
+                }
+
+                current_stage = nextStage;
+                growth = 0;
+            }
         }
 
         var stage_units_per_second = 1f / stage_data[(int)current_stage].SecondsPerUnit;
@@ -265,6 +283,7 @@ public class HoloPal : MonoBehaviour
 
     private void ReceiveMessage(string message)
     {
+        if (message == "Start Experience") startGrowth = true;
         if (message == "Stopped Playing")
         {
             play = 1f;

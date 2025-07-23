@@ -47,7 +47,7 @@ public class FileManager : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        Debug.Log("THIS IS TIME FOR SAVING: " + time);
+        //Debug.Log("THIS IS TIME FOR SAVING: " + time);
         if (time >= 30.0f)
         {
             Debug.Log("Saving");
@@ -154,7 +154,7 @@ public class FileManager : MonoBehaviour
     /// <param name="message"></param>
     public void ReceiveMessage(string message)
     {
-        Debug.Log("Received IPC Message: " + message);
+        //Debug.Log("Received IPC Message: " + message);
         if (message == "0" || message == "1" ||
             message == "2" || message == "3") 
             int.TryParse(message, out tempGrowthStage);

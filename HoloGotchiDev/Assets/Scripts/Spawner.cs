@@ -100,7 +100,7 @@ public class Spawner : MonoBehaviour
     /// <param name="message"></param>
     public void ReceiveMessage(string message)
     {
-        Debug.Log("Received IPC message: " + message);
+        //Debug.Log("Received IPC message: " + message);
         if (message == "Drop Food Icon") Spawn(food, foodObjects);
         if (message == "Drop Water Icon") Spawn(water, waterObjects);
         if (message == "Drop Chat Icon") Spawn(chat, chatObjects);
