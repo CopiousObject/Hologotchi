@@ -239,7 +239,7 @@ public class HoloPal : MonoBehaviour
             {
                 if (Random.Range(0f, 1f) <= act_out_chance)
                 {
-                    overlay_image.enabled = true; // UI image with no sprite is a giant white square so disabled by default
+                    overlay_image.enabled = false; // UI image with no sprite is a giant white square so disabled by default
                     overlay_image.sprite = broken_glass_images[Mathf.Min(act_out_stage, broken_glass_images.Length - 1)];
                     act_out_stage++;
                 }

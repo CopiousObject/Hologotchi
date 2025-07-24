@@ -54,8 +54,8 @@ public class PlayManager : MonoBehaviour
         StartButton.SetActive(false);
 
         // Reset positions
-        HoloPaddle.transform.localPosition = new Vector3(-0.5f, 42f, 90f);
-        PlayerPaddle.transform.localPosition = new Vector3(-0.5f, -44f, 90f);
+        HoloPaddle.transform.localPosition = new Vector3(-0.5f, 38f, 90f);
+        PlayerPaddle.transform.localPosition = new Vector3(-0.5f, -38f, 90f);
         BallObject.transform.localPosition = BallStartPos;
 
         // Ball start
