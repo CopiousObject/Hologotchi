@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CleanState : IState
 {
+    // Broom object
     GameObject clean_target;
 
     public CleanState(GameObject clean_target)
@@ -13,11 +14,13 @@ public class CleanState : IState
 
     public void UpdateState(HoloPal holopal)
     {
+        // Exit behavior
         if (!clean_target)
         {
             holopal.ChangeState(null);
             return;
         }
+        // Go to broom 
         holopal.Nav_Agent.SetDestination(clean_target.transform.position);
     }
 

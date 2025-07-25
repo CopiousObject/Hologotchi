@@ -218,6 +218,7 @@ public class HoloPal : MonoBehaviour
             }
         }
 
+        // Stat weighted for time
         var stage_units_per_second = 1f / stage_data[(int)current_stage].SecondsPerUnit;
         food -= stage_data[(int)current_stage].FoodTimesPerUnit * stage_units_per_second * Time.deltaTime;
         water -= stage_data[(int)current_stage].WaterTimesPerUnit * stage_units_per_second * Time.deltaTime;
@@ -233,6 +234,7 @@ public class HoloPal : MonoBehaviour
 
         mesh_renderer.SetBlendShapeWeight(4, Mathf.Lerp(stage_data[(int)current_stage].MinBlendShape, stage_data[(int)current_stage].MaxBlendShape, growth));
 
+        // Acting out behavior and trigger
         if (chat < 0.15f || play < 0.15f || food < 0.15f || water < 0.15f)
         {
             if (DateTime.Now >= next_act_out_time)
@@ -251,10 +253,11 @@ public class HoloPal : MonoBehaviour
         // Used for giving values to the IPC receiver
         SendMessages();
 
-        // Figure out how to ease at some point
+        // Spawn flies on Holopal when it's dirty... mb find an opacity feature to make this more gradual
         if (clean < 0.2f) flies.gameObject.SetActive(true);
         else flies.gameObject.SetActive(false);
 
+        // Wander -> any state
         if (current_state == null)
         {
             ChangeState(new WanderState(wander_wait_time, wander_points));
@@ -262,9 +265,11 @@ public class HoloPal : MonoBehaviour
 
         chatRotation.rotation = Quaternion.identity;
 
+        // Updates current state
         current_state.UpdateState(this);
     }
 
+    // Tells state to trigger data for standing over object
     void OnTriggerEnter(Collider other)
     {
         current_state.OnTriggerEnter(this, other);

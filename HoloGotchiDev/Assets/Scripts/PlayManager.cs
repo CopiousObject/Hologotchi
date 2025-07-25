@@ -28,7 +28,6 @@ public class PlayManager : MonoBehaviour
     private bool Playing;
     private bool Fin;
 
-    // Start is called before the first frame update
     void Start()
     {
         Playing = false;
@@ -77,13 +76,13 @@ public class PlayManager : MonoBehaviour
             PlayerPaddle.transform.localPosition = new Vector3(mouseWorldPos.x + 100, PlayerPaddle.transform.localPosition.y, PlayerPaddle.transform.localPosition.z);
 
             // Holopal paddle "AI"
-            float holoSpeed = 10f;
-
+            float holoSpeed = 10f; // AI paddle speed
             Vector3 holoPos = HoloPaddle.transform.localPosition;
             float targetX = BallObject.transform.localPosition.x;
             float newX = Mathf.Lerp(holoPos.x, targetX, Time.deltaTime * holoSpeed);
             HoloPaddle.transform.localPosition = new Vector3(newX, holoPos.y, holoPos.z);
 
+            // Ball hit scoring bounds
             if (!Fin && (TopBound.GetComponent<BoxCollider2D>().IsTouching(BallObject.GetComponent<Collider2D>()))
                 || BottomBound.GetComponent<BoxCollider2D>().IsTouching(BallObject.GetComponent<Collider2D>()))
             {
@@ -95,6 +94,7 @@ public class PlayManager : MonoBehaviour
 
     IEnumerator End()
     {
+        // Resets all components and shows player that the game is ending
         StartButton.SetActive(true);
         StartButton.GetComponent<Selectable>().interactable = false;
         StartButton.GetComponentInChildren<TextMeshProUGUI>().text = "Done!";

@@ -21,6 +21,7 @@ public class WanderState : IState
             return;
         }
 
+        // Manages state triggers from wander
         if (holopal.food < 0.8f && holopal.Spawner.FoodObjects.Count > 0)
         {
             holopal.ChangeState(new EatState(holopal.Spawner.FoodObjects[0]));
@@ -56,8 +57,13 @@ public class WanderState : IState
 
         if (timer <= 0f)
         {
-            holopal.Nav_Agent.SetDestination(wander_points[Random.Range(0, wander_points.Length)]);
+            // Every 3 seconds has a 1/3 chance to move to a new spot
+            if (Random.Range(0, 3) == 3)
+            {
+                holopal.Nav_Agent.SetDestination(wander_points[Random.Range(0, wander_points.Length)]);
+            }
 
+            // Crying
             if ((holopal.food < 0.4f && holopal.Spawner.FoodObjects.Count == 0)
                         || (holopal.water < 0.4f && holopal.Spawner.WaterObjects.Count == 0)
                         || (holopal.play < 0.4f && holopal.Spawner.PlayObjects.Count == 0)
@@ -88,6 +94,7 @@ public class WanderState : IState
 
     }
 
+    // Annoyed whining to get player attention from neglect
     IEnumerator Annoyed(HoloPal holopal)
     {
         holopal.ChatBubble.alpha = 1f;
