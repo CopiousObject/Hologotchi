@@ -6304,7 +6304,7 @@ PrefabInstance:
       objectReference: {fileID: 6797892421419648230}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: debugMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: chatBubble
@@ -7482,8 +7482,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6797892421419648231}
   - {fileID: 1503651302}
+  - {fileID: 6797892421419648231}
   - {fileID: 1705877778}
   - {fileID: 704753697}
   - {fileID: 1671643369}
