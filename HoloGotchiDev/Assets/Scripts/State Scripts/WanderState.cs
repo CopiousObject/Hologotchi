@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WanderState : IState
 {
@@ -79,6 +80,7 @@ public class WanderState : IState
 
     public void OnEnter(HoloPal holopal)
     {
+        holopal.Nav_Agent.speed = 2;
         timer = duration;
     }
 
