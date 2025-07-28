@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: mossiferAdultFixedUV
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 73e5049a5b8af7440affc3cefc20c052, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829825619187663742, guid: 73e5049a5b8af7440affc3cefc20c052, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
