@@ -143,6 +143,7 @@ public class HoloPal : MonoBehaviour
         chatBubble.alpha = 0f;
 
         next_act_out_time = DateTime.Now;
+        overlay_image.enabled = false; // UI image with no sprite is a giant white square so disabled by default
     }
 
     /// <summary>
@@ -170,52 +171,54 @@ public class HoloPal : MonoBehaviour
             else debugMode = true;
         }
 
-        if (startGrowth)
+        if (!startGrowth && !debugMode)
         {
-            if (!debugMode)
-            {
-                if (current_stage == GrowthStage.Egg ||
-                    (current_stage == GrowthStage.Baby && food >= 0.85 && water >= 0.85 && play >= 0.80 && chat >= 0.50 && clean >= 0.85) ||
-                    (current_stage == GrowthStage.Child && food >= 0.80 && water >= 0.80 && play >= 0.85 && chat >= 0.68 && clean >= 0.75) ||
-                    (current_stage == GrowthStage.Adult && food >= 0.75 && water >= 0.75 && play >= 0.75 && chat >= 0.85 && clean >= 0.65))
-                {
-                    growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
-                }
-            }
-            else
+            return;
+        }
+
+        if (!debugMode)
+        {
+            if (current_stage == GrowthStage.Egg ||
+                (current_stage == GrowthStage.Baby && food >= 0.85 && water >= 0.85 && play >= 0.80 && chat >= 0.50 && clean >= 0.85) ||
+                (current_stage == GrowthStage.Child && food >= 0.80 && water >= 0.80 && play >= 0.85 && chat >= 0.68 && clean >= 0.75) ||
+                (current_stage == GrowthStage.Adult && food >= 0.75 && water >= 0.75 && play >= 0.75 && chat >= 0.85 && clean >= 0.65))
             {
                 growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
             }
+        }
+        else
+        {
+            growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
+        }
 
-            if (growth >= 1)
+        if (growth >= 1)
+        {
+            GrowthStage previousStage = current_stage;
+            GrowthStage nextStage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
+
+            // Setting up for leaving egg state
+            if (previousStage == GrowthStage.Egg && nextStage != GrowthStage.Egg)
             {
-                GrowthStage previousStage = current_stage;
-                GrowthStage nextStage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
-
-                // Setting up for leaving egg state
-                if (previousStage == GrowthStage.Egg && nextStage != GrowthStage.Egg)
-                {
-                    eggModel.SetActive(false);
-                    holopalMesh.SetActive(true);
-                    communicator.SendData("Egg State Exited");
-                }
-                // When cycle ends and you enter the egg state again;
-                if (nextStage == GrowthStage.Egg && previousStage != GrowthStage.Egg)
-                {
-                    eggModel.SetActive(true);
-                    holopalMesh.SetActive(false);
-                    communicator.SendData("Egg State Entered");
-
-                    food = 1f;
-                    water = 1f;
-                    play = 1f;
-                    chat = 1f;
-                    clean = 1f;
-                }
-
-                current_stage = nextStage;
-                growth = 0;
+                eggModel.SetActive(false);
+                holopalMesh.SetActive(true);
+                communicator.SendData("Egg State Exited");
             }
+            // When cycle ends and you enter the egg state again;
+            if (nextStage == GrowthStage.Egg && previousStage != GrowthStage.Egg)
+            {
+                eggModel.SetActive(true);
+                holopalMesh.SetActive(false);
+                communicator.SendData("Egg State Entered");
+
+                food = 1f;
+                water = 1f;
+                play = 1f;
+                chat = 1f;
+                clean = 1f;
+            }
+
+            current_stage = nextStage;
+            growth = 0;
         }
 
         // Stat weighted for time
@@ -241,7 +244,7 @@ public class HoloPal : MonoBehaviour
             {
                 if (Random.Range(0f, 1f) <= act_out_chance)
                 {
-                    overlay_image.enabled = false; // UI image with no sprite is a giant white square so disabled by default
+                    overlay_image.enabled = true;
                     overlay_image.sprite = broken_glass_images[Mathf.Min(act_out_stage, broken_glass_images.Length - 1)];
                     act_out_stage++;
                 }

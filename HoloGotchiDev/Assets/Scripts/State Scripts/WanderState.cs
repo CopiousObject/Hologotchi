@@ -53,12 +53,10 @@ public class WanderState : IState
             return;
         }
 
-
-
         if (timer <= 0f)
         {
             // Every 3 seconds has a 1/3 chance to move to a new spot
-            if (Random.Range(0, 3) == 3)
+            if (Random.Range(0, 3) == 0)
             {
                 holopal.Nav_Agent.SetDestination(wander_points[Random.Range(0, wander_points.Length)]);
             }
