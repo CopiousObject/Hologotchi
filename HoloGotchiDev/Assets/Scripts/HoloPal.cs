@@ -114,6 +114,9 @@ public class HoloPal : MonoBehaviour
 
     [Header("Model Settings")]
     [SerializeField]
+    private Animator animator;
+
+    [SerializeField]
     private GameObject eggModel;
     [SerializeField]
     private GameObject holopalMesh;
@@ -273,6 +276,7 @@ public class HoloPal : MonoBehaviour
 
         chatRotation.rotation = Quaternion.identity;
 
+        animator.SetFloat("speed", nav_agent.velocity.magnitude); // should this be in a state?
         // Updates current state
         current_state.UpdateState(this);
     }
