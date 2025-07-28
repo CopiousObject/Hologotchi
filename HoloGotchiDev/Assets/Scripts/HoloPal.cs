@@ -46,40 +46,8 @@ public class HoloPal : MonoBehaviour
 {
     [SerializeField]
     private bool debugMode = false;
-
-    // Sends the messages for IPC
-    [SerializeField]
-    private InterProcessCommunicator communicator;
-
-    [SerializeField]
-    private Spawner spawner;
-    [SerializeField]
-    private ParticleSystem flies;
-    [SerializeField]
-    private NavMeshAgent nav_agent;
-    [SerializeField]
-    private NavMeshSurface nav_surface;
-    public Vector3 Play_position;
-    public Vector3 startPosition;
-
-    [Header("Audio Files")]
-    [SerializeField] private AudioClip annoyed;
-    [SerializeField] private AudioClip talk1;
-    [SerializeField] private AudioClip talk2;
-    [SerializeField] private AudioClip talk3;
-    [SerializeField] private AudioClip talk4;
-
-    [SerializeField]
-    private TextMeshPro chatBubble;
-    [SerializeField]
-    private Transform chatRotation;
-
-    [SerializeField]
-    private SkinnedMeshRenderer mesh_renderer;
-
-    [SerializeField]
-    private AudioSource audiosource;
-
+    // Stage data
+    [Header("Stats and Debug")]
     public StageData[] stage_data;
     public GrowthStage current_stage;
 
@@ -92,13 +60,46 @@ public class HoloPal : MonoBehaviour
     public float chat;
     public float clean;
 
+    [Header("References")]
+    // Sends the messages for IPC
+    [SerializeField]
+    private InterProcessCommunicator communicator;
+    [SerializeField]
+    private Spawner spawner;
+    [SerializeField]
+    private ParticleSystem flies;
+    [SerializeField]
+    private NavMeshAgent nav_agent;
+    [SerializeField]
+    private NavMeshSurface nav_surface;
+    
+    [Header("Audio")]
+    [SerializeField] private AudioClip annoyed;
+    [SerializeField] private AudioClip talk1;
+    [SerializeField] private AudioClip talk2;
+    [SerializeField] private AudioClip talk3;
+    [SerializeField] private AudioClip talk4;
+    [SerializeField]
+    private AudioSource audiosource;
+
+    [Header("Chat Settings")]
+    [SerializeField]
+    private TextMeshPro chatBubble;
+    [SerializeField]
+    private Transform chatRotation;
+
     // Wander related tracking
+    [Header("Wander Settings")]
     [SerializeField]
     private Vector3[] wander_points;
     [SerializeField]
     private float wander_wait_time;
+    public Vector3 Play_position;
+    public Vector3 startPosition;
+    [Space]
 
     // acting out
+    [Header("Act Out Settings")]
     [SerializeField]
     private int act_out_interval_seconds;
     [SerializeField]
@@ -111,6 +112,7 @@ public class HoloPal : MonoBehaviour
     private DateTime next_act_out_time;
     private int act_out_stage;
 
+    [Header("Model Settings")]
     [SerializeField]
     private Animator animator;
 
@@ -118,6 +120,9 @@ public class HoloPal : MonoBehaviour
     private GameObject eggModel;
     [SerializeField]
     private GameObject holopalMesh;
+    [Space]
+    [SerializeField]
+    private SkinnedMeshRenderer mesh_renderer;
 
     IState current_state;
 
