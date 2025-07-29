@@ -38,9 +38,23 @@ public class CleanState : IState
         if (other.gameObject == clean_target)
         {
             //Play cleaning anim and reverse dirtiness over duration
-            holopal.clean = 1f;
+            holopal.StartCoroutine(Clean(holopal));
             holopal.Spawner.CleanObjects.Remove(clean_target);
             Object.Destroy(other.gameObject);
+        }
+    }
+
+    // Brings back the opacity of the dirt to 0 over time
+    IEnumerator Clean(HoloPal holopal)
+    {
+        float time = 3;// or length of animation for cleaning
+        float elapsed = 0;
+        while (elapsed < time)
+        {
+            Debug.Log("Clean");
+            elapsed += Time.deltaTime;
+            holopal.clean = Mathf.Lerp(holopal.clean, 1f, elapsed / time);
+            yield return null;
         }
     }
 }
