@@ -72,7 +72,7 @@ public class HoloPal : MonoBehaviour
     private NavMeshAgent nav_agent;
     [SerializeField]
     private NavMeshSurface nav_surface;
-    
+
     [Header("Audio")]
     [SerializeField] private AudioClip annoyed;
     [SerializeField] private AudioClip talk1;
@@ -113,8 +113,8 @@ public class HoloPal : MonoBehaviour
     private int act_out_stage;
 
     [Header("Model Settings")]
-    [SerializeField]
-    private Animator animator;
+    public Animator animator;
+    public Transform heldObjectTransform;
 
     [SerializeField]
     private GameObject eggModel;
@@ -137,6 +137,11 @@ public class HoloPal : MonoBehaviour
     public AudioClip Talk4 => talk4;
     public AudioClip Annoyed => annoyed;
     public InterProcessCommunicator Communicator => communicator;
+
+    public void FinishEating(AnimationEvent animationEvent)
+    {
+        ChangeState(null);
+    }
 
     private void Start()
     {
