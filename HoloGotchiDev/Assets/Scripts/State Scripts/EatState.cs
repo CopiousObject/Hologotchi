@@ -33,18 +33,16 @@ public class EatState : IState
         holopal.Nav_Agent.isStopped = false;
         holopal.Spawner.FoodObjects.Remove(food_target);
         Object.Destroy(food_target);
+        holopal.state_target = null;
     }
 
     public void OnTriggerEnter(HoloPal holopal, Collider other)
     {
-        if (other.gameObject == food_target)
+        if (other.gameObject == food_target && !eating)
         {
             if (holopal.food < 0.8f)
             {
-                food_target.transform.SetParent(holopal.heldObjectTransform, false);
-                food_target.transform.localPosition = Vector3.zero;
-                food_target.GetComponent<Rigidbody>().isKinematic = true;
-                food_target.GetComponent<Rigidbody>().detectCollisions = false;
+                holopal.state_target = food_target;
                 holopal.Nav_Agent.isStopped = true;
                 holopal.Nav_Agent.velocity = Vector3.zero;
                 holopal.animator.SetTrigger("eating");
