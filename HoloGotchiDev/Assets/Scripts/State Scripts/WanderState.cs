@@ -1,4 +1,6 @@
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -69,7 +71,7 @@ public class WanderState : IState
                         || (holopal.chat < 0.4f && holopal.Spawner.ChatObjects.Count == 0)
                         || (holopal.clean < 0.4f && holopal.Spawner.CleanObjects.Count == 0))
             {
-                holopal.StartCoroutine(Annoyed(holopal));
+                holopal.StartCoroutine(LowStat(holopal));
             }
 
             timer = duration;
@@ -95,12 +97,38 @@ public class WanderState : IState
     }
 
     // Annoyed whining to get player attention from neglect
-    IEnumerator Annoyed(HoloPal holopal)
+    IEnumerator LowStat(HoloPal holopal)
     {
         holopal.ChatBubble.alpha = 1f;
-        holopal.ChatBubble.text = "Waaaah!";
-        holopal.AudioSource.clip = holopal.Annoyed;
-        float elapsed = 0f;
+
+        // Determine which audio sound to play
+        if (holopal.food < 0.4f && holopal.Spawner.FoodObjects.Count == 0)
+        {
+            holopal.ChatBubble.text = "I'm hungry!";
+            holopal.AudioSource.clip = holopal.LowHunger;
+        }
+        else if (holopal.water < 0.4f && holopal.Spawner.WaterObjects.Count == 0)
+        {
+            holopal.ChatBubble.text = "I'm thirsty!";
+            holopal.AudioSource.clip = holopal.LowThirst;
+        }
+        else if (holopal.play < 0.4f && holopal.Spawner.PlayObjects.Count == 0)
+        {
+            holopal.ChatBubble.text = "Let's play!";
+            holopal.AudioSource.clip = holopal.LowPlay;
+        }
+        else if (holopal.chat < 0.4f && holopal.Spawner.ChatObjects.Count == 0)
+        {
+            holopal.ChatBubble.text = "Talk to me!";
+            holopal.AudioSource.clip = holopal.LowChat;
+        }
+        else if (holopal.clean < 0.4f && holopal.Spawner.CleanObjects.Count == 0)
+        {
+            holopal.ChatBubble.text = "It's dirty!";
+            holopal.AudioSource.clip = holopal.LowClean;
+        }
+
+            float elapsed = 0f;
         float Total = 3f;
         while (elapsed < Total)
         {
