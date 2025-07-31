@@ -125,7 +125,7 @@ public class HoloPal : MonoBehaviour
     private SkinnedMeshRenderer mesh_renderer;
 
     IState current_state;
-    public GameObject state_target;
+    public GameObject held_object;
 
     // Properties
     public Spawner Spawner => spawner;
@@ -139,6 +139,7 @@ public class HoloPal : MonoBehaviour
     public AudioClip Annoyed => annoyed;
     public InterProcessCommunicator Communicator => communicator;
 
+    // Used by animations
     public void ExitCurrentState(AnimationEvent animationEvent)
     {
         ChangeState(null);
@@ -146,10 +147,13 @@ public class HoloPal : MonoBehaviour
 
     public void PickUp(AnimationEvent animationEvent)
     {
-        state_target.transform.SetParent(heldObjectTransform, false);
-        state_target.transform.localPosition = Vector3.zero;
-        state_target.GetComponent<Rigidbody>().isKinematic = true;
-        state_target.GetComponent<Rigidbody>().detectCollisions = false;
+        if (held_object)
+        {
+            held_object.transform.SetParent(heldObjectTransform, false);
+            held_object.transform.localPosition = Vector3.zero;
+            held_object.GetComponent<Rigidbody>().isKinematic = true;
+            held_object.GetComponent<Rigidbody>().detectCollisions = false;
+        }
     }
 
     private void Start()
