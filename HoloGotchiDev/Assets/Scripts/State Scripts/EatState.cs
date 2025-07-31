@@ -6,7 +6,7 @@ public class EatState : IState
 {
     GameObject food_target;
 
-    bool eating;
+    bool animating;
 
     public EatState(GameObject food_target)
     {
@@ -15,7 +15,7 @@ public class EatState : IState
 
     public void UpdateState(HoloPal holopal)
     {
-        if (!eating)
+        if (!animating)
         {
             holopal.Nav_Agent.SetDestination(food_target.transform.position);
         }
@@ -23,12 +23,12 @@ public class EatState : IState
 
     public void OnEnter(HoloPal holopal)
     {
-        eating = false;
+        animating = false;
     }
 
     public void OnExit(HoloPal holopal)
     {
-        eating = false;
+        animating = false;
         holopal.food = 1f;
         holopal.Nav_Agent.isStopped = false;
         holopal.Spawner.FoodObjects.Remove(food_target);
@@ -38,7 +38,7 @@ public class EatState : IState
 
     public void OnTriggerEnter(HoloPal holopal, Collider other)
     {
-        if (other.gameObject == food_target && !eating)
+        if (other.gameObject == food_target && !animating)
         {
             if (holopal.food < 0.8f)
             {
@@ -46,7 +46,7 @@ public class EatState : IState
                 holopal.Nav_Agent.isStopped = true;
                 holopal.Nav_Agent.velocity = Vector3.zero;
                 holopal.animator.SetTrigger("eating");
-                eating = true;
+                animating = true;
             }
         }
     }
