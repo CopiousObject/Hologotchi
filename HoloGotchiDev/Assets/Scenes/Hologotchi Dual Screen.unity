@@ -6890,6 +6890,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1503651315}
+    - targetCorrespondingSourceObject: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1503651317}
     - targetCorrespondingSourceObject: {fileID: 4617474598064373516, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -7017,6 +7020,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1503651317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392482647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8fefcc369160f43a6c42f9377882cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicTrack: {fileID: 8300000, guid: 29240521732d53142a6b776b31ae04ef, type: 3}
+  audioControl: {fileID: 1503651315}
 --- !u!1001 &1506522461
 PrefabInstance:
   m_ObjectHideFlags: 0
