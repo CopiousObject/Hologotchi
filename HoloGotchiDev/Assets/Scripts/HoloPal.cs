@@ -74,7 +74,11 @@ public class HoloPal : MonoBehaviour
     private NavMeshSurface nav_surface;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip annoyed;
+    [SerializeField] private AudioClip lowHunger;
+    [SerializeField] private AudioClip lowThirst;
+    [SerializeField] private AudioClip lowPlay;
+    [SerializeField] private AudioClip lowChat;
+    [SerializeField] private AudioClip lowClean;
     [SerializeField] private AudioClip talk1;
     [SerializeField] private AudioClip talk2;
     [SerializeField] private AudioClip talk3;
@@ -136,7 +140,11 @@ public class HoloPal : MonoBehaviour
     public AudioClip Talk2 => talk2;
     public AudioClip Talk3 => talk3;
     public AudioClip Talk4 => talk4;
-    public AudioClip Annoyed => annoyed;
+    public AudioClip LowHunger => lowHunger;
+    public AudioClip LowThirst => lowThirst;
+    public AudioClip LowPlay => lowPlay;
+    public AudioClip LowChat => lowChat;
+    public AudioClip LowClean => lowClean;
     public InterProcessCommunicator Communicator => communicator;
 
     public void ExitCurrentState(AnimationEvent animationEvent)
