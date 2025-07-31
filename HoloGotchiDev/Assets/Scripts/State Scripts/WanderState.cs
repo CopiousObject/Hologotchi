@@ -6,8 +6,12 @@ public class WanderState : IState
 {
     private float duration;
     private Vector3[] wander_points;
-
+    
     private float timer;
+
+    private bool notifications;
+    private bool notiAudio;
+    private bool notiVideo;
 
     public WanderState(float duration, Vector3[] wander_points)
     {
@@ -63,7 +67,7 @@ public class WanderState : IState
             }
 
             // Crying
-            if ((holopal.food < 0.4f && holopal.Spawner.FoodObjects.Count == 0)
+            if ((holopal.food < 0.4f && holopal.Spawner.FoodObjects.Count == 0 && holopal.notifactions)
                         || (holopal.water < 0.4f && holopal.Spawner.WaterObjects.Count == 0)
                         || (holopal.play < 0.4f && holopal.Spawner.PlayObjects.Count == 0)
                         || (holopal.chat < 0.4f && holopal.Spawner.ChatObjects.Count == 0)
@@ -97,7 +101,8 @@ public class WanderState : IState
     // Annoyed whining to get player attention from neglect
     IEnumerator Annoyed(HoloPal holopal)
     {
-        holopal.ChatBubble.alpha = 1f;
+
+        if (holopal.notiVisual) holopal.ChatBubble.alpha = 1f;
         holopal.ChatBubble.text = "Waaaah!";
         holopal.AudioSource.clip = holopal.Annoyed;
         float elapsed = 0f;
@@ -106,7 +111,7 @@ public class WanderState : IState
         {
             // Trigger an animation for this ig
             holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1), Vector3.up);
-            holopal.AudioSource.Play();
+            if (holopal.notiAudio) holopal.AudioSource.Play();
             elapsed += Time.deltaTime;
             yield return null;
         }

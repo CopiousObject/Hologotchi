@@ -138,4 +138,19 @@ public class UIAnimation : MonoBehaviour
     {
         return 1f - Mathf.Pow(1f - x, 4f);
     }
+
+    public void SendNoti()
+    {
+        communicator.SendData("noti");
+    }
+
+    public void SendNotiA()
+    {
+        communicator.SendData("notiA");
+    }
+
+    public void SendNotiV()
+    {
+        communicator.SendData("notiV");
+    }
 }
