@@ -74,7 +74,11 @@ public class HoloPal : MonoBehaviour
     private NavMeshSurface nav_surface;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip annoyed;
+    [SerializeField] private AudioClip lowHunger;
+    [SerializeField] private AudioClip lowThirst;
+    [SerializeField] private AudioClip lowPlay;
+    [SerializeField] private AudioClip lowChat;
+    [SerializeField] private AudioClip lowClean;
     [SerializeField] private AudioClip talk1;
     [SerializeField] private AudioClip talk2;
     [SerializeField] private AudioClip talk3;
@@ -130,7 +134,7 @@ public class HoloPal : MonoBehaviour
     private SkinnedMeshRenderer mesh_renderer;
 
     IState current_state;
-    public GameObject state_target;
+    public GameObject held_object;
 
     // Properties
     public Spawner Spawner => spawner;
@@ -141,9 +145,14 @@ public class HoloPal : MonoBehaviour
     public AudioClip Talk2 => talk2;
     public AudioClip Talk3 => talk3;
     public AudioClip Talk4 => talk4;
-    public AudioClip Annoyed => annoyed;
+    public AudioClip LowHunger => lowHunger;
+    public AudioClip LowThirst => lowThirst;
+    public AudioClip LowPlay => lowPlay;
+    public AudioClip LowChat => lowChat;
+    public AudioClip LowClean => lowClean;
     public InterProcessCommunicator Communicator => communicator;
 
+    // Used by animations
     public void ExitCurrentState(AnimationEvent animationEvent)
     {
         ChangeState(null);
@@ -151,10 +160,13 @@ public class HoloPal : MonoBehaviour
 
     public void PickUp(AnimationEvent animationEvent)
     {
-        state_target.transform.SetParent(heldObjectTransform, false);
-        state_target.transform.localPosition = Vector3.zero;
-        state_target.GetComponent<Rigidbody>().isKinematic = true;
-        state_target.GetComponent<Rigidbody>().detectCollisions = false;
+        if (held_object)
+        {
+            held_object.transform.SetParent(heldObjectTransform, false);
+            held_object.transform.localPosition = Vector3.zero;
+            held_object.GetComponent<Rigidbody>().isKinematic = true;
+            held_object.GetComponent<Rigidbody>().detectCollisions = false;
+        }
     }
 
     private void Start()

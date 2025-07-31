@@ -33,7 +33,7 @@ public class EatState : IState
         holopal.Nav_Agent.isStopped = false;
         holopal.Spawner.FoodObjects.Remove(food_target);
         Object.Destroy(food_target);
-        holopal.state_target = null;
+        holopal.held_object = null;
     }
 
     public void OnTriggerEnter(HoloPal holopal, Collider other)
@@ -42,7 +42,7 @@ public class EatState : IState
         {
             if (holopal.food < 0.8f)
             {
-                holopal.state_target = food_target;
+                holopal.held_object = food_target;
                 holopal.Nav_Agent.isStopped = true;
                 holopal.Nav_Agent.velocity = Vector3.zero;
                 holopal.animator.SetTrigger("eating");
