@@ -120,6 +120,11 @@ public class HoloPal : MonoBehaviour
     public Animator animator;
     public Transform heldObjectTransform;
 
+    [Header("Notification Settings")]
+    public bool notifactions;
+    public bool notiAudio;
+    public bool notiVisual;
+
     [SerializeField]
     private GameObject eggModel;
     [SerializeField]
@@ -175,6 +180,10 @@ public class HoloPal : MonoBehaviour
         clean = 1f;
 
         chatBubble.alpha = 0f;
+
+        notifactions = true;
+        notiAudio = true;
+        notiVisual = true;
 
         next_act_out_time = DateTime.Now;
         overlay_image.enabled = false; // UI image with no sprite is a giant white square so disabled by default
@@ -341,5 +350,8 @@ public class HoloPal : MonoBehaviour
             string[] splitMessage = message.Split(':');
             float.TryParse(splitMessage[1], out growth);
         }
+        if (message == "noti") notifactions = !notifactions;
+        if (message == "notiA") notiAudio = !notiAudio;
+        if (message == "notiV") notiVisual = !notiVisual;
     }
 }
