@@ -29,7 +29,7 @@ public class DrinkState : IState
     public void OnExit(HoloPal holopal)
     {
         animating = false;
-        holopal.food = 1f;
+        holopal.water = 1f;
         holopal.Nav_Agent.isStopped = false;
         holopal.Spawner.WaterObjects.Remove(water_target);
         Object.Destroy(water_target);
@@ -40,7 +40,7 @@ public class DrinkState : IState
     {
         if (other.gameObject == water_target && !animating)
         {
-            if (holopal.food < 0.8f)
+            if (holopal.water < 0.8f)
             {
                 holopal.held_object = water_target;
                 holopal.Nav_Agent.isStopped = true;

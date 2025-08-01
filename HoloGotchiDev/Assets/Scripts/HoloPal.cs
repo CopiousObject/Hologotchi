@@ -163,7 +163,7 @@ public class HoloPal : MonoBehaviour
         if (held_object)
         {
             held_object.transform.SetParent(heldObjectTransform, false);
-            held_object.transform.localPosition = Vector3.zero;
+            held_object.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
             held_object.GetComponent<Rigidbody>().isKinematic = true;
             held_object.GetComponent<Rigidbody>().detectCollisions = false;
         }

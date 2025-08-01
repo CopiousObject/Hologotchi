@@ -32,7 +32,7 @@ public class FileManager : MonoBehaviour
 
     // Start is called before the first frame update
     // Used to load in any saved data
-    void Start() 
+    void Start()
     {
         if (File.Exists(saveFilePath))
         {
@@ -156,7 +156,7 @@ public class FileManager : MonoBehaviour
     {
         //Debug.Log("Received IPC Message: " + message);
         if (message == "0" || message == "1" ||
-            message == "2" || message == "3") 
+            message == "2" || message == "3")
             int.TryParse(message, out tempGrowthStage);
         if (message.Contains("Time"))
         {
