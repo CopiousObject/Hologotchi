@@ -322,6 +322,12 @@ public class HoloPal : MonoBehaviour
         current_state.OnTriggerEnter(this, other);
     }
 
+    // ^^
+    void OnTriggerStay(Collider other)
+    {
+        current_state.OnTriggerEnter(this, other);
+    }
+
     private void SendMessages()
     {
         communicator.SendData("Hunger," + food);
