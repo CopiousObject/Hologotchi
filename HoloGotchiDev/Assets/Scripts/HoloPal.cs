@@ -182,8 +182,8 @@ public class HoloPal : MonoBehaviour
         chatBubble.alpha = 0f;
 
         notifactions = true;
-        notiAudio = true;
-        notiVisual = true;
+        notiAudio = false;
+        notiVisual = false;
 
         next_act_out_time = DateTime.Now;
         overlay_image.enabled = false; // UI image with no sprite is a giant white square so disabled by default
