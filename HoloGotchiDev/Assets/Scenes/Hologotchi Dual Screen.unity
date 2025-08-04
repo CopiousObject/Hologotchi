@@ -4777,11 +4777,16 @@ PrefabInstance:
     - {fileID: 4284317317925725448, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2427442388881361880, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 6198612792255514455, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1170687155}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
+--- !u!4 &949861833 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6198612792255514455, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
+  m_PrefabInstance: {fileID: 949861832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &979218620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5553,7 +5558,7 @@ Transform:
   m_LocalScale: {x: 0.010000001, y: 0.01001859, z: 0.010000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1291267236}
+  m_Father: {fileID: 949861833}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1178486448 stripped
 Transform:
@@ -5850,11 +5855,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2672232902340821011, guid: 0646fd627b9268b41a9114b14dfe86af, type: 3}
   m_PrefabInstance: {fileID: 211195890}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1291267236 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2427442388881361880, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
-  m_PrefabInstance: {fileID: 949861832}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1329721172
 GameObject:
@@ -6634,7 +6634,7 @@ PrefabInstance:
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: holopalMesh
       value: 
-      objectReference: {fileID: 2075420019}
+      objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: nav_surface
       value: 
@@ -7121,7 +7121,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2075420021}
+      addedObject: {fileID: 949861833}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       insertIndex: -1
@@ -9148,16 +9148,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2672232902340821011, guid: 0646fd627b9268b41a9114b14dfe86af, type: 3}
   m_PrefabInstance: {fileID: 2072235460}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2075420019 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8485296693603584446, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
-  m_PrefabInstance: {fileID: 949861832}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2075420021 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9118105679963984644, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
-  m_PrefabInstance: {fileID: 949861832}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2086337667 stripped
 Transform:
