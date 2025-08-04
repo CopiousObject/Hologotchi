@@ -249,6 +249,8 @@ public class HoloPal : MonoBehaviour
             // When cycle ends and you enter the egg state again;
             if (nextStage == GrowthStage.Egg && previousStage != GrowthStage.Egg)
             {
+                ChangeState(new WanderState(wander_wait_time, wander_points));
+                current_state.OnExit(this);// Wander OnExit triggers leave
                 eggModel.SetActive(true);
                 holopalMesh.SetActive(false);
                 communicator.SendData("Egg State Entered");
@@ -360,4 +362,5 @@ public class HoloPal : MonoBehaviour
         if (message == "notiA") notiAudio = !notiAudio;
         if (message == "notiV") notiVisual = !notiVisual;
     }
+
 }

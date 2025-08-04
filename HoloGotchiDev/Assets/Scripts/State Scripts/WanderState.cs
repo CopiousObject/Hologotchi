@@ -8,7 +8,7 @@ public class WanderState : IState
 {
     private float duration;
     private Vector3[] wander_points;
-    
+
     private float timer;
 
     private bool notifications;
@@ -92,7 +92,7 @@ public class WanderState : IState
 
     public void OnExit(HoloPal holopal)
     {
-
+        holopal.StartCoroutine(Leave(holopal));
     }
 
     public void OnTriggerEnter(HoloPal holopal, Collider other)
@@ -133,7 +133,7 @@ public class WanderState : IState
             holopal.AudioSource.clip = holopal.LowClean;
         }
 
-            float elapsed = 0f;
+        float elapsed = 0f;
         float Total = 3f;
         while (elapsed < Total)
         {
@@ -145,5 +145,30 @@ public class WanderState : IState
         }
         holopal.ChatBubble.alpha = 0;
         holopal.ChatBubble.text = "Sample";
+    }
+
+    IEnumerator Leave(HoloPal holopal)
+    {
+        holopal.Nav_Agent.SetDestination(new Vector3(0, -3.39949751f, 2.91000009f));
+        float elapsed = 0f;
+        float Total = 3f;
+        holopal.ChatBubble.text = "See ya!";
+        holopal.ChatBubble.alpha = 1;
+        holopal.transform.LookAt(Camera.main.transform.position);
+        while (elapsed < Total)
+        {
+            holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1), Vector3.up);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        holopal.ChatBubble.alpha = 0;
+        holopal.ChatBubble.text = "Sample";
+        holopal.Nav_Agent.SetDestination(new Vector3(11.0600004f, -3.39949751f, 2.91000009f));
+        elapsed = 0f;
+        while (elapsed < Total)
+        {
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
     }
 }
