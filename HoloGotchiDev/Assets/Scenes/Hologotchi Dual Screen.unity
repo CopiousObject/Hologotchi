@@ -4681,6 +4681,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6198612792255514455, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6198612792255514455, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6198612792255514455, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 6447173096806178115, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 2.530693e-15
@@ -6501,7 +6513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.91
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6518,6 +6530,10 @@ PrefabInstance:
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7125,7 +7141,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7429618213852413305, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2726817870642878192, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       insertIndex: -1
