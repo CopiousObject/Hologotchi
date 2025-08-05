@@ -2943,6 +2943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa8fefcc369160f43a6c42f9377882cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  receiver: {fileID: 1169287007}
   musicTrack: {fileID: 8300000, guid: 29240521732d53142a6b776b31ae04ef, type: 3}
   ambiantSounds:
   - {fileID: 8300000, guid: f21d91656321d9b48a2d06e65841563d, type: 3}

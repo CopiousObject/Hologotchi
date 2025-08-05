@@ -73,6 +73,7 @@ public class ChatState : IState
         }
         // Decide on audio to play
         holopal.AudioSource.clip = audio[Random.Range(0, 3)];
+        holopal.AudioSource.volume = holopal.EffectsVolume;
         holopal.AudioSource.Play();
         // Sets the dialogue to face camera as it is a child of Holopal and will rotate in random ways otherwise
         while (elapsed < Total)

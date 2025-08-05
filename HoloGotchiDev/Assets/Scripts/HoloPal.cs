@@ -86,6 +86,9 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private AudioSource audiosource;
 
+    private float notificationVolume;
+    private float effectsVolume;
+
     [Header("Chat Settings")]
     [SerializeField]
     private TextMeshPro chatBubble;
@@ -141,6 +144,8 @@ public class HoloPal : MonoBehaviour
     public NavMeshAgent Nav_Agent => nav_agent;
     public TextMeshPro ChatBubble { get => chatBubble; set { chatBubble = value; } }
     public AudioSource AudioSource => audiosource;
+    public float NotificationVolume => notificationVolume;
+    public float EffectsVolume => effectsVolume;
     public AudioClip Talk1 => talk1;
     public AudioClip Talk2 => talk2;
     public AudioClip Talk3 => talk3;
@@ -361,6 +366,16 @@ public class HoloPal : MonoBehaviour
         if (message == "noti") notifactions = !notifactions;
         if (message == "notiA") notiAudio = !notiAudio;
         if (message == "notiV") notiVisual = !notiVisual;
+        if (message.Contains("Notifications"))
+        {
+            string[] splitMessage = message.Split(',');
+            float.TryParse(splitMessage[1], out notificationVolume);
+        }
+        if (message.Contains("Effects"))
+        {
+            string[] splitMessage = message.Split(',');
+            float.TryParse(splitMessage[1], out effectsVolume);
+        }
     }
 
 }

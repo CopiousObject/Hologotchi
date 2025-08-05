@@ -139,7 +139,11 @@ public class WanderState : IState
         {
             // Trigger an animation for this ig
             holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1), Vector3.up);
-            if (holopal.notiAudio) holopal.AudioSource.Play();
+            if (holopal.notiAudio) 
+            {
+                holopal.AudioSource.volume = holopal.NotificationVolume;
+                holopal.AudioSource.Play();
+            }
             elapsed += Time.deltaTime;
             yield return null;
         }
