@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fa522b0bcb6b21543a37c7a6420976f8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9761cfe87598d0946ba3baeac85dcc0b, type: 2}
     - target: {fileID: 919132149155446097, guid: fa522b0bcb6b21543a37c7a6420976f8, type: 3}
       propertyPath: m_Name
       value: Food
@@ -130,5 +134,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.02
-  m_Center: {x: 0.00011823177, y: 0.000103906474, z: -0.0042964476}
+  m_Radius: 0.012633614
+  m_Center: {x: 0.000118232965, y: -0.0007218027, z: -0.0042964397}
