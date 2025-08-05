@@ -128,7 +128,7 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private GameObject eggModel;
     [SerializeField]
-    private GameObject holopalMesh;
+    private GameObject holopalAdultModel;
     [Space]
     [SerializeField]
     private SkinnedMeshRenderer mesh_renderer;
@@ -206,7 +206,7 @@ public class HoloPal : MonoBehaviour
     private void Update()
     {
         eggModel.isStatic = false;
-        holopalMesh.isStatic = false;
+        holopalAdultModel.isStatic = false;
 
         if (Input.GetKeyDown(KeyCode.Delete))
         {
@@ -243,7 +243,7 @@ public class HoloPal : MonoBehaviour
             if (previousStage == GrowthStage.Egg && nextStage != GrowthStage.Egg)
             {
                 eggModel.SetActive(false);
-                holopalMesh.SetActive(true);
+                holopalAdultModel.SetActive(true);
                 communicator.SendData("Egg State Exited");
             }
             // When cycle ends and you enter the egg state again;
@@ -252,7 +252,7 @@ public class HoloPal : MonoBehaviour
                 ChangeState(new WanderState(wander_wait_time, wander_points));
                 current_state.OnExit(this);// Wander OnExit triggers leave
                 eggModel.SetActive(true);
-                holopalMesh.SetActive(false);
+                holopalAdultModel.SetActive(false);
                 communicator.SendData("Egg State Entered");
 
                 food = 1f;
