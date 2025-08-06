@@ -335,10 +335,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a3732d9bdad8ebd4097dcfe6a69a557e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2651594484954434608}
+      addedObject: {fileID: 8393408283915804982}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a3732d9bdad8ebd4097dcfe6a69a557e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8393408283915804982}
+      addedObject: {fileID: 7700985832257937929}
   m_SourcePrefab: {fileID: 100100000, guid: a3732d9bdad8ebd4097dcfe6a69a557e, type: 3}
 --- !u!4 &1702135020083702423 stripped
 Transform:
@@ -350,8 +350,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a3732d9bdad8ebd4097dcfe6a69a557e, type: 3}
   m_PrefabInstance: {fileID: 1158986089452146044}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &2651594484954434608
-BoxCollider:
+--- !u!54 &8393408283915804982
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077534250829557805}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 3
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &7700985832257937929
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -369,32 +396,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0701998, y: 0.030333985, z: 0.01038349}
-  m_Center: {x: -0.004518183, y: 0.0026346408, z: -0.0008233106}
---- !u!54 &8393408283915804982
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077534250829557805}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Radius: 0.02
+  m_Center: {x: -0.004343802, y: 0.0012898995, z: -0.0008233106}

@@ -10,7 +10,6 @@ public class PlayManager : MonoBehaviour
     public Camera currentCam;
     public InterProcessCommunicator Communicator;
     public UIAnimation uiAnimation;
-    public Transform HoloPalTarget;
 
     public GameObject PlayAssets;
     public Collider2D TopBound;
@@ -22,6 +21,7 @@ public class PlayManager : MonoBehaviour
     public GameObject HoloPaddle;
     public GameObject StartButton;
 
+    private string message;
     private Vector3 Paddle1Pos;
     private Vector3 Paddle2Pos;
     private Vector3 BallStartPos = new Vector3(-0.5f, 2.68000007f, 90f);
@@ -104,7 +104,25 @@ public class PlayManager : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        Communicator.SendData("Stopped Playing");
+
+        // Score
+        switch (BallObject.GetComponent<BallSpeed>().bounceCount)
+        {
+            case <= 10:
+                message = "Stopped Playing Bad";
+                break;
+            case <= 25:
+                message = "Stopped Playing Good";
+                break;
+            case > 25:
+                message = "Stopped Playing Great";
+                break;
+            default:
+                message = "Stopped Playing Bad";
+                break;
+        }
+
+        Communicator.SendData(message);
         PlayAssets.SetActive(false);
         Playing = false;
         uiAnimation.NavigateToMain();

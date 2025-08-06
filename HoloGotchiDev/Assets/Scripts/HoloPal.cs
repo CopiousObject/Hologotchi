@@ -349,9 +349,19 @@ public class HoloPal : MonoBehaviour
     private void ReceiveMessage(string message)
     {
         if (message == "Start Experience") startGrowth = true;
-        if (message == "Stopped Playing")
+        if (message == "Stopped Playing Bad")
         {
-            play = 1f;
+            play += 0.1f;
+            ChangeState(null);
+        }
+        if (message == "Stopped Playing Good")
+        {
+            play += 0.25f;
+            ChangeState(null);
+        }
+        if (message == "Stopped Playing Great")
+        {
+            play += 0.4f;
             ChangeState(null);
         }
         if (message == "0") current_stage = GrowthStage.Egg;
