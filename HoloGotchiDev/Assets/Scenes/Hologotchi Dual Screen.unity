@@ -6791,6 +6791,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: held_object
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: holopalMesh
       value: 
       objectReference: {fileID: 520574740}
@@ -6817,7 +6821,7 @@ PrefabInstance:
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: mesh_renderer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1668587825}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: overlay_image
       value: 
@@ -7824,6 +7828,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2672232902340821011, guid: 0646fd627b9268b41a9114b14dfe86af, type: 3}
   m_PrefabInstance: {fileID: 1661160207}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1668587825 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8950130302915436247, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
+  m_PrefabInstance: {fileID: 949861832}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1671643368
 PrefabInstance:
