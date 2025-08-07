@@ -107,31 +107,11 @@ public class WanderState : IState
         if (holopal.notiVisual) holopal.ChatBubble.alpha = 1f;
 
         // Determine which audio sound to play
-        if (holopal.food < 0.4f && holopal.Spawner.FoodObjects.Count == 0)
-        {
-            holopal.ChatBubble.text = "I'm hungry!";
-            holopal.AudioSource.clip = holopal.LowHunger;
-        }
-        else if (holopal.water < 0.4f && holopal.Spawner.WaterObjects.Count == 0)
-        {
-            holopal.ChatBubble.text = "I'm thirsty!";
-            holopal.AudioSource.clip = holopal.LowThirst;
-        }
-        else if (holopal.play < 0.4f && holopal.Spawner.PlayObjects.Count == 0)
-        {
-            holopal.ChatBubble.text = "Let's play!";
-            holopal.AudioSource.clip = holopal.LowPlay;
-        }
-        else if (holopal.chat < 0.4f && holopal.Spawner.ChatObjects.Count == 0)
-        {
-            holopal.ChatBubble.text = "Talk to me!";
-            holopal.AudioSource.clip = holopal.LowChat;
-        }
-        else if (holopal.clean < 0.4f && holopal.Spawner.CleanObjects.Count == 0)
-        {
-            holopal.ChatBubble.text = "It's dirty!";
-            holopal.AudioSource.clip = holopal.LowClean;
-        }
+        if (holopal.food < 0.4f && holopal.Spawner.FoodObjects.Count == 0) holopal.AudioSource.clip = holopal.LowHunger;
+        else if (holopal.water < 0.4f && holopal.Spawner.WaterObjects.Count == 0) holopal.AudioSource.clip = holopal.LowThirst;
+        else if (holopal.play < 0.4f && holopal.Spawner.PlayObjects.Count == 0) holopal.AudioSource.clip = holopal.LowPlay;
+        else if (holopal.chat < 0.4f && holopal.Spawner.ChatObjects.Count == 0) holopal.AudioSource.clip = holopal.LowChat;
+        else if (holopal.clean < 0.4f && holopal.Spawner.CleanObjects.Count == 0) holopal.AudioSource.clip = holopal.LowClean;
 
         float elapsed = 0f;
         float Total = 3f;
@@ -141,6 +121,7 @@ public class WanderState : IState
             holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1), Vector3.up);
             if (holopal.notiAudio) 
             {
+                holopal.ChatBubble.text = "I can't grow";
                 holopal.AudioSource.volume = holopal.NotificationVolume;
                 holopal.AudioSource.Play();
             }

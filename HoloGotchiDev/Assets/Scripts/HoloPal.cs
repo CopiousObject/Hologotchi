@@ -366,6 +366,7 @@ public class HoloPal : MonoBehaviour
         if (message == "3") current_stage = GrowthStage.Adult;
         if (message.Contains("Time"))
         {
+            Debug.Log("Reading");
             string[] splitMessage = message.Split(':');
             float.TryParse(splitMessage[1], out growth);
         }
@@ -376,6 +377,7 @@ public class HoloPal : MonoBehaviour
         {
             string[] splitMessage = message.Split(',');
             float.TryParse(splitMessage[1], out notificationVolume);
+            Debug.Log("Notification Volume" + notificationVolume);
         }
         if (message.Contains("Effects"))
         {
