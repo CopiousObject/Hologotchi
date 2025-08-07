@@ -1828,7 +1828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: preview2D
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: targetLKG
@@ -4814,15 +4814,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6198612792255514455, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6198612792255514455, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
-      propertyPath: m_LocalRotation.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6198612792255514455, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6198612792255514455, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6447173096806178115, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6752,7 +6752,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 1f9a5f043fb3047408a6a9b57e5e4416, type: 3}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: debugMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: lowHunger
@@ -6821,7 +6821,7 @@ PrefabInstance:
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: mesh_renderer
       value: 
-      objectReference: {fileID: 1668587825}
+      objectReference: {fileID: 1531552186}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: overlay_image
       value: 
@@ -7518,6 +7518,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0646fd627b9268b41a9114b14dfe86af, type: 3}
+--- !u!137 &1531552186 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8950130302915436247, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
+  m_PrefabInstance: {fileID: 949861832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1536623553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7828,11 +7833,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2672232902340821011, guid: 0646fd627b9268b41a9114b14dfe86af, type: 3}
   m_PrefabInstance: {fileID: 1661160207}
-  m_PrefabAsset: {fileID: 0}
---- !u!137 &1668587825 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8950130302915436247, guid: dabbe0104fca18c4cbb22a80186134ad, type: 3}
-  m_PrefabInstance: {fileID: 949861832}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1671643368
 PrefabInstance:

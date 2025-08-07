@@ -133,8 +133,6 @@ public class HoloPal : MonoBehaviour
     [SerializeField]
     private GameObject holopalAdultModel;
     [Space]
-    [SerializeField]
-    private SkinnedMeshRenderer mesh_renderer;
 
     IState current_state;
     public GameObject held_object;
@@ -227,9 +225,9 @@ public class HoloPal : MonoBehaviour
         if (!debugMode)
         {
             if (current_stage == GrowthStage.Egg ||
-                (current_stage == GrowthStage.Baby && food >= 0.85 && water >= 0.85 && play >= 0.80 && chat >= 0.50 && clean >= 0.85) ||
-                (current_stage == GrowthStage.Child && food >= 0.80 && water >= 0.80 && play >= 0.85 && chat >= 0.68 && clean >= 0.75) ||
-                (current_stage == GrowthStage.Adult && food >= 0.75 && water >= 0.75 && play >= 0.75 && chat >= 0.85 && clean >= 0.65))
+                (current_stage == GrowthStage.Baby && food >= 0.15f && water >= 0.15f && play >= 0.15f && chat >= 0.15f && clean >= 0.15f) ||
+                (current_stage == GrowthStage.Child && food >= 0.15f && water >= 0.15f && play >= 0.15f && chat >= 0.15f && clean >= 0.15f) ||
+                (current_stage == GrowthStage.Adult && food >= 0.15f && water >= 0.15f && play >= 0.15f && chat >= 0.15f && clean >= 0.15f))
             {
                 growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
             }
@@ -285,10 +283,8 @@ public class HoloPal : MonoBehaviour
         chat = Mathf.Clamp01(chat);
         clean = Mathf.Clamp01(clean);
 
-        mesh_renderer.SetBlendShapeWeight(4, Mathf.Lerp(stage_data[(int)current_stage].MinBlendShape, stage_data[(int)current_stage].MaxBlendShape, growth));
-
         // Acting out behavior and trigger
-        if (chat < 0.15f || play < 0.15f || food < 0.15f || water < 0.15f)
+        if (chat < 0.05f || play < 0.05f || food < 0.05f || water < 0.05f)
         {
             if (DateTime.Now >= next_act_out_time)
             {

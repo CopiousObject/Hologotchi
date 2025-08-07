@@ -1,0 +1,41 @@
+tamagotchi
+Stage 1
+0.00347d (5m)
+
+Stage 2
+1d
+
+Stage 3
+3d
+
+Stage 4
+14d
+
+18.00347
+
+scale 6.66 lol
+
+
+hologotchi
+goal: 120d (4 months) (1 semester)
+
+Stage 1
+0.0208d (30m)
+
+Stage 2
+7d
+
+Stage 3
+20d
+
+Stage 4
+90d
+
+117.0208
+
+everything restores .4
+egg nothing, baby no play
+eat and drink twice a day
+chatting increases
+cleaning once a day
+play scaled by volley maxing out at 20
