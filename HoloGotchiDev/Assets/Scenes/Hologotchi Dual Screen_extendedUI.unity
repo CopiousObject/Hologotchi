@@ -6594,6 +6594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceSpeed: 5
+  bounceCount: 0
 --- !u!1 &1174269266
 GameObject:
   m_ObjectHideFlags: 0
@@ -6924,7 +6925,6 @@ MonoBehaviour:
   currentCam: {fileID: 1364922305}
   Communicator: {fileID: 1523370008}
   uiAnimation: {fileID: 495281073}
-  HoloPalTarget: {fileID: 0}
   PlayAssets: {fileID: 474819374}
   TopBound: {fileID: 1337192880}
   LeftBound: {fileID: 980452218}
@@ -8031,7 +8031,7 @@ Camera:
     m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
+  m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
