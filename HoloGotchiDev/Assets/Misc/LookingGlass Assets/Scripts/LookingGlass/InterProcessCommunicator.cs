@@ -68,7 +68,7 @@ namespace LookingGlass {
         public bool signMessages = true;
 
         // should be uncommon and unique per app
-        public char signingChar = '☆';
+        public char signingChar = 't';
 
         private IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
         private Queue<string> messageQueue = new Queue<string>();
@@ -206,7 +206,8 @@ namespace LookingGlass {
 
                     if (!string.IsNullOrEmpty(message)) {
                         if (signMessages) {
-                            if (message[message.Length - 1] == signingChar) {
+                            if (!string.IsNullOrEmpty(message) && message.EndsWith(signingChar.ToString()))
+                            {
                                 // remove endChar
                                 messageQueue.Enqueue(message.Substring(0, message.Length - 1));
                             }
