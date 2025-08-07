@@ -1,6 +1,4 @@
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -139,7 +137,7 @@ public class WanderState : IState
         {
             // Trigger an animation for this ig
             holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1), Vector3.up);
-            if (holopal.notiAudio) 
+            if (holopal.notiAudio)
             {
                 holopal.AudioSource.volume = holopal.NotificationVolume;
                 holopal.AudioSource.Play();
