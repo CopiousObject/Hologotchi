@@ -15,8 +15,8 @@ public class MusicController : MonoBehaviour
     private float timeBeforeRandomSound;
     private bool playingMusic;
 
-    private float musicVolume;
-    private float effectsVolume;
+    private float musicVolume = 1;
+    private float effectsVolume = 1;
     // Start is called before the first frame update
     void Start()
     {
