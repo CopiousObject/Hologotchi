@@ -105,24 +105,7 @@ public class PlayManager : MonoBehaviour
             yield return null;
         }
 
-        // Score
-        switch (BallObject.GetComponent<BallSpeed>().bounceCount)
-        {
-            case <= 10:
-                message = "Stopped Playing Bad";
-                break;
-            case <= 25:
-                message = "Stopped Playing Good";
-                break;
-            case > 25:
-                message = "Stopped Playing Great";
-                break;
-            default:
-                message = "Stopped Playing Bad";
-                break;
-        }
-
-        Communicator.SendData(message);
+        Communicator.SendData("Bounce Count " + BallObject.GetComponent<BallSpeed>().bounceCount);
         PlayAssets.SetActive(false);
         Playing = false;
         uiAnimation.NavigateToMain();

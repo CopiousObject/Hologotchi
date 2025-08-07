@@ -1772,7 +1772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1770150239514932, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4858807375538342, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: m_RootOrder
@@ -6707,6 +6707,22 @@ PrefabInstance:
       value: -0.049497545
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: chat
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: food
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: play
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: clean
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: talk1
       value: 
       objectReference: {fileID: 8300000, guid: 6da86d4131876f14d88736af69558c46, type: 3}
@@ -6722,6 +6738,10 @@ PrefabInstance:
       propertyPath: talk4
       value: 
       objectReference: {fileID: 8300000, guid: 28b6c0b6da6d4b3469287c2bcfbec962, type: 3}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: water
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: annoyed
       value: 
@@ -7035,12 +7055,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[1].ChatTimesPerUnit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[1].CleanTimesPerDay
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[1].FoodTimesPerUnit
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[1].WaterTimesPerDay
@@ -7048,7 +7072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[2].ChatTimesPerUnit
-      value: 0.03
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[2].CleanTimesPerDay
@@ -7056,11 +7080,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[2].FoodTimesPerUnit
-      value: 0.08
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[2].PlayTimesPerUnit
-      value: 0.03
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[2].WaterTimesPerDay
@@ -7068,7 +7092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[3].ChatTimesPerUnit
-      value: 0.02
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[3].CleanTimesPerDay
@@ -7076,11 +7100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[3].FoodTimesPerUnit
-      value: 0.03
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[3].PlayTimesPerUnit
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[3].WaterTimesPerDay
@@ -7096,27 +7120,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[1].CleanTimesPerUnit
-      value: 0.04
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[1].WaterTimesPerUnit
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[2].CleanTimesPerUnit
-      value: 0.03
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[2].WaterTimesPerUnit
-      value: 0.08
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[3].CleanTimesPerUnit
-      value: 0.02
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[3].WaterTimesPerUnit
-      value: 0.03
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[0].StageDurationInDays
@@ -7136,19 +7160,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[0].StageDurationInUnits
-      value: 0.5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[1].StageDurationInUnits
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[2].StageDurationInUnits
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[3].StageDurationInUnits
-      value: 30
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 2726817870642878192, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Name

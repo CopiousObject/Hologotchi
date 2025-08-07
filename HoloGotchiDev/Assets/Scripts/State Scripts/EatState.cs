@@ -29,7 +29,7 @@ public class EatState : IState
     public void OnExit(HoloPal holopal)
     {
         animating = false;
-        holopal.food = 1f;
+        holopal.food += 0.4f;
         holopal.Nav_Agent.isStopped = false;
         holopal.Spawner.FoodObjects.Remove(food_target);
         Object.Destroy(food_target);

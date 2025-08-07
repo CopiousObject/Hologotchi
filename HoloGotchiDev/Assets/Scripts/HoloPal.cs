@@ -25,10 +25,10 @@ public struct StageData
     public int SecondsPerUnit;
     [Min(0)]
     public float StageDurationInUnits;
-    [Range(0, 100)]
-    public float MinBlendShape;
-    [Range(0, 100)]
-    public float MaxBlendShape;
+    // [Range(0, 100)]
+    // public float MinBlendShape;
+    // [Range(0, 100)]
+    // public float MaxBlendShape;
 
     [Min(0)]
     public float FoodTimesPerUnit;
@@ -175,12 +175,6 @@ public class HoloPal : MonoBehaviour
     private void Start()
     {
         communicator.OnMessageReceived += ReceiveMessage;
-
-        food = 1f;
-        water = 1f;
-        play = 1f;
-        chat = 1f;
-        clean = 1f;
 
         chatBubble.alpha = 0f;
 
@@ -345,19 +339,9 @@ public class HoloPal : MonoBehaviour
     private void ReceiveMessage(string message)
     {
         if (message == "Start Experience") startGrowth = true;
-        if (message == "Stopped Playing Bad")
+        if (message.Contains("Bounce Count"))
         {
-            play += 0.1f;
-            ChangeState(null);
-        }
-        if (message == "Stopped Playing Good")
-        {
-            play += 0.25f;
-            ChangeState(null);
-        }
-        if (message == "Stopped Playing Great")
-        {
-            play += 0.4f;
+            play += 0.4f * Mathf.Max(int.Parse(message.Substring("Bounce Count ".Length)) / 20f, 1f);
             ChangeState(null);
         }
         if (message == "0") current_stage = GrowthStage.Egg;

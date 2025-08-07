@@ -29,7 +29,7 @@ public class DrinkState : IState
     public void OnExit(HoloPal holopal)
     {
         animating = false;
-        holopal.water = 1f;
+        holopal.water += 0.4f;
         holopal.Nav_Agent.isStopped = false;
         holopal.Spawner.WaterObjects.Remove(water_target);
         Object.Destroy(water_target);
