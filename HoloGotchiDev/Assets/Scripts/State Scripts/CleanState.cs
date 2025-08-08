@@ -36,7 +36,7 @@ public class CleanState : IState
 
     public void OnTriggerEnter(HoloPal holopal, Collider other)
     {
-        if (other.gameObject == clean_target)
+        if (other.gameObject == clean_target && !animating)
         {
             holopal.animator.SetTrigger("cleaning");
             holopal.held_object = clean_target;
@@ -53,7 +53,6 @@ public class CleanState : IState
         float elapsed = 0;
         while (elapsed < time)
         {
-            Debug.Log("Clean");
             elapsed += Time.deltaTime;
             holopal.clean = Mathf.Lerp(holopal.clean, 1f, elapsed / time);
             yield return null;
