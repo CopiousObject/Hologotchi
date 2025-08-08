@@ -31,7 +31,6 @@ public class MusicController : MonoBehaviour
         if(timeBeforeNextPlay <= 0)
         {
             audioControl.clip = musicTrack;
-            audioControl.volume = musicVolume;
             audioControl.Play();
             timeBeforeNextPlay = 20 * 60;
             playingMusic = true;
@@ -39,6 +38,7 @@ public class MusicController : MonoBehaviour
         if(timeBeforeNextPlay <= 15 * 60)
         {
             playingMusic = false;
+            audioControl.volume = musicVolume;
         }
 
         if (!playingMusic)
@@ -46,10 +46,11 @@ public class MusicController : MonoBehaviour
             if (timeBeforeRandomSound <= 0)
             {
                 audioControl.clip = ambiantSounds[Random.Range(0, ambiantSounds.Length)];
-                audioControl.volume = effectsVolume;
                 audioControl.Play();
                 timeBeforeRandomSound = Random.Range(30, 121);
             }
+            audioControl.volume = effectsVolume;
+            timeBeforeRandomSound -= Time.deltaTime;
         }
 
         timeBeforeNextPlay -= Time.deltaTime;
@@ -70,6 +71,7 @@ public class MusicController : MonoBehaviour
             {
                 float.TryParse(splitMessage[1], out value);
                 musicVolume = value;
+                audioControl.volume = musicVolume;
             }
             if (message.Contains("Effects"))
             {

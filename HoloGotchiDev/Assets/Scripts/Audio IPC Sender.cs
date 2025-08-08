@@ -31,11 +31,31 @@ public class AudioIPCSender : MonoBehaviour
         musicVolume = musicSlider.value * masterVolume;
         notificationVolume = notificationSlider.value * masterVolume;
         effectsVolume = effectsSlider.value * masterVolume;
-
-        sender.SendData("Music," + musicVolume);
+    }
+    
+    /// <summary>
+    /// Used to send information on notification volume changes
+    /// </summary>
+    public void NotificationChange()
+    {
+        Debug.Log("Sending: " + notificationVolume);
         sender.SendData("Notification," + notificationVolume);
+    }
+
+    /// <summary>
+    /// Used to send information on effect volume changes
+    /// </summary>
+    public void EffectChange()
+    {
+        Debug.Log("Sending" + effectsVolume);
         sender.SendData("Effects," + effectsVolume);
     }
 
-
+    /// <summary>
+    /// Used to send information on music volume changes
+    /// </summary>
+    public void MusicChange()
+    {
+        sender.SendData("Music," + musicVolume);
+    }
 }
