@@ -17,8 +17,6 @@ public class TimeLord : MonoBehaviour
     void Awake()
     {
         OGFixedTimeStep = Time.fixedDeltaTime;
-
-        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

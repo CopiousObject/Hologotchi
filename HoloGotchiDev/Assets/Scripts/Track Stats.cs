@@ -109,11 +109,11 @@ public class TrackStats : MonoBehaviour
         }
         catch (IndexOutOfRangeException ioor)
         {
-            Debug.Log("Not readable message: " + ioor);
+            Debug.LogWarning("Not readable message: " + ioor);
         }
         catch(NullReferenceException nre)
         {
-            Debug.Log("Not readable message: " + nre);
+            Debug.LogWarning("Not readable message: " + nre);
         }
     }
 
