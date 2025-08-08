@@ -40,6 +40,7 @@ public struct StageData
     public float ChatTimesPerUnit;
     [Min(0)]
     public float CleanTimesPerUnit;
+    public GameObject Model;
 }
 
 public class HoloPal : MonoBehaviour
@@ -127,11 +128,6 @@ public class HoloPal : MonoBehaviour
     public bool notifactions;
     public bool notiAudio;
     public bool notiVisual;
-
-    [SerializeField]
-    private GameObject eggModel;
-    [SerializeField]
-    private GameObject holopalAdultModel;
     [Space]
 
     IState current_state;
@@ -202,9 +198,6 @@ public class HoloPal : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        eggModel.isStatic = false;
-        holopalAdultModel.isStatic = false;
-
         if (Input.GetKeyDown(KeyCode.Delete))
         {
             if (debugMode) debugMode = false;
@@ -237,19 +230,15 @@ public class HoloPal : MonoBehaviour
             GrowthStage nextStage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
 
             // Setting up for leaving egg state
-            if (previousStage == GrowthStage.Egg && nextStage != GrowthStage.Egg)
+            if (current_stage == GrowthStage.Egg && nextStage != GrowthStage.Egg)
             {
-                eggModel.SetActive(false);
-                holopalAdultModel.SetActive(true);
                 communicator.SendData("Egg State Exited");
             }
             // When cycle ends and you enter the egg state again;
-            if (nextStage == GrowthStage.Egg && previousStage != GrowthStage.Egg)
+            if (nextStage == GrowthStage.Egg && current_stage != GrowthStage.Egg)
             {
                 ChangeState(new WanderState(wander_wait_time, wander_points));
                 current_state.OnExit(this);// Wander OnExit triggers leave
-                eggModel.SetActive(true);
-                holopalAdultModel.SetActive(false);
                 communicator.SendData("Egg State Entered");
 
                 food = 1f;
@@ -258,6 +247,9 @@ public class HoloPal : MonoBehaviour
                 chat = 1f;
                 clean = 1f;
             }
+
+            stage_data[(int)current_stage].Model.SetActive(false);
+            stage_data[(int)nextStage].Model.SetActive(true);
 
             current_stage = nextStage;
             growth = 0;
