@@ -11,6 +11,8 @@ public class DropItem : MonoBehaviour
     GameObject duplicate;
     [SerializeField] 
     private InterProcessCommunicator communicator;
+    [SerializeField]
+    private RectTransform enviornment;
 
     [SerializeField]
     private ButtonToggle buttonToggle;
@@ -46,9 +48,7 @@ public class DropItem : MonoBehaviour
         if (duplicate != null || buttonReactivateTime > 0)
             return;
 
-        RectTransform environment = GameObject.Find("Environment").GetComponent<RectTransform>();
-
-        duplicate = Instantiate(objectToDuplicate, environment);
+        duplicate = Instantiate(objectToDuplicate, enviornment);
 
         duplicate.transform.SetSiblingIndex(1);
 
