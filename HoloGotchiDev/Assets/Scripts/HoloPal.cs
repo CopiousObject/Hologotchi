@@ -60,6 +60,10 @@ public class HoloPal : MonoBehaviour
     public float play;
     public float chat;
     public float clean;
+    [Space]
+
+    public float lowStatThreshold;
+    public float criticalStatThreshold;
 
     [Header("References")]
     // Sends the messages for IPC
@@ -131,7 +135,12 @@ public class HoloPal : MonoBehaviour
     [Space]
 
     IState current_state;
+    [HideInInspector]
+    public bool leaving;
+    [HideInInspector]
     public GameObject held_object;
+
+    public Camera mainCamera; // for some reason the MainCamera tag was working so temp fix
 
     // Properties
     public Spawner Spawner => spawner;
@@ -193,6 +202,35 @@ public class HoloPal : MonoBehaviour
         current_state?.OnEnter(this);
     }
 
+    public void GoNextStage()
+    {
+        GrowthStage nextStage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
+
+        // Setting up for leaving egg state
+        if (current_stage == GrowthStage.Egg && nextStage != GrowthStage.Egg)
+        {
+            communicator.SendData("Egg State Exited");
+        }
+
+        // When cycle ends and you enter the egg state again;
+        if (nextStage == GrowthStage.Egg && current_stage != GrowthStage.Egg)
+        {
+            communicator.SendData("Egg State Entered");
+
+            food = 1f;
+            water = 1f;
+            play = 1f;
+            chat = 1f;
+            clean = 1f;
+        }
+
+        stage_data[(int)current_stage].Model.SetActive(false);
+        stage_data[(int)nextStage].Model.SetActive(true);
+
+        current_stage = nextStage;
+        growth = 0;
+    }
+
     /// <summary>
     /// Determines the state changes and the evolution states as the HoloPal grows up
     /// </summary>
@@ -212,9 +250,9 @@ public class HoloPal : MonoBehaviour
         if (!debugMode)
         {
             if (current_stage == GrowthStage.Egg ||
-                (current_stage == GrowthStage.Baby && food >= 0.15f && water >= 0.15f && play >= 0.15f && chat >= 0.15f && clean >= 0.15f) ||
-                (current_stage == GrowthStage.Child && food >= 0.15f && water >= 0.15f && play >= 0.15f && chat >= 0.15f && clean >= 0.15f) ||
-                (current_stage == GrowthStage.Adult && food >= 0.15f && water >= 0.15f && play >= 0.15f && chat >= 0.15f && clean >= 0.15f))
+                (current_stage == GrowthStage.Baby && food >= lowStatThreshold && water >= lowStatThreshold && play >= lowStatThreshold && chat >= lowStatThreshold && clean >= lowStatThreshold) ||
+                (current_stage == GrowthStage.Child && food >= lowStatThreshold && water >= lowStatThreshold && play >= lowStatThreshold && chat >= lowStatThreshold && clean >= lowStatThreshold) ||
+                (current_stage == GrowthStage.Adult && food >= lowStatThreshold && water >= lowStatThreshold && play >= lowStatThreshold && chat >= lowStatThreshold && clean >= lowStatThreshold))
             {
                 growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
             }
@@ -224,35 +262,19 @@ public class HoloPal : MonoBehaviour
             growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
         }
 
-        if (growth >= 1)
+        if (growth >= 1f && !leaving)
         {
-            GrowthStage previousStage = current_stage;
             GrowthStage nextStage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
 
-            // Setting up for leaving egg state
-            if (current_stage == GrowthStage.Egg && nextStage != GrowthStage.Egg)
-            {
-                communicator.SendData("Egg State Exited");
-            }
             // When cycle ends and you enter the egg state again;
             if (nextStage == GrowthStage.Egg && current_stage != GrowthStage.Egg)
             {
-                ChangeState(new WanderState(wander_wait_time, wander_points));
-                current_state.OnExit(this);// Wander OnExit triggers leave
-                communicator.SendData("Egg State Entered");
-
-                food = 1f;
-                water = 1f;
-                play = 1f;
-                chat = 1f;
-                clean = 1f;
+                ChangeState(new LeaveState());
             }
-
-            stage_data[(int)current_stage].Model.SetActive(false);
-            stage_data[(int)nextStage].Model.SetActive(true);
-
-            current_stage = nextStage;
-            growth = 0;
+            else
+            {
+                GoNextStage();
+            }
         }
 
         // Stat weighted for time
@@ -270,7 +292,7 @@ public class HoloPal : MonoBehaviour
         clean = Mathf.Clamp01(clean);
 
         // Acting out behavior and trigger
-        if (chat < 0.05f || play < 0.05f || food < 0.05f || water < 0.05f)
+        if (chat < criticalStatThreshold || play < criticalStatThreshold || food < criticalStatThreshold || water < criticalStatThreshold)
         {
             if (DateTime.Now >= next_act_out_time)
             {

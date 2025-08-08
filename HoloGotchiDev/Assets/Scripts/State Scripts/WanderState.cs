@@ -67,11 +67,11 @@ public class WanderState : IState
             }
 
             // Crying
-            if ((holopal.food < 0.4f && holopal.Spawner.FoodObjects.Count == 0 && holopal.notifactions)
-                        || (holopal.water < 0.4f && holopal.Spawner.WaterObjects.Count == 0)
-                        || (holopal.play < 0.4f && holopal.Spawner.PlayObjects.Count == 0)
-                        || (holopal.chat < 0.4f && holopal.Spawner.ChatObjects.Count == 0)
-                        || (holopal.clean < 0.4f && holopal.Spawner.CleanObjects.Count == 0))
+            if ((holopal.food < holopal.lowStatThreshold && holopal.Spawner.FoodObjects.Count == 0 && holopal.notifactions)
+                        || (holopal.water < holopal.lowStatThreshold && holopal.Spawner.WaterObjects.Count == 0)
+                        || (holopal.play < holopal.lowStatThreshold && holopal.Spawner.PlayObjects.Count == 0)
+                        || (holopal.chat < holopal.lowStatThreshold && holopal.Spawner.ChatObjects.Count == 0)
+                        || (holopal.clean < holopal.lowStatThreshold && holopal.Spawner.CleanObjects.Count == 0))
             {
                 holopal.StartCoroutine(LowStat(holopal));
             }
@@ -90,7 +90,6 @@ public class WanderState : IState
 
     public void OnExit(HoloPal holopal)
     {
-        holopal.StartCoroutine(Leave(holopal));
     }
 
     public void OnTriggerEnter(HoloPal holopal, Collider other)
@@ -101,15 +100,14 @@ public class WanderState : IState
     // Annoyed whining to get player attention from neglect
     IEnumerator LowStat(HoloPal holopal)
     {
-
         if (holopal.notiVisual) holopal.ChatBubble.alpha = 1f;
 
         // Determine which audio sound to play
-        if (holopal.food < 0.4f && holopal.Spawner.FoodObjects.Count == 0) holopal.AudioSource.clip = holopal.LowHunger;
-        else if (holopal.water < 0.4f && holopal.Spawner.WaterObjects.Count == 0) holopal.AudioSource.clip = holopal.LowThirst;
-        else if (holopal.play < 0.4f && holopal.Spawner.PlayObjects.Count == 0) holopal.AudioSource.clip = holopal.LowPlay;
-        else if (holopal.chat < 0.4f && holopal.Spawner.ChatObjects.Count == 0) holopal.AudioSource.clip = holopal.LowChat;
-        else if (holopal.clean < 0.4f && holopal.Spawner.CleanObjects.Count == 0) holopal.AudioSource.clip = holopal.LowClean;
+        if (holopal.food < holopal.lowStatThreshold && holopal.Spawner.FoodObjects.Count == 0) holopal.AudioSource.clip = holopal.LowHunger;
+        else if (holopal.water < holopal.lowStatThreshold && holopal.Spawner.WaterObjects.Count == 0) holopal.AudioSource.clip = holopal.LowThirst;
+        else if (holopal.play < holopal.lowStatThreshold && holopal.Spawner.PlayObjects.Count == 0) holopal.AudioSource.clip = holopal.LowPlay;
+        else if (holopal.chat < holopal.lowStatThreshold && holopal.Spawner.ChatObjects.Count == 0) holopal.AudioSource.clip = holopal.LowChat;
+        else if (holopal.clean < holopal.lowStatThreshold && holopal.Spawner.CleanObjects.Count == 0) holopal.AudioSource.clip = holopal.LowClean;
 
         float elapsed = 0f;
         float Total = 3f;
@@ -128,30 +126,5 @@ public class WanderState : IState
         }
         holopal.ChatBubble.alpha = 0;
         holopal.ChatBubble.text = "Sample";
-    }
-
-    IEnumerator Leave(HoloPal holopal)
-    {
-        holopal.Nav_Agent.SetDestination(new Vector3(0, -3.39949751f, 2.91000009f));
-        float elapsed = 0f;
-        float Total = 3f;
-        holopal.ChatBubble.text = "See ya!";
-        holopal.ChatBubble.alpha = 1;
-        holopal.transform.LookAt(Camera.main.transform.position);
-        while (elapsed < Total)
-        {
-            holopal.ChatBubble.rectTransform.rotation = Quaternion.LookRotation(new Vector3(0, 0, 1), Vector3.up);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-        holopal.ChatBubble.alpha = 0;
-        holopal.ChatBubble.text = "Sample";
-        holopal.Nav_Agent.SetDestination(new Vector3(11.0600004f, -3.39949751f, 2.91000009f));
-        elapsed = 0f;
-        while (elapsed < Total)
-        {
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
     }
 }
