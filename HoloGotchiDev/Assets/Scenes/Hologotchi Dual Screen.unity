@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_ScaleMode: 0
   m_Offset: {x: 1.29, y: 5.83, z: 8.251963}
   m_Size: {x: 10.193526, y: 8.900139, z: 0.3685341}
-  m_FadeFactor: 1
+  m_FadeFactor: 0
 --- !u!1001 &211195890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1828,7 +1828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: preview2D
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: targetLKG
