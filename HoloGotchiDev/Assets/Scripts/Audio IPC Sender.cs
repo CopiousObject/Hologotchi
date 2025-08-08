@@ -38,7 +38,6 @@ public class AudioIPCSender : MonoBehaviour
     /// </summary>
     public void NotificationChange()
     {
-        Debug.Log("Sending: " + notificationVolume);
         sender.SendData("Notification," + notificationVolume);
     }
 
@@ -47,7 +46,6 @@ public class AudioIPCSender : MonoBehaviour
     /// </summary>
     public void EffectChange()
     {
-        Debug.Log("Sending" + effectsVolume);
         sender.SendData("Effects," + effectsVolume);
     }
 
