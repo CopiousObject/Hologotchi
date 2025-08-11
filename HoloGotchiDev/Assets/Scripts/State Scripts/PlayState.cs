@@ -35,12 +35,13 @@ public class PlayState : IState
     public void OnExit(HoloPal holopal)
     {
         holopal.Spawner.PlayObjects.Remove(ball_target);
-        
+        Object.Destroy(ball_target);
+        has_ball = false;
     }
 
     public void OnTriggerEnter(HoloPal holopal, Collider other)
     {
-        if (other.gameObject == ball_target)
+        if (other.gameObject == ball_target && !has_ball)
         {
             has_ball = true;
             holopal.Nav_Agent.SetDestination(holopal.Play_position);
@@ -49,7 +50,6 @@ public class PlayState : IState
             ball_target.transform.SetLocalPositionAndRotation(new Vector3(0, 1, 1), Quaternion.identity);
 
             holopal.Communicator.SendData("Picked up ball");
-            Object.Destroy(ball_target);
         }
     }
 }

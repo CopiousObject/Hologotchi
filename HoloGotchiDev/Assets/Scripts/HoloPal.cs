@@ -254,7 +254,7 @@ public class HoloPal : MonoBehaviour
         {
             growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
         }
-        
+
         if (growth >= 1f && !leaving)
         {
             GrowthStage nextStage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
@@ -345,7 +345,6 @@ public class HoloPal : MonoBehaviour
 
     private void ReceiveMessage(string message)
     {
-        if (message == "Start Experience") startGrowth = true;
         if (message.Contains("Bounce Count"))
         {
             play += 0.4f * Mathf.Max(int.Parse(message.Substring("Bounce Count ".Length)) / 20f, 1f);

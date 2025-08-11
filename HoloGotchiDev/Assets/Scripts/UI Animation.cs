@@ -130,7 +130,6 @@ public class UIAnimation : MonoBehaviour
         time = 0.0f;
         isAnimating = true;
         animateScale = true;
-        communicator.SendData("Start Experience");
     }
 
     // Makes the animation smoother
