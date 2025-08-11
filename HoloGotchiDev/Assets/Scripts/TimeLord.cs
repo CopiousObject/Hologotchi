@@ -30,10 +30,14 @@ public class TimeLord : MonoBehaviour
         {
             TimeScale -= 0.25f;
         }
-        if (TimeScale < 0)
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            TimeScale = 0;
+            TimeScale = 1f;
         }
+        if (TimeScale < 0)
+            {
+                TimeScale = 0;
+            }
 
         Time.timeScale = TimeScale;
         Time.fixedDeltaTime = OGFixedTimeStep * TimeScale;

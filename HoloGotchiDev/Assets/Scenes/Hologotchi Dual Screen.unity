@@ -1833,7 +1833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: preview2D
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114865344359803568, guid: 3019d4eebe2593e428d7b9ccb096ceda, type: 3}
       propertyPath: targetLKG
@@ -5515,20 +5515,8 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
-      propertyPath: senderPort
-      value: 8080
-      objectReference: {fileID: 0}
-    - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: signingChar
       value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
-      propertyPath: receiverPort
-      value: 8081
-      objectReference: {fileID: 0}
-    - target: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
-      propertyPath: signMessages
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 682030289282755052, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: m_Name
@@ -5581,26 +5569,27 @@ PrefabInstance:
     - target: {fileID: 4156090569115005515, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: ipc
       value: 
-      objectReference: {fileID: 1169287007}
+      objectReference: {fileID: 0}
     - target: {fileID: 4156090569115005515, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
       propertyPath: debugGUI
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4156090569115005515, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4156090569115005515, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 682030289282755052, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1756970744}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
 --- !u!114 &1169287007 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
   m_PrefabInstance: {fileID: 1169287006}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756970742}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3f6ec482ad55d64497ccac617e7a3d2, type: 3}
@@ -6628,6 +6617,10 @@ PrefabInstance:
       propertyPath: stage_data.Array.data[0].Model
       value: 
       objectReference: {fileID: 334058294}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[0].StageDurationInUnits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Name
       value: HoloPal (1)
@@ -7302,27 +7295,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0646fd627b9268b41a9114b14dfe86af, type: 3}
---- !u!1 &1756970742 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 682030289282755052, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
-  m_PrefabInstance: {fileID: 1169287006}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1756970744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1756970742}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2568f05d370dfa4ebd458b6b28d8fb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  display: 0
-  automaticallyHandleIPC: 1
-  ipc: {fileID: 1169287007}
-  debugGUI: 0
 --- !u!1001 &1757152446
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -45,8 +45,6 @@ public struct StageData
 
 public class HoloPal : MonoBehaviour
 {
-    [SerializeField]
-    private bool debugMode = false;
     // Stage data
     [Header("Stats and Debug")]
     public StageData[] stage_data;
@@ -236,32 +234,24 @@ public class HoloPal : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Delete))
+        if (Input.GetKeyDown(KeyCode.X))
         {
-            if (debugMode) debugMode = false;
-            else debugMode = true;
+            GoNextStage();
         }
 
-        if (!startGrowth && !debugMode)
-        {
-            return;
-        }
+        // if (!startGrowth && !debugMode)
+        //     {
+        //         return;
+        //     }
 
-        if (!debugMode)
-        {
-            if (current_stage == GrowthStage.Egg ||
-                (current_stage == GrowthStage.Baby && food >= lowStatThreshold && water >= lowStatThreshold && play >= lowStatThreshold && chat >= lowStatThreshold && clean >= lowStatThreshold) ||
-                (current_stage == GrowthStage.Child && food >= lowStatThreshold && water >= lowStatThreshold && play >= lowStatThreshold && chat >= lowStatThreshold && clean >= lowStatThreshold) ||
-                (current_stage == GrowthStage.Adult && food >= lowStatThreshold && water >= lowStatThreshold && play >= lowStatThreshold && chat >= lowStatThreshold && clean >= lowStatThreshold))
-            {
-                growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
-            }
-        }
-        else
+        if (current_stage == GrowthStage.Egg ||
+            (current_stage == GrowthStage.Baby && food >= lowStatThreshold && water >= lowStatThreshold && play >= lowStatThreshold && chat >= lowStatThreshold && clean >= lowStatThreshold) ||
+            (current_stage == GrowthStage.Child && food >= lowStatThreshold && water >= lowStatThreshold && play >= lowStatThreshold && chat >= lowStatThreshold && clean >= lowStatThreshold) ||
+            (current_stage == GrowthStage.Adult && food >= lowStatThreshold && water >= lowStatThreshold && play >= lowStatThreshold && chat >= lowStatThreshold && clean >= lowStatThreshold))
         {
             growth += Time.deltaTime / (stage_data[(int)current_stage].StageDurationInUnits * stage_data[(int)current_stage].SecondsPerUnit);
         }
-
+        
         if (growth >= 1f && !leaving)
         {
             GrowthStage nextStage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);

@@ -51,10 +51,10 @@ namespace LookingGlass.DualMonitorApplication {
         private string PortFolderPath {
             get {
                 string folder = Application.persistentDataPath;
-#if !UNITY_EDITOR
-                if (display != DualMonitorApplicationDisplay.Window2D)
-                    folder += DualMonitorApplicationManager.extendedUIString;
-#endif
+// #if !UNITY_EDITOR
+//                 if (display != DualMonitorApplicationDisplay.Window2D)
+//                     folder += DualMonitorApplicationManager.extendedUIString;
+// #endif
                 return Path.Combine(folder, PORT_FOLDER_NAME);
             }
         }
