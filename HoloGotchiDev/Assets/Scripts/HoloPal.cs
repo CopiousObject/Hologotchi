@@ -185,6 +185,9 @@ public class HoloPal : MonoBehaviour
         notiAudio = true;
         notiVisual = true;
 
+        notificationVolume = 1f;
+        effectsVolume = 1f;
+
         next_act_out_time = DateTime.Now;
         overlay_image.enabled = false; // UI image with no sprite is a giant white square so disabled by default
     }
