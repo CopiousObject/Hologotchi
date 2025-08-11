@@ -6618,8 +6618,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 334058294}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[1].SecondsPerUnit
+      value: 86400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[2].SecondsPerUnit
+      value: 86400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[3].SecondsPerUnit
+      value: 86400
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[0].StageDurationInUnits
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Name
