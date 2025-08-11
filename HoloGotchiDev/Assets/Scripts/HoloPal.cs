@@ -364,7 +364,7 @@ public class HoloPal : MonoBehaviour
         if (message == "noti") notifactions = !notifactions;
         if (message == "notiA") notiAudio = !notiAudio;
         if (message == "notiV") notiVisual = !notiVisual;
-        if (message.Contains("Notifications"))
+        if (message.Contains("Notification"))
         {
             string[] splitMessage = message.Split(',');
             float.TryParse(splitMessage[1], out notificationVolume);
