@@ -6,6 +6,7 @@ public class TimeLord : MonoBehaviour
 {
     [Range(0, 100)]
     public float TimeScale = 1;
+    public float TimeIncrement = 1;
 
     [SerializeField]
     private float TotalTime;
@@ -24,11 +25,11 @@ public class TimeLord : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            TimeScale += 0.25f;
+            TimeScale += TimeIncrement;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            TimeScale -= 0.25f;
+            TimeScale -= TimeIncrement;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -40,7 +41,7 @@ public class TimeLord : MonoBehaviour
             }
 
         Time.timeScale = TimeScale;
-        Time.fixedDeltaTime = OGFixedTimeStep * TimeScale;
+        //Time.fixedDeltaTime = OGFixedTimeStep / TimeScale; // absolutely destroys framerate at higher speeds
 
         TotalTime = Time.time;
         DeltaTime = Time.deltaTime;
