@@ -4888,7 +4888,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a31b40d1981f6fb41912c04280803c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
   stage_data:
   - SecondsPerUnit: 60
     StageDurationInUnits: 30
@@ -4898,7 +4897,7 @@ MonoBehaviour:
     ChatTimesPerUnit: 0
     CleanTimesPerUnit: 0
     Model: {fileID: 0}
-  - SecondsPerUnit: 60
+  - SecondsPerUnit: 86400
     StageDurationInUnits: 7
     FoodTimesPerUnit: 2
     WaterTimesPerUnit: 2
@@ -4906,7 +4905,7 @@ MonoBehaviour:
     ChatTimesPerUnit: 2
     CleanTimesPerUnit: 1
     Model: {fileID: 5045645636158922116}
-  - SecondsPerUnit: 60
+  - SecondsPerUnit: 86400
     StageDurationInUnits: 20
     FoodTimesPerUnit: 2
     WaterTimesPerUnit: 2
@@ -4914,7 +4913,7 @@ MonoBehaviour:
     ChatTimesPerUnit: 3
     CleanTimesPerUnit: 1
     Model: {fileID: 4992005638290589947}
-  - SecondsPerUnit: 60
+  - SecondsPerUnit: 86400
     StageDurationInUnits: 90
     FoodTimesPerUnit: 2
     WaterTimesPerUnit: 2
@@ -4929,6 +4928,8 @@ MonoBehaviour:
   play: 1
   chat: 1
   clean: 1
+  lowStatThreshold: 0.15
+  criticalStatThreshold: 0.05
   communicator: {fileID: 0}
   spawner: {fileID: 0}
   flies: {fileID: 254303369122049590}
@@ -4969,7 +4970,9 @@ MonoBehaviour:
   notifactions: 0
   notiAudio: 0
   notiVisual: 0
+  leaving: 0
   held_object: {fileID: 0}
+  mainCamera: {fileID: 0}
 --- !u!65 &2088498546136224466
 BoxCollider:
   m_ObjectHideFlags: 0

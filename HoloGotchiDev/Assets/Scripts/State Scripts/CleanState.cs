@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class CleanState : IState
@@ -54,7 +55,7 @@ public class CleanState : IState
         while (elapsed < time)
         {
             elapsed += Time.deltaTime;
-            holopal.clean = Mathf.Lerp(holopal.clean, 1f, elapsed / time);
+            holopal.clean = math.lerp(holopal.clean, 1f, elapsed / time);
             yield return null;
         }
     }

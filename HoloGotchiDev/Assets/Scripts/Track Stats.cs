@@ -29,7 +29,7 @@ public class TrackStats : MonoBehaviour
 
     // Reciever for IPC Messages
     [SerializeField] private InterProcessCommunicator receiver;
-    private ConcurrentQueue<(string type, float value)> statUpdateQueue = new ConcurrentQueue<(string, float)>();
+    private Queue<(string type, double value)> statUpdateQueue = new ();
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +58,7 @@ public class TrackStats : MonoBehaviour
         while (statUpdateQueue.TryDequeue(out var update))
         {
             string stat = update.type;
-            float value = update.value;
+            float value = (float)update.value;
 
             switch (stat)
             {
@@ -98,7 +98,7 @@ public class TrackStats : MonoBehaviour
         try
         {
             string[] splitMessage = message.Split(',');
-            if (float.TryParse(splitMessage[1], out float value))
+            if (double.TryParse(splitMessage[1], out var value))
             {
                 if (message.Contains("Thirst")) statUpdateQueue.Enqueue(("Thirst", value));
                 if (message.Contains("Hunger")) statUpdateQueue.Enqueue(("Hunger", value));

@@ -12,6 +12,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        GetComponentInChildren<DecalProjector>().fadeFactor = 1f - Holopal.clean;
+        GetComponentInChildren<DecalProjector>().fadeFactor = 1f - (float)Holopal.clean;
     }
 }

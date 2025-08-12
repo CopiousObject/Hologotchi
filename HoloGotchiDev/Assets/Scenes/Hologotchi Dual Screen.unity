@@ -379,6 +379,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13493f9ec4a3550478545937c945da4c, type: 3}
+--- !u!1 &53809244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 53809246}
+  - component: {fileID: 53809245}
+  m_Layer: 0
+  m_Name: Game Saver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &53809245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53809244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d54e7281b89c04283e80a7c4fa508c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  communicator: {fileID: 1169287007}
+  holopal: {fileID: 1503651301}
+--- !u!4 &53809246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53809244}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &54385961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6606,33 +6652,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 937024399}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-      propertyPath: lowStatThreshold
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-      propertyPath: criticalStatThreshold
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[0].Model
       value: 
       objectReference: {fileID: 334058294}
-    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-      propertyPath: stage_data.Array.data[1].SecondsPerUnit
-      value: 86400
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-      propertyPath: stage_data.Array.data[2].SecondsPerUnit
-      value: 86400
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-      propertyPath: stage_data.Array.data[3].SecondsPerUnit
-      value: 86400
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
-      propertyPath: stage_data.Array.data[0].StageDurationInUnits
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Name
       value: HoloPal (1)
@@ -8836,3 +8858,4 @@ SceneRoots:
   - {fileID: 1169287006}
   - {fileID: 1114997484}
   - {fileID: 865022049}
+  - {fileID: 53809246}

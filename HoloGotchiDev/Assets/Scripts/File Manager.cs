@@ -11,16 +11,12 @@ using UnityEngine.UI;
 public class FileManager : MonoBehaviour
 {
     [SerializeField]
-    private QuitApplication quitter;
-    [SerializeField]
     private InterProcessCommunicator communicator;
 
     [SerializeField]
-    private Slider[] statBars;
+    private HoloPal holopal;
     private GameData gameData = new GameData();
     private string saveFilePath;
-    private int tempGrowthStage;
-    private float tempTime;
 
     private float time;
 
@@ -37,6 +33,19 @@ public class FileManager : MonoBehaviour
         if (File.Exists(saveFilePath))
         {
             Load();
+        }
+    }
+
+    void OnApplicationQuit()
+    {
+        Save();
+    }
+
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus)
+        {
+            Save();
         }
     }
 
@@ -104,29 +113,20 @@ public class FileManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Saves and quits the game
-    /// </summary>
-    public void SaveQuit()
-    {
-        Save();
-        quitter.Quit();
-    }
-
-    /// <summary>
     /// Used to keep gameData up to date
     /// </summary>
     private void UpdateValues()
     {
         // Stat values
-        gameData.waterValue = statBars[0].value;
-        gameData.hungerValue = statBars[1].value;
-        gameData.playValue = statBars[2].value;
-        gameData.chatValue = statBars[3].value;
-        gameData.kemptValue = statBars[4].value;
+        gameData.waterValue = holopal.water;
+        gameData.hungerValue = holopal.food;
+        gameData.playValue = holopal.play;
+        gameData.chatValue = holopal.chat;
+        gameData.kemptValue = holopal.clean;
 
         // growth time and stage
-        gameData.growthStage = tempGrowthStage;
-        gameData.growthTime = tempTime;
+        gameData.growthStage = (int)holopal.current_stage;
+        gameData.growthTime = holopal.growth;
     }
 
     /// <summary>
@@ -134,18 +134,19 @@ public class FileManager : MonoBehaviour
     /// </summary>
     private void AssignValues()
     {
-        // Stat values
-        statBars[0].value = gameData.waterValue;
-        statBars[1].value = gameData.hungerValue;
-        statBars[2].value = gameData.playValue;
-        statBars[3].value = gameData.chatValue;
-        statBars[4].value = gameData.kemptValue;
+        for (var i = 0; i < gameData.growthStage; i++)
+        {
+            holopal.GoNextStage(); // too many systems rely on the logic in here so we can't just set the stage
+        }
 
-        // Send a message through ipc to Holopal
-        communicator.SendData("{0}", gameData.growthStage);
-        communicator.SendData("Time:" + gameData.growthTime);
-        tempGrowthStage = gameData.growthStage;
-        tempTime = gameData.growthTime;
+        // Stat values
+        holopal.water = gameData.waterValue;
+        holopal.food = gameData.hungerValue;
+        holopal.play = gameData.playValue;
+        holopal.chat = gameData.chatValue;
+        holopal.clean = gameData.kemptValue;
+
+        holopal.growth = gameData.growthTime;
     }
 
     /// <summary>
@@ -155,14 +156,14 @@ public class FileManager : MonoBehaviour
     public void ReceiveMessage(string message)
     {
         //Debug.Log("Received IPC Message: " + message);
-        if (message == "0" || message == "1" ||
-            message == "2" || message == "3")
-            int.TryParse(message, out tempGrowthStage);
-        if (message.Contains("Time"))
-        {
-            string[] splitMessage = message.Split(':');
-            float.TryParse(splitMessage[1], out tempTime);
-        }
+        // if (message == "0" || message == "1" ||
+        //     message == "2" || message == "3")
+        //     int.TryParse(message, out tempGrowthStage);
+        // if (message.Contains("Time"))
+        // {
+        //     string[] splitMessage = message.Split(':');
+        //     float.TryParse(splitMessage[1], out tempTime);
+        // }
     }
 }
 
@@ -172,12 +173,12 @@ public class FileManager : MonoBehaviour
 [System.Serializable]
 public class GameData
 {
-    public float waterValue;
-    public float hungerValue;
-    public float playValue;
-    public float chatValue;
-    public float kemptValue;
+    public double waterValue;
+    public double hungerValue;
+    public double playValue;
+    public double chatValue;
+    public double kemptValue;
 
     public int growthStage;
-    public float growthTime;
+    public double growthTime;
 }

@@ -2,6 +2,7 @@ using System;
 using LookingGlass;
 using TMPro;
 using Unity.AI.Navigation;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering.Universal;
@@ -24,22 +25,22 @@ public struct StageData
     [Min(0)]
     public int SecondsPerUnit;
     [Min(0)]
-    public float StageDurationInUnits;
+    public double StageDurationInUnits;
     // [Range(0, 100)]
     // public float MinBlendShape;
     // [Range(0, 100)]
     // public float MaxBlendShape;
 
     [Min(0)]
-    public float FoodTimesPerUnit;
+    public double FoodTimesPerUnit;
     [Min(0)]
-    public float WaterTimesPerUnit;
+    public double WaterTimesPerUnit;
     [Min(0)]
-    public float PlayTimesPerUnit;
+    public double PlayTimesPerUnit;
     [Min(0)]
-    public float ChatTimesPerUnit;
+    public double ChatTimesPerUnit;
     [Min(0)]
-    public float CleanTimesPerUnit;
+    public double CleanTimesPerUnit;
     public GameObject Model;
 }
 
@@ -52,12 +53,12 @@ public class HoloPal : MonoBehaviour
 
     private bool startGrowth = false;
 
-    public float growth;
-    public float food;
-    public float water;
-    public float play;
-    public float chat;
-    public float clean;
+    public double growth;
+    public double food;
+    public double water;
+    public double play;
+    public double chat;
+    public double clean;
     [Space]
 
     public float lowStatThreshold;
@@ -271,18 +272,18 @@ public class HoloPal : MonoBehaviour
         }
 
         // Stat weighted for time
-        var stage_units_per_second = 1f / stage_data[(int)current_stage].SecondsPerUnit;
+        var stage_units_per_second = 1.0 / stage_data[(int)current_stage].SecondsPerUnit;
         food -= stage_data[(int)current_stage].FoodTimesPerUnit * stage_units_per_second * Time.deltaTime;
         water -= stage_data[(int)current_stage].WaterTimesPerUnit * stage_units_per_second * Time.deltaTime;
         play -= stage_data[(int)current_stage].PlayTimesPerUnit * stage_units_per_second * Time.deltaTime;
         chat -= stage_data[(int)current_stage].ChatTimesPerUnit * stage_units_per_second * Time.deltaTime;
         clean -= stage_data[(int)current_stage].CleanTimesPerUnit * stage_units_per_second * Time.deltaTime;
 
-        food = Mathf.Clamp01(food);
-        water = Mathf.Clamp01(water);
-        play = Mathf.Clamp01(play);
-        chat = Mathf.Clamp01(chat);
-        clean = Mathf.Clamp01(clean);
+        food = Math.Clamp(food, 0, 1);
+        water = Math.Clamp(water, 0, 1);
+        play = Math.Clamp(play, 0, 1);
+        chat = Math.Clamp(chat, 0, 1);
+        clean = Math.Clamp(clean, 0, 1);
 
         // Acting out behavior and trigger
         if (chat < criticalStatThreshold || play < criticalStatThreshold || food < criticalStatThreshold || water < criticalStatThreshold)
@@ -358,7 +359,7 @@ public class HoloPal : MonoBehaviour
         {
             Debug.Log("Reading");
             string[] splitMessage = message.Split(':');
-            float.TryParse(splitMessage[1], out growth);
+            double.TryParse(splitMessage[1], out growth);
         }
         if (message == "noti") notifactions = !notifactions;
         if (message == "notiA") notiAudio = !notiAudio;
