@@ -11,9 +11,6 @@ using UnityEngine.UI;
 public class FileManager : MonoBehaviour
 {
     [SerializeField]
-    private InterProcessCommunicator communicator;
-
-    [SerializeField]
     private HoloPal holopal;
     private GameData gameData = new GameData();
     private string saveFilePath;
@@ -22,7 +19,6 @@ public class FileManager : MonoBehaviour
 
     void Awake()
     {
-        communicator.OnMessageReceived += ReceiveMessage;
         saveFilePath = Application.persistentDataPath + "/hologotchisavegame.json";
     }
 
@@ -147,23 +143,6 @@ public class FileManager : MonoBehaviour
         holopal.clean = gameData.kemptValue;
 
         holopal.growth = gameData.growthTime;
-    }
-
-    /// <summary>
-    /// For receiving messages through ipc
-    /// </summary>
-    /// <param name="message"></param>
-    public void ReceiveMessage(string message)
-    {
-        //Debug.Log("Received IPC Message: " + message);
-        // if (message == "0" || message == "1" ||
-        //     message == "2" || message == "3")
-        //     int.TryParse(message, out tempGrowthStage);
-        // if (message.Contains("Time"))
-        // {
-        //     string[] splitMessage = message.Split(':');
-        //     float.TryParse(splitMessage[1], out tempTime);
-        // }
     }
 }
 

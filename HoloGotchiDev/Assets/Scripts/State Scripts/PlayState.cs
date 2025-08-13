@@ -49,7 +49,7 @@ public class PlayState : IState
             ball_target.transform.SetParent(holopal.transform);
             ball_target.transform.SetLocalPositionAndRotation(new Vector3(0, 1, 1), Quaternion.identity);
 
-            holopal.Communicator.SendData("Picked up ball");
+            holopal.Communicator.SendStartPlay();
         }
     }
 }

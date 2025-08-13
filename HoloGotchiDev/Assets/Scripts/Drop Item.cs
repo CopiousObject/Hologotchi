@@ -9,8 +9,8 @@ public class DropItem : MonoBehaviour
 {
     [SerializeField] GameObject objectToDuplicate;
     GameObject duplicate;
-    [SerializeField] 
-    private InterProcessCommunicator communicator;
+    [SerializeField]
+    private ValholoIPC communicator;
     [SerializeField]
     private RectTransform enviornment;
 
@@ -26,8 +26,7 @@ public class DropItem : MonoBehaviour
     {
         if (duplicate != null && duplicate.GetComponent<RectTransform>().anchoredPosition.y <= -4000)
         {
-            Debug.Log("Sending IPC message: Drop Item");
-            communicator.SendData("Drop " + objectToDuplicate.name);
+            communicator.SendDropItem(objectToDuplicate.name);
             Destroy(duplicate);
             duplicate = null;
         }

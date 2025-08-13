@@ -67,7 +67,7 @@ public class HoloPal : MonoBehaviour
     [Header("References")]
     // Sends the messages for IPC
     [SerializeField]
-    private InterProcessCommunicator communicator;
+    private ValholoIPC communicator;
     [SerializeField]
     private Spawner spawner;
     [SerializeField]
@@ -157,7 +157,7 @@ public class HoloPal : MonoBehaviour
     public AudioClip LowPlay => lowPlay;
     public AudioClip LowChat => lowChat;
     public AudioClip LowClean => lowClean;
-    public InterProcessCommunicator Communicator => communicator;
+    public ValholoIPC Communicator => communicator;
 
     // Used by animations
     public void ExitCurrentState(AnimationEvent animationEvent)
@@ -178,7 +178,7 @@ public class HoloPal : MonoBehaviour
 
     private void Start()
     {
-        communicator.OnMessageReceived += ReceiveMessage;
+        communicator.OnHandleMessage += HandleMessage;
 
         chatBubble.alpha = 0f;
 
@@ -211,13 +211,13 @@ public class HoloPal : MonoBehaviour
         // Setting up for leaving egg state
         if (current_stage == GrowthStage.Egg && nextStage != GrowthStage.Egg)
         {
-            communicator.SendData("Egg State Exited");
+            communicator.SendEggState(false);
         }
 
         // When cycle ends and you enter the egg state again;
         if (nextStage == GrowthStage.Egg && current_stage != GrowthStage.Egg)
         {
-            communicator.SendData("Egg State Entered");
+            communicator.SendEggState(true);
 
             food = 1f;
             water = 1f;
@@ -335,46 +335,23 @@ public class HoloPal : MonoBehaviour
 
     private void SendMessages()
     {
-        communicator.SendData("Hunger," + food);
-        communicator.SendData("Thirst," + water);
-        communicator.SendData("Play," + play);
-        communicator.SendData("Chat," + chat);
-        communicator.SendData("Dirtiness," + clean);
-        communicator.SendData("{0}", (int)current_stage);
-        communicator.SendData("Time:" + growth);
+        communicator.SendStats(food, water, play, chat, clean, current_stage, growth);
     }
 
-    private void ReceiveMessage(string message)
+    private void HandleMessage(IPCMessageId id, string message)
     {
-        if (message.Contains("Bounce Count"))
+        if (id == IPCMessageId.ToggleSetting)
         {
-            play += 0.4f * Mathf.Max(int.Parse(message.Substring("Bounce Count ".Length)) / 20f, 1f);
+            if (message == "noti") notifactions = !notifactions;
+            if (message == "notiA") notiAudio = !notiAudio;
+            if (message == "notiV") notiVisual = !notiVisual;
+        }
+        else if (id == IPCMessageId.PlayResult)
+        {
+            var bounce_count = int.Parse(message);
+
+            play += 0.4f * Mathf.Min(bounce_count / 20f, 1f);
             ChangeState(null);
         }
-        if (message == "0") current_stage = GrowthStage.Egg;
-        if (message == "1") current_stage = GrowthStage.Baby;
-        if (message == "2") current_stage = GrowthStage.Child;
-        if (message == "3") current_stage = GrowthStage.Adult;
-        if (message.Contains("Time"))
-        {
-            Debug.Log("Reading");
-            string[] splitMessage = message.Split(':');
-            double.TryParse(splitMessage[1], out growth);
-        }
-        if (message == "noti") notifactions = !notifactions;
-        if (message == "notiA") notiAudio = !notiAudio;
-        if (message == "notiV") notiVisual = !notiVisual;
-        if (message.Contains("Notification"))
-        {
-            string[] splitMessage = message.Split(',');
-            float.TryParse(splitMessage[1], out notificationVolume);
-            Debug.Log("Notification Volume" + notificationVolume);
-        }
-        if (message.Contains("Effects"))
-        {
-            string[] splitMessage = message.Split(',');
-            float.TryParse(splitMessage[1], out effectsVolume);
-        }
     }
-
 }

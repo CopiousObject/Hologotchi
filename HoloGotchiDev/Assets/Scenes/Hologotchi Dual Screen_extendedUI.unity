@@ -628,10 +628,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495281083}
+      - m_Target: {fileID: 617565660}
         m_TargetAssemblyTypeName: AudioIPCSender, Assembly-CSharp
         m_MethodName: NotificationChange
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1991,6 +1991,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 263902623}
+  - component: {fileID: 263902625}
   - component: {fileID: 263902624}
   m_Layer: 5
   m_Name: Play Bar
@@ -2071,6 +2072,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &263902625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263902622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3902a15401c16e4aaf3996c39eedeb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 263902624}
+  fill: {fileID: 438256369}
 --- !u!1 &270590477
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,10 +2385,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495281083}
+      - m_Target: {fileID: 617565660}
         m_TargetAssemblyTypeName: AudioIPCSender, Assembly-CSharp
         m_MethodName: NotificationChange
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2382,22 +2397,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 495281083}
-        m_TargetAssemblyTypeName: AudioIPCSender, Assembly-CSharp
-        m_MethodName: EffectChange
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 495281083}
+      - m_Target: {fileID: 617565660}
         m_TargetAssemblyTypeName: AudioIPCSender, Assembly-CSharp
         m_MethodName: MusicChange
-        m_Mode: 1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 617565660}
+        m_TargetAssemblyTypeName: AudioIPCSender, Assembly-CSharp
+        m_MethodName: EffectChange
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2496,10 +2511,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495281083}
+      - m_Target: {fileID: 617565660}
         m_TargetAssemblyTypeName: AudioIPCSender, Assembly-CSharp
         m_MethodName: MusicChange
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3302,9 +3317,7 @@ GameObject:
   - component: {fileID: 495281079}
   - component: {fileID: 495281078}
   - component: {fileID: 495281077}
-  - component: {fileID: 495281080}
   - component: {fileID: 495281081}
-  - component: {fileID: 495281083}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -3352,7 +3365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ec8932c3c92e7429b59caaf3f7ab04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  communicator: {fileID: 1523370008}
+  communicator: {fileID: 1523370010}
   titleScreen: {fileID: 206151908}
   mainScreenObject: {fileID: 1059195675}
   creditsScreenObject: {fileID: 1905754773}
@@ -3381,7 +3394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 688017318}
-  communicator: {fileID: 1523370008}
+  communicator: {fileID: 1523370010}
   enviornment: {fileID: 1955826971}
   buttonToggle: {fileID: 495281081}
 --- !u!114 &495281076
@@ -3397,7 +3410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 1566150908}
-  communicator: {fileID: 1523370008}
+  communicator: {fileID: 1523370010}
   enviornment: {fileID: 1955826971}
   buttonToggle: {fileID: 495281081}
 --- !u!114 &495281077
@@ -3413,7 +3426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 1927488279}
-  communicator: {fileID: 1523370008}
+  communicator: {fileID: 1523370010}
   enviornment: {fileID: 1955826971}
   buttonToggle: {fileID: 495281081}
 --- !u!114 &495281078
@@ -3429,7 +3442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 572343462}
-  communicator: {fileID: 1523370008}
+  communicator: {fileID: 1523370010}
   enviornment: {fileID: 1955826971}
   buttonToggle: {fileID: 495281081}
 --- !u!114 &495281079
@@ -3445,27 +3458,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 69764982}
-  communicator: {fileID: 1523370008}
+  communicator: {fileID: 1523370010}
   enviornment: {fileID: 1955826971}
   buttonToggle: {fileID: 495281081}
---- !u!114 &495281080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495281071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a51d46515e0e2bf46afccf20a8ee2434, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thirstSlider: {fileID: 2087798339}
-  hungerSlider: {fileID: 1262418344}
-  playSlider: {fileID: 263902622}
-  socialSlider: {fileID: 1524308655}
-  cleanSlider: {fileID: 1663469434}
-  receiver: {fileID: 1523370008}
 --- !u!114 &495281081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3478,29 +3473,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295b669734d0bac4c8d7c26465878576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  receiver: {fileID: 1523370008}
+  receiver: {fileID: 1523370010}
   waterButton: {fileID: 688017318}
   playButton: {fileID: 1566150908}
   chatButton: {fileID: 69764982}
   foodButton: {fileID: 572343462}
   cleanButton: {fileID: 1927488279}
---- !u!114 &495281083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495281071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb8ec58550ca33446903b5a5aa948d5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sender: {fileID: 1523370008}
-  masterSlider: {fileID: 328661035}
-  musicSlider: {fileID: 354575820}
-  notificationSlider: {fileID: 34402572}
-  effectsSlider: {fileID: 1345212663}
 --- !u!1 &497657090
 GameObject:
   m_ObjectHideFlags: 0
@@ -4234,6 +4212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 617565659}
+  - component: {fileID: 617565660}
   m_Layer: 5
   m_Name: Audio Settings
   m_TagString: Untagged
@@ -4270,6 +4249,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &617565660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617565658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8ec58550ca33446903b5a5aa948d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sender: {fileID: 1523370010}
+  masterSlider: {fileID: 328661035}
+  musicSlider: {fileID: 354575820}
+  notificationSlider: {fileID: 34402572}
+  effectsSlider: {fileID: 1345212663}
 --- !u!1 &637126319
 GameObject:
   m_ObjectHideFlags: 0
@@ -4647,6 +4643,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   check: {fileID: 21300000, guid: 47f29d66e5234c74ea5bf48ed06d80c9, type: 3}
   x: {fileID: 21300000, guid: beaa17e66ebf7fe44bf5116b32e6fdf8, type: 3}
+--- !u!1 &659100000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 682030289282755052, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
+  m_PrefabInstance: {fileID: 1523370007}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &688017318
 GameObject:
   m_ObjectHideFlags: 0
@@ -4918,6 +4919,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 715939893}
+  - component: {fileID: 715939894}
   m_Layer: 5
   m_Name: Stats Screen
   m_TagString: Untagged
@@ -4951,6 +4953,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &715939894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715939892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a51d46515e0e2bf46afccf20a8ee2434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thirstBar: {fileID: 2087798342}
+  hungerBar: {fileID: 1262418347}
+  playBar: {fileID: 263902625}
+  socialBar: {fileID: 1524308659}
+  cleanBar: {fileID: 1663469438}
+  receiver: {fileID: 1523370010}
 --- !u!1 &716750063
 GameObject:
   m_ObjectHideFlags: 0
@@ -6931,7 +6951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCam: {fileID: 1364922305}
-  Communicator: {fileID: 1523370008}
+  Communicator: {fileID: 1523370010}
   uiAnimation: {fileID: 495281073}
   PlayAssets: {fileID: 474819374}
   TopBound: {fileID: 1337192880}
@@ -7067,6 +7087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1262418345}
+  - component: {fileID: 1262418347}
   - component: {fileID: 1262418346}
   m_Layer: 5
   m_Name: Hunger Bar
@@ -7147,6 +7168,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1262418347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262418344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3902a15401c16e4aaf3996c39eedeb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1262418346}
+  fill: {fileID: 1867703998}
 --- !u!1 &1269161865
 GameObject:
   m_ObjectHideFlags: 0
@@ -7923,10 +7958,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495281083}
+      - m_Target: {fileID: 617565660}
         m_TargetAssemblyTypeName: AudioIPCSender, Assembly-CSharp
         m_MethodName: EffectChange
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8502,17 +8537,21 @@ PrefabInstance:
     - {fileID: 4156090569115005515, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 682030289282755052, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1523370010}
   m_SourcePrefab: {fileID: 100100000, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
---- !u!114 &1523370008 stripped
+--- !u!114 &1523370010
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
-  m_PrefabInstance: {fileID: 1523370007}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 659100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f6ec482ad55d64497ccac617e7a3d2, type: 3}
+  m_Script: {fileID: 11500000, guid: e93abb318fd1ac54bbff6419a49130a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1524308655
@@ -8524,6 +8563,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1524308656}
+  - component: {fileID: 1524308659}
   - component: {fileID: 1524308657}
   m_Layer: 5
   m_Name: Social Bar
@@ -8604,6 +8644,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1524308659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524308655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3902a15401c16e4aaf3996c39eedeb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1524308657}
+  fill: {fileID: 356169678}
 --- !u!1001 &1524916818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9715,6 +9769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1663469435}
+  - component: {fileID: 1663469438}
   - component: {fileID: 1663469436}
   m_Layer: 5
   m_Name: Clean Bar
@@ -9795,6 +9850,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1663469438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663469434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3902a15401c16e4aaf3996c39eedeb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1663469436}
+  fill: {fileID: 22996630}
 --- !u!1 &1667541202
 GameObject:
   m_ObjectHideFlags: 0
@@ -12165,6 +12234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2087798340}
+  - component: {fileID: 2087798342}
   - component: {fileID: 2087798341}
   m_Layer: 5
   m_Name: Thirst Bar
@@ -12245,6 +12315,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2087798342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087798339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3902a15401c16e4aaf3996c39eedeb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 2087798341}
+  fill: {fileID: 857833847}
 --- !u!1 &2115884922
 GameObject:
   m_ObjectHideFlags: 0

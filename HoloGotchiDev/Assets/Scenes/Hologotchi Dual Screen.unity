@@ -408,7 +408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d54e7281b89c04283e80a7c4fa508c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  communicator: {fileID: 1169287007}
   holopal: {fileID: 1503651301}
 --- !u!4 &53809246
 Transform:
@@ -3013,7 +3012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa8fefcc369160f43a6c42f9377882cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  receiver: {fileID: 1169287007}
+  receiver: {fileID: 1743627125}
   musicTrack: {fileID: 8300000, guid: 29240521732d53142a6b776b31ae04ef, type: 3}
   ambiantSounds:
   - {fileID: 8300000, guid: f21d91656321d9b48a2d06e65841563d, type: 3}
@@ -3226,7 +3225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5078c0364d2a915429dc7244b9ed0941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  receiver: {fileID: 1169287007}
+  receiver: {fileID: 1743627125}
   food: {fileID: 9201202140247047804, guid: eec3457eb5d4a924ab3ea86344913e49, type: 3}
   water: {fileID: 7423728875173223354, guid: 4f64def9857465a42a961d70a80642bc, type: 3}
   clean: {fileID: 1167119588158036173, guid: 5ff7afedf83b91741becc113384741de, type: 3}
@@ -3483,6 +3482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeScale: 1
+  TimeIncrement: 1
   TotalTime: 0
   DeltaTime: 0
 --- !u!4 &704753697
@@ -5628,19 +5628,11 @@ PrefabInstance:
     - {fileID: 4156090569115005515, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 682030289282755052, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1743627125}
   m_SourcePrefab: {fileID: 100100000, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
---- !u!114 &1169287007 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 677808340693387728, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
-  m_PrefabInstance: {fileID: 1169287006}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3f6ec482ad55d64497ccac617e7a3d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1178486448 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2672232902340821011, guid: 0646fd627b9268b41a9114b14dfe86af, type: 3}
@@ -6646,7 +6638,7 @@ PrefabInstance:
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: communicator
       value: 
-      objectReference: {fileID: 1169287007}
+      objectReference: {fileID: 1743627125}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: overlay_image
       value: 
@@ -7329,6 +7321,23 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0646fd627b9268b41a9114b14dfe86af, type: 3}
+--- !u!1 &1743627123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 682030289282755052, guid: b0d004aea24d96643994154ea8b5993c, type: 3}
+  m_PrefabInstance: {fileID: 1169287006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1743627125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743627123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e93abb318fd1ac54bbff6419a49130a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1757152446
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class PlayManager : MonoBehaviour
 {
     public Camera currentCam;
-    public InterProcessCommunicator Communicator;
+    public ValholoIPC Communicator;
     public UIAnimation uiAnimation;
 
     public GameObject PlayAssets;
@@ -31,12 +31,12 @@ public class PlayManager : MonoBehaviour
     void Start()
     {
         Playing = false;
-        Communicator.OnMessageReceived += ReceiveMessage;
+        Communicator.OnHandleMessage += HandleMessage;
     }
 
-    private void ReceiveMessage(string message)
+    void HandleMessage(IPCMessageId id, string message)
     {
-        if (message == "Picked up ball")
+        if (id == IPCMessageId.StartPlay)
         {
             uiAnimation.NavigateToPlay();
 
@@ -105,7 +105,7 @@ public class PlayManager : MonoBehaviour
             yield return null;
         }
 
-        Communicator.SendData("Bounce Count " + BallObject.GetComponent<BallSpeed>().bounceCount);
+        Communicator.SendPlayResult(BallObject.GetComponent<BallSpeed>().bounceCount);
         PlayAssets.SetActive(false);
         Playing = false;
         uiAnimation.NavigateToMain();

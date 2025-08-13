@@ -1,13 +1,10 @@
-using LookingGlass;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ButtonToggle : MonoBehaviour
 {
     [SerializeField]
-    private InterProcessCommunicator receiver;
+    private ValholoIPC receiver;
 
     [SerializeField]
     private GameObject waterButton;
@@ -23,19 +20,25 @@ public class ButtonToggle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        receiver.OnMessageReceived += ReceiveMessage;
+        receiver.OnHandleMessage += HandleMessage;
         Deactivate();
     }
 
-    // Update is called once per frame
-    void Update()
+    void HandleMessage(IPCMessageId id, string message)
     {
-    }
+        if (id == IPCMessageId.EggState)
+        {
+            var isEgg = bool.Parse(message);
 
-    private void ReceiveMessage(string message)
-    {
-        if (message == "Egg State Exited") Activate();
-        if (message == "Egg State Entered") Deactivate();
+            if (isEgg)
+            {
+                Deactivate();
+            }
+            else
+            {
+                Activate();
+            }
+        }
     }
 
     public void Activate()

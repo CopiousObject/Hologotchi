@@ -8,7 +8,7 @@ using UnityEngine;
 public class UIAnimation : MonoBehaviour
 {
     [SerializeField]
-    private InterProcessCommunicator communicator;
+    private ValholoIPC communicator;
 
     private float time = 0.0f;
 
@@ -50,15 +50,26 @@ public class UIAnimation : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
         titleScale = titleScreen.localScale;
 
-        communicator.OnMessageReceived += ReceiveMessage;
+        communicator.OnHandleMessage += HandleMessage;
 
         creditsScreenObject.SetActive(false);
     }
 
-    private void ReceiveMessage(string message)
+    void HandleMessage(IPCMessageId id, string message)
     {
-        if (message == "Picked up ball") NavigateToPlay();
-        if (message == "Egg State Entered") NavigateToCredits();
+        if (id == IPCMessageId.StartPlay)
+        {
+            NavigateToPlay();
+        }
+        else if (id == IPCMessageId.EggState)
+        {
+            var isEgg = bool.Parse(message);
+
+            if (isEgg)
+            {
+                NavigateToCredits();
+            }
+        }
     }
 
     private void Update()
@@ -140,16 +151,16 @@ public class UIAnimation : MonoBehaviour
 
     public void SendNoti()
     {
-        communicator.SendData("noti");
+        communicator.SendToggleSetting("noti");
     }
 
     public void SendNotiA()
     {
-        communicator.SendData("notiA");
+        communicator.SendToggleSetting("notiA");
     }
 
     public void SendNotiV()
     {
-        communicator.SendData("notiV");
+        communicator.SendToggleSetting("notiV");
     }
 }

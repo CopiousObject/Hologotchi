@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class AudioIPCSender : MonoBehaviour
 {
-    [SerializeField] private InterProcessCommunicator sender;
+    [SerializeField] private ValholoIPC sender;
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider notificationSlider;
@@ -20,7 +20,7 @@ public class AudioIPCSender : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -32,28 +32,28 @@ public class AudioIPCSender : MonoBehaviour
         notificationVolume = notificationSlider.value * masterVolume;
         effectsVolume = effectsSlider.value * masterVolume;
     }
-    
+
     /// <summary>
     /// Used to send information on notification volume changes
     /// </summary>
-    public void NotificationChange()
+    public void NotificationChange(float value)
     {
-        sender.SendData("Notification," + notificationVolume);
+        sender.SendValueSetting("Notification", value);
     }
 
     /// <summary>
     /// Used to send information on effect volume changes
     /// </summary>
-    public void EffectChange()
+    public void EffectChange(float value)
     {
-        sender.SendData("Effects," + effectsVolume);
+        sender.SendValueSetting("Effects", value);
     }
 
     /// <summary>
     /// Used to send information on music volume changes
     /// </summary>
-    public void MusicChange()
+    public void MusicChange(float value)
     {
-        sender.SendData("Music," + musicVolume);
+        sender.SendValueSetting("Music", value);
     }
 }

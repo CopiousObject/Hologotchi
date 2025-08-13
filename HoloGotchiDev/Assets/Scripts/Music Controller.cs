@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class MusicController : MonoBehaviour
 {
-    [SerializeField] private InterProcessCommunicator receiver;
+    [SerializeField] private ValholoIPC receiver;
 
     [SerializeField] private AudioClip musicTrack;
     [SerializeField] private AudioClip[] ambiantSounds;
@@ -22,7 +22,7 @@ public class MusicController : MonoBehaviour
     {
         timeBeforeNextPlay = 0;
         playingMusic = true;
-        receiver.OnMessageReceived += ReceiveMessage;
+        receiver.OnHandleMessage += HandleMessage;
     }
 
     // Update is called once per frame
@@ -56,32 +56,24 @@ public class MusicController : MonoBehaviour
         timeBeforeNextPlay -= Time.deltaTime;
     }
 
-    /// <summary>
-    /// Recieves the message for the inter processing
-    /// </summary>
-    /// <param name="message"></param>
-    private void ReceiveMessage(string message)
+    void HandleMessage(IPCMessageId id, string message)
     {
-        try
+        if (id == IPCMessageId.ValueSetting)
         {
-            string[] splitMessage = message.Split(',');
-            float value;
+            var args = message.Split(',');
 
-            if (message.Contains("Music"))
+            var name = args[0];
+            var value = float.Parse(args[1]);
+
+            if (name == "Music")
             {
-                float.TryParse(splitMessage[1], out value);
+                audioControl.volume = value;
                 musicVolume = value;
-                audioControl.volume = musicVolume;
             }
-            if (message.Contains("Effects"))
+            else if (name == "Effects")
             {
-                float.TryParse(splitMessage[1], out value);
                 effectsVolume = value;
             }
-        }
-        catch
-        {
-
         }
     }
 }
