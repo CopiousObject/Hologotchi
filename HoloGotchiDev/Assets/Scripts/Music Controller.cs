@@ -8,52 +8,27 @@ public class MusicController : MonoBehaviour
 {
     [SerializeField] private ValholoIPC receiver;
 
-    [SerializeField] private AudioClip musicTrack;
     [SerializeField] private AudioClip[] ambiantSounds;
-    [SerializeField] private AudioSource audioControl;
-    private float timeBeforeNextPlay;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource soundEffectSource;
     private float timeBeforeRandomSound;
-    private bool playingMusic;
 
-    private float musicVolume = 1;
-    private float effectsVolume = 1;
     // Start is called before the first frame update
     void Start()
     {
-        timeBeforeNextPlay = 0;
-        playingMusic = true;
         receiver.OnHandleMessage += HandleMessage;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timeBeforeNextPlay <= 0)
+        if (timeBeforeRandomSound <= 0)
         {
-            audioControl.clip = musicTrack;
-            audioControl.Play();
-            timeBeforeNextPlay = 20 * 60;
-            playingMusic = true;
-        }
-        if(timeBeforeNextPlay <= 15 * 60)
-        {
-            playingMusic = false;
-            audioControl.volume = musicVolume;
+            soundEffectSource.PlayOneShot(ambiantSounds[Random.Range(0, ambiantSounds.Length)]);
+            timeBeforeRandomSound = Random.Range(30, 121);
         }
 
-        if (!playingMusic)
-        {
-            if (timeBeforeRandomSound <= 0)
-            {
-                audioControl.clip = ambiantSounds[Random.Range(0, ambiantSounds.Length)];
-                audioControl.Play();
-                timeBeforeRandomSound = Random.Range(30, 121);
-            }
-            audioControl.volume = effectsVolume;
-            timeBeforeRandomSound -= Time.deltaTime;
-        }
-
-        timeBeforeNextPlay -= Time.deltaTime;
+        timeBeforeRandomSound -= Time.deltaTime;
     }
 
     void HandleMessage(IPCMessageId id, string message)
@@ -67,12 +42,11 @@ public class MusicController : MonoBehaviour
 
             if (name == "Music")
             {
-                audioControl.volume = value;
-                musicVolume = value;
+                musicSource.volume = value;
             }
             else if (name == "Effects")
             {
-                effectsVolume = value;
+                soundEffectSource.volume = value;
             }
         }
     }
