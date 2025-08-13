@@ -60,10 +60,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3745396126951901791, guid: b74ffdc5c2281d242892db6b400950f6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df57c70294649ad4eb59dbabc2a54af3, type: 2}
+    - target: {fileID: -3289674471058131000, guid: b74ffdc5c2281d242892db6b400950f6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2939310e9106ee5439cbc539ecc65412, type: 2}
+    - target: {fileID: -2333668015826065791, guid: b74ffdc5c2281d242892db6b400950f6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df57c70294649ad4eb59dbabc2a54af3, type: 2}
     - target: {fileID: 919132149155446097, guid: b74ffdc5c2281d242892db6b400950f6, type: 3}
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 1863191399037859163, guid: b74ffdc5c2281d242892db6b400950f6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df57c70294649ad4eb59dbabc2a54af3, type: 2}
     - target: {fileID: 3305385047801671413, guid: b74ffdc5c2281d242892db6b400950f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
