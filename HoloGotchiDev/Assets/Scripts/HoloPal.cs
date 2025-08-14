@@ -193,9 +193,6 @@ public class HoloPal : MonoBehaviour
 
         next_act_out_time = DateTime.Now;
         overlay_image.enabled = false; // UI image with no sprite is a giant white square so disabled by default
-
-        animator.avatar = stage_data[(int)current_stage].Avatar;
-        animator.runtimeAnimatorController = stage_data[(int)current_stage].AnimatorController;
     }
 
     /// <summary>
@@ -234,6 +231,9 @@ public class HoloPal : MonoBehaviour
         stage_data[(int)current_stage].Model.SetActive(false);
         stage_data[(int)nextStage].Model.SetActive(true);
 
+        animator.avatar = stage_data[(int)nextStage].Avatar;
+        animator.runtimeAnimatorController = stage_data[(int)nextStage].AnimatorController;
+
         current_stage = nextStage;
         growth = 0;
     }
@@ -264,9 +264,6 @@ public class HoloPal : MonoBehaviour
         if (growth >= 1f && !leaving)
         {
             GrowthStage nextStage = (GrowthStage)(((int)current_stage + 1) % stage_data.Length);
-
-            animator.avatar = stage_data[(int)current_stage].Avatar;
-            animator.runtimeAnimatorController = stage_data[(int)current_stage].AnimatorController;
 
             // When cycle ends and you enter the egg state again;
             if (nextStage == GrowthStage.Egg && current_stage != GrowthStage.Egg)
