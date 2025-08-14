@@ -6802,6 +6802,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9000000, guid: c5dae36dddb68ef428c8c9be55c850cd, type: 3}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[2].Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: c3a46b7596d26e84cae40bac19b979e1, type: 3}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[3].Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 73e5049a5b8af7440affc3cefc20c052, type: 3}
@@ -6813,6 +6817,10 @@ PrefabInstance:
       propertyPath: stage_data.Array.data[1].AnimatorController
       value: 
       objectReference: {fileID: 9100000, guid: fde12901ac8708a49aa1ff55904212ea, type: 2}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[2].AnimatorController
+      value: 
+      objectReference: {fileID: 9100000, guid: c029d77b7679f5f41829aef55801cd8d, type: 2}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[3].AnimatorController
       value: 
