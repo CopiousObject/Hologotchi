@@ -136,11 +136,23 @@ public class FileManager : MonoBehaviour
         }
 
         // Stat values
-        holopal.water = gameData.waterValue;
-        holopal.food = gameData.hungerValue;
-        holopal.play = gameData.playValue;
-        holopal.chat = gameData.chatValue;
-        holopal.clean = gameData.kemptValue;
+        if (gameData.growthStage == 0)
+        {
+            // sanity check
+            holopal.water = 1;
+            holopal.food = 1;
+            holopal.play = 1;
+            holopal.chat = 1;
+            holopal.clean = 1;
+        }
+        else
+        {
+            holopal.water = gameData.waterValue;
+            holopal.food = gameData.hungerValue;
+            holopal.play = gameData.playValue;
+            holopal.chat = gameData.chatValue;
+            holopal.clean = gameData.kemptValue;
+        }
 
         holopal.growth = gameData.growthTime;
     }

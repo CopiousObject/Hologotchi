@@ -141,7 +141,7 @@ public class HoloPal : MonoBehaviour
     [HideInInspector]
     public GameObject held_object;
 
-    public Camera mainCamera; // for some reason the MainCamera tag was working so temp fix
+    public Camera mainCamera; // for some reason the MainCamera tag wasn't working so temp fix
 
     // Properties
     public Spawner Spawner => spawner;
