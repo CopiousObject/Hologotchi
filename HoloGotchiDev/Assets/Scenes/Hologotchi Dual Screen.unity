@@ -3324,6 +3324,11 @@ MonoBehaviour:
   chat: {fileID: 2077534250829557805, guid: 73aa451c6b852d7479a5f105e67a08ca, type: 3}
   play: {fileID: 6437243788544531143, guid: 774b8593058bf344a8706cca2e387424, type: 3}
   max: 5
+--- !u!1 &663121803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3248412504806712212, guid: 60068b07b72d7504d8f246dc07b3e402, type: 3}
+  m_PrefabInstance: {fileID: 627531531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &663609822 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2672232902340821011, guid: 0646fd627b9268b41a9114b14dfe86af, type: 3}
@@ -4855,6 +4860,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2672232902340821011, guid: 0646fd627b9268b41a9114b14dfe86af, type: 3}
   m_PrefabInstance: {fileID: 918307624}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &933993766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3028865633826682769, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+  m_PrefabInstance: {fileID: 1503651294}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &937024397
 GameObject:
   m_ObjectHideFlags: 0
@@ -5492,6 +5502,11 @@ Transform:
   - {fileID: 886839281}
   m_Father: {fileID: 618384177}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1122175231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2219380677936939814, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+  m_PrefabInstance: {fileID: 1503651294}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1126723871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2672232902340821011, guid: 0646fd627b9268b41a9114b14dfe86af, type: 3}
@@ -6823,6 +6838,42 @@ PrefabInstance:
       propertyPath: childController
       value: 
       objectReference: {fileID: 9100000, guid: c029d77b7679f5f41829aef55801cd8d, type: 2}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[0].Model
+      value: 
+      objectReference: {fileID: 663121803}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[1].Model
+      value: 
+      objectReference: {fileID: 933993766}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[2].Model
+      value: 
+      objectReference: {fileID: 1122175231}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[1].Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: c5dae36dddb68ef428c8c9be55c850cd, type: 3}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[2].Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: edddba1ab9ad4f744a0aaa4b62164dc2, type: 3}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[3].Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 73e5049a5b8af7440affc3cefc20c052, type: 3}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[1].AnimatorController
+      value: 
+      objectReference: {fileID: 22100000, guid: 6ae9a2db364e2f445afc6f81b7485c84, type: 2}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[2].AnimatorController
+      value: 
+      objectReference: {fileID: 22100000, guid: b75fc3cadb9646144b1fd1a7e721ed30, type: 2}
+    - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: stage_data.Array.data[3].AnimatorController
+      value: 
+      objectReference: {fileID: 9100000, guid: 4a29e1e6be9d58c4bbb77a06be4757af, type: 2}
     - target: {fileID: 2719732699335186768, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_IsActive
       value: 0
