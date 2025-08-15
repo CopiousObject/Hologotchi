@@ -1467,7 +1467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 62, y: -4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &212125728
@@ -1490,10 +1490,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>HoloGotchi</b>\n\n<b>Idea and Concept</b>\nJake Adams\nArturo J. Real\r\n\n<b>Production</b>\r\nAnnalee
-    Dorozynski \r\n\n<b>Software Engineers</b>\nNathan Caron\r\nNoah Dailey\r\nJon
-    Luke\r\n\n<b>Artists</b>\r\nAnthony Curtis \r\nZellian Dettmer \r\n\n<b>Music</b>
-    \r\nNoah Dailey"
+  m_text: "<size=20><b>HoloGotchi</b></size>\n\n<b>Idea and Concept</b>\n<color=#f2fcfc>Jake
+    Adams\nArturo J. Real\r</color>\n\n<b>Production</b>\r\n<color=#f2fcfc>Annalee
+    Dorozynski \r</color>\n\n<b>Software Engineers</b>\n<color=#f2fcfc>Nathan Caron\r\nNoah
+    Dailey\r\nJon Luke\r</color>\n\n<b>Artists</b>\r\n<color=#f2fcfc>Anthony Curtis
+    \r\nZellian Dettmer \r</color>\n\n<b>Music</b> \r\n<color=#f2fcfc>Noah Dailey\r</color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1502,8 +1503,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288999676
-  m_fontColor: {r: 0.9882353, g: 0.9411765, b: 0.6431373, a: 1}
+    rgba: 4291229695
+  m_fontColor: {r: 1, g: 0.96976846, b: 0.7783019, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1532,7 +1533,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -6
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1556,7 +1557,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 14.92083, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
