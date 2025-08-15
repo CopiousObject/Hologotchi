@@ -6648,11 +6648,11 @@ PrefabInstance:
     - target: {fileID: 474992734532269889, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Avatar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9000000, guid: 73e5049a5b8af7440affc3cefc20c052, type: 3}
     - target: {fileID: 474992734532269889, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: 4a29e1e6be9d58c4bbb77a06be4757af, type: 2}
     - target: {fileID: 2010930309931629495, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6816,15 +6816,19 @@ PrefabInstance:
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[1].AnimatorController
       value: 
-      objectReference: {fileID: 9100000, guid: fde12901ac8708a49aa1ff55904212ea, type: 2}
+      objectReference: {fileID: 22100000, guid: 6ae9a2db364e2f445afc6f81b7485c84, type: 2}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[2].AnimatorController
       value: 
-      objectReference: {fileID: 9100000, guid: c029d77b7679f5f41829aef55801cd8d, type: 2}
+      objectReference: {fileID: 22100000, guid: b75fc3cadb9646144b1fd1a7e721ed30, type: 2}
     - target: {fileID: 2328692127935294231, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: stage_data.Array.data[3].AnimatorController
       value: 
       objectReference: {fileID: 9100000, guid: 4a29e1e6be9d58c4bbb77a06be4757af, type: 2}
+    - target: {fileID: 2719732699335186768, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3237382414628010953, guid: 523dfd66db6aa844582c568e2a422819, type: 3}
       propertyPath: m_Name
       value: HoloPal (1)

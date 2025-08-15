@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MossiferChildController
+  m_Controller: {fileID: 9100000, guid: 4a29e1e6be9d58c4bbb77a06be4757af, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 2667949614841947897, guid: 73e5049a5b8af7440affc3cefc20c052, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 5a31d678ecb79c947b48f6e5ae0eb914, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5c6e37749a91d0b4f8ef83a3fba3618b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1049e8827cddae845a8a484d3b5aa973, type: 2}
+  - m_OriginalClip: {fileID: -3554357232703439395, guid: 73e5049a5b8af7440affc3cefc20c052, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 4022432248eb93241bf9333db2f819b0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0c107b5f82ecbee4d8497e858f8569d3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: eba58900bb9483842b63fec8b7fab9e2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a623240024569074aa29f499b707f61b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cb37fe648c3d22647be3303be4679d99, type: 2}
